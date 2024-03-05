@@ -28,3 +28,4 @@ bk_*/
 storage/framework/sessions/
 storage/framework/cache/
 storage/framework/views/
+storage/framework/logs/
