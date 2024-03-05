@@ -21,7 +21,7 @@ use App\Models\Faq;
 use Auth, DB, Carbon\Carbon;
 use App\Models\Dictionary;
 use App\Models\Teacher;
-use App\Models\ShopEmailTemplate;
+use App\Models\EmailTemplate;
 use App\Models\Contact;
 
 
@@ -71,26 +71,11 @@ class AjaxController extends Controller
                     }
                 }
                 $loadDelete = Page::whereIn('id', $arr)->delete();
-                return 1;
-                break;
-            case 'teacher':
-                Teacher::whereIn('id', $arr)->delete();
-
-                // SET AUTO_INCREMENT TO 1
-                $table = (new Teacher)->getTable();
-                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
-                return 1;
-                break;
-            case 'dictionary-category':
-
-                Category::whereIn('id', $arr)->delete();
-
-                // DELETE DATA FROM PIVOT TABLE
-                DictionaryCategory::whereIn('category_id', $arr)->delete();
 
                 // SET AUTO_INCREMENT TO 1
                 $table = (new Category)->getTable();
                 DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
+
                 return 1;
                 break;
             case 'post':
@@ -138,47 +123,7 @@ class AjaxController extends Controller
                 DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
                 return 1;
                 break;
-            case 'book-category':
-                Category::whereIn('id', $arr)->delete();
 
-                // DELETE DATA FROM PIVOT TABLE
-                BookCategory::whereIn('category_id', $arr)->delete();
-
-                // SET AUTO_INCREMENT TO 1
-                $table = (new Category)->getTable();
-                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
-                return 1;
-                break;
-            case 'book':
-                Book::whereIn('id', $arr)->delete();
-
-                // DELETE DATA FROM PIVOT TABLE
-                BookCategory::whereIn('book_id', $arr)->delete();
-
-                // SET AUTO_INCREMENT TO 1
-                $table = (new Book)->getTable();
-                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
-                return 1;
-                break;
-            case 'dictionary':
-                Dictionary::whereIn('id', $arr)->delete();
-
-                // DELETE DATA FROM PIVOT TABLE
-                DictionaryCategory::whereIn('dictionary_id', $arr)->delete();
-
-                // SET AUTO_INCREMENT TO 1
-                $table = (new Dictionary)->getTable();
-                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
-                return 1;
-                break;
-            case 'faq':
-                Faq::whereIn('id', $arr)->delete();
-
-                // SET AUTO_INCREMENT TO 1
-                $table = (new Faq)->getTable();
-                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
-                return 1;
-                break;
             case 'video':
                 Video::whereIn('id', $arr)->delete();
 
@@ -244,13 +189,9 @@ class AjaxController extends Controller
                 return 1;
                 break;
             case 'email_template':
-                \App\Models\ShopEmailTemplate::whereIn('id', $arr)->delete();
+                \App\Models\EmailTemplate::whereIn('id', $arr)->delete();
                 return 1;
                 break;
-                // case 'rating':
-                //     $loadDelete = Rating_Product::whereIn('id', $arr)->delete();
-                //     return 1;
-                //     break;
             default:
                 # code...
                 break;
@@ -326,7 +267,7 @@ class AjaxController extends Controller
                 $newTemplate = '';
                 foreach ($arr as $id) {
 
-                    $template = ShopEmailTemplate::find($id);
+                    $template = EmailTemplate::find($id);
 
                     // Replicate post
                     $newTemplate = $template->replicate();
@@ -334,7 +275,7 @@ class AjaxController extends Controller
                     $newTemplate->save(); // saving it to the database
 
                     // update sort = id
-                    ShopEmailTemplate::where("id", $newTemplate->id)->update(['sort' => $newTemplate->id]);
+                    EmailTemplate::where("id", $newTemplate->id)->update(['sort' => $newTemplate->id]);
                     $i++;
                 }
                 return 1;
@@ -424,120 +365,6 @@ class AjaxController extends Controller
                 }
                 return 1;
                 break;
-            case 'book':
-                // Replicate Post + Category
-                $i = 1;
-                $newBook = '';
-                foreach ($arr as $id) {
-                    $book = Book::find($id);
-
-                    // Get categories of current post 
-                    $category_id = $book->categories->pluck('id')->toArray();
-
-                    // Replicate post
-                    $newBook = $book->replicate();
-                    // $newPost->name = $newPost->name . ' ' . $i;
-                    // $newPost->slug = Str::slug($newPost->name);
-                    $newBook->created_at = Carbon::now(); // changing the created_at date
-                    $newBook->save(); // saving it to the database
-
-                    $slug = Str::slug($newBook->name . '-' . $newBook->id);
-
-                    // update sort = id
-                    Book::where("id", $newBook->id)->update(['slug' => $slug, 'sort' => $newBook->id]);
-
-                    // Replicate Post Category
-                    $newBook = Book::find($newBook->id);
-                    $newBook->categories()->sync($category_id);
-                    $i++;
-                }
-                return 1;
-                break;
-            case 'dictionary':
-                // Replicate Dictionary + Category
-                $i = 1;
-                $newDictionary = '';
-                foreach ($arr as $id) {
-                    $dictionary = Dictionary::find($id);
-
-                    // Get categories of current post 
-                    $category_id = $dictionary->categories->pluck('id')->toArray();
-
-                    // Replicate dictionary
-                    $newDictionary = $dictionary->replicate();
-                    // $newPost->name = $newPost->name . ' ' . $i;
-                    // $newPost->slug = Str::slug($newPost->name);
-                    $newDictionary->created_at = Carbon::now(); // changing the created_at date
-                    $newDictionary->save(); // saving it to the database
-
-                    $slug = Str::slug($newDictionary->name . '-' . $newDictionary->id);
-
-                    // update sort = id
-                    Post::where("id", $newDictionary->id)->update(['slug' => $slug, 'sort' => $newDictionary->id]);
-
-                    // Replicate Dictionary Category
-                    $newPost = Dictionary::find($newDictionary->id);
-                    $newPost->categories()->sync($category_id);
-                    $i++;
-                }
-                return 1;
-                break;
-                // case 'product':
-                //     // Replicate Product + Category
-                //     $newProduct = '';
-                //     $i = 0;
-                //     foreach ($arr as $id) {
-                //         $product = Product::find($id);
-
-                //         // Get categories of current product
-                //         $category_id = $product->categories->pluck('id')->toArray();
-
-                //         // Replicate product
-                //         $newProduct = $product->replicate();
-                //         // $newProduct->image_name = ''; //** delete
-                //         $newProduct->created_at = Carbon::now(); // changing the created_at date
-                //         $newProduct->save(); // saving it to the database
-
-                //         $slug = Str::slug($newProduct->name . '-' . $newProduct->id);
-
-                //         // update sort = id
-                //         Product::where("id", $newProduct->id)->update(['slug' => $slug, 'sort' => $newProduct->id]);
-
-                //         // Replicate product category
-                //         $newProduct = Product::find($newProduct->id);
-                //         $newProduct->categories()->sync($category_id);
-                //         $i++;
-                //     }
-                //     return 1;
-                //     break;
-            case 'education':
-                // Replicate Education + Category
-                $newEducation = '';
-                $i = 0;
-                foreach ($arr as $id) {
-                    $education = Education::find($id);
-
-                    // Get categories of current education
-                    $category_id = $education->categories->pluck('id')->toArray();
-
-                    // Replicate education
-                    $newEducation = $education->replicate();
-                    // $newEducation->image_name = ''; //** delete
-                    $newEducation->created_at = Carbon::now(); // changing the created_at date
-                    $newEducation->save(); // saving it to the database
-
-                    $slug = Str::slug($newEducation->name . '-' . $newEducation->id);
-
-                    // update sort = id
-                    Education::where("id", $newEducation->id)->update(['slug' => $slug, 'sort' => $newEducation->id]);
-
-                    // Replicate education category
-                    $newEducation = Education::find($newEducation->id);
-                    $newEducation->categories()->sync($category_id);
-                    $i++;
-                }
-                return 1;
-                break;
             case 'video':
                 // Replicate Post + Category
                 $i = 1;
@@ -563,24 +390,7 @@ class AjaxController extends Controller
                 }
                 return 1;
                 break;
-            case 'faq':
-                // Replicate Post + Category
-                $i = 1;
-                $newBook = '';
-                foreach ($arr as $id) {
-                    $faq = Faq::find($id);
 
-                    // Replicate FAQ
-                    $newBook = $faq->replicate();
-                    $newBook->created_at = Carbon::now(); // changing the created_at date
-                    $newBook->save(); // saving it to the database
-
-                    // update sort = id
-                    Faq::where("id", $newBook->id)->update(['sort' => $newBook->id]);
-                    $i++;
-                }
-                return 1;
-                break;
             case 'slider':
                 // Replicate Slider + list image
                 $i = 1;

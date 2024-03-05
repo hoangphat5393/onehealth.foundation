@@ -1,5 +1,3 @@
-@php extract($data); @endphp
-
 @extends($templatePath . '.layouts.index')
 
 @section('seo')

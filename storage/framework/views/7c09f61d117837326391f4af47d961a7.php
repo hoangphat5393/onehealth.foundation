@@ -3,40 +3,75 @@
 
 
 <?php $__env->startSection('seo'); ?>
+    <?php echo $__env->make($templatePath . '.layouts.seo', $seo ?? [], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <main id="page-content">
+    <main id="about">
 
-        <!-- Page Header Start -->
-        <div class="container-fluid page-header page-about wow fadeIn px-0" data-wow-delay="0.1s">
-            <img class="w-100 banner-max-height object-fit-cover" src="assets/images/page-recruit.jpg" alt="about">
-            <div class="container text-center breadcrumb-wrap">
-                <h6 class="animated slideInDown"><?php echo e($page->title); ?></h1>
-                    <nav aria-label="breadcrumb animated slideInDown">
-                        <ol class="breadcrumb justify-content-center mb-0">
-                            <li class="breadcrumb-item">
-                                <a href="<?php echo e(route('index')); ?>">Trang chủ</a>
-                            </li>
-                            <li class="breadcrumb-item" aria-current="page">
-                                <span><?php echo e($page->title); ?></span>
-                            </li>
-                        </ol>
-                    </nav>
-            </div>
-        </div>
-        <!-- Page Header End -->
+        <section class="block10">
 
-        <div class="container">
-            <h1 class="text-center mt-3 d-none"><?php echo e($page->title); ?></h1>
-            <div class="row justify-content-center py-5">
-                <div class="col-10">
-                    <?php echo htmlspecialchars_decode($page->content); ?>
+            <div class="mainBanner">
+                <div class="container main-menu">
+                    <?php echo $__env->make('theme.includes.menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                </div>
 
+                <div class="container-fluid px-0">
+                    <div class="row g-0">
+                        <div class="col-lg-12 banner-left">
+                            <img class="img-fluid object-fit-cover w-100" src="<?php echo e(get_image($page->image)); ?>" alt="<?php echo e($page->name); ?>">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        
+        <section class="block8">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-12">
+                        <h1 class="category-title"><?php echo e($page->title); ?></h1>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php echo htmlspecialchars_decode($page->content); ?>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="block12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="block7">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 subscribe-block">
+                        <?php echo $__env->make('theme.includes.subscribe', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 <?php $__env->stopSection(); ?>
+
+
+<?php $__env->startPush('scripts'); ?>
+    
+<?php $__env->stopPush(); ?>
 
 <?php echo $__env->make($templatePath . '.layouts.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\web\onehealth.foundation\resources\views/theme/page/index.blade.php ENDPATH**/ ?>

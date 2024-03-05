@@ -21,7 +21,7 @@
                 <div class="container-fluid px-0">
                     <div class="row g-0">
                         <div class="col-lg-12 banner-left">
-                            <img class="img-fluid object-fit-cover w-100" src="<?php echo e(get_image($page->image)); ?>" alt="">
+                            <img class="img-fluid object-fit-cover w-100" src="<?php echo e(get_image($page->image)); ?>" alt="<?php echo e($page->name); ?>">
                         </div>
                     </div>
                 </div>

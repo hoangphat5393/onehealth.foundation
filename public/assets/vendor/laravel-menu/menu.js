@@ -148,8 +148,8 @@ $(".addcustommenu").on("click", function () {
         relmenu = "";
     $.ajax({
         data: {
-            page_id: 0,
-            category_id: 0,
+            // page_id: 0,
+            // category_id: 0,
             labelmenu: labelmenu,
             linkmenu: linkmenu,
             targetmenu: targetmenu,
@@ -178,16 +178,16 @@ function addcustommenu(id = 0, type = "page", labelmenu = "", linkmenu = "", tar
     var page_id = 0,
         category_id = 0;
 
-    if (type == "page") {
-        page_id = id;
-    } else {
-        category_id = id;
-    }
+    // if (type == "page") {
+    //     page_id = id;
+    // } else {
+    //     category_id = id;
+    // }
 
     $.ajax({
         data: {
-            page_id: page_id,
-            category_id: category_id,
+            // page_id: page_id,
+            // category_id: category_id,
             labelmenu: labelmenu,
             linkmenu: linkmenu,
             targetmenu: targetmenu,

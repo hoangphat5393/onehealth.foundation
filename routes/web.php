@@ -127,13 +127,13 @@ Route::localized(function () {
         Route::get('paymentsuccess', 'PayPalTestController@payment_success');
         Route::get('paymenterror', 'PayPalTestController@payment_error');
 
-        //stripe response
+        // Stripe response
         Route::get('stripe-success/{id?}', 'StripeController@paymentSuccess')->name('strip_payment_success');
         Route::get('stripe-cancel/{id?}', 'StripeController@paymentCancel')->name('strip_payment_cancel');
         // Route::post('stripe-webhook', 'StripeController@paymentWebhook');
         Route::post('stripe-webhook', 'WebhookController@handleWebhook');
 
-        //request payment
+        // Request payment
         Route::get('request-payment-success/{id}', 'CartController@requestPaymentSuccess')->name('request_payment_success');
         Route::post('send-request-payment-success', 'CartController@post_requestPaymentSuccess')->name('request_payment_success.post');
 
@@ -141,21 +141,29 @@ Route::localized(function () {
 
         Route::post('/dang-ky-nhan-tin', array('as' => 'subscription', 'uses' => 'CustomerController@subscription'));
 
+        // Route::get('/wishlist', array('as' => 'customer.wishlist', 'uses' => 'CustomerController@wishlist'));
+        // Route::post('add-to-wishlist', 'ProductController@wishlist')->name('product.wishlist');
 
-        Route::get('/wishlist', array('as' => 'customer.wishlist', 'uses' => 'CustomerController@wishlist'));
-        Route::post('add-to-wishlist', 'ProductController@wishlist')->name('product.wishlist');
+        // Route::get('news.html', 'NewsController@index')->name('news');
 
-        Route::get('news.html', 'NewsController@index')->name('news');
+        // All Product
+        Route::get('product', '\App\Http\Controllers\ProductController@index')->name('product');
 
-        // Category
-        Route::get('shop', 'ProductController@allProducts')->name('shop');
-        Route::get('{slug}.html', 'ProductController@categoryDetail')->name('product.detail');
+        // Product detail 
+        Route::get('product/{slug}-{id}.html', '\App\Http\Controllers\ProductController@productDetail')
+            ->where(['slug' => '[a-zA-Z0-9$-_.+!]+', 'id' => '[0-9]+'])
+            ->name('product.detail');
+
+        // Product category
+        Route::get('product/{slug}.html', '\App\Http\Controllers\ProductController@index')
+            ->where(['slug' => '[a-zA-Z0-9$-_.+!]+'])
+            ->name('product.category');
 
         Route::post('quick-view', 'ProductController@quickView')->name('shop.quickView');
         Route::get('buy-now/{id}', 'ProductController@buyNow')->name('shop.buyNow');
         Route::post('buy-now', 'ProductController@getBuyNow')->name('shop.buyNow.post');
 
-        // All news
+        // All News
         Route::get('news', '\App\Http\Controllers\NewsController@index')->name('news');
 
         // News detail 
@@ -168,36 +176,30 @@ Route::localized(function () {
             ->where(['slug' => '[a-zA-Z0-9$-_.+!]+'])
             ->name('news.category');
 
-        //contact
+        // Contact
         Route::post('/get-contact-form/{type}', array('as' => 'contact.get', 'uses' => 'ContactController@getContact'));
         Route::get('contact', 'ContactController@index')->name('contact');
         Route::post('contact-confirmation', 'ContactController@confirmation')->name('contact.confirmation');
         Route::post('contact', 'ContactController@submit')->name('contact.submit');
         Route::get('contact-completed', 'ContactController@completed')->name('contact_completed');
 
-        // Setup 
-        Route::get('setup', 'SetupController@index')->name('setup');
-        Route::post('setup-confirmation', 'SetupController@confirmation')->name('setup.confirmation');
-        Route::post('setup', 'SetupController@submit')->name('setup.submit');
-        Route::get('setup-completed', 'SetupController@completed')->name('setup_completed');
-
-        //search
+        // Search
         Route::post('/input/search-text/{type}', 'AjaxController@inputSearchText');
 
         Route::get('/search', '\App\Http\Controllers\SearchController@index')->name('search');
         Route::post('search-select', 'AjaxController@searchSelect');
 
-        //page
+        // Page
         Route::get('{slug}', 'PageController@page')->name('page');
 
         //project
-        Route::get('du-an/{slug}-{id}.html', '\App\Http\Controllers\ProjectController@detail')
-            ->where(['slug' => '[a-zA-Z0-9$-_.+!]+', 'id' => '[0-9]+'])
-            ->name('project.detail');
+        // Route::get('du-an/{slug}-{id}.html', '\App\Http\Controllers\ProjectController@detail')
+        //     ->where(['slug' => '[a-zA-Z0-9$-_.+!]+', 'id' => '[0-9]+'])
+        //     ->name('project.detail');
 
-        Route::get('du-an/{slug}.html', '\App\Http\Controllers\ProjectController@category')
-            ->where(['slug' => '[a-zA-Z0-9$-_.+!]+'])
-            ->name('project.category');
+        // Route::get('du-an/{slug}.html', '\App\Http\Controllers\ProjectController@category')
+        //     ->where(['slug' => '[a-zA-Z0-9$-_.+!]+'])
+        //     ->name('project.category');
         //end project
     });
 

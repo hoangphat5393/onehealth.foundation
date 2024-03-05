@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-// use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Menus;
 use App\Models\MenuItems;
@@ -71,8 +69,8 @@ class MenuController extends Controller
     {
         $menuitem = new MenuItems;
         // dd(request());
-        $menuitem->category_id = request()->input("category_id");
-        $menuitem->page_id = request()->input("page_id");
+        // $menuitem->category_id = request()->input("category_id");
+        // $menuitem->page_id = request()->input("page_id");
         $menuitem->label = request()->input("labelmenu");
         $menuitem->link = request()->input("linkmenu");
         // if (config('menu.use_roles')) {

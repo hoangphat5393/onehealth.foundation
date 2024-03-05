@@ -2,10 +2,7 @@
     if (!isset($parent_id)) {
         $parent_id = 0;
     }
-    $categories = \App\Models\Category::where('parent', $parent_id)
-        ->where('type', $type)
-        ->orderByDesc('sort')
-        ->get();
+    $categories = \App\Models\Category::where('parent', $parent_id)->where('type', $type)->orderByDesc('sort')->get();
 @endphp
 @if (count($categories) > 0)
     @foreach ($categories as $category)
@@ -14,8 +11,12 @@
                 <input type="checkbox" class="category_item_input" value="{{ $category->id }}" id="page_{{ $category->id }}">
                 {{ $space ?? '' }} {{ $category->name }}
                 <input type="hidden" class="item-name-{{ $category->id }}" value="{{ $category->name }}">
-                <input type="hidden" class="item-url-{{ $category->id }}" value="{{ $category->slug . '.html' }}">
-                <input type="hidden" class="item-id-{{ $category->id }}" value="{{ $category->id }}">
+                @if ($type == 'post')
+                    <input type="hidden" class="item-url-{{ $category->id }}" value="{{ route('news.category', $category->slug) }}">
+                @else
+                    <input type="hidden" class="item-url-{{ $category->id }}" value="{{ $category->slug . '.html' }}">
+                @endif
+                {{-- <input type="hidden" class="item-id-{{ $category->id }}" value="{{ $category->id }}"> --}}
                 <input type="hidden" class="item-type-{{ $category->id }}" value="category">
             </label>
         </div>

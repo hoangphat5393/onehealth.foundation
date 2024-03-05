@@ -20,6 +20,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('plugin/mdb/css/mdb.min.css') }}"> --}}
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -62,6 +63,7 @@
     <!-- Including Jquery -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }} "></script>
+    {{-- <script src="{{ asset('plugin/mdb/js/mdb.umd.min.js') }} "></script> --}}
     <script src="{{ asset('plugin/axios.min.js') }}"></script>
     <script src="{{ asset('plugin/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('plugin/swiper@11/swiper-bundle.min.js') }}"></script>

@@ -1,4 +1,4 @@
-@extends('theme.layouts.index2')
+@extends('theme.layouts.index')
 
 @section('seo')
     @include($templatePath . '.layouts.seo', $seo ?? [])
@@ -10,99 +10,37 @@
     dd($page);
 @endphp --}}
 @section('content')
-    <div id="content" class="site-content no-sidebar regular has-">
-        <div class="container">
+    <main>
+        <div id="content" class="site-content no-sidebar regular has-">
+            <div class="container">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main  ">
+                        <article id="post-1940" class="post-1940 page type-page status-publish hentry">
+                            <h1 class=" text-center">Liên hệ</h1>
 
+                            <p class="has-text-align-center">
+                                Liên hệ để nhận tư vấn
+                            </p>
 
-            <div id="primary" class="content-area">
-                <main id="main" class="site-main  ">
-                    <article id="post-1940" class="post-1940 page type-page status-publish hentry">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
 
-                        <h1 class=" text-center">Liên hệ</h1>
+                                    <form id="contact_form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label class="col-form-label " for="cf-name">Họ tên<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="Họ tên">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="col-form-label" for="cf-email">@lang('Email')<span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="cf-email" name="contact[email]" placeholder="@lang('Email')">
+                                        </div>
 
-                        {{-- <div class="row mb-5">
-                            <div class="col-lg-3">
-                                <a href="https://www.amayatheme.redsun.design/roastery/product/colombia-dark-roast/" class="wc-block-grid__product-link">
-                                    <div class="wc-block-grid__product-image">
-                                        <img fetchpriority="high" decoding="async" width="600" height="839" src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2020/08/coffee-bag-01-600x839.jpg" class="img-fluid" alt="Colombia Dark Roast">
-                                    </div>
-                                    <div class="wc-block-grid__product-title">Colombia Dark Roast</div>
-                                </a>
-                                <div class="wc-block-grid__product-price price">
-                                    <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>19.00</span> – <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span>27.00</span>
-                                </div>
-                                <div class="wp-block-button wc-block-grid__product-add-to-cart">
-                                    <a href="https://www.amayatheme.redsun.design/roastery/product/colombia-dark-roast/" aria-label="Select options for “Colombia Dark Roast”" data-quantity="1" data-product_id="405" data-product_sku="" rel="nofollow" class="wp-block-button__link  add_to_cart_button">Add
-                                        to cart</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <a href="https://www.amayatheme.redsun.design/roastery/product/swiss-water-decaf/" class="wc-block-grid__product-link">
-                                    <div class="wc-block-grid__product-image"><img decoding="async" width="600" height="839" src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2020/08/coffee-bag-02-600x839.jpg" class="img-fluid" alt="Swiss Water Decaf">
-                                    </div>
-                                    <div class="wc-block-grid__product-title">Swiss Water Decaf</div>
-                                </a>
-                                <div class="wc-block-grid__product-price price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>19.00</span> – <span class="woocommerce-Price-amount amount"><span
-                                            class="woocommerce-Price-currencySymbol">$</span>27.00</span></div>
-                                <div class="wp-block-button wc-block-grid__product-add-to-cart"><a href="https://www.amayatheme.redsun.design/roastery/product/swiss-water-decaf/" aria-label="Select options for “Swiss Water Decaf”" data-quantity="1" data-product_id="424" data-product_sku=""
-                                        rel="nofollow" class="wp-block-button__link  add_to_cart_button">Select options</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <a href="https://www.amayatheme.redsun.design/roastery/product/french-roast/" class="wc-block-grid__product-link">
-                                    <div class="wc-block-grid__product-image">
-                                        <img decoding="async" width="600" height="839" src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2020/08/coffee-bag-03-600x839.jpg" class="img-fluid" alt="French Roast">
-                                    </div>
-                                    <div class="wc-block-grid__product-title">French Roast</div>
-                                </a>
-                                <div class="wc-block-grid__product-price price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>19.00</span> – <span class="woocommerce-Price-amount amount"><span
-                                            class="woocommerce-Price-currencySymbol">$</span>27.00</span></div>
-                                <div class="wp-block-button wc-block-grid__product-add-to-cart"><a href="https://www.amayatheme.redsun.design/roastery/product/french-roast/" aria-label="Select options for “French Roast”" data-quantity="1" data-product_id="431" data-product_sku="" rel="nofollow"
-                                        class="wp-block-button__link  add_to_cart_button">Select options</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <a href="https://www.amayatheme.redsun.design/roastery/product/breakfast-blend/" class="wc-block-grid__product-link">
-                                    <div class="wc-block-grid__product-image">
-                                        <img loading="lazy" decoding="async" width="600" height="839" src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2020/08/coffee-04-600x839.jpg" class="img-fluid" alt="Breakfast Blend">
-                                    </div>
-                                    <div class="wc-block-grid__product-title">Breakfast Blend</div>
-                                </a>
-                                <div class="wc-block-grid__product-price price">
-                                    <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>19.00</span> – <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>27.00</span>
-                                </div>
-                                <div class="wp-block-button wc-block-grid__product-add-to-cart">
-                                    <a href="https://www.amayatheme.redsun.design/roastery/product/breakfast-blend/" aria-label="Select options for “Breakfast Blend”" data-quantity="1" data-product_id="417" data-product_sku="" rel="nofollow"
-                                        class="wp-block-button__link  add_to_cart_button">Select options</a>
-                                </div>
-                            </div>
-                        </div> --}}
-
-
-                        <p class="has-text-align-center">
-                            Liên hệ để nhận tư vấn
-                        </p>
-
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-
-                                <form id="contact_form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
-                                    @csrf
-                                    <div class="mb-3">
-                                        <label class="col-form-label " for="cf-name">Họ tên<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="Họ tên">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label" for="cf-email">@lang('Email')<span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" id="cf-email" name="contact[email]" placeholder="@lang('Email')">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="col-form-label" for="cf-subject">@lang('Phone')<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="cf-subject" name="contact[phone]" placeholder="@lang('Phone')">
-                                    </div>
-                                    {{-- <div class="mb-3">
+                                        <div class="mb-3">
+                                            <label class="col-form-label" for="cf-subject">@lang('Phone')<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cf-subject" name="contact[phone]" placeholder="@lang('Phone')">
+                                        </div>
+                                        {{-- <div class="mb-3">
                                             <label class="col-form-label" for="cf-subject">@lang('Subject')<span class="text-danger">*</span></label>
                                             <select class="form-control" id="businesstype" aria-required="true" aria-invalid="false" name="your-business-type">
                                                 <option value="Cafe">Cafe</option>
@@ -111,25 +49,26 @@
                                                 <option value="Other">Other</option>
                                             </select>
                                         </div> --}}
-                                    <div class="mb-3">
-                                        <label class="col-form-label" for="cf-content">@lang('Message')<span class="text-danger">*</span></label>
-                                        <textarea name="contact[content]" class="form-control bg-transparent" id="cf-content" rows="3" placeholder="@lang('Message')"></textarea>
-                                    </div>
-                                    <div class="submit-btn text-end">
-                                        <button type="submit" class="btn btn-submit-contact">Gửi</button>
-                                        {{-- <input class="" type="submit" value="Send"> --}}
-                                        {{-- <span class="wpcf7-spinner"></span> --}}
-                                    </div>
-                                </form>
+                                        <div class="mb-3">
+                                            <label class="col-form-label" for="cf-content">@lang('Message')<span class="text-danger">*</span></label>
+                                            <textarea name="contact[content]" class="form-control bg-transparent" id="cf-content" rows="3" placeholder="@lang('Message')"></textarea>
+                                        </div>
+                                        <div class="submit-btn text-end">
+                                            <button type="submit" class="btn btn-submit-contact">Gửi</button>
+                                            {{-- <input class="" type="submit" value="Send"> --}}
+                                            {{-- <span class="wpcf7-spinner"></span> --}}
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
 
 
-                    </article>
-                </main>
+                        </article>
+                    </main>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 @endsection
 
 @push('scripts')

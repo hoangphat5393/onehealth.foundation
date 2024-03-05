@@ -1,8 +1,6 @@
 @php
     $currentUrl = url()->current();
-
     // dd($indmenu);
-
 @endphp
 
 <div id="hwpwrap">
@@ -11,9 +9,7 @@
             <div id="wpcontent">
                 <div id="wpbody">
                     <div id="wpbody-content">
-
                         <div class="wrap">
-
                             <div class="manage-menus">
                                 <form method="get" action="{{ $currentUrl }}">
                                     <label for="menu" class="selected-menu">Select the menu you want to edit:</label>
@@ -132,8 +128,24 @@
                                                         </div>
                                                     </li>
 
-                                                    {{-- Category list (Book) --}}
+                                                    {{-- Category list (Product) --}}
                                                     <li class="control-section accordion-section add-page" id="add-page">
+                                                        <h3 class="accordion-section-title hndle" tabindex="0"> Product category <span class="screen-reader-text">Press return or enter to expand</span></h3>
+                                                        <div class="accordion-section-content ">
+                                                            <div class="inside">
+                                                                <div class="customlinkdiv" id="customlinkdiv">
+                                                                    @include('admin.setting.includes.category_items', ['type' => 'product'])
+                                                                </div>
+                                                                <p class="button-controls">
+                                                                    <a href="#" class="button-secondary submit-add-to-menu right add_custommenu">Add menu item</a>
+                                                                    <span class="spinner" id="spincustomu"></span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    {{-- Category list (Book) --}}
+                                                    {{-- <li class="control-section accordion-section add-page" id="add-page">
                                                         <h3 class="accordion-section-title hndle" tabindex="0"> Book category <span class="screen-reader-text">Press return or enter to expand</span></h3>
                                                         <div class="accordion-section-content ">
                                                             <div class="inside">
@@ -146,9 +158,9 @@
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                    </li> --}}
 
-                                                    <li class="control-section accordion-section add-page" id="add-page">
+                                                    {{-- <li class="control-section accordion-section add-page" id="add-page">
                                                         <h3 class="accordion-section-title hndle" tabindex="0"> Video category <span class="screen-reader-text">Press return or enter to expand</span></h3>
                                                         <div class="accordion-section-content ">
                                                             <div class="inside">
@@ -161,7 +173,7 @@
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                    </li> --}}
 
                                                 </ul>
                                             </div>
@@ -271,6 +283,13 @@
                                                                                     <input type="text" id="url_menu_{{ $m->id }}" class="widefat code edit-menu-item-url" id="url_menu_{{ $m->id }}" value="{{ $m->link }}">
                                                                                 </label>
                                                                             </p> --}}
+
+                                                                            <label for="edit-menu-item-classes-{{ $m->id }}" class="col-form-label"> Class CSS
+                                                                                <br>
+                                                                                <input type="text" id="clases_menu_{{ $m->id }}" class="form-control widefat code edit-menu-item-classes" name="clases_menu_{{ $m->id }}" value="{{ $m->class }}">
+                                                                            </label>
+
+                                                                            <br>
 
                                                                             <label for="edit-menu-item-url-{{ $m->id }}" class="col-form-label"> Url
                                                                                 <br>

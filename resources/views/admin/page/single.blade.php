@@ -87,7 +87,6 @@
                                             $content_arr2 = ['id' => 'content2', 'label' => 'Nội dung 2', 'name' => 'content2', 'content' => $content2 ?? ''];
                                             $content_arr3 = ['id' => 'content3', 'label' => 'Nội dung 3', 'name' => 'content3', 'content' => $content3 ?? ''];
                                             $content_arr4 = ['id' => 'content4', 'label' => 'Nội dung 4', 'name' => 'content4', 'content' => $content4 ?? ''];
-                                            $content_arr5 = ['id' => 'content5', 'label' => 'Nội dung 5', 'name' => 'content5', 'content' => $content5 ?? ''];
                                         @endphp
                                         @include('admin.partials.quote', $quote_arr)
                                         @include('admin.partials.content', $content_arr)
@@ -106,7 +105,6 @@
                                             $content_arr2 = ['id' => 'content2_en', 'label' => 'Content 2', 'name' => 'content2_en', 'content' => $content2_en ?? ''];
                                             $content_arr3 = ['id' => 'content3_en', 'label' => 'Content 3', 'name' => 'content3_en', 'content' => $content3_en ?? ''];
                                             $content_arr4 = ['id' => 'content4_en', 'label' => 'Content 4', 'name' => 'content4_en', 'content' => $content4_en ?? ''];
-                                            $content_arr5 = ['id' => 'content5_en', 'label' => 'Content 5', 'name' => 'content5_en', 'content' => $content5_en ?? ''];
                                         @endphp
                                         @include('admin.partials.quote', $quote_arr)
                                         @include('admin.partials.content', $content_arr)

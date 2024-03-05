@@ -50,6 +50,7 @@ $(function () {
             })
             .catch((e) => console.log(e));
     });
+
     $(document).on("click", ".quick-buy", function () {
         $(this).text("Loading...");
         var form = document.getElementById("product_form_addCart"),
@@ -216,7 +217,7 @@ $(function () {
         },
     });
 
-    $(".btn-login").click(function (event) {
+    $(".btn-login").on("click", function (event) {
         if (login_page.valid()) {
             var form = document.getElementById("signin-tab");
             var fdnew = new FormData(form);
