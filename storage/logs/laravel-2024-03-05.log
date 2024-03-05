@@ -7033,3 +7033,128 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2024-03-05 14:03:48] local.ERROR: Class "App\Http\Controllers\Admin\UserAdminController" does not exist {"exception":"[object] (ReflectionException(code: -1): Class \"App\\Http\\Controllers\\Admin\\UserAdminController\" does not exist at F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php:225)
+[stacktrace]
+#0 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(225): ReflectionClass->__construct()
+#1 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(147): Illuminate\\Foundation\\Console\\RouteListCommand->isVendorRoute()
+#2 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(116): Illuminate\\Foundation\\Console\\RouteListCommand->getRouteInformation()
+#3 [internal function]: Illuminate\\Foundation\\Console\\RouteListCommand->Illuminate\\Foundation\\Console\\{closure}()
+#4 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Collections\\Arr.php(600): array_map()
+#5 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Collections\\Collection.php(777): Illuminate\\Support\\Arr::map()
+#6 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(117): Illuminate\\Support\\Collection->map()
+#7 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteListCommand.php(101): Illuminate\\Foundation\\Console\\RouteListCommand->getRoutes()
+#8 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Console\\RouteListCommand->handle()
+#9 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#11 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#12 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call()
+#13 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call()
+#14 F:\\web\\onehealth.foundation\\vendor\\symfony\\console\\Command\\Command.php(326): Illuminate\\Console\\Command->execute()
+#15 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run()
+#16 F:\\web\\onehealth.foundation\\vendor\\symfony\\console\\Application.php(1096): Illuminate\\Console\\Command->run()
+#17 F:\\web\\onehealth.foundation\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand()
+#18 F:\\web\\onehealth.foundation\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#19 F:\\web\\onehealth.foundation\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#20 F:\\web\\onehealth.foundation\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#21 {main}
+"} 
+[2024-03-05 14:03:48] local.ERROR: Uncaught Error: Class "Zizaco\Entrust\EntrustPermission" not found in F:\web\onehealth.foundation\app\Models\Permission.php:7
+Stack trace:
+#0 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(576): include()
+#1 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}()
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Zizaco\\Entrust\\EntrustPermission\" not found in F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7
+Stack trace:
+#0 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(576): include()
+#1 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}()
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown at F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-03-05 14:03:48] local.ERROR: Uncaught Error: Class "Zizaco\Entrust\EntrustPermission" not found in F:\web\onehealth.foundation\app\Models\Permission.php:7
+Stack trace:
+#0 Command line code(1): include_once()
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Zizaco\\Entrust\\EntrustPermission\" not found in F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7
+Stack trace:
+#0 Command line code(1): include_once()
+#1 {main}
+  thrown at F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-03-05 14:04:43] local.ERROR: Uncaught Error: Class "Zizaco\Entrust\EntrustPermission" not found in F:\web\onehealth.foundation\app\Models\Permission.php:7
+Stack trace:
+#0 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(576): include()
+#1 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}()
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Zizaco\\Entrust\\EntrustPermission\" not found in F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7
+Stack trace:
+#0 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(576): include()
+#1 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}()
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown at F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-03-05 14:05:43] local.ERROR: Uncaught Error: Class "Zizaco\Entrust\EntrustPermission" not found in F:\web\onehealth.foundation\app\Models\Permission.php:7
+Stack trace:
+#0 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(576): include()
+#1 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}()
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Zizaco\\Entrust\\EntrustPermission\" not found in F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7
+Stack trace:
+#0 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(576): include()
+#1 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}()
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown at F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-03-05 14:06:43] local.ERROR: Uncaught Error: Class "Zizaco\Entrust\EntrustPermission" not found in F:\web\onehealth.foundation\app\Models\Permission.php:7
+Stack trace:
+#0 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(576): include()
+#1 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}()
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Zizaco\\Entrust\\EntrustPermission\" not found in F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7
+Stack trace:
+#0 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(576): include()
+#1 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}()
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown at F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
