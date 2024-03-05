@@ -7202,3 +7202,47 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2024-03-05 14:09:43] local.ERROR: Uncaught Error: Class "Zizaco\Entrust\EntrustPermission" not found in F:\web\onehealth.foundation\app\Models\Permission.php:7
+Stack trace:
+#0 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(576): include()
+#1 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}()
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Zizaco\\Entrust\\EntrustPermission\" not found in F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7
+Stack trace:
+#0 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(576): include()
+#1 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}()
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown at F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-03-05 14:10:43] local.ERROR: Uncaught Error: Class "Zizaco\Entrust\EntrustPermission" not found in F:\web\onehealth.foundation\app\Models\Permission.php:7
+Stack trace:
+#0 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(576): include()
+#1 F:\web\onehealth.foundation\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}()
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Zizaco\\Entrust\\EntrustPermission\" not found in F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7
+Stack trace:
+#0 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(576): include()
+#1 F:\\web\\onehealth.foundation\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}()
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#3 Command line code(1): class_exists()
+#4 [internal function]: {closure}()
+#5 Command line code(1): array_filter()
+#6 {main}
+  thrown at F:\\web\\onehealth.foundation\\app\\Models\\Permission.php:7)
+[stacktrace]
+#0 {main}
+"} 
