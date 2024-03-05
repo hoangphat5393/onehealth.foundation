@@ -25,4 +25,6 @@ Homestead.json
 
 bk_*/
 
-storage/framework/
+storage/framework/sessions/
+storage/framework/cache/
+storage/framework/views/
