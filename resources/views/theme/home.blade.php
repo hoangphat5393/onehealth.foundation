@@ -152,6 +152,11 @@
             </div>
         </section>
 
+        {{-- Dự án (Campaign) --}}
+
+        @php
+            $project = \App\Models\Campaign::where('status', 1)->limit(3)->get();
+        @endphp
         <section class="block3">
             <div class="container pt-5">
                 <div class="row">
@@ -168,142 +173,73 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="row project mb-4 g-0">
-                            <div class="col-lg-6 align-items-stretch project__content order-2">
-                                <div class="content p-3 bg-white">
-                                    <h4><a href="/lang-thien-nguyen/" class="text-main">Làng thiện nguyện</a></h4>
-                                    <p>
-                                        Mô hình “Làng Thiện Nguyện” được xây dựng trên 60 tỉnh thành Việt Nam sẽ bao gồm cơ sở y tế (Bệnh viện hoặc Phòng Khám Đa Khoa) và cơ sở giáo dục từ Tiểu học tới THPT đảm bảo chất lượng giảng dạy và chi phí phù hợp với thu nhập của người dân địa phương.
-                                    </p>
-                                </div>
-                                <a href="/quyen-gop/" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
-                                    <span class="text-uppercase">Quyên góp ngay</span>&nbsp;
-                                    <i class="fa fa-chevron-down"></i>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 order-lg-2">
-                                <div class="item-product">
-                                    <a href="#" title="">
-                                        <div class="product-img">
-                                            <img class="w-100" src="https://onehealth.foundation/wp-content/themes/thewish/img/demo/lang_thien_nguyen.png" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    @empty(!$project)
+                        <div class="col-lg-8">
+                            @foreach ($project as $item)
+                                <div class="row project mb-4 g-0">
 
-                        <div class="row project mb-4 g-0">
-                            <div class="col-lg-6 align-items-stretch project__content order-2">
-                                <div class="content p-3 bg-white">
-                                    <h4>
-                                        <a href="/lang-thien-nguyen/" class="text-main">Làng thiện nguyện</a>
-                                    </h4>
-                                    <p>
-                                        Mô hình “Làng Thiện Nguyện” được xây dựng trên 60 tỉnh thành Việt Nam sẽ bao gồm cơ sở y tế (Bệnh viện hoặc Phòng Khám Đa Khoa) và cơ sở giáo dục từ Tiểu học tới THPT đảm bảo chất lượng giảng dạy và chi phí phù hợp với thu nhập của người dân địa phương.
-                                    </p>
-                                </div>
-                                <a href="/quyen-gop/" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
-                                    <span class="text-uppercase">Quyên góp ngay</span>&nbsp;
-                                    <i class="fa fa-chevron-down"></i>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 order-lg-2">
-                                <div class="item-product">
-                                    <a href="#" title="">
-                                        <div class="product-img">
-                                            <img class="w-100" src="https://onehealth.foundation/wp-content/themes/thewish/img/demo/img_key_project_2_832x400.jpg" alt="">
+                                    <div class="col-lg-6 align-items-stretch project__content order-2">
+                                        <div class="content p-3 bg-white">
+                                            <h4><a href="/lang-thien-nguyen/" class="text-main">{{ $item->name }}</a></h4>
+                                            <div>
+                                                {!! htmlspecialchars_decode($item->description) !!}
+                                            </div>
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row project mb-4 g-0">
-                            <div class="col-lg-6 align-items-stretch project__content order-2">
-                                <div class="content p-3 bg-white">
-                                    <h4>
-                                        <a href="/m2030-2/" class="text-main">M2030</a>
-                                    </h4>
-                                    <p>Nhằm nâng cao nhận thức và giảm tỷ lệ tử vong của người dân Việt Nam nói riêng và Châu Á nói chung về căn bệnh sốt rét, dự án M2030 được thực hiện với mục tiêu rằng năm 2030 sẽ là năm không còn bệnh sốt rét tồn tại trên thế giới.</p>
-                                </div>
-                                <a href="/quyen-gop/" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
-                                    <span class="text-uppercase">Quyên góp ngay</span>&nbsp;
-                                    <i class="fa fa-chevron-down"></i>
-                                </a>
-                            </div>
-
-                            <div class="col-lg-6 order-lg-2">
-                                <div class="item-product">
-                                    <a href="#" title="">
-                                        <div class="product-img">
-                                            <img class="w-100" src="https://onehealth.foundation/wp-content/themes/thewish/img/demo/img_key_project_3_832x400.jpg" alt="">
+                                        <a href="/quyen-gop/" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
+                                            <span class="text-uppercase">Quyên góp ngay</span>&nbsp;
+                                            <i class="fa fa-chevron-down"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-6 order-lg-2">
+                                        <div class="item-product">
+                                            <a href="#" title="">
+                                                <div class="product-img">
+                                                    <img class="w-100" src="{{ get_image($item->image) }}" alt="">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    </div>
+                    @endempty
                 </div>
             </div>
         </section>
 
+        {{-- Hoạt động (News) --}}
+        @php
+            $news = \App\Models\Post::where('status', 1)->orderByDesc('sort')->limit(3)->get();
+        @endphp
         <section class="block4">
             <div class="container mt-5 pt-5">
                 <div class="row mb-2">
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-between">
                             <p class="fw-bold fs-4">HOẠT ĐỘNG</p>
-                            <a href="" class="btn btn-custom"> Xem tất cả</a>
+                            <a href="{{ route('news') }}" class="btn btn-custom"> Xem tất cả</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="item-product mb-2">
-                            <a href="#" title="">
-                                <div class="product-img">
-                                    <img src="https://onehealth.foundation/wp-content/uploads/2022/06/DSCF4074-2-scaled.jpg" class="" alt="Bộ sách luyện thi IELTS cho người mới bắt đầu">
+                @empty(!$news)
+                    <div class="row">
+                        @foreach ($news as $item)
+                            <div class="col-lg-4">
+                                <div class="item-product mb-2">
+                                    <a href="{{ route('vi.news.detail', [$item->slug, $item->id]) }}" title="{{ $item->name }}">
+                                        <div class="product-img">
+                                            <img src="{{ get_image($item->image) }}" class="" alt="{{ $item->name }}">
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <h5 class="title desc-truncate">
-                            <a href="">CHƯƠNG TRÌNH THỂ THAO GÂY QUỸ</a>
-                        </h5>
+                                <h5 class="title desc-truncate">
+                                    <a href="{{ route('vi.news.detail', [$item->slug, $item->id]) }}">{{ $item->name }}</a>
+                                </h5>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="col-lg-4">
-                        <div class="item-product mb-2">
-                            <a href="#" title="">
-                                <div class="product-img">
-                                    <img src="https://onehealth.foundation/wp-content/uploads/2020/05/IMG_5962.png" class="" alt="Bộ sách luyện thi IELTS cho người mới bắt đầu">
-                                </div>
-                            </a>
-                        </div>
-                        <h5 class="title desc-truncate">
-                            <a href="https://onehealth.foundation/news/one-health-foundation-participates-in-the-celebration-for-the-people-affected-by-covid-19-and-soil-salinity/">
-                                One Health Foundation participates in the celebration for the people affected by covid-19 and
-                                soil salinity
-                            </a>
-                        </h5>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="item-product mb-2">
-                            <a href="#" title="">
-                                <div class="product-img">
-                                    <img src="https://onehealth.foundation/wp-content/uploads/2021/01/kham_benh_tu_thien_phu_yen.jpg" class="" alt="Bộ sách luyện thi IELTS cho người mới bắt đầu">
-                                </div>
-                            </a>
-                        </div>
-                        <h5 class="title desc-truncate">
-                            <a href="https://onehealth.foundation/news/one-health-foundation-issues-gifts-health-examination-and-distribution-of-medications-supporting-peoples-damages-after-story-in-phu-yen-province/">
-                                ONE HEALTH FOUNDATION ISSUES GIFTS, HEALTH EXAMINATION AND DISTRIBUTION OF
-                                MEDICATIONS SUPPORTING PEOPLE’S DAMAGES AFTER STORY IN PHU YEN PROVINCE
-                            </a>
-                        </h5>
-                    </div>
-                </div>
+                @endempty
             </div>
         </section>
 

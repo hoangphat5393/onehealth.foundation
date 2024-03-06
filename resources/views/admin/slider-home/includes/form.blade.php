@@ -7,10 +7,10 @@
 <form id="form-editSlider" action="" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="{{ $id ?? 0 }}">
     <input type="hidden" name="slider_id" value="{{ $parent ?? 0 }}">
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="sub_name">Tên phụ</label>
         <input type="text" class="form-control" id="sub_name" name="sub_name" value="{{ $sub_name ?? '' }}">
-    </div>
+    </div> --}}
     <div class="form-group">
         <label for="name">Tên</label>
         <input type="text" class="form-control" id="name" name="name" value="{{ $name ?? '' }}">
@@ -42,6 +42,7 @@
         </div>
     </div>
 
+    {{-- Video --}}
     {{-- <div class="form-group">
         Video
         <input type="text" name="video_name" class="form-control" value="{{ $video_name ?? '' }}">

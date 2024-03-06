@@ -405,17 +405,6 @@ h5 {
     font-size: 17px;
     line-height: 24px;
 }
-/* img {
-    max-width: 100%;
-    border: none;
-    margin: 0;
-    padding: 0;
-} */
-
-.btn,
-.form-control {
-    font-size: 14px;
-}
 
 .img-responsive {
     max-width: 100%;
@@ -452,9 +441,9 @@ ul {
 .mobile {
     display: none !important;
 }
-.hide {
+/* .hide {
     display: none !important;
-}
+} */
 .relative {
     position: relative;
 }
@@ -960,12 +949,6 @@ input#csv_slishow_mobile {
     color: #00afff;
 }
 
-/* .item-level-1 .title {
-    padding-left: 30px !important;
-}
-.item-level-2 .title {
-    padding-left: 60px !important;
-} */
 .error-msg {
     color: red;
     font-weight: bold;

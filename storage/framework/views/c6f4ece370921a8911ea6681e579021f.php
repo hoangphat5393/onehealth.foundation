@@ -1,3 +1,4 @@
+
 <?php
     if (isset($data_slider)) {
         $title = $data_slider->name;
@@ -123,7 +124,7 @@
                                 <div class="form-group">
                                     <h4 class="border-bottom mt-4 mb-2">Slider item</h4>
                                     <?php if($sid == 0): ?>
-                                        <p style="color: #f00;">Vui lòng bấm cập nhật để thêm Slider con</p>
+                                        <p style="color: #f00;">Vui lòng bấm cập nhật để thêm Slider</p>
                                     <?php else: ?>
                                         <div class="text-right">
                                             <button type="button" class="btn btn-info edit-slider" data="0" data-parent="<?php echo e($sid); ?>">Thêm slider con</button>
@@ -184,7 +185,7 @@
     </div>
     <!-- Modal -->
     <div class="modal fade" id="sliderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Thêm Slider</h5>

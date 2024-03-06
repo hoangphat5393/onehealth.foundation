@@ -1,36 +1,16 @@
 <?php
-    $partner = \App\Models\Slider::where('status', 0)->where('slider_id', 83)->orderBy('sort', 'asc')->get();
+    $partner = \App\Models\Slider::where('status', 0)->where('slider_id', 80)->orderBy('sort', 'asc')->get();
 ?>
 
 <div class="swiper partnerSlider">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo4.png" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo7.png" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo7.png" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo6.png" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo9.png" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo10.jpg" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo10.jpg" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo10.jpg" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img class="img-fluid mx-auto" src="https://onehealth.foundation/wp-content/uploads/2018/08/logo10.jpg" alt="">
-        </div>
+        <?php $__currentLoopData = $partner; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="swiper-slide">
+                <a href="https://www.google.com/">
+                    <img class="img-fluid mx-auto" src="<?php echo e(get_image($item->image)); ?>" alt="<?php echo e($item->name); ?>">
+                </a>
+            </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
     <div class="swiper-pagination"></div>
 </div>
@@ -45,7 +25,7 @@
             grabCursor: true,
             a11y: false,
             freeMode: true,
-            speed: 11000,
+            speed: 10000,
             loop: true,
             autoplay: {
                 delay: 0.5,

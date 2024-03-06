@@ -7,10 +7,7 @@
 <form id="form-editSlider" action="" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo e($id ?? 0); ?>">
     <input type="hidden" name="slider_id" value="<?php echo e($parent ?? 0); ?>">
-    <div class="form-group">
-        <label for="sub_name">Tên phụ</label>
-        <input type="text" class="form-control" id="sub_name" name="sub_name" value="<?php echo e($sub_name ?? ''); ?>">
-    </div>
+    
     <div class="form-group">
         <label for="name">Tên</label>
         <input type="text" class="form-control" id="name" name="name" value="<?php echo e($name ?? ''); ?>">
@@ -42,6 +39,7 @@
         </div>
     </div>
 
+    
     
     <div class="form-group">
         <textarea name="description" id="description" class="form-control"><?php echo $description ?? ''; ?></textarea>

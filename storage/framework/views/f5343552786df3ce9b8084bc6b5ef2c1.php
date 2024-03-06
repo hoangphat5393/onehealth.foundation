@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('seo'); ?>
     <?php
         $title_head = 'Danh sách ảnh';

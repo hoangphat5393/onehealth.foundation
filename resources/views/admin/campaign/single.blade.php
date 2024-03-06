@@ -47,7 +47,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.postPost') }}" method="POST" id="frm-create-post" enctype="multipart/form-data">
+            <form action="{{ route('admin.campaignPost') }}" method="POST" id="frm-create-post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ $id ?? 0 }}">
                 <div class="row">
