@@ -3,12 +3,13 @@
     $segment_check3 = Request::segment(3);
     $menus = \App\Models\AdminMenu::getListVisible();
 @endphp
+
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link text-center">
-        <img src="{{ get_image(setting_option('logo')) }}" class="brand-image elevation-3" width="70">
-        <span class="text-xs">{{ setting_option('admin-title') }}</span>
+        <img src="{{ get_image(setting_option('logo')) }}" class="brand-image elevation-3 float-none" width="70">
+        {{-- <span class="text-xs">{{ setting_option('admin-title') }}</span> --}}
     </a>
 
     <!-- Sidebar -->

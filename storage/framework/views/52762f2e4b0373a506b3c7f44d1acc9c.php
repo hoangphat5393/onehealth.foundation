@@ -15,11 +15,9 @@
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll d-column">
 
                 <?php $__currentLoopData = $headerMenu->items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <?php
-                        $hasChild = $item->child()->exists();
-                    ?>
+                    <?php $hasChild = $item->child()->exists(); ?>
                     <?php if($hasChild == 1): ?>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown <?php echo e($item->class); ?>">
                             <a class="nav-link menu-link d-none d-lg-block" href="<?php echo e($item->link); ?>" role="button" aria-expanded="false">
                                 <?php echo e($item->label); ?>
 
@@ -73,16 +71,6 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tài trợ và đối tác
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Đối tác</a></li>
-                        <li><a class="dropdown-item" href="#">Tài trợ</a></li>
-                    </ul>
-                </li>
-
             </ul>
             <form class="d-flex" role="search" method="post" action="<?php echo e(route('search')); ?>">
                 <div class="input-group input-group-search">
@@ -95,11 +83,6 @@
 </nav>
 
 <?php $__env->startPush('scripts'); ?>
-    <script>
-        $('.dropdown-link').on('click', function() {
-            console.log(123);
-            window.location.href = $(this).attr('href');
-        });
-    </script>
+    
 <?php $__env->stopPush(); ?>
 <?php /**PATH F:\web\onehealth.foundation\resources\views/theme/includes/menu.blade.php ENDPATH**/ ?>

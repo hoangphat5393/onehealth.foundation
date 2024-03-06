@@ -15,11 +15,9 @@
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll d-column">
 
                 @foreach ($headerMenu->items as $item)
-                    @php
-                        $hasChild = $item->child()->exists();
-                    @endphp
+                    @php $hasChild = $item->child()->exists(); @endphp
                     @if ($hasChild == 1)
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown {{ $item->class }}">
                             <a class="nav-link menu-link d-none d-lg-block" href="{{ $item->link }}" role="button" aria-expanded="false">
                                 {{ $item->label }}
                             </a>
@@ -71,16 +69,6 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tài trợ và đối tác
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Đối tác</a></li>
-                        <li><a class="dropdown-item" href="#">Tài trợ</a></li>
-                    </ul>
-                </li>
-
             </ul>
             <form class="d-flex" role="search" method="post" action="{{ route('search') }}">
                 <div class="input-group input-group-search">
@@ -93,10 +81,10 @@
 </nav>
 
 @push('scripts')
-    <script>
+    {{-- <script>
         $('.dropdown-link').on('click', function() {
             console.log(123);
             window.location.href = $(this).attr('href');
         });
-    </script>
+    </script> --}}
 @endpush

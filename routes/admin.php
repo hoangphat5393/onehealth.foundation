@@ -147,7 +147,7 @@ Route::namespace('Admin')->group(function () {
         });
         // End checkAdminPermission
 
-        $admin_module = ['post', 'product', 'service', 'video', 'contact'];
+        $admin_module = ['post', 'product', 'service', 'project', 'campaign', 'video', 'contact'];
 
         foreach ($admin_module as $item) {
 

@@ -7,8 +7,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo e(route('admin.dashboard')); ?>" class="brand-link text-center">
-        <img src="<?php echo e(get_image(setting_option('logo'))); ?>" class="brand-image elevation-3" width="70">
-        <span class="text-xs"><?php echo e(setting_option('admin-title')); ?></span>
+        <img src="<?php echo e(get_image(setting_option('logo'))); ?>" class="brand-image elevation-3 float-none" width="70">
+        
     </a>
 
     <!-- Sidebar -->
