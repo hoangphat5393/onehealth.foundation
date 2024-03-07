@@ -23,12 +23,12 @@ class CampaignController extends Controller
         // All category
         $categories = Category::where(['status' => 1, 'type' => 'post', 'parent' => 0])->get();
 
-        // All news 
-        $news = News::where('status', 1)
+        // All campaign 
+        $campaign = News::where('status', 1)
             ->orderbyDesc('sort')
             ->paginate(10);
 
-        // Lastest news
+        // Lastest campaign
         $feature_news = News::where('status', 1)
             ->orderbyDesc('id')
             ->limit(1)
@@ -36,10 +36,7 @@ class CampaignController extends Controller
 
         // default data
         $this->data['categories'] = $categories;
-        $this->data['news'] = $news;
-
-        // extra data
-        $this->data['feature_news'] = $feature_news;
+        $this->data['campaign'] = $campaign;
 
         // dd($slug);
         // if has slug then get single category data
@@ -49,7 +46,7 @@ class CampaignController extends Controller
 
         // dd(123);
         return view('theme.campaign.index', $this->data);
-        // return view('theme.news.index', $this->data)->compileShortcodes();
+        // return view('theme.campaign.index', $this->data)->compileShortcodes();
     }
 
     // Single category
@@ -63,7 +60,7 @@ class CampaignController extends Controller
             $this->data['category'] = $category;
             $this->data['category_child'] = $category->children();
 
-            $this->data['news'] = $news = $category->posts()
+            $this->data['campaign'] = $campaign = $category->posts()
                 ->where('status', 1)
                 ->orderbyDesc('sort')->orderbyDesc('id')
                 ->paginate(6);
@@ -74,11 +71,11 @@ class CampaignController extends Controller
                 'seo_description'   => $category->seo_description ?? '',
                 'seo_keyword'   => $category->seo_keyword ?? '',
             ];
-            // return view($this->templatePath . '.news.index', $this->data);
+            // return view($this->templatePath . '.campaign.index', $this->data);
 
             // Nếu chỉ có 1 bài viết thì điều hướng tới bài vô bài viết đó luôn
-            // if ($news->count() == 1) {
-            //     return $this->newsDetail($news->first()->slug);
+            // if ($campaign->count() == 1) {
+            //     return $this->newsDetail($campaign->first()->slug);
             // }
             return view('theme.campaign.category', $this->data);
         } else
@@ -87,7 +84,7 @@ class CampaignController extends Controller
     }
 
     // News detail
-    public function newsDetail($slug)
+    public function campaignDetail($slug)
     {
         $campaign = Campaign::where('slug', $slug)->first();
 

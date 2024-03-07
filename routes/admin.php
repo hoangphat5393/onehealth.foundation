@@ -90,11 +90,6 @@ Route::namespace('Admin')->group(function () {
             });
             Route::get('/list-slider', 'SliderController@listSlider')->name('admin.slider');
 
-            // Faq
-            Route::get('faq', 'FaqController@index')->name('admin.faqList');
-            Route::get('faq/create', 'FaqController@create')->name('admin.faqCreate');
-            Route::get('faq/{id}', 'FaqController@edit')->name('admin.faqEdit');
-            Route::post('faq/post', 'FaqController@post')->name('admin.faqPost');
 
             // Xử lý users admin
             Route::get('/list-user-admin', 'AdminUserController@listUserAdmin')->name('admin.listUserAdmin');
@@ -135,12 +130,12 @@ Route::namespace('Admin')->group(function () {
             Route::get('/order/{id}', 'OrderController@orderDetail')->name('admin.orderDetail');
             Route::post('/order/post', 'OrderController@postOrderDetail')->name('admin.postOrderDetail');
 
-            //export excel
+            // Export excel
             Route::get('/export_customer', array('as' => 'admin.exportCustomer', 'uses' => 'AdminController@exportCustomer'));
             Route::get('/export_orders', array('as' => 'admin.exportOrders', 'uses' => 'AdminController@exportOrder'));
             Route::get('/export_products', array('as' => 'admin.exportProducts', 'uses' => 'AdminController@exportProduct'));
 
-            //xử lý đánh giá sản phẩm
+            // Xử lý đánh giá sản phẩm
             Route::get('/list-rating', 'AdminController@listRating')->name('admin.listRating');
             Route::get('/rating/{id}', 'AdminController@ratingDetail')->name('admin.ratingDetail');
             Route::post('rating', 'AdminController@postRating')->name('admin.postRating');
@@ -230,6 +225,7 @@ Route::namespace('Admin')->group(function () {
             Route::post('/', 'AdminController@postThemeOption')->name('admin.postThemeOption');
         });
 
+        // Menu
         Route::post('addcustommenu', 'MenuController@addcustommenu')->name('haddcustommenu');
         Route::post('deleteitemmenu', 'MenuController@deleteitemmenu')->name('hdeleteitemmenu');
         Route::post('deletemenug', 'MenuController@deletemenug')->name('hdeletemenug');

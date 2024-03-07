@@ -6,9 +6,7 @@
             <img src="<?php echo e(get_image($slider->image)); ?>" alt="" style="height: 50px;">
         </div>
         <div class="col-md-3">
-            <?php echo e($slider->sub_name); ?>
-
-            <br>
+            
             <?php echo e($slider->name); ?>
 
         </div>

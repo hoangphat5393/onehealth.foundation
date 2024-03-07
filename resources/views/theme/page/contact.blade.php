@@ -30,8 +30,6 @@
                                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div class="col-lg-6 p-md-5 pt-3 bg-white contact-page-info">
-                            <!-- <h3 class="fs-3 fw-bold">{{ __('Contact') }}</h3> -->
-
                             <form method="POST" action="{{ url('contact.html') }}" enctype="multipart/form-data">
                                 @csrf
                                 @include($templatePath . '.contact.contact_content')

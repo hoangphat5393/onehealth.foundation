@@ -24,9 +24,9 @@
         $sid = 0;
     }
 
-    // dd($date_update);
-
 ?>
+
+
 <?php $__env->startSection('seo'); ?>
     <?php
         $data_seo = [
@@ -44,6 +44,7 @@
     ?>
     <?php echo $__env->make('admin.partials.seo', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -77,6 +78,13 @@
                                 <?php if($sid): ?>
                                     <p>Shortcode: <span style="background: #f1f1f1; display: inline-block; padding: 3px">[slider id="<?php echo e($sid); ?>" items="4"]</span></p>
                                 <?php endif; ?>
+                                <?php echo app('translator')->get('Home'); ?>;
+                                <?php
+                                    $lc = app()->getLocale();
+
+                                ?>
+                                <?php echo e($lc); ?>
+
                                 <!-- show error form -->
                                 <div class="errorTxt"></div>
                                 <div class="form-group">

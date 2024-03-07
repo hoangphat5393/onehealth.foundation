@@ -23,8 +23,10 @@
         $date_update = date('Y-m-d h:i:s');
         $sid = 0;
     }
-    // dd($date_update);
+
 @endphp
+
+
 @section('seo')
     @php
         $data_seo = [
@@ -42,6 +44,7 @@
     @endphp
     @include('admin.partials.seo')
 @endsection
+
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -75,6 +78,12 @@
                                 @if ($sid)
                                     <p>Shortcode: <span style="background: #f1f1f1; display: inline-block; padding: 3px">[slider id="{{ $sid }}" items="4"]</span></p>
                                 @endif
+                                @lang('Home');
+                                @php
+                                    $lc = app()->getLocale();
+
+                                @endphp
+                                {{ $lc }}
                                 <!-- show error form -->
                                 <div class="errorTxt"></div>
                                 <div class="form-group">

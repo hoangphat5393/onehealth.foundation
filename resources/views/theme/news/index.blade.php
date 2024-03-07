@@ -65,15 +65,7 @@
         </section>
 
         {{-- Subscribe --}}
-        <section class="block7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 subscribe-block">
-                        @include('theme.includes.subscribe')
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('theme.includes.subscribe')
     </main>
 
 @endsection

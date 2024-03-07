@@ -1,8 +1,6 @@
 <?php
     $headerMenu = \App\Models\Menus::where('name', 'Menu-main')->first();
-
 ?>
-
 
 <nav class="navbar navbar-expand-lg menu-wrap">
     <div class="container">

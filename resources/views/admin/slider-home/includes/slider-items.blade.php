@@ -6,8 +6,8 @@
             <img src="{{ get_image($slider->image) }}" alt="" style="height: 50px;">
         </div>
         <div class="col-md-3">
-            {{ $slider->sub_name }}
-            <br>
+            {{-- {{ $slider->sub_name }}
+            <br> --}}
             {{ $slider->name }}
         </div>
 

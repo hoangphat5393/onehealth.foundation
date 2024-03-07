@@ -29,7 +29,7 @@ class SliderController extends Controller
 
     public function listSlider()
     {
-        $data_slider = Slider::where('slider_id', 0)->paginate(20);
+        $data_slider = Slider::where('slider_id', 0)->orderby('sort', 'asc')->paginate(20);
         return view('admin.slider-home.index')->with(['data' => $data_slider]);
     }
 

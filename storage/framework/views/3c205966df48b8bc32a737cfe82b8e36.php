@@ -29,6 +29,9 @@
     
     <link rel="stylesheet" href="<?php echo e(asset('plugin/bootstrap4-toggle/bootstrap4-toggle.min.css')); ?>">
 
+    
+    <link rel="stylesheet" href="<?php echo e(asset('plugin/jquery-ui/jquery-ui.min.css')); ?>">
+
     <link rel="stylesheet" href="<?php echo e(asset('plugin/jquery-confirm-v3.3.4/jquery-confirm.min.css')); ?>">
 
     <!-- Admin Custom Css -->
@@ -70,8 +73,9 @@
     <!-- Main js -->
     <script src="<?php echo e(asset('js/jquery-3.7.1.min.js')); ?>"></script>
     <script src="<?php echo e(asset('bootstrap-4.6.2/js/bootstrap.bundle.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('plugin/axios.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('plugin/jquery-ui/jquery-ui.min.js')); ?>"></script>
     <script src="<?php echo e(asset('admin/js/adminlte.js?ver=' . time())); ?>"></script>
-    <script src="<?php echo e(asset('plugin/axios.min.js')); ?>"></script> 
 
     <script src="<?php echo e(asset('plugin/ckeditor/ckeditor.js')); ?>"></script>
     <script src="<?php echo e(asset('plugin/ckfinder/ckfinder.js')); ?>"></script>

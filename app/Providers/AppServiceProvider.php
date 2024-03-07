@@ -38,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         // Short code
+
+        // Short code
         Shortcode::add('example', function ($atts, $content, $name) {
             $a = Shortcode::atts([
                 'name' => $name,
@@ -47,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
             return "foo = {$a['foo']}";
         });
 
-        // Short code
+        // Slider
         Shortcode::add('slider', function ($atts, $id, $items = 3) {
             $data = Shortcode::atts([
                 'id' => $id,
@@ -55,6 +57,33 @@ class AppServiceProvider extends ServiceProvider
             ], $atts);
 
             $file = 'shortcode/slider'; // ex: resource/views/partials/ $atts['name'] .blade.php
+            // dd($data);
+            if (view()->exists($file)) {
+                return view($file, compact('data'));
+            }
+        });
+
+        // Staff
+        Shortcode::add('staff', function ($atts, $id, $items = 3) {
+            $data = Shortcode::atts([
+                'id' => $id,
+                'items' => $items
+            ], $atts);
+
+            $file = 'shortcode/staff'; // ex: resource/views/partials/ $atts['name'] .blade.php
+            // dd($data);
+            if (view()->exists($file)) {
+                return view($file, compact('data'));
+            }
+        });
+
+        // Project list
+        Shortcode::add('project', function ($atts, $id, $items = 3) {
+            $data = Shortcode::atts([
+                'items' => $items
+            ], $atts);
+
+            $file = 'shortcode/project'; // ex: resource/views/partials/ $atts['name'] .blade.php
             // dd($data);
             if (view()->exists($file)) {
                 return view($file, compact('data'));
@@ -73,19 +102,6 @@ class AppServiceProvider extends ServiceProvider
                 return view($file, $a);
             }
         });
-
-        Shortcode::add('section', function ($atts, $section, $section_name) {
-            $data = Shortcode::atts([
-                'section_name' => $section_name,
-                'section' => $section,
-            ], $atts);
-
-            $file = 'shortcode/' . $data['section_name']; // ex: resource/views/partials/ $atts['name'] .blade.php
-
-            if (view()->exists($file)) {
-                return view($file, compact('data'));
-            }
-        });
     }
 
     /**
@@ -100,7 +116,6 @@ class AppServiceProvider extends ServiceProvider
             app('router')->aliasMiddleware($key, $middleware);
         }
     }
-
 
     /**
      * The application's route middleware.

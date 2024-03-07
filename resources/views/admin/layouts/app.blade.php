@@ -29,6 +29,9 @@
     {{-- https://gitbrent.github.io/bootstrap4-toggle/ --}}
     <link rel="stylesheet" href="{{ asset('plugin/bootstrap4-toggle/bootstrap4-toggle.min.css') }}">
 
+    {{-- Jquery UI --}}
+    <link rel="stylesheet" href="{{ asset('plugin/jquery-ui/jquery-ui.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('plugin/jquery-confirm-v3.3.4/jquery-confirm.min.css') }}">
 
     <!-- Admin Custom Css -->
@@ -70,8 +73,9 @@
     <!-- Main js -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('bootstrap-4.6.2/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('plugin/axios.min.js') }}"></script>
+    <script src="{{ asset('plugin/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('admin/js/adminlte.js?ver=' . time()) }}"></script>
-    <script src="{{ asset('plugin/axios.min.js') }}"></script> {{-- ver 1.5.0 --}}
 
     <script src="{{ asset('plugin/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('plugin/ckfinder/ckfinder.js') }}"></script>

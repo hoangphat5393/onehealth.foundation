@@ -13,24 +13,24 @@
 
 @section('content')
 
-    <main id="news_category">
+    <main id="campaign_category">
         <section class="block1">
-            @include('theme.includes.slider')
+            @include('theme.includes.hero_section')
         </section>
 
         <section class="block8">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="category-title">@lang('News')</h1>
+                        <h1 class="category-title">@lang('Project')</h1>
                         {{-- <div class="my-5">
                             {!! htmlspecialchars_decode($category->description) !!}
                         </div> --}}
                     </div>
                 </div>
 
-                @isset($news)
-                    @foreach ($news as $item)
+                @isset($campaign)
+                    @foreach ($campaign as $item)
                         @php
                             $cdt = new Carbon($item->created_at);
                         @endphp
@@ -56,8 +56,7 @@
                     @endforeach
 
                     <div class="nav-pagination">
-                        {{ $news->links($templateFile . '.pagination.custom') }}
-                        {{-- {{ $news->links() }} --}}
+                        {{ $campaign->links($templateFile . '.pagination.custom') }}
                     </div>
                 @endisset
 
@@ -65,15 +64,7 @@
         </section>
 
         {{-- Subscribe --}}
-        <section class="block7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 subscribe-block">
-                        @include('theme.includes.subscribe')
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('theme.includes.subscribe')
     </main>
 
 @endsection

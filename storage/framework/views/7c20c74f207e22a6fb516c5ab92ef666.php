@@ -71,7 +71,7 @@
                         <h3 class="upper">Dự án của chúng tôi</h3>
                         <p class="mb-3">Quỹ từ thiện One Health Foundation (OHF) <br>thực hiện sứ mệnh của chúng tôi thông qua <br>ba dự án chính về y tế, giáo dục và môi trường.</p>
                         <p>OHF tin rằng với đội ngũ thế hệ trẻ Việt Nam ngày nay, các bạn sẽ hết lòng vì cộng đồng để xây dựng đất nước ngày càng phát triển hơn.</p>
-                        <a href="/du-an/" class="btn btn-custom my-3">Xem tất cả các dự án <i class="fa-solid fa-angles-right"></i></a>
+                        <a href="<?php echo e(route('page', 'du-an')); ?>" class="btn btn-custom my-3">Xem tất cả các dự án <i class="fa-solid fa-angles-right"></i></a>
 
                         <form method="get" action="#">
                             <div class="input-group mb-3">
@@ -87,7 +87,7 @@
 
                                     <div class="col-lg-6 align-items-stretch project__content order-2">
                                         <div class="content p-3 bg-white">
-                                            <h4><a href="/lang-thien-nguyen/" class="text-main"><?php echo e($item->name); ?></a></h4>
+                                            <h4><a href="<?php echo e(route('campaign.detail', [$item->slug, $item->id])); ?>" class="text-main"><?php echo e($item->name); ?></a></h4>
                                             <div>
                                                 <?php echo htmlspecialchars_decode($item->description); ?>
 
