@@ -74,7 +74,7 @@
                                             <input type="text" class="form-control slug_slugify" id="slug" name="slug" placeholder="Slug" value="{{ $slug ?? '' }}">
                                             @if ($id > 0)
                                                 <p><b style="color: #0000cc;">Link:</b>
-                                                    <u><i><a style="color: #F00;" href="{{ route('news.detail', [$slug, $id]) }}" target="_blank">{{ route('news.detail', [$slug, $id]) }}</a></i></u>
+                                                    <u><i><a style="color: #F00;" href="{{ route('campaign.detail', [$slug, $id]) }}" target="_blank">{{ route('campaign.detail', [$slug, $id]) }}</a></i></u>
                                                 </p>
                                             @endif
                                         </div>

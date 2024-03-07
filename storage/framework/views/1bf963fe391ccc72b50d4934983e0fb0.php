@@ -6,7 +6,7 @@
     <div class="swiper-wrapper">
         <?php $__currentLoopData = $partner; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="swiper-slide">
-                <a href="https://www.google.com/">
+                <a href="<?php echo e($item->link); ?>" target="<?php echo e($item->target); ?>">
                     <img class="img-fluid mx-auto" src="<?php echo e(get_image($item->image)); ?>" alt="<?php echo e($item->name); ?>">
                 </a>
             </div>

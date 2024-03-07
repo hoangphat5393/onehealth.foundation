@@ -15,12 +15,8 @@ use App\Models\Product, App\Models\ProductCategory;
 use App\Models\DictionaryCategory;
 use App\Models\Post, App\Models\PostCategory;
 use App\Models\Video, App\Models\VideoCategory;
-use App\Models\Education;
-use App\Models\Book, App\Models\BookCategory;
-use App\Models\Faq;
+use App\Models\Campaign;
 use Auth, DB, Carbon\Carbon;
-use App\Models\Dictionary;
-use App\Models\Teacher;
 use App\Models\EmailTemplate;
 use App\Models\Contact;
 
@@ -123,7 +119,17 @@ class AjaxController extends Controller
                 DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
                 return 1;
                 break;
+            case 'campaign':
+                Campaign::whereIn('id', $arr)->delete();
 
+                // DELETE DATA FROM PIVOT TABLE
+                // PostCategory::whereIn('campaign', $arr)->delete();
+
+                // SET AUTO_INCREMENT TO 1
+                $table = (new Campaign)->getTable();
+                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
+                return 1;
+                break;
             case 'video':
                 Video::whereIn('id', $arr)->delete();
 
@@ -218,24 +224,6 @@ class AjaxController extends Controller
             $type = 'category';
         }
         switch ($type) {
-                // case 'video':
-                //     //xóa thumbnail
-                //     $url_upload = $_SERVER['DOCUMENT_ROOT'] . '/images/videos/';
-                //     foreach ($arr as $it) {
-                //         $data_page = Video_page::where('id', '=', $it)->get();
-                //         foreach ($data_page as $row) {
-                //             $img = $row->thumb;
-                //             if ($img != '') {
-                //                 $pt = $url_upload . $img;
-                //                 if (file_exists($pt)) {
-                //                     unlink($pt);
-                //                 }
-                //             }
-                //         }
-                //     }
-                //     $loadDelete = Video_page::whereIn('id', $arr)->delete();
-                //     return 1;
-                //     break;
             case 'page':
                 // Replicate Post + Category
                 $i = 1;
@@ -361,6 +349,35 @@ class AjaxController extends Controller
                     // Replicate Post Category
                     $newProduct = Product::find($newProduct->id);
                     $newProduct->categories()->sync($category_id);
+                    $i++;
+                }
+                return 1;
+                break;
+            case 'campaign':
+                // Replicate Campaign + Category
+                $i = 1;
+                $newCampaign = '';
+                foreach ($arr as $id) {
+                    $campaign = Campaign::find($id);
+
+                    // Get categories of current post 
+                    // $category_id = $post->categories->pluck('id')->toArray();
+
+                    // Replicate post
+                    $newCampaign = $campaign->replicate();
+                    // $newPost->name = $newPost->name . ' ' . $i;
+                    // $newPost->slug = Str::slug($newPost->name);
+                    $newCampaign->created_at = Carbon::now(); // changing the created_at date
+                    $newCampaign->save(); // saving it to the database
+
+                    $slug = Str::slug($newCampaign->name . '-' . $newCampaign->id);
+
+                    // update sort = id
+                    Campaign::where("id", $newCampaign->id)->update(['slug' => $slug, 'sort' => $newCampaign->id]);
+
+                    // Replicate Post Category
+                    // $newCampaign = Post::find($newCampaign->id);
+                    // $newCampaign->categories()->sync($category_id);
                     $i++;
                 }
                 return 1;

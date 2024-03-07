@@ -1,7 +1,5 @@
 :root {
     --bg-light: #eff2f8;
-    --text-black: #000000;
-    --yellow: #fcd123;
     --main-color: #20a19f;
     --sub-color: #c87d3d;
     --bg-main: #20a19f;
@@ -10,23 +8,6 @@
 }
 
 /********** Template CSS **********/
-@keyframes moveRight {
-    from {
-        left: 0;
-    }
-    to {
-        left: 100px;
-    }
-}
-
-@keyframes scroll_x {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-201%);
-    }
-}
 
 // 1. FONTS
 // @font-face {
@@ -101,9 +82,11 @@
 //     font-display: swap;
 // }
 
+html {
+    font-size: 16px;
+}
 body {
     font-family: "Open Sans", sans-serif;
-    font-size: 16px;
 }
 
 figure,
@@ -119,7 +102,6 @@ header {
     .nav-link {
         color: var(--main-color);
     }
-
     border-bottom: 5px solid #00b1af;
 }
 
@@ -145,7 +127,6 @@ header {
 }
 
 .btn-custom {
-    // border: 1px solid #fff;
     border-radius: 0;
     background: #15a4a4;
     padding: 5px 20px 5px 20px;
@@ -160,7 +141,6 @@ header {
 .border-custom {
     border: 1px solid #00b0ae;
 }
-
 .text-main {
     color: var(--main-color);
 }
@@ -190,10 +170,6 @@ header {
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-
-    // @media (min-width: 1200px) {
-    //     max-height: 340px;
-    // }
 }
 
 .dropdown:hover > .dropdown-menu {
@@ -278,6 +254,26 @@ header {
     }
 }
 
+.render-content {
+    .title {
+        position: relative;
+        padding-left: 30px;
+        &::before {
+            position: absolute;
+            left: 0;
+            content: "";
+            border-left: 10px solid #ff8114;
+            width: 20px;
+            height: 100%;
+        }
+        h3 {
+            font-weight: 700;
+            color: #ff8114;
+            margin-bottom: 0;
+        }
+    }
+}
+
 main {
     .block2 {
         .mission {
@@ -309,21 +305,6 @@ main {
             }
             p {
                 color: #fff;
-            }
-        }
-
-        .achievement {
-            .number {
-                color: #343434;
-                font-size: 45px;
-                font-weight: 700;
-            }
-            .desc {
-                display: inline-flex;
-                font-size: 22px;
-                padding-right: 10px;
-                font-weight: 400;
-                color: #ff8114;
             }
         }
     }
@@ -462,6 +443,23 @@ main {
                 text-transform: uppercase;
                 vertical-align: middle;
                 white-space: nowrap;
+            }
+        }
+    }
+
+    .block13 {
+        .achievement {
+            .number {
+                color: #343434;
+                font-size: 45px;
+                font-weight: 700;
+            }
+            .desc {
+                display: inline-flex;
+                font-size: 22px;
+                padding-right: 10px;
+                font-weight: 400;
+                color: #ff8114;
             }
         }
     }

@@ -9,7 +9,8 @@ class MenuItems extends Model
 {
     protected $table = 'admin_menu_items';
 
-    protected $fillable = ['page_id', 'category_id', 'label', 'link', 'parent', 'sort', 'class', 'menu', 'depth', 'role_id'];
+    protected $guarded = [];
+    // protected $fillable = ['page_id', 'category_id', 'label', 'link', 'parent', 'sort', 'class', 'menu', 'depth', 'role_id'];
 
     // public function __construct(array $attributes = [])
     // {
@@ -31,10 +32,6 @@ class MenuItems extends Model
         return self::where('menu', $menu)->max('sort') + 1;
     }
 
-    // public function parent_menu()
-    // {
-    //     return $this->belongsTo('Harimayco\Menu\Models\Menus', 'menu');
-    // }
     public function parent_menu()
     {
         return $this->belongsTo(Menus::class, 'menu');

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Menus;
 use App\Models\MenuItems;
 
 class MenuController extends Controller
 {
-
     public function createnewmenu()
     {
         $menu = new Menus;

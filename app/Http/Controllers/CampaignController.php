@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Page;
 use App\Models\Category;
-use App\Models\Post;
+use App\Models\Campaign;
 use DB;
 
-class NewsController extends Controller
+class CampaignController extends Controller
 {
     use \App\Traits\LocalizeController;
 
@@ -48,7 +48,7 @@ class NewsController extends Controller
         }
 
         // dd(123);
-        return view('theme.news.index', $this->data);
+        return view('theme.campaign.index', $this->data);
         // return view('theme.news.index', $this->data)->compileShortcodes();
     }
 
@@ -80,7 +80,7 @@ class NewsController extends Controller
             // if ($news->count() == 1) {
             //     return $this->newsDetail($news->first()->slug);
             // }
-            return view('theme.news.category', $this->data);
+            return view('theme.campaign.category', $this->data);
         } else
             return view('errors.404');
         // return $this->newsDetail($slug);
@@ -89,52 +89,22 @@ class NewsController extends Controller
     // News detail
     public function newsDetail($slug)
     {
-        $news = Post::where('slug', $slug)->first();
+        $campaign = Campaign::where('slug', $slug)->first();
 
         // All category
-        $categories = Category::where(['status' => 1, 'type' => 'post', 'parent' => 0])->get();
+        // $categories = Category::where(['status' => 1, 'type' => 'post', 'parent' => 0])->get();
 
         // default data
-        $this->data['categories'] = $categories;
-        $this->data['news'] = $news;
-
-        // $tintuc = Category::where('slug', 'cong-thong-tin');
-        // $this->data['news_featured'] = $tintuc->news()
-        //     ->where('status', 1)
-        //     ->orderby('id', 'desc')
-        //     ->limit(6)
-        //     ->get();
-
-        // Recently news
-        // $this->data['recently_news'] = $tintuc->news()
-        //     ->where('status', 1)
-        //     ->where('id', '<>', $news->id)
-        //     ->limit(4)
-        //     ->orderby('created_at', 'desc')
-        //     ->get();
-
-        // Latest news
-        // $this->data['latest_news'] = $tintuc->news()
-        //     ->where('status', 1)
-        //     ->where('id', '<>', $news->id)
-        //     ->limit(4)
-        //     ->orderby('id', 'desc')
-        //     ->get();
-
-        // Related News
-        // $this->data['related_news'] = $tintuc->news()
-        //     ->where('status', 1)
-        //     ->where('id', '<>', $news->id)
-        //     ->limit(4)
-        //     ->get();
+        // $this->data['categories'] = $categories;
+        $this->data['campaign'] = $campaign;
 
         $this->data['seo'] = [
-            'seo_title' => $news->seo_title != '' ? $news->seo_title : $news->name,
-            'seo_image' => $news->image,
-            'seo_description'   => $news->seo_description ?? '',
-            'seo_keyword'   => $news->seo_keyword ?? '',
+            'seo_title' => $campaign->seo_title != '' ? $campaign->seo_title : $campaign->name,
+            'seo_image' => $campaign->image,
+            'seo_description'   => $campaign->seo_description ?? '',
+            'seo_keyword'   => $campaign->seo_keyword ?? '',
         ];
 
-        return view('theme.news.single', $this->data);
+        return view('theme.campaign.single', $this->data);
     }
 }

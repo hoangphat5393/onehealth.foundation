@@ -176,6 +176,19 @@ Route::localized(function () {
             ->where(['slug' => '[a-zA-Z0-9$-_.+!]+'])
             ->name('news.category');
 
+        // All Campaigns
+        Route::get('campaign', '\App\Http\Controllers\CampaignController@index')->name('campaign');
+
+        // News Detail 
+        Route::get('campaign/{slug}-{id}.html', '\App\Http\Controllers\CampaignController@newsDetail')
+            ->where(['slug' => '[a-zA-Z0-9$-_.+!]+', 'id' => '[0-9]+'])
+            ->name('campaign.detail');
+
+        // News category 
+        // Route::get('campaign/{slug}.html', '\App\Http\Controllers\CampaignController@index')
+        //     ->where(['slug' => '[a-zA-Z0-9$-_.+!]+'])
+        //     ->name('campaign.category');
+
         // Contact
         Route::post('/get-contact-form/{type}', array('as' => 'contact.get', 'uses' => 'ContactController@getContact'));
         Route::get('contact', 'ContactController@index')->name('contact');
@@ -192,7 +205,7 @@ Route::localized(function () {
         // Page
         Route::get('{slug}', 'PageController@page')->name('page');
 
-        //project
+        // project
         // Route::get('du-an/{slug}-{id}.html', '\App\Http\Controllers\ProjectController@detail')
         //     ->where(['slug' => '[a-zA-Z0-9$-_.+!]+', 'id' => '[0-9]+'])
         //     ->name('project.detail');

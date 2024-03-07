@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('seo')
     @php
-        $title_head = 'Bài viết';
+        $title_head = 'Chiến dịch';
         $data_seo = [
-            'title' => 'Tin tức | ' . Helpers::get_option_minhnn('seo-title-add'),
+            'title' => 'Chiến dịch | ' . Helpers::get_option_minhnn('seo-title-add'),
         ];
         $seo = WebService::getSEO($data_seo);
     @endphp
@@ -37,10 +37,10 @@
                         </div> <!-- /.card-header -->
                         <div class="card-body">
                             <div class="clear">
-                                @include('admin.partials.button_add_delete', ['type' => 'post', 'route' => route('admin.postCreate')])
+                                @include('admin.partials.button_add_delete', ['type' => 'campaign', 'route' => route('admin.campaignCreate')])
                                 <div class="fr">
                                     <form method="GET" action="" id="frm-filter-post" class="form-inline">
-                                        @php
+                                        {{-- @php
                                             $categories = App\Models\Category::select('id', 'name')->where('type', 'post')->orderByDesc('sort')->get();
                                         @endphp
                                         <select class="custom-select mr-2" name="category_id">
@@ -48,7 +48,7 @@
                                             @foreach ($categories as $item)
                                                 <option value="{{ $item->id }}" {{ request('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                             @endforeach
-                                        </select>
+                                        </select> --}}
                                         <input type="text" class="form-control" name="search_name" id="search_name" placeholder="Từ khoá" value="{{ request('search_name') }}">
                                         <button type="submit" class="btn btn-primary ml-2">Tìm kiếm</button>
                                     </form>
@@ -89,8 +89,8 @@
                                                         {{ $item->name }}
                                                     </a>
                                                     <br>
-                                                    <a class="link to-link fw-bold" href="{{ route('news.detail', [$item->slug, $item->id]) }}" target="_blank">
-                                                        <span>URL: </span>{{ route('news.detail', [$item->slug, $item->id]) }}
+                                                    <a class="link to-link fw-bold" href="{{ route('campaign.detail', [$item->slug, $item->id]) }}" target="_blank">
+                                                        <span>URL: </span>{{ route('campaign.detail', [$item->slug, $item->id]) }}
                                                     </a>
                                                 </td>
                                                 {{-- <td class="text-center">

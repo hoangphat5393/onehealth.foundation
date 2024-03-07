@@ -30,7 +30,7 @@
                         <h3 class="text-end">TẦM NHÌN</h3>
                         <p>OHF tập trung xây dựng một hệ thống y tế cộng đồng bền vững trên toàn lãnh thổ Việt Nam để đảm bảo cho tất cả người dân đều được chăm sóc về y tế, giáo dục hiệu quả với chi phí phù hợp và sống trong môi trường lành mạnh.</p>
                         <div class="d-block text-end">
-                            <a class="btn btn-custom" href="https://onehealth.foundation/vi/chung-toi-la-ai/">Chúng tôi là ai <i class="fa-solid fa-angle-right"></i></a>
+                            <a class="btn btn-custom" href="<?php echo e(route('page', 'about')); ?>">Chúng tôi là ai <i class="fa-solid fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -41,9 +41,10 @@
                     <div class="col-md-12 mission">
                         <h3>OUR MISSION</h3>
                         <p></p>
-                        <p>One Health Foundation aims to expand public medical care as well as education opportunity to ﬁnancially disadvantage people in Vietnam. We also develop solutions for environmental issues to the local community. We will empower Vietnamese youths to develop themselves to their
-                            full
-                            potential.</p>
+                        <p>
+                            One Health Foundation aims to expand public medical care as well as education opportunity to ﬁnancially disadvantage people in Vietnam. We also develop solutions for environmental issues to the local community. We will empower Vietnamese youths to develop themselves to their
+                            full potential.
+                        </p>
                         <p></p>
                     </div>
                     <div class="col-md-12 vission pb-2" style="">
@@ -55,10 +56,12 @@
                     </div>
                 </div>
             </div>
+        </section>
 
+        <section class="block13">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-5">
                         <div class="achievement mx-lg-auto fit-content">
                             <div class="number">
                                 <div class="counter">
@@ -76,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-5">
                         <div class="achievement mx-lg-auto fit-content">
                             <div class="number">
                                 <div class="counter">
@@ -94,7 +97,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-5">
                         <div class="achievement mx-lg-auto fit-content">
                             <div class="number">
                                 <div class="counter">
@@ -112,7 +115,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-5">
                         <div class="achievement mx-lg-auto fit-content">
                             <div class="number">
                                 <div class="counter">
@@ -130,7 +133,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="col-md-6 col-lg-4 mb-5">
                         <div class="achievement mx-lg-auto fit-content">
                             <div class="number">
                                 <div class="counter">

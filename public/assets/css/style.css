@@ -1,7 +1,5 @@
 :root {
   --bg-light: #eff2f8;
-  --text-black: #000000;
-  --yellow: #fcd123;
   --main-color: #20a19f;
   --sub-color: #c87d3d;
   --bg-main: #20a19f;
@@ -10,25 +8,12 @@
 }
 
 /********** Template CSS **********/
-@keyframes moveRight {
-  from {
-    left: 0;
-  }
-  to {
-    left: 100px;
-  }
+html {
+  font-size: 16px;
 }
-@keyframes scroll_x {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-201%);
-  }
-}
+
 body {
   font-family: "Open Sans", sans-serif;
-  font-size: 16px;
 }
 
 figure,
@@ -189,6 +174,24 @@ header .nav-link {
   z-index: 2;
 }
 
+.render-content .title {
+  position: relative;
+  padding-left: 30px;
+}
+.render-content .title::before {
+  position: absolute;
+  left: 0;
+  content: "";
+  border-left: 10px solid #ff8114;
+  width: 20px;
+  height: 100%;
+}
+.render-content .title h3 {
+  font-weight: 700;
+  color: #ff8114;
+  margin-bottom: 0;
+}
+
 main .block2 .mission {
   margin: auto;
   padding: 4px 224px 0px 140px;
@@ -219,18 +222,6 @@ main .block2 .vission h3 {
 }
 main .block2 .vission p {
   color: #fff;
-}
-main .block2 .achievement .number {
-  color: #343434;
-  font-size: 45px;
-  font-weight: 700;
-}
-main .block2 .achievement .desc {
-  display: inline-flex;
-  font-size: 22px;
-  padding-right: 10px;
-  font-weight: 400;
-  color: #ff8114;
 }
 main .block3 {
   background-color: #f2f2f2;
@@ -342,6 +333,18 @@ main .block10 .banner-right .promotion .__copy {
   text-transform: uppercase;
   vertical-align: middle;
   white-space: nowrap;
+}
+main .block13 .achievement .number {
+  color: #343434;
+  font-size: 45px;
+  font-weight: 700;
+}
+main .block13 .achievement .desc {
+  display: inline-flex;
+  font-size: 22px;
+  padding-right: 10px;
+  font-weight: 400;
+  color: #ff8114;
 }
 
 a.custom {

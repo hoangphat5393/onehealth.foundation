@@ -59,7 +59,7 @@ class CampaignController extends Controller
 
     public function create()
     {
-        return view('admin.category.single', $this->data);
+        return view('admin.campaign.single', $this->data);
     }
 
     public function edit($id)
