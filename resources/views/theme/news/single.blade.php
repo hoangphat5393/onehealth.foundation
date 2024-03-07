@@ -36,15 +36,6 @@
                                     <div class="mosaic-lede-banner__headline">
                                         <h1 class="mosaic-lede-banner__headline-subtitle">{{ $news->name }}</h1>
                                     </div>
-                                    {{-- <div class="markdown with-lists mosaic-lede-banner__blurb"></div>
-                                    <div class="mosaic-lede-banner__signup">
-                                        <p class="invite_to_join"></p>
-                                        <div class="message-callout -below -white -mosaic-arrow d-none">
-                                            <div class="message-callout__copy">
-                                                <p>Win a $3,000 Scholarship</p>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </div>
 
                                 <div class="promotions mosaic-lede-banner__sponsor padding-top-lg clear-both">
@@ -66,7 +57,7 @@
         <section class="mt-5">
             <div class="container">
                 @empty(!$news)
-                    <div class="content-news">
+                    <div class="render-content">
                         {!! htmlspecialchars_decode($news->content) !!}
                     </div>
                 @endempty

@@ -12,13 +12,13 @@
     <main id="main">
 
         <section class="block1">
-            <?php echo $__env->make('theme.includes.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('theme.includes.hero_section', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </section>
 
         <section class="block2">
             <div class="container pt-5 pb-5 d-none d-md-block">
                 <div class="row">
-                    <div class="col-md-12 mission" style="">
+                    <div class="col-md-12 mission">
                         <h3>SỨ MỆNH</h3>
                         <p>
                             OHF thực hiện những dự án nhằm nâng cao các cơ hội được chăm sóc y tế và giáo dục phổ thông tới những người có hoàn cảnh kinh tế khó khăn tại Việt Nam. Đồng thời chúng tôi sẽ tìm ra các giải pháp khắc phục các vấn đề về ô nhiễm môi trường sống cho cộng đồng. Thông qua các dự
@@ -58,105 +58,9 @@
             </div>
         </section>
 
-        <section class="block13">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    2000+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    TÌNH NGUYỆN VIÊN <br> THƯỜNG TRỰC
-                                </div>
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('images/achievement_1.png')); ?>" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    2000+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    NHÀ TỪ <br> THIỆN
-                                </div>
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('images/achievement_2.png')); ?>" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    700+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    HOẠT ĐỘNG <br> TÌNH NGUYỆN
-                                </div>
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('images/achievement_3.png')); ?>" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    5000
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    HOÀN CẢNH KHÓ KHĂN<br> CẦN ĐƯỢC GIÚP ĐỠ
-                                </div>
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('images/achievement_4.png')); ?>" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    80+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    HỘI THẢO SỨC KHỎE <br> CỘNG ĐỒNG
-                                </div>
-                                <div class="icon">
-                                    <img src="<?php echo e(asset('images/achievement_5.png')); ?>" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+        <?php echo $__env->make('theme.includes.counter', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         
-
         <?php
             $project = \App\Models\Campaign::where('status', 1)->limit(3)->get();
         ?>
@@ -211,6 +115,7 @@
             </div>
         </section>
 
+
         
         <?php
             $news = \App\Models\Post::where('status', 1)->orderByDesc('sort')->limit(3)->get();
@@ -248,12 +153,7 @@
         </section>
 
         
-        <section class="block5">
-            <div class="container">
-                <p class="fw-bold fs-4 mb-4">ĐỐI TÁC CHÍNH</p>
-                <?php echo $__env->make('theme.includes.partner', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            </div>
-        </section>
+        <?php echo $__env->make('theme.includes.partner', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <section class="block6">
             <div class="container testimonial">
@@ -270,15 +170,7 @@
         </section>
 
         
-        <section class="block7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 subscribe-block">
-                        <?php echo $__env->make('theme.includes.subscribe', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <?php echo $__env->make('theme.includes.subscribe', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     </main>
 <?php $__env->stopSection(); ?>

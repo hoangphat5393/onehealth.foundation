@@ -1,19 +1,24 @@
 @php
     $partner = \App\Models\Slider::where('status', 0)->where('slider_id', 80)->orderBy('sort', 'asc')->get();
 @endphp
-
-<div class="swiper partnerSlider">
-    <div class="swiper-wrapper">
-        @foreach ($partner as $item)
-            <div class="swiper-slide">
-                <a href="{{ $item->link }}" target="{{ $item->target }}">
-                    <img class="img-fluid mx-auto" src="{{ get_image($item->image) }}" alt="{{ $item->name }}">
-                </a>
+<section class="block5">
+    <div class="container">
+        <p class="fw-bold fs-4 mb-4">ĐỐI TÁC CHÍNH</p>
+        <div class="swiper partnerSlider">
+            <div class="swiper-wrapper">
+                @foreach ($partner as $item)
+                    <div class="swiper-slide">
+                        <a href="{{ $item->link }}" target="{{ $item->target }}">
+                            <img class="img-fluid mx-auto" src="{{ get_image($item->image) }}" alt="{{ $item->name }}">
+                        </a>
+                    </div>
+                @endforeach
             </div>
-        @endforeach
+            <div class="swiper-pagination"></div>
+        </div>
+
     </div>
-    <div class="swiper-pagination"></div>
-</div>
+</section>
 
 
 @push('scripts')

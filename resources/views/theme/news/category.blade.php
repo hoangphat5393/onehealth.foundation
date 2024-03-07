@@ -15,7 +15,7 @@
 
     <main id="news_category">
         <section class="block1">
-            @include('theme.includes.slider')
+            @include('theme.includes.hero_section')
         </section>
 
         <section class="block8">

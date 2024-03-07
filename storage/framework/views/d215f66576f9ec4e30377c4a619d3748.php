@@ -15,7 +15,7 @@
 
     <main id="news_category">
         <section class="block1">
-            <?php echo $__env->make('theme.includes.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php echo $__env->make('theme.includes.hero_section', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </section>
 
         <section class="block8">

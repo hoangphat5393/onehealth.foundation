@@ -34,7 +34,6 @@
                                     <div class="mosaic-lede-banner__headline">
                                         <h1 class="mosaic-lede-banner__headline-subtitle"><?php echo e($news->name); ?></h1>
                                     </div>
-                                    
                                 </div>
 
                                 <div class="promotions mosaic-lede-banner__sponsor padding-top-lg clear-both">
@@ -56,7 +55,7 @@
         <section class="mt-5">
             <div class="container">
                 <?php if(empty(!$news)): ?>
-                    <div class="content-news">
+                    <div class="render-content">
                         <?php echo htmlspecialchars_decode($news->content); ?>
 
                     </div>

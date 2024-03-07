@@ -12,7 +12,7 @@
     <main id="main">
 
         <section class="block1">
-            @include('theme.includes.slider')
+            @include('theme.includes.hero_section')
         </section>
 
         <section class="block2">
@@ -58,105 +58,9 @@
             </div>
         </section>
 
-        <section class="block13">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    2000+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    TÌNH NGUYỆN VIÊN <br> THƯỜNG TRỰC
-                                </div>
-                                <div class="icon">
-                                    <img src="{{ asset('images/achievement_1.png') }}" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    2000+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    NHÀ TỪ <br> THIỆN
-                                </div>
-                                <div class="icon">
-                                    <img src="{{ asset('images/achievement_2.png') }}" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    700+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    HOẠT ĐỘNG <br> TÌNH NGUYỆN
-                                </div>
-                                <div class="icon">
-                                    <img src="{{ asset('images/achievement_3.png') }}" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    5000
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    HOÀN CẢNH KHÓ KHĂN<br> CẦN ĐƯỢC GIÚP ĐỠ
-                                </div>
-                                <div class="icon">
-                                    <img src="{{ asset('images/achievement_4.png') }}" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="achievement mx-lg-auto fit-content">
-                            <div class="number">
-                                <div class="counter">
-                                    80+
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <div class="desc">
-                                    HỘI THẢO SỨC KHỎE <br> CỘNG ĐỒNG
-                                </div>
-                                <div class="icon">
-                                    <img src="{{ asset('images/achievement_5.png') }}" class="" alt="" style="width:60px" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+        @include('theme.includes.counter')
 
         {{-- Dự án (Campaign) --}}
-
         @php
             $project = \App\Models\Campaign::where('status', 1)->limit(3)->get();
         @endphp
@@ -210,6 +114,7 @@
             </div>
         </section>
 
+
         {{-- Hoạt động (News) --}}
         @php
             $news = \App\Models\Post::where('status', 1)->orderByDesc('sort')->limit(3)->get();
@@ -247,12 +152,7 @@
         </section>
 
         {{-- Partner --}}
-        <section class="block5">
-            <div class="container">
-                <p class="fw-bold fs-4 mb-4">ĐỐI TÁC CHÍNH</p>
-                @include('theme.includes.partner')
-            </div>
-        </section>
+        @include('theme.includes.partner')
 
         <section class="block6">
             <div class="container testimonial">
@@ -269,15 +169,7 @@
         </section>
 
         {{-- Subscribe --}}
-        <section class="block7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 subscribe-block">
-                        @include('theme.includes.subscribe')
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('theme.includes.subscribe')
 
     </main>
 @endsection
