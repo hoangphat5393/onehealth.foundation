@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Menus;
 use App\Models\MenuItems;
 
-class MenuController extends Controller
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+
+class MenuWPController extends Controller
 {
     public function createnewmenu()
     {
-        $menu = new Menus;
+        $menu = new Menus();
         $menu->name = request()->input("menuname");
         $menu->save();
-        return json_encode(array("resp" => $menu->id));
+        return response()->json(array("resp" => $menu->id));
+        // return json_encode(array("resp" => $menu->id));
     }
 
     public function deleteitemmenu()
@@ -30,13 +33,13 @@ class MenuController extends Controller
         if (count($getall) == 0) {
             $menudelete = Menus::find(request()->input("id"));
             $menudelete->delete();
-
             return json_encode(array("resp" => "you delete this item"));
         } else {
             return json_encode(array("resp" => "You have to delete all items first", "error" => 1));
         }
     }
 
+    // Update menu
     public function updateitem()
     {
         $arraydata = request()->input("arraydata");
@@ -45,8 +48,11 @@ class MenuController extends Controller
             foreach ($arraydata as $value) {
                 $menuitem = MenuItems::find($value['id']);
                 $menuitem->label = $value['label'] ?? '';
+                $menuitem->image = $value['image'];
+                $menuitem->slug = $value['slug'] ?? '';
                 $menuitem->link = $value['link'] ?? '';
                 $menuitem->class = $value['class'] ?? '';
+
                 // if (config('menu.use_roles')) {
                 //     $menuitem->role_id = $value['role_id'] ? $value['role_id'] : 0;
                 // }
@@ -55,6 +61,8 @@ class MenuController extends Controller
         } else {
             $menuitem = MenuItems::find(request()->input("id"));
             $menuitem->label = request()->input("label");
+            $menuitem->image = request()->input("image");
+            $menuitem->slug = request()->input("slug");
             $menuitem->link = request()->input("url");
             $menuitem->class = request()->input("clases");
             // if (config('menu.use_roles')) {
@@ -64,14 +72,14 @@ class MenuController extends Controller
         }
     }
 
+    // Add custom link
     public function addcustommenu()
     {
         $menuitem = new MenuItems;
-        // dd(request());
-        // $menuitem->category_id = request()->input("category_id");
-        // $menuitem->page_id = request()->input("page_id");
         $menuitem->label = request()->input("labelmenu");
+        $menuitem->slug = request()->input("slug");
         $menuitem->link = request()->input("linkmenu");
+
         // if (config('menu.use_roles')) {
         //     $menuitem->role_id = request()->input("rolemenu") ? request()->input("rolemenu")  : 0;
         // }
@@ -88,7 +96,6 @@ class MenuController extends Controller
         $menu->save();
         if (is_array(request()->input("arraydata"))) {
             foreach (request()->input("arraydata") as $value) {
-
                 $menuitem = MenuItems::find($value["id"]);
                 $menuitem->parent = $value["parent"];
                 $menuitem->sort = $value["sort"];

@@ -24,11 +24,29 @@
                                 <?php echo e($item->label); ?>
 
                             </a>
-                            <ul class="dropdown-menu">
-                                <?php $__currentLoopData = $item->child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a class="dropdown-item" href="<?php echo e($item2->link); ?>"><?php echo e($item2->label); ?></a></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </ul>
+
+                            <?php if($item->class == 'project'): ?>
+                                <div class="dropdown-menu">
+                                    <div class="container">
+                                        <div class="row">
+                                            <?php $__currentLoopData = $item->child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <div class="col-md-6 col-lg-3">
+                                                    <a href="https://onehealth.foundation/vi/lang-thien-nguyen/" class="dropdown-item">
+                                                        <img src="<?php echo e(get_image($item2->image)); ?>" class="img-fluid" alt="" loading="lazy">
+                                                    </a>
+                                                </div>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php else: ?>
+                                <ul class="dropdown-menu">
+                                    <?php $__currentLoopData = $item->child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><a class="dropdown-item" href="<?php echo e($item2->link); ?>"><?php echo e($item2->label); ?></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            <?php endif; ?>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
@@ -37,38 +55,8 @@
                     <?php endif; ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                <li class="nav-item dropdown project">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dự án
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="https://onehealth.foundation/vi/lang-thien-nguyen/" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/11/Vietnam_7101.png" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="https://onehealth.foundation/vi/m2030-2/" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/11/257657916.png" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="https://onehealth.foundation/vi/trung-tam-thu-gom-rac-thai/" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/11/plastic_bank-1.png" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
+                
 
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="<?php echo e(route('index')); ?>" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/10/key-project-4.jpg" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
             </ul>
             <form class="d-flex" role="search" method="post" action="<?php echo e(route('search')); ?>">
                 <div class="input-group input-group-search">

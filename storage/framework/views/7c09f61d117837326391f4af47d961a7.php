@@ -35,13 +35,9 @@
                         
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <?php echo htmlspecialchars_decode($page->content); ?>
-
-                    </div>
-                </div>
             </div>
+            <?php echo htmlspecialchars_decode($page->content); ?>
+
         </section>
         
 

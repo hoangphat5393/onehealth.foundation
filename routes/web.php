@@ -180,7 +180,7 @@ Route::localized(function () {
         Route::get('campaign', '\App\Http\Controllers\CampaignController@index')->name('campaign');
 
         // News Detail 
-        Route::get('campaign/{slug}-{id}.html', '\App\Http\Controllers\CampaignController@newsDetail')
+        Route::get('campaign/{slug}-{id}.html', '\App\Http\Controllers\CampaignController@campaignDetail')
             ->where(['slug' => '[a-zA-Z0-9$-_.+!]+', 'id' => '[0-9]+'])
             ->name('campaign.detail');
 
@@ -195,6 +195,12 @@ Route::localized(function () {
         Route::post('contact-confirmation', 'ContactController@confirmation')->name('contact.confirmation');
         Route::post('contact', 'ContactController@submit')->name('contact.submit');
         Route::get('contact-completed', 'ContactController@completed')->name('contact_completed');
+
+        // Donate
+        Route::get('donate', 'DonateController@index')->name('donate');
+        Route::post('donate-confirmation', 'DonateController@confirmation')->name('donate.confirmation');
+        Route::post('donate', 'DonateController@submit')->name('donate.submit');
+        Route::get('donate-completed', 'DonateController@completed')->name('donate_completed');
 
         // Search
         Route::post('/input/search-text/{type}', 'AjaxController@inputSearchText');

@@ -22,11 +22,29 @@
                             <a class="nav-link dropdown-toggle d-block d-lg-none" href="{{ $item->link }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ $item->label }}
                             </a>
-                            <ul class="dropdown-menu">
-                                @foreach ($item->child as $item2)
-                                    <li><a class="dropdown-item" href="{{ $item2->link }}">{{ $item2->label }}</a></li>
-                                @endforeach
-                            </ul>
+
+                            @if ($item->class == 'project')
+                                <div class="dropdown-menu">
+                                    <div class="container">
+                                        <div class="row">
+                                            @foreach ($item->child as $item2)
+                                                <div class="col-md-6 col-lg-3">
+                                                    <a href="https://onehealth.foundation/vi/lang-thien-nguyen/" class="dropdown-item">
+                                                        <img src="{{ get_image($item2->image) }}" class="img-fluid" alt="" loading="lazy">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <ul class="dropdown-menu">
+                                    @foreach ($item->child as $item2)
+                                        <li><a class="dropdown-item" href="{{ $item2->link }}">{{ $item2->label }}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
                     @else
                         <li class="nav-item">
@@ -35,7 +53,7 @@
                     @endif
                 @endforeach
 
-                <li class="nav-item dropdown project">
+                {{-- <li class="nav-item dropdown project">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dự án
                     </a>
@@ -66,7 +84,8 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> --}}
+
             </ul>
             <form class="d-flex" role="search" method="post" action="{{ route('search') }}">
                 <div class="input-group input-group-search">

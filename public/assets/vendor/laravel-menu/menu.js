@@ -3,6 +3,8 @@ function getmenus() {
     arraydata = [];
     $("#spinsavemenu").show();
 
+    console.log(arraydata);
+
     var cont = 0;
     $("#menu-to-edit li").each(function (index) {
         var dept = 0;
@@ -34,82 +36,6 @@ function getmenus() {
     actualizarmenu();
 }
 
-// function addcustommenu() {
-//     $("#spincustomu").show();
-
-//     $.ajax({
-//         data: {
-//             labelmenu: $("#custom-menu-item-name").val(),
-//             linkmenu: $("#custom-menu-item-url").val(),
-//             rolemenu: $("#custom-menu-item-role").val(),
-//             idmenu: $("#idmenu").val(),
-//         },
-
-//         url: addcustommenur,
-//         type: "POST",
-//         success: function (response) {
-//             window.location.reload();
-//         },
-//         complete: function () {
-//             $("#spincustomu").hide();
-//         },
-//     });
-// }
-
-// function updateitem(id = 0) {
-//     if (id) {
-//         var label = $("#idlabelmenu_" + id).val();
-//         var clases = $("#clases_menu_" + id).val();
-//         var url = $("#url_menu_" + id).val();
-//         var role_id = 0;
-//         if ($("#role_menu_" + id).length) {
-//             role_id = $("#role_menu_" + id).val();
-//         }
-
-//         var data = {
-//             label: label,
-//             clases: clases,
-//             url: url,
-//             role_id: role_id,
-//             id: id,
-//         };
-//     } else {
-//         var arr_data = [];
-//         $(".menu-item-settings").each(function (k, v) {
-//             var id = $(this).find(".edit-menu-item-id").val();
-//             var label = $(this).find(".edit-menu-item-title").val();
-//             var clases = $(this).find(".edit-menu-item-classes").val();
-//             var url = $(this).find(".edit-menu-item-url").val();
-//             var role = $(this).find(".edit-menu-item-role").val();
-//             arr_data.push({
-//                 id: id,
-//                 label: label,
-//                 class: clases,
-//                 link: url,
-//                 role_id: role,
-//             });
-//         });
-
-//         var data = { arraydata: arr_data };
-//     }
-//     $.ajax({
-//         data: data,
-//         url: updateitemr,
-//         type: "POST",
-//         beforeSend: function (xhr) {
-//             if (id) {
-//                 $("#spincustomu2").show();
-//             }
-//         },
-//         success: function (response) {},
-//         complete: function () {
-//             if (id) {
-//                 $("#spincustomu2").hide();
-//             }
-//         },
-//     });
-// }
-
 // Cusome js
 $(".add_custommenu").on("click", function () {
     $(this)
@@ -124,6 +50,10 @@ $(".add_custommenu").on("click", function () {
                     .parent()
                     .find(".item-name-" + id)
                     .val();
+                slug = $(this)
+                    .parent()
+                    .find(".item-slug-" + id)
+                    .val();
                 linkmenu = $(this)
                     .parent()
                     .find(".item-url-" + id)
@@ -132,7 +62,8 @@ $(".add_custommenu").on("click", function () {
                     .parent()
                     .find(".item-type-" + id)
                     .val();
-                addcustommenu(id, typemenu, labelmenu, linkmenu);
+
+                addDataMenu(id, typemenu, labelmenu, linkmenu, slug);
             }
         });
 });
@@ -141,6 +72,7 @@ $(".addcustommenu").on("click", function () {
     $("#spincustomu").show();
 
     var labelmenu = $(this).parent().parent().find("#custom-menu-item-name").val(),
+        slugmenu = $(this).parent().parent().find("#custom-menu-item-slug").val(),
         linkmenu = $(this).parent().parent().find("#custom-menu-item-url").val(),
         targetmenu = $(this).parent().parent().find("#custom-menu-item-target").val(),
         rolemenu = $(this).parent().parent().find("#custom-menu-item-role").val(),
@@ -151,6 +83,7 @@ $(".addcustommenu").on("click", function () {
             // page_id: 0,
             // category_id: 0,
             labelmenu: labelmenu,
+            slugmenu: slugmenu,
             linkmenu: linkmenu,
             targetmenu: targetmenu,
             relmenu: relmenu,
@@ -171,7 +104,7 @@ $(".addcustommenu").on("click", function () {
     });
 });
 
-function addcustommenu(id = 0, type = "page", labelmenu = "", linkmenu = "", targetmenu = "", rolemenu = "", relmenu = "") {
+function addDataMenu(id = 0, type = "page", labelmenu = "", linkmenu = "", slug = "", targetmenu = "", rolemenu = "", relmenu = "") {
     $("#spincustomu").show();
     var idmenu = $("#idmenu").val();
 
@@ -190,16 +123,16 @@ function addcustommenu(id = 0, type = "page", labelmenu = "", linkmenu = "", tar
             // category_id: category_id,
             labelmenu: labelmenu,
             linkmenu: linkmenu,
+            slug: slug,
             targetmenu: targetmenu,
             relmenu: relmenu,
             rolemenu: rolemenu,
             idmenu: idmenu,
         },
 
-        url: addcustommenur,
+        url: addCustomMenu, // MenuWPController@addcustommenu
         type: "POST",
         success: function (response) {
-            //console.log(response);
             location.reload();
             //return false;
         },
@@ -213,10 +146,11 @@ function updateitem(id = 0) {
     if (id) {
         var label = $("#idlabelmenu_" + id).val();
         var icon = $("#icon-" + id).val();
-        var image = $("#image-" + id).val();
-        var clases = $("#clases_menu_" + id).val();
+        var image = $("#image_menu_" + id).val();
+        var classes = $("#clases_menu_" + id).val();
         var target = $("#target_menu_" + id).val();
         var rel = $("#rel_menu_" + id).val();
+        var slug = $("#slug_menu_" + id).val();
         var url = $("#url_menu_" + id).val();
         var role_id = 0;
         if ($("#role_menu_" + id).length) {
@@ -227,7 +161,8 @@ function updateitem(id = 0) {
             label: label,
             icon: icon,
             image: image,
-            clases: clases,
+            classes: classes,
+            slug: slug,
             url: url,
             target: target,
             rel: rel,
@@ -241,7 +176,8 @@ function updateitem(id = 0) {
             var label = $(this).find(".edit-menu-item-title").val();
             var icon = $(this).find(".icon-data").val();
             var image = $(this).find(".image-data").val();
-            var clases = $(this).find(".edit-menu-item-classes").val();
+            var classes = $(this).find(".edit-menu-item-classes").val();
+            var slug = $(this).find(".edit-menu-item-slug").val();
             var url = $(this).find(".edit-menu-item-url").val();
             var role = $(this).find(".edit-menu-item-role").val();
             var target = $(this).find(".edit-menu-item-target").val();
@@ -252,7 +188,8 @@ function updateitem(id = 0) {
                 label: label,
                 icon: icon,
                 image: image,
-                class: clases,
+                class: classes,
+                slug: slug,
                 link: url,
                 target: target,
                 rel: rel,
@@ -268,7 +205,7 @@ function updateitem(id = 0) {
 
     $.ajax({
         data: data,
-        url: updateitemr,
+        url: updateMenuItem,
         type: "POST",
         beforeSend: function (xhr) {
             if (id) {
@@ -400,7 +337,3 @@ function insertParam(key, value) {
     //this will reload the page, it's likely better to store this until finished
     document.location.search = kvp.join("&");
 }
-
-// wpNavMenu.registerChange = function () {
-//     getmenus();
-// };

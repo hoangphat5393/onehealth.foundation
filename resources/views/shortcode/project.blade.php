@@ -4,7 +4,7 @@
     use Carbon\Carbon;
     Carbon::setLocale('vi');
 
-    $project = \App\Models\Campaign::limit($items)->get();
+    $project = \App\Models\Campaign::paginate($items);
 
 @endphp
 @empty(!$project)
@@ -19,24 +19,38 @@
                     <span>{{ $cdt->format('d-m-Y') }}</span>
                 </div> --}}
 
-                <div class="col-lg-12">
-                    <div class="row project g-0 mb-5">
-                        <div class="col-lg-12">
-                            <img src="{{ get_image($item->image) }}" class="img-fluid project__img" alt="{{ $item->name }}">
+                <div class="project__item mb-3">
+                    <div class="row wrapper">
+                        <div class="col-lg-4 mb-3 mb-lg-0">
+                            <div class="voucher-item__value">
+                                <img src="{{ get_image($item->image) }}" class="img-fluid w-100 project__img" alt="{{ $item->name }}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-10">
-                            <h3>
-                                <a href="{{ route('campaign.detail', [$item->slug, $item->id]) }}" class="custom">{{ $item->name }}</a>
-                            </h3>
-                            <div>
+                        <div class="col-lg-8 d-flex flex-column">
+                            <div class="project-item__desc">
+                                <h4 class="fw-bold">{{ $item->name }}</h4>
                                 {!! htmlspecialchars_decode($item->description) !!}
+                            </div>
+                            <div class="project__item__button">
+                                <a class="btn btn-custom me-3" href="{{ route('campaign.detail', [$item->slug, $item->id]) }}" role="button">
+                                    Đọc thêm
+                                </a>
+
+                                <a class="btn btn-custom" href="{{ route('donate') }}">
+                                    Tài trợ dự án này
+                                </a>
+                                {{-- <button type="button" class="btn btn-custom">
+                                    Tài trợ dự án này
+                                </button> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
+
+            <div class="nav-pagination mt-4 mb-5">
+                {{ $project->links($templateFile . '.pagination.custom') }}
+            </div>
         </div>
     </div>
 @endempty

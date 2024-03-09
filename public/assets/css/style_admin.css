@@ -214,7 +214,7 @@ button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-    -webkit-appearance: button;
+    /* -webkit-appearance: button; */
     cursor: pointer;
 }
 button[disabled],
@@ -344,24 +344,9 @@ body.fixed {
     float: right;
 }
 
-/* h1 {
-    font-size: 45px;
-    margin-top: 0px;
+.w-fit-content {
+    width: fit-content;
 }
-h2 {
-    font-size: 30px;
-}
-h3 {
-    font-size: 25px;
-    line-height: 28px;
-}
-h4 {
-    font-size: 19px;
-}
-h5 {
-    font-size: 17px;
-    line-height: 24px;
-} */
 
 .p-0 {
     padding-left: 0;
@@ -1293,3 +1278,54 @@ input#csv_slishow_mobile {
     cursor: pointer;
 }
 /*gallery*/
+
+.form-group-image-box {
+    display: flex;
+}
+
+.image-box-container {
+    position: relative;
+    font-size: 0;
+    background: #f1f1f1;
+    width: 100px;
+}
+
+.image-box-container img {
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.custom-image-box {
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    z-index: 400;
+}
+
+.custom-image-box img {
+    height: 100%;
+    left: 50%;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 1;
+}
+
+.custom-image-box .image-box-actions {
+    text-indent: -9999999px;
+}
+
+.custom-image-box .ckfinder-popup,
+.custom-image-box .btn-images {
+    display: block;
+    font-size: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 310;
+}

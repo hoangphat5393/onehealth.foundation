@@ -226,11 +226,11 @@ Route::namespace('Admin')->group(function () {
         });
 
         // Menu
-        Route::post('addcustommenu', 'MenuController@addcustommenu')->name('haddcustommenu');
-        Route::post('deleteitemmenu', 'MenuController@deleteitemmenu')->name('hdeleteitemmenu');
-        Route::post('deletemenug', 'MenuController@deletemenug')->name('hdeletemenug');
-        Route::post('createnewmenu', 'MenuController@createnewmenu')->name('hcreatenewmenu');
-        Route::post('generatemenucontrol', 'MenuController@generatemenucontrol')->name('hgeneratemenucontrol');
-        Route::post('updateitem', 'MenuController@updateitem')->name('hupdateitem');
+        Route::post('addcustommenu', 'MenuWPController@addcustommenu')->name('haddcustommenu');
+        Route::post('deleteitemmenu', 'MenuWPController@deleteitemmenu')->name('hdeleteitemmenu');
+        Route::post('deletemenug', 'MenuWPController@deletemenug')->name('hdeletemenug');
+        Route::post('createnewmenu', 'MenuWPController@createnewmenu')->name('hcreatenewmenu');
+        Route::post('generatemenucontrol', 'MenuWPController@generatemenucontrol')->name('hgeneratemenucontrol');
+        Route::post('updateMenuItem', 'MenuWPController@updateitem')->name('updateMenuItem');
     });
 });

@@ -66,6 +66,7 @@
                                                 </div>
                                             </th>
                                             <th class="text-center" style="width:100px">Ưu tiên</th>
+                                            <th class="text-center">Slug</th>
                                             <th class="text-center">Tên</th>
                                             {{-- <th class="text-center" style="width:150px">Chuyên mục</th> --}}
                                             <th class="text-center">Ảnh đại diện</th>
@@ -83,6 +84,9 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <input type="text" id="sort" class="form-control quick_change_value text-center" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}" value="{{ $item->sort }}" reload-on-change>
+                                                </td>
+                                                <td>
+                                                    <div class="w-fit-content mx-auto">{{ $item->slug }}</div>
                                                 </td>
                                                 <td>
                                                     <a class="row-title fw-bold" href="{{ route('admin.campaignEdit', $item->id) }}">

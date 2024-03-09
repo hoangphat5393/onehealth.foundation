@@ -11,12 +11,15 @@
                 <input type="checkbox" class="category_item_input" value="{{ $category->id }}" id="page_{{ $category->id }}">
                 {{ $space ?? '' }} {{ $category->name }}
                 <input type="hidden" class="item-name-{{ $category->id }}" value="{{ $category->name }}">
-                @if ($type == 'post')
-                    <input type="hidden" class="item-url-{{ $category->id }}" value="{{ route('news.category', $category->slug) }}">
-                @else
-                    <input type="hidden" class="item-url-{{ $category->id }}" value="{{ $category->slug . '.html' }}">
-                @endif
-                {{-- <input type="hidden" class="item-id-{{ $category->id }}" value="{{ $category->id }}"> --}}
+                <input type="hidden" class="item-slug-{{ $category->id }}" value="{{ $category->slug }}">
+                @switch($type)
+                    @case('post')
+                        <input type="hidden" class="item-url-{{ $category->id }}" value="{{ route('news.category', $category->slug) }}">
+                    @break
+
+                    @default
+                        <input type="hidden" class="item-url-{{ $category->id }}" value="{{ route('page', $category->slug) }}">
+                @endswitch
                 <input type="hidden" class="item-type-{{ $category->id }}" value="category">
             </label>
         </div>

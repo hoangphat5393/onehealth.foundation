@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="achievement mx-lg-auto fit-content">
+                <div class="achievement mx-lg-auto w-fit-content">
                     <div class="number">
                         <div class="counter">
                             2000+
@@ -20,7 +20,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="achievement mx-lg-auto fit-content">
+                <div class="achievement mx-lg-auto w-fit-content">
                     <div class="number">
                         <div class="counter">
                             2000+
@@ -38,7 +38,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="achievement mx-lg-auto fit-content">
+                <div class="achievement mx-lg-auto w-fit-content">
                     <div class="number">
                         <div class="counter">
                             700+
@@ -56,7 +56,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="achievement mx-lg-auto fit-content">
+                <div class="achievement mx-lg-auto w-fit-content">
                     <div class="number">
                         <div class="counter">
                             5000
@@ -74,7 +74,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="achievement mx-lg-auto fit-content">
+                <div class="achievement mx-lg-auto w-fit-content">
                     <div class="number">
                         <div class="counter">
                             80+

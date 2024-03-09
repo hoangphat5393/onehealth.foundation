@@ -146,17 +146,17 @@ class AjaxController extends Controller
                 $loadDelete = Admin::whereIn('id', $arr)->delete();
 
                 //delete products
-                $productDelete = Theme::all();
-                if ($loadDelete) {
-                    foreach ($productDelete as $value) {
-                        foreach ($arr as $value_id) {
-                            if ($value->admin_id == $value_id) {
-                                $value->delete();
-                                break;
-                            }
-                        }
-                    } //foreach
-                }
+                // $productDelete = Theme::all();
+                // if ($loadDelete) {
+                //     foreach ($productDelete as $value) {
+                //         foreach ($arr as $value_id) {
+                //             if ($value->admin_id == $value_id) {
+                //                 $value->delete();
+                //                 break;
+                //             }
+                //         }
+                //     } //foreach
+                // }
                 return 1;
                 break;
             case 'order':
@@ -478,7 +478,7 @@ class AjaxController extends Controller
                 'end_event' => $end_event,
                 'updated' => date('Y-m-d H:i:s')
             );
-            $respons = Theme::where("id", "=", $id)->update($data);
+            // $respons = Theme::where("id", "=", $id)->update($data);
             echo 'OK';
         else :
             echo 'Lỗi';
@@ -492,7 +492,7 @@ class AjaxController extends Controller
             $status = $request['check'];
             $postID = (int)$request['sid'];
             if ($postID > 0) :
-                $respons1 = Theme::where("id", "=", $postID)->update(array('item_new' => $status));
+                // $respons1 = Theme::where("id", "=", $postID)->update(array('item_new' => $status));
                 echo "OK";
             else :
                 echo "Lỗi";
@@ -506,7 +506,7 @@ class AjaxController extends Controller
             $status = $request['check'];
             $postID = (int)$request['sid'];
             if ($postID > 0) :
-                $respons1 = Theme::where("id", "=", $postID)->update(array('flash_sale' => $status));
+                // $respons1 = Theme::where("id", "=", $postID)->update(array('flash_sale' => $status));
                 echo "OK";
             else :
                 echo "Lỗi";
@@ -520,7 +520,7 @@ class AjaxController extends Controller
             $status = $request['check'];
             $postID = (int)$request['sid'];
             if ($postID > 0) :
-                $respons1 = Theme::where("id", "=", $postID)->update(array('sale_top_week' => $status));
+                // $respons1 = Theme::where("id", "=", $postID)->update(array('sale_top_week' => $status));
                 echo "OK";
             else :
                 echo "Lỗi";
@@ -534,7 +534,7 @@ class AjaxController extends Controller
             $status = $request['check'];
             $postID = (int)$request['sid'];
             if ($postID > 0) :
-                $respons1 = Theme::where("id", "=", $postID)->update(array('propose' => $status));
+                // $respons1 = Theme::where("id", "=", $postID)->update(array('propose' => $status));
                 echo "OK";
             else :
                 echo "Lỗi";
@@ -548,7 +548,7 @@ class AjaxController extends Controller
             $status = $request['check'];
             $postID = (int)$request['sid'];
             if ($postID > 0) :
-                $respons1 = Theme::where("id", "=", $postID)->update(array('store_status' => $status));
+                // $respons1 = Theme::where("id", "=", $postID)->update(array('store_status' => $status));
                 echo "OK";
             else :
                 echo "Lỗi";
