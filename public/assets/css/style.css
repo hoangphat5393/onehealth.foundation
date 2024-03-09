@@ -139,6 +139,17 @@ header .nav-link {
 .mainSlider {
   position: relative;
 }
+.mainSlider .swiper-button-prev {
+  left: 40px;
+}
+.mainSlider .swiper-button-next {
+  right: 40px;
+}
+.mainSlider .swiper-button-next:after,
+.mainSlider .swiper-button-prev:after {
+  color: #e5eeee;
+  font-weight: 700;
+}
 
 .menu-wrap {
   padding: 0;

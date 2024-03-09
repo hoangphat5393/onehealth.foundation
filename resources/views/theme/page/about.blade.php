@@ -12,12 +12,10 @@
     <main id="about">
 
         <section class="block10">
-
             <div class="mainBanner">
                 <div class="container main-menu">
                     @include('theme.includes.menu')
                 </div>
-
                 <div class="container-fluid px-0">
                     <div class="row g-0">
                         <div class="col-lg-12 banner-left">

@@ -4,66 +4,67 @@
     @include($templatePath . '.layouts.seo', $seo ?? [])
 @endsection
 
-@section('body-class', 'page-template-default page page-id-1940 wp-custom-logo theme-amaya woocommerce-js nomobile product-title-use-headline-font content-light')
+{{-- @section('body-class', 'page-template-default page page-id-1940') --}}
 
-{{-- @php
-    dd($page);
-@endphp --}}
 @section('content')
-    <main>
+    <main id="contact">
+
+        <h1 class=" text-center">Liên hệ</h1>
+
+        <section class="block10">
+            <div class="mainBanner">
+                <div class="container main-menu">
+                    @include('theme.includes.menu')
+                </div>
+                <div class="container-fluid px-0">
+                    <div class="row g-0">
+                        <div class="col-lg-12 banner-left">
+                            <img class="img-fluid object-fit-cover w-100" src="{{ get_image($page->image) }}" alt="{{ $page->name }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div id="content" class="site-content no-sidebar regular has-">
             <div class="container">
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main  ">
-                        <article id="post-1940" class="post-1940 page type-page status-publish hentry">
-                            <h1 class=" text-center">Liên hệ</h1>
+                        <p class="has-text-align-center">
+                            Cảm ơn sự quan tâm của bạn dành cho tổ chức của chúng tôi. Nếu như có bất cứ thắc mắc nào về các hoạt động cũng như thông tin về Quỹ, hãy gửi tin nhắn cho chúng tôi. Chúng tôi luôn chào đón và hồi đáp cho sự thắc mắc của bạn.
+                        </p>
+                        <img src="" alt="">
 
-                            <p class="has-text-align-center">
-                                Liên hệ để nhận tư vấn
-                            </p>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <form id="contact_form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label class="col-form-label " for="cf-name">Họ tên<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="Họ tên">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label" for="cf-email">@lang('Email')<span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="cf-email" name="contact[email]" placeholder="@lang('Email')">
+                                    </div>
 
-                            <div class="row justify-content-center">
-                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="col-form-label" for="cf-subject">@lang('Phone')<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="cf-subject" name="contact[phone]" placeholder="@lang('Phone')">
+                                    </div>
 
-                                    <form id="contact_form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label class="col-form-label " for="cf-name">Họ tên<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="Họ tên">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="col-form-label" for="cf-email">@lang('Email')<span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="cf-email" name="contact[email]" placeholder="@lang('Email')">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="col-form-label" for="cf-subject">@lang('Phone')<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="cf-subject" name="contact[phone]" placeholder="@lang('Phone')">
-                                        </div>
-                                        {{-- <div class="mb-3">
-                                            <label class="col-form-label" for="cf-subject">@lang('Subject')<span class="text-danger">*</span></label>
-                                            <select class="form-control" id="businesstype" aria-required="true" aria-invalid="false" name="your-business-type">
-                                                <option value="Cafe">Cafe</option>
-                                                <option value="Restaurant">Restaurant</option>
-                                                <option value="Office">Office</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                        </div> --}}
-                                        <div class="mb-3">
-                                            <label class="col-form-label" for="cf-content">@lang('Message')<span class="text-danger">*</span></label>
-                                            <textarea name="contact[content]" class="form-control bg-transparent" id="cf-content" rows="3" placeholder="@lang('Message')"></textarea>
-                                        </div>
-                                        <div class="submit-btn text-end">
-                                            <button type="submit" class="btn btn-submit-contact">Gửi</button>
-                                            {{-- <input class="" type="submit" value="Send"> --}}
-                                            {{-- <span class="wpcf7-spinner"></span> --}}
-                                        </div>
-                                    </form>
-                                </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label" for="cf-content">@lang('Message')<span class="text-danger">*</span></label>
+                                        <textarea name="contact[content]" class="form-control bg-transparent" id="cf-content" rows="3" placeholder="@lang('Message')"></textarea>
+                                    </div>
+                                    <div class="submit-btn text-end">
+                                        <button type="submit" class="btn btn-submit-contact">Gửi</button>
+                                        {{-- <input class="" type="submit" value="Send"> --}}
+                                        {{-- <span class="wpcf7-spinner"></span> --}}
+                                    </div>
+                                </form>
                             </div>
-
-
-                        </article>
+                        </div>
                     </main>
                 </div>
             </div>

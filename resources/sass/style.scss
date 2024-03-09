@@ -215,6 +215,18 @@ header {
 
 .mainSlider {
     position: relative;
+
+    .swiper-button-prev {
+        left: 40px;
+    }
+    .swiper-button-next {
+        right: 40px;
+    }
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        color: #e5eeee;
+        font-weight: 700;
+    }
 }
 
 .menu-wrap {
