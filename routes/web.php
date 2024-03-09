@@ -190,8 +190,8 @@ Route::localized(function () {
         //     ->name('campaign.category');
 
         // Contact
-        Route::post('/get-contact-form/{type}', array('as' => 'contact.get', 'uses' => 'ContactController@getContact'));
-        Route::get('contact', 'ContactController@index')->name('contact');
+        // Route::post('/get-contact-form/{type}', array('as' => 'contact.get', 'uses' => 'ContactController@getContact'));
+        // Route::get('contact', 'ContactController@index')->name('contact');
         Route::post('contact-confirmation', 'ContactController@confirmation')->name('contact.confirmation');
         Route::post('contact', 'ContactController@submit')->name('contact.submit');
         Route::get('contact-completed', 'ContactController@completed')->name('contact_completed');

@@ -60,7 +60,6 @@ header .nav-link {
 }
 
 .btn-custom {
-  border-radius: 0;
   background: #15a4a4;
   padding: 5px 20px 5px 20px;
   color: #fff;
@@ -353,6 +352,24 @@ main .block13 .achievement .desc {
   padding-right: 10px;
   font-weight: 400;
   color: #ff8114;
+}
+main .block14 .address_info {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: -50px;
+}
+main .block14 .address_info::before {
+  content: "";
+  width: 5px;
+  height: 100%;
+  background-color: #00b0ae;
+  float: left;
+  margin-right: 10px;
+}
+main .block14 .address_info p {
+  line-height: 2;
+}
+main .block15 .contact_content {
+  background-color: #ffecdd;
 }
 
 a.custom {

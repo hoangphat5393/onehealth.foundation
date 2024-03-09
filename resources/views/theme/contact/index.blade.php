@@ -9,7 +9,7 @@
 @section('content')
     <main id="contact">
 
-        <h1 class=" text-center">Liên hệ</h1>
+        <h1 class="text-center">Liên hệ</h1>
 
         <section class="block10">
             <div class="mainBanner">
@@ -29,11 +29,10 @@
         <div id="content" class="site-content no-sidebar regular has-">
             <div class="container">
                 <div id="primary" class="content-area">
-                    <main id="main" class="site-main  ">
+                    <main id="main" class="site-main">
                         <p class="has-text-align-center">
                             Cảm ơn sự quan tâm của bạn dành cho tổ chức của chúng tôi. Nếu như có bất cứ thắc mắc nào về các hoạt động cũng như thông tin về Quỹ, hãy gửi tin nhắn cho chúng tôi. Chúng tôi luôn chào đón và hồi đáp cho sự thắc mắc của bạn.
                         </p>
-                        <img src="" alt="">
 
                         <div class="row justify-content-center">
                             <div class="col-lg-6">
