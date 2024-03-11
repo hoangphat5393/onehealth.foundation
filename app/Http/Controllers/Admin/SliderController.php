@@ -27,18 +27,18 @@ class SliderController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function listSlider()
+    public function index()
     {
         $data_slider = Slider::where('slider_id', 0)->orderby('sort', 'asc')->paginate(20);
         return view('admin.slider-home.index')->with(['data' => $data_slider]);
     }
 
-    public function createSlider()
+    public function create()
     {
         return view('admin.slider-home.single');
     }
 
-    public function sliderDetail($id)
+    public function edit($id)
     {
         $data_slider = Slider::findorfail($id);
         if ($data_slider) {
@@ -137,10 +137,10 @@ class SliderController extends Controller
                 'status' => $rq->status,
                 'updated_at' => date('Y-m-d h:i:s')
             );
-            $respons = Slider::where("id", "=", $sid)->update($data);
+            $respons = Slider::where("id", $sid)->update($data);
             Cache::forget('slider_home');
             $msg = "Silder has been Updated";
-            $url = route('admin.sliderDetail', array($sid));
+            $url = route('admin.sliderEdit', array($sid));
             Helpers::msg_move_page($msg, $url);
         }
     }
@@ -184,7 +184,6 @@ class SliderController extends Controller
                 $data['sort'] = 0;
         }
 
-
         $slider = Slider::updateOrCreate(
             ['id' => $id],
             $data
@@ -215,7 +214,6 @@ class SliderController extends Controller
     public function updateSort()
     {
         $sliders = request()->slider;
-
         foreach ($sliders as $key => $item) {
             Slider::find($item)->update(['sort' => $key]);
         }

@@ -23,7 +23,6 @@
         $date_update = date('Y-m-d h:i:s');
         $sid = 0;
     }
-
 ?>
 
 
@@ -78,20 +77,14 @@
                                 <?php if($sid): ?>
                                     <p>Shortcode: <span style="background: #f1f1f1; display: inline-block; padding: 3px">[slider id="<?php echo e($sid); ?>" items="4"]</span></p>
                                 <?php endif; ?>
-                                <?php echo app('translator')->get('Home'); ?>;
-                                <?php
-                                    $lc = app()->getLocale();
-
-                                ?>
-                                <?php echo e($lc); ?>
-
-                                <!-- show error form -->
+                                
+                                
                                 <div class="errorTxt"></div>
                                 <div class="form-group">
                                     <label for="post_title">Tiêu đề</label>
                                     <input type="text" class="form-control title_slugify" id="post_title" name="post_title" placeholder="Tiêu đề" value="<?php echo e($post_title); ?>">
                                 </div>
-                                <div class="form-group ">
+                                <div class="form-group d-none">
                                     <label>Upload Images</label>
                                     <div class="row">
                                         <div class="col-9">
@@ -107,22 +100,22 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                                <div class="form-group" style="display: none;">
+                                <div class="form-group d-none">
                                     <label>Upload Images Mobile</label>
                                     <div class="clear">
                                         <div class="file_csv_up" id="text_input_file_mobile">
-                                            <input type="text" name="slishow_upload_mobile" class="form-control" id="csv_upload_slishow_mobile" value="<?php echo $src_mobile; ?>" autocomplete="off" />
+                                            <input type="text" name="slishow_upload_mobile" class="form-control" id="csv_upload_slishow_mobile" value="<?php echo e($src_mobile); ?>" autocomplete="off" />
                                         </div>
                                         <div id="csv_upload_mobile" class="csv_tbl_submit_body">
                                             <input type="file" id="csv_slishow_mobile" name="csv_slishow_mobile" onchange="loadFileSlishow_mobile(event)" />Choose File
                                         </div>
                                     </div>
                                     <div class="clear mt-1">
-                                        <img id="output_slishow_mobile" src="<?php echo $src_mobile; ?>" />
+                                        <img id="output_slishow_mobile" src="<?php echo e($src_mobile); ?>" />
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group d-none">
                                     <label for="target">Target</label>
                                     <select name="target" id="target" class="selectbox form-control">
                                         <option value="_top" <?php if($target == '_top'): ?> selected <?php endif; ?>>_top</option>
@@ -130,19 +123,19 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <h4 class="border-bottom mt-4 mb-2">Slider item</h4>
+                                    <h4 class="border-bottom mt-4 mb-2">Danh sách ảnh</h4>
                                     <?php if($sid == 0): ?>
-                                        <p style="color: #f00;">Vui lòng bấm cập nhật để thêm Slider</p>
+                                        <p style="color: #f00;">Vui lòng bấm cập nhật để thêm ảnh</p>
                                     <?php else: ?>
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-info edit-slider" data="0" data-parent="<?php echo e($sid); ?>">Thêm slider con</button>
+                                            <button type="button" class="btn btn-info edit-slider" data="0" data-parent="<?php echo e($sid); ?>">Thêm ảnh</button>
                                         </div>
                                         <div class="col-lg-12 slider-items mt-3">
-                                            <div class="form-group row border py-2">
-                                                <div class="col-md-3">Hình ảnh</div>
-                                                <div class="col-md-3">Tên</div>
-                                                <div class="col-md-3">Link</div>
-                                                <div class="col-md-3">Action</div>
+                                            <div class="row border py-2 mb-4">
+                                                <div class="col-lg-3 text-center">Hình ảnh</div>
+                                                <div class="col-lg-3">Tên</div>
+                                                <div class="col-lg-3">Link</div>
+                                                <div class="col-lg-3 text-center">Action</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 slider-list">

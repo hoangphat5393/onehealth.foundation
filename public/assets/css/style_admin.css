@@ -101,15 +101,11 @@ q:before,
 q:after {
     content: "";
 }
-blockquote,
+/* blockquote,
 a img {
     border: none;
-}
-img {
-    max-width: 100%;
-    height: auto;
-}
-article,
+} */
+/* article,
 aside,
 details,
 figcaption,
@@ -123,7 +119,7 @@ section,
 main,
 time {
     display: block;
-}
+} */
 
 audio,
 canvas,
@@ -717,11 +713,7 @@ input.upload_gallery_variable_select {
 .icon_change_postion.image_view.image_show_demo {
     width: 10%;
 }
-.icon_change_postion {
-    width: 4%;
-    float: left;
-    display: block;
-}
+
 .group_item_images .inside {
     margin-bottom: 5px;
 }

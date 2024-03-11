@@ -30,15 +30,14 @@ class StorePriceConfig extends FormRequest
             'to' => ['nullable', 'integer'],
             'slug' => ['required', Rule::unique('price_configs', 'slug'), 'string'],
             'status' => ['required', 'boolean'],
-
         ];
     }
 
     /**
-    * Modify input data
-    *
-    * @return array
-    */
+     * Modify input data
+     *
+     * @return array
+     */
     public function getSanitized(): array
     {
         $sanitized = $this->validated();

@@ -23,6 +23,7 @@
         $date_update = date('Y-m-d h:i:s');
         $sid = 0;
     }
+
 @endphp
 
 
@@ -77,16 +78,19 @@
                                 @if ($sid)
                                     <p>Shortcode: <span style="background: #f1f1f1; display: inline-block; padding: 3px">[slider id="{{ $sid }}" items="4"]</span></p>
                                 @endif
-                                {{-- @php
+                                @lang('Home');
+                                @php
                                     $lc = app()->getLocale();
-                                @endphp --}}
-                                {{-- show error form --}}
+
+                                @endphp
+                                {{ $lc }}
+                                <!-- show error form -->
                                 <div class="errorTxt"></div>
                                 <div class="form-group">
                                     <label for="post_title">Tiêu đề</label>
                                     <input type="text" class="form-control title_slugify" id="post_title" name="post_title" placeholder="Tiêu đề" value="{{ $post_title }}">
                                 </div>
-                                <div class="form-group d-none">
+                                <div class="form-group ">
                                     <label>Upload Images</label>
                                     <div class="row">
                                         <div class="col-9">
@@ -102,22 +106,22 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group d-none">
+                                <div class="form-group" style="display: none;">
                                     <label>Upload Images Mobile</label>
                                     <div class="clear">
                                         <div class="file_csv_up" id="text_input_file_mobile">
-                                            <input type="text" name="slishow_upload_mobile" class="form-control" id="csv_upload_slishow_mobile" value="{{ $src_mobile }}" autocomplete="off" />
+                                            <input type="text" name="slishow_upload_mobile" class="form-control" id="csv_upload_slishow_mobile" value="<?php echo $src_mobile; ?>" autocomplete="off" />
                                         </div>
                                         <div id="csv_upload_mobile" class="csv_tbl_submit_body">
                                             <input type="file" id="csv_slishow_mobile" name="csv_slishow_mobile" onchange="loadFileSlishow_mobile(event)" />Choose File
                                         </div>
                                     </div>
                                     <div class="clear mt-1">
-                                        <img id="output_slishow_mobile" src="{{ $src_mobile }}" />
+                                        <img id="output_slishow_mobile" src="<?php echo $src_mobile; ?>" />
                                     </div>
                                 </div>
 
-                                <div class="form-group d-none">
+                                <div class="form-group">
                                     <label for="target">Target</label>
                                     <select name="target" id="target" class="selectbox form-control">
                                         <option value="_top" @if ($target == '_top') selected @endif>_top</option>
@@ -125,19 +129,19 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <h4 class="border-bottom mt-4 mb-2">Danh sách ảnh</h4>
+                                    <h4 class="border-bottom mt-4 mb-2">Slider item</h4>
                                     @if ($sid == 0)
-                                        <p style="color: #f00;">Vui lòng bấm cập nhật để thêm ảnh</p>
+                                        <p style="color: #f00;">Vui lòng bấm cập nhật để thêm Slider</p>
                                     @else
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-info edit-slider" data="0" data-parent="{{ $sid }}">Thêm ảnh</button>
+                                            <button type="button" class="btn btn-info edit-slider" data="0" data-parent="{{ $sid }}">Thêm slider con</button>
                                         </div>
                                         <div class="col-lg-12 slider-items mt-3">
-                                            <div class="row border py-2 mb-4">
-                                                <div class="col-lg-3 text-center">Hình ảnh</div>
-                                                <div class="col-lg-3">Tên</div>
-                                                <div class="col-lg-3">Link</div>
-                                                <div class="col-lg-3 text-center">Action</div>
+                                            <div class="form-group row border py-2">
+                                                <div class="col-md-3">Hình ảnh</div>
+                                                <div class="col-md-3">Tên</div>
+                                                <div class="col-md-3">Link</div>
+                                                <div class="col-md-3">Action</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 slider-list">

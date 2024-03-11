@@ -45,7 +45,7 @@
                         <div class="card-body">
 
                             <div class="clear">
-                                <?php echo $__env->make('admin.partials.button_add_delete', ['type' => 'slider', 'route' => route('admin.createSlider')], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                <?php echo $__env->make('admin.partials.button_add_delete', ['type' => 'slider', 'route' => route('admin.sliderCreate')], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <div class="fr">
                                     <form method="GET" action="" id="frm-filter-post" class="form-inline">
                                         <input type="text" class="form-control" name="search_name" id="search_name" placeholder="Từ khoá" value="<?php echo e(request('search_name')); ?>">
@@ -86,7 +86,7 @@
                                                     [slider id="<?php echo e($item->id); ?>" items="<?php echo e($item->children->count()); ?>"]
                                                 </td>
                                                 <td class="text-center">
-                                                    <a class="row-title fw-bold" href="<?php echo e(route('admin.sliderDetail', $item->id)); ?>">
+                                                    <a class="row-title fw-bold" href="<?php echo e(route('admin.sliderEdit', $item->id)); ?>">
                                                         <?php echo e($item->name); ?>
 
                                                     </a>

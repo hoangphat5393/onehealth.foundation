@@ -77,20 +77,6 @@ Route::namespace('Admin')->group(function () {
             Route::post('/discount-code/post', 'DiscountCodeController@postDiscountCodeDetail')->name('admin.postDiscountCodeDetail');
 
 
-            // Slider Home
-            Route::group(['prefix' => 'slider'], function () {
-                Route::get('create', 'SliderController@createSlider')->name('admin.createSlider');
-                Route::get('{id}', 'SliderController@sliderDetail')->name('admin.sliderDetail');
-                Route::post('post', 'SliderController@postSliderDetail')->name('admin.postSliderDetail');
-                Route::post('insert', 'SliderController@insert')->name('admin.slider.insert');
-                Route::post('edit', 'SliderController@editSlider')->name('admin.slider.insert');
-                Route::post('delete', 'SliderController@deleteSlider')->name('admin.slider.delete');
-
-                Route::post('sort', 'SliderController@updateSort')->name('admin.slider.sort');
-            });
-            Route::get('/list-slider', 'SliderController@listSlider')->name('admin.slider');
-
-
             // Xử lý users admin
             Route::get('/list-user-admin', 'AdminUserController@listUserAdmin')->name('admin.listUserAdmin');
             Route::get('/user-admin/{id}', 'AdminUserController@userAdminDetail')->name('admin.userAdminDetail');
@@ -106,17 +92,6 @@ Route::namespace('Admin')->group(function () {
             Route::get('/add-users', 'AdminController@addUsers')->name('admin.addUsers');
             Route::post('/add-users', 'AdminController@postAddUsers')->name('admin.postAddUsers');
             Route::get('/delete-user/{id}', 'AdminController@deleteUser')->name('admin.delUser');
-
-            // custom_field
-            Route::group(['prefix' => 'custom_field'], function () {
-                Route::get('/', 'CustomFieldController@index')->name('admin.custom_field.index');
-                Route::get('/create', 'CustomFieldController@create')->name('admin.custom_field.create');
-
-                Route::post('/create', 'CustomFieldController@postEdit')->name('admin.custom_field.create');
-                Route::get('/edit/{id}', 'CustomFieldController@edit')->name('admin.custom_field.edit');
-                Route::post('/edit/{id}', 'CustomFieldController@postEdit')->name('admin.custom_field.post');
-                Route::post('/delete', 'CustomFieldController@deleteList')->name('admin.custom_field.delete');
-            });
 
             // Brand
             Route::get('/list-brand', 'BrandController@index')->name('admin.brand');
@@ -139,6 +114,19 @@ Route::namespace('Admin')->group(function () {
             Route::get('/list-rating', 'AdminController@listRating')->name('admin.listRating');
             Route::get('/rating/{id}', 'AdminController@ratingDetail')->name('admin.ratingDetail');
             Route::post('rating', 'AdminController@postRating')->name('admin.postRating');
+
+
+            // Slider Home
+            Route::group(['prefix' => 'slider'], function () {
+                Route::get('create', 'SliderController@create')->name('admin.sliderCreate');
+                Route::get('{id}', 'SliderController@edit')->name('admin.sliderEdit');
+                Route::post('post', 'SliderController@postSliderDetail')->name('admin.postSliderDetail');
+                Route::post('insert', 'SliderController@insert')->name('admin.slider.insert');
+                Route::post('edit', 'SliderController@editSlider')->name('admin.slider.insert');
+                Route::post('delete', 'SliderController@deleteSlider')->name('admin.slider.delete');
+                Route::post('sort', 'SliderController@updateSort')->name('admin.slider.sort');
+            });
+            Route::get('slider', 'SliderController@index')->name('admin.slider');
         });
         // End checkAdminPermission
 
