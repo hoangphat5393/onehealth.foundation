@@ -9,9 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
-            {{-- <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll d-column" style="--bs-scroll-height: 100px;"> --}}
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll d-column">
-
                 @foreach ($headerMenu->items as $item)
                     @php $hasChild = $item->child()->exists(); @endphp
                     @if ($hasChild == 1)
@@ -85,7 +83,6 @@
                         </div>
                     </div>
                 </li> --}}
-
             </ul>
             <form class="d-flex" role="search" method="post" action="{{ route('search') }}">
                 <div class="input-group input-group-search">

@@ -3,16 +3,17 @@
 @endphp
 
 @empty(!$slider_main)
-    <!-- Slider main container -->
+
+    {{-- Slider main container --}}
     <div class="swiper mainSlider">
 
         <div class="container main-menu">
             @include('theme.includes.menu')
         </div>
 
-        <!-- Additional required wrapper -->
+        {{-- Additional required wrapper --}}
         <div class="swiper-wrapper">
-            <!-- Slides -->
+            {{-- Slides --}}
             @foreach ($slider_main as $item)
                 <div class="swiper-slide">
                     <img class="w-100 h-100" src="{{ get_image($item->image) }}" alt="{{ $item->name }}">
