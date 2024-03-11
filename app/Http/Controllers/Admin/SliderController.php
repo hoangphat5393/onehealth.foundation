@@ -66,43 +66,41 @@ class SliderController extends Controller
         $name_thumb_pc = "";
         $name_field_pc = "csv_slishow";
         $name_text_pc = "slishow_upload";
-        if ($rq->hasFile($name_field_pc)) :
+        if ($rq->hasFile($name_field_pc)) {
             $file = $rq->file($name_field_pc);
             $timestamp = $datetime_convert;
             $name = "slider-" . $timestamp . '-' . $file->getClientOriginalName();
             $name_thumb_pc = '/public/img/uploads/slider/' . $name;
             $file->move(base_path() . '/public/img/uploads/slider/', $name);
-        else :
-            if ($rq->input($name_text_pc) != "") :
+        } else {
+            if ($rq->input($name_text_pc) != "") {
                 $name_thumb_pc = $rq->input($name_text_pc);
-            else :
+            } else {
                 $name_thumb_pc = "";
-            endif;
-        endif;
+            }
+        }
         /*End pc upload*/
 
         /*Mobile up load*/
         $name_thumb_mobile = "";
         $name_field_mobile = "csv_slishow_mobile";
         $name_text_mobile = "slishow_upload_mobile";
-        if ($rq->hasFile($name_field_mobile)) :
+        if ($rq->hasFile($name_field_mobile)) {
             $file = $rq->file($name_field_mobile);
             $timestamp = $datetime_convert;
             $name = "slider-mobile-" . $timestamp . '-' . $file->getClientOriginalName();
             $name_thumb_mobile = '/public/img/uploads/slider/' . $name;
             $file->move(base_path() . '/public/img/uploads/slider/', $name);
-        else :
-            if ($rq->input($name_text_mobile) != "") :
+        } else {
+            if ($rq->input($name_text_mobile) != "") {
                 $name_thumb_mobile = $rq->input($name_text_mobile);
-            else :
+            } else {
                 $name_thumb_mobile = "";
-            endif;
-        endif;
+            }
+        }
         /*End Mobile upload*/
 
         $save = $rq->submit ?? 'apply';
-
-
 
         if ($sid == 0) {
             $data = array(

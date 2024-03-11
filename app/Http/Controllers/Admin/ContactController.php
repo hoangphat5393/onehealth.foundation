@@ -86,12 +86,6 @@ class ContactController extends Controller
         $data['content'] = $data['content'] ? htmlspecialchars($data['content']) : '';
         $data['seo_title'] = $data['seo_title'] ? $data['seo_title'] : $data['name'];
 
-        // $data['description'] = $request->description ? htmlspecialchars($request->description) : '';
-        // $data['content'] = $request->content ? htmlspecialchars($request->content) : '';
-
-        // $data['description_en'] = $request->description_en ? htmlspecialchars($request->description_en) : '';
-        // $data['content_en'] = $request->content_en ? htmlspecialchars($request->content_en) : '';
-
         //xử lý gallery
         $galleries = $request->gallery ?? '';
         if ($galleries != '') {
@@ -112,12 +106,8 @@ class ContactController extends Controller
             $insert_id = $respons->id;
             $post_id = $insert_id;
 
-            // // if sort = 0 => update sort
+            // if sort = 0 => update sort
             Contact::where("id", $post_id)->update(['sort' => $post_id]);
-
-            // $db = ShopProduct::find(1);
-            // $db->sort = $post_id;
-            // $db->save();
         }
 
         // SAVE CATEGORY

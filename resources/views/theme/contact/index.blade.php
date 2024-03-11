@@ -58,8 +58,6 @@
                                     </div>
                                     <div class="submit-btn text-end">
                                         <button type="submit" class="btn btn-submit-contact">Gửi</button>
-                                        {{-- <input class="" type="submit" value="Send"> --}}
-                                        {{-- <span class="wpcf7-spinner"></span> --}}
                                     </div>
                                 </form>
                             </div>

@@ -172,44 +172,51 @@
             <div class="container-fluid my-5">
                 <div class="row justify-content-center">
 
-                    <div class="col-lg-8 px-0">
+                    <div class="col-lg-8 px-0 mb-5">
 
                         <div class="contact_content p-5">
-                            <p>
-                                Hãy liên hệ cho chúng tôi nếu bạn có thắc mắc hoặc cần thêm thông tin chi tiết
-                            </p>
-                            <form id="contact_form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
-                                @csrf
-                                <div class="mb-3">
-                                    <label class="col-form-label " for="cf-name">Họ tên<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="Họ tên">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="col-form-label" for="cf-email">@lang('Email')<span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="cf-email" name="contact[email]" placeholder="@lang('Email')">
-                                </div>
 
-                                <div class="mb-3">
-                                    <label class="col-form-label" for="cf-subject">@lang('Phone')<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="cf-subject" name="contact[phone]" placeholder="@lang('Phone')">
-                                </div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <p>Hãy liên hệ cho chúng tôi nếu bạn có thắc mắc hoặc cần thêm thông tin chi tiết</p>
+                                    <form id="contact_form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label class="col-form-label " for="cf-name">Họ tên<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="Họ tên">
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row row-cols-1 row-cols-lg-2">
+                                                <div class="col">
+                                                    <label class="col-form-label" for="cf-email">@lang('Email')<span class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control" id="cf-email" name="contact[email]" placeholder="@lang('Email')">
+                                                </div>
 
-                                <div class="mb-3">
-                                    <label class="col-form-label" for="cf-content">@lang('Message')<span class="text-danger">*</span></label>
-                                    <textarea name="contact[content]" class="form-control bg-transparent" id="cf-content" rows="3" placeholder="@lang('Message')"></textarea>
+                                                <div class="col">
+                                                    <label class="col-form-label" for="cf-subject">@lang('Phone')<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="cf-subject" name="contact[phone]" placeholder="@lang('Phone')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="col-form-label" for="cf-content">@lang('Message')<span class="text-danger">*</span></label>
+                                            <textarea name="contact[content]" class="form-control" id="cf-content" rows="8" placeholder="@lang('Message')"></textarea>
+                                        </div>
+                                        <div class="submit-btn text-end">
+                                            <button type="submit" class="btn btn-custom">Gửi</button>
+                                            {{-- <input class="" type="submit" value="Send"> --}}
+                                            {{-- <span class="wpcf7-spinner"></span> --}}
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="submit-btn text-end">
-                                    <button type="submit" class="btn btn-custom">Gửi</button>
-                                    {{-- <input class="" type="submit" value="Send"> --}}
-                                    {{-- <span class="wpcf7-spinner"></span> --}}
-                                </div>
-                            </form>
-
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4 text-end">
+
+                    <div class="col-lg-4 text-end">
                         <p class="text-start fs-4 fw-bold">Hoặc bạn muốn đồng hành</p>
                         <p class="text-start mb-3">Chúng tôi đang có nhu cầu tuyển dụng, bạn có thể trở thành thành viên của Quỹ từ thiện One Health Foundation</p>
+
                         <button class="mb-3" href="#" style="background: #00b0ae;padding: 5px 25px;color: #fff; border: 0px;">
                             <a class="text-white" href="#">Khám phá nghề nghiệp</a>
                         </button>
