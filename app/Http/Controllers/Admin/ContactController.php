@@ -40,7 +40,6 @@ class ContactController extends Controller
                 $db->where('name', 'like', '%' . request('search_name') . '%');
             }
             $count_item = $db->count();
-            // $data_post = $db->get();
             $data_post = $db->orderByDesc('id')->paginate(20)->appends($appends);
         } else {
             $data_post = Contact::where('admin_id', '=', Auth::guard('admin')->user()->id)

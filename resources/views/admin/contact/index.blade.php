@@ -42,18 +42,6 @@
 
                                 <div class="fr">
                                     <form method="GET" action="" id="frm-filter-post" class="form-inline">
-                                        @php
-                                            $categories = App\Models\Category::select('id', 'name')
-                                                ->where('type', 'post')
-                                                ->orderByDesc('sort')
-                                                ->get();
-                                        @endphp
-                                        <select class="custom-select mr-2" name="category_id">
-                                            <option value="">Thể loại tin tức</option>
-                                            @foreach ($categories as $item)
-                                                <option value="{{ $item->id }}" {{ request('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
                                         <input type="text" class="form-control" name="search_name" id="search_name" placeholder="Từ khoá" value="{{ request('search_name') }}">
                                         <button type="submit" class="btn btn-primary ml-2">Tìm kiếm</button>
                                     </form>

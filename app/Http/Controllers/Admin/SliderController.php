@@ -100,6 +100,10 @@ class SliderController extends Controller
         endif;
         /*End Mobile upload*/
 
+        $save = $rq->submit ?? 'apply';
+
+
+
         if ($sid == 0) {
             $data = array(
                 'name' => $title_new,
@@ -118,11 +122,11 @@ class SliderController extends Controller
             $respons = Slider::create($data);
             $id_insert = $respons->id;
             Cache::forget('slider_home');
-            if ($id_insert > 0) :
+            if ($id_insert > 0) {
                 $msg = "Slider has been registered";
                 $url = route('admin.slider');
                 Helpers::msg_move_page($msg, $url);
-            endif;
+            }
         } else {
             $data = array(
                 'name' => $title_new,
@@ -143,6 +147,14 @@ class SliderController extends Controller
             $url = route('admin.sliderEdit', array($sid));
             Helpers::msg_move_page($msg, $url);
         }
+
+        // if ($save == 'apply') {
+        //     $msg = "Slider has been registered";
+        //     $url = route('admin.sliderEdit', array($id_insert));
+        //     Helpers::msg_move_page($msg, $url);
+        // } else {
+        //     return redirect(route('admin.slider'));
+        // }
     }
 
     public function editSlider(Request $request)

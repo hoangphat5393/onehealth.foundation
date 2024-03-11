@@ -53,7 +53,7 @@
 @endif
 
 <script>
-    jQuery(document).ready(function($) {
+    $(document).ready(function($) {
         $('.ckfinder-popup').each(function(index, el) {
             var id = $(this).attr('id'),
                 input = $(this).attr('data'),

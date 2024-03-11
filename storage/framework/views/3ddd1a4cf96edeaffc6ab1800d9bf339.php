@@ -1,8 +1,11 @@
 <?php $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="slider-item slider-<?php echo e($slider->id); ?> row mb-2 pb-2 border-bottom align-items-center">
         <input type="hidden" name="slider[]" value="<?php echo e($slider->id); ?>">
-        <div class="col-lg-3 ">
-            <i class="fa fa-sort"></i>&emsp;&emsp;<img src="<?php echo e(get_image($slider->image)); ?>" class="mx-auto" style="height: 85px;">
+        <div class="col-lg-3 d-flex align-items-center">
+            <i class="fa fa-sort"></i>&emsp;
+            <div>
+                <img src="<?php echo e(get_image($slider->image)); ?>" class="img-fluid d-block mx-auto" style="min-height: 85px">
+            </div>
         </div>
         <div class="col-lg-3">
             
@@ -11,7 +14,9 @@
         </div>
 
         <div class="col-lg-3">
-            
+            <?php echo e($slider->link_name); ?>
+
+            <br>
             <a href="<?php echo e($slider->link); ?>"><?php echo e($slider->link); ?></a>
         </div>
         <div class="col-md-3 d-flex justify-content-center">

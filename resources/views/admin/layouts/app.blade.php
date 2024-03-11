@@ -41,32 +41,37 @@
 
     @stack('head-script')
 
+
+
 </head>
 
 <body>
     @include('admin.layouts.header')
 
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route('index') }}" class="nav-link">Home</a>
-            </li>
-        </ul>
-    </nav>
-    <!-- /.navbar -->
+    <div class="wrapper">
 
-    @include('admin.layouts.sidebar')
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('index') }}" class="nav-link">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
 
-    {{-- Content Wrapper. Contains page content --}}
-    <div class="content-wrapper">
-        @yield('content')
+        @include('admin.layouts.sidebar')
+
+        {{-- Content Wrapper. Contains page content --}}
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
+        {{-- content-wrapper --}}
     </div>
-    {{-- content-wrapper --}}
 
     @include('admin.layouts.footer')
 
@@ -106,6 +111,11 @@
         CKFinder.config({
             connectorPath: '/ckfinder/connector',
         });
+    </script>
+
+    {{-- URL --}}
+    <script type="text/javascript">
+        var admin_url = '{{ route('admin.dashboard') }}';
     </script>
 
     @stack('scripts')

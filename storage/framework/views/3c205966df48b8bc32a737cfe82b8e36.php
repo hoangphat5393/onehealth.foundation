@@ -41,32 +41,37 @@
 
     <?php echo $__env->yieldPushContent('head-script'); ?>
 
+
+
 </head>
 
 <body>
     <?php echo $__env->make('admin.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="<?php echo e(route('index')); ?>" class="nav-link">Home</a>
-            </li>
-        </ul>
-    </nav>
-    <!-- /.navbar -->
+    <div class="wrapper">
 
-    <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="<?php echo e(route('index')); ?>" class="nav-link">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
 
-    
-    <div class="content-wrapper">
-        <?php echo $__env->yieldContent('content'); ?>
+        <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+        
+        <div class="content-wrapper">
+            <?php echo $__env->yieldContent('content'); ?>
+        </div>
+        
     </div>
-    
 
     <?php echo $__env->make('admin.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
@@ -106,6 +111,11 @@
         CKFinder.config({
             connectorPath: '/ckfinder/connector',
         });
+    </script>
+
+    
+    <script type="text/javascript">
+        var admin_url = '<?php echo e(route('admin.dashboard')); ?>';
     </script>
 
     <?php echo $__env->yieldPushContent('scripts'); ?>

@@ -75,7 +75,7 @@
                             </div> <!-- /.card-header -->
                             <div class="card-body">
                                 @if ($sid)
-                                    <p>Shortcode: <span style="background: #f1f1f1; display: inline-block; padding: 3px">[slider id="{{ $sid }}" items="4"]</span></p>
+                                    <p class="mb-3">Shortcode: <span style="background: #f1f1f1; display: inline-block; padding: 3px">[slider id="{{ $sid }}" items="4"]</span></p>
                                 @endif
                                 {{-- @php
                                     $lc = app()->getLocale();
@@ -85,6 +85,11 @@
                                 <div class="form-group">
                                     <label for="post_title">Tiêu đề</label>
                                     <input type="text" class="form-control title_slugify" id="post_title" name="post_title" placeholder="Tiêu đề" value="{{ $post_title }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="post_title">Thứ tự</label>
+                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="Thứ tự" value="{{ $sort }}">
                                 </div>
                                 <div class="form-group d-none">
                                     <label>Upload Images</label>
@@ -148,6 +153,7 @@
                             </div> <!-- /.card-body -->
                         </div><!-- /.card -->
                     </div> <!-- /.col-9 -->
+
                     <div class="col-3">
                         <div class="card">
                             <div class="card-header">
@@ -220,27 +226,117 @@
                         method: 'POST',
                         url: 'admin/slider/sort',
                         data: fdnew,
-                    }).then(res => {
-
-                    }).catch(e => console.log(e));
+                    }).then(res => {}).catch(e => console.log(e));
                 }
             });
+        });
+    </script>
 
-            // $('.slug_slugify').slugify('.title_slugify');
+    <script>
+        // SLIDER INSERT
+        $(function() {
+            var sliderModal = $("#sliderModal");
+            if (sliderModal.length > 0) {
+                $("#form-inserSlider, #form-editSlider").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        name: "required",
+                        src: "required",
+                    },
+                    messages: {
+                        name: "Vui lòng nhập tên",
+                        src: "Chọn hình ảnh",
+                    },
+                    errorElement: "div",
+                    errorLabelContainer: ".errorTxtModal",
+                    invalidHandler: function(event, validator) {},
+                });
 
-            //Date range picker
-            $('#reservationdate').datetimepicker({
-                format: 'YYYY-MM-DD hh:mm:ss'
-            });
+                $(document).on("click", ".post-slider", function() {
+                    for (instance in CKEDITOR.instances) {
+                        CKEDITOR.instances[instance].updateElement();
+                    }
+                    //rest of your code
 
-            $('#csv_slishow').change(function(evt) {
-                $("#csv_upload_slishow").val($(this).val());
-                $("#csv_upload_slishow").attr("value", $(this).val());
-            });
-            $('#csv_slishow_mobile').change(function(evt) {
-                $("#csv_upload_slishow_mobile").val($(this).val());
-                $("#csv_upload_slishow_mobile").attr("value", $(this).val());
-            });
+                    var type = $(this).attr("data");
+
+                    from = $("#form-editSlider");
+
+                    if (from.valid()) {
+                        var dataString = from.serialize();
+                        axios({
+                                method: "POST",
+                                url: "/admin/slider/insert",
+                                data: dataString,
+                            })
+                            .then((res) => {
+                                if (res.data.view != "") {
+                                    // $('#inserSlider form')[0].reset();
+                                    $("#sliderModal").modal("hide");
+
+                                    $(".slider-list").html(res.data.view);
+                                }
+                            })
+                            .catch((e) => console.log(e));
+                    }
+                });
+            }
+        });
+
+        // EDIT SLIDER
+        $(document).on("click", ".edit-slider", function() {
+            var id = $(this).attr("data"),
+                parent = $(this).data("parent");
+            if (id) {
+                axios({
+                        method: "POST",
+                        url: "/admin/slider/edit",
+                        data: {
+                            id: id,
+                            parent: parent
+                        },
+                    })
+                    .then((res) => {
+                        if (res.data.view != "") {
+                            $("#sliderModal .modal-body").html(res.data.view);
+                            $("#sliderModal").modal("show");
+                            editorQuote("description");
+                            $(".ckfinder-popup").each(function(index, el) {
+                                var id = $(this).attr("id"),
+                                    input = $(this).attr("data"),
+                                    view_img = $(this).data("show");
+                                var button1 = document.getElementById(id);
+                                button1.onclick = function() {
+                                    selectFileWithCKFinder(input, view_img);
+                                };
+                            });
+                        }
+                    })
+                    .catch((e) => console.log(e));
+            }
+        });
+
+        // DELETE SLIDER
+        $(document).on("click", ".delete-slider", function() {
+            var id = $(this).attr("data"),
+                this_ = $(this);
+            if (id) {
+                axios({
+                        method: "POST",
+                        url: "/admin/slider/delete",
+                        data: {
+                            id: id
+                        },
+                    })
+                    .then((res) => {
+                        // console.log(res.data.view);
+                        $(".slider-list").html(res.data.view);
+                        // if (res.data.view != "") $(".slider-list").html(res.data.view);
+                    })
+                    .catch((e) => console.log(e));
+            }
         });
     </script>
 @endpush
