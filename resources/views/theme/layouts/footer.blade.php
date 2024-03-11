@@ -13,7 +13,7 @@
             <div class="row justify-content-end">
                 <div class="col-lg-3 text-center">
                     <button class="btn btn-lg btn-warning text-white border-0 rounded-0" style="background: #ff8114;">
-                        Quyên góp ngay
+                        @lang('Donate now')
                     </button>
                     {{-- <span class="p-3" style="background: #ff8114;">
                         <a href="/quyen-gop/">Quyên góp ngay</a>

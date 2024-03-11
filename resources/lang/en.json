@@ -56,7 +56,7 @@
     "News": "News",
     "Recruitment": "Recruitment",
     "Product search": "Product search",
-    "search": "search",
+    "Search": "Search",
     "Search word": "Search word",
     "Search result": "Search result",
 
@@ -112,7 +112,7 @@
 
     "Read more": "Read more",
     "View more": "View more",
-    "Viet Nam": "Tiếng Việt",
+    "Viet Nam": "Vietnamese",
     "English": "English",
     "Japanese": "Japanese",
 
@@ -139,5 +139,11 @@
     "Sign up now": "Sign up now",
     "Yes": "Yes",
     "No": "No",
-    "Login": "Login"
+    "Login": "Login",
+
+    "Electronic newsletter": "Electronic newsletter",
+    "Recieve news": "To receive the latest information about",
+    "Follow us": "Follow us",
+    "Your email": "Your email",
+    "Donate now": "Donate now"
 }

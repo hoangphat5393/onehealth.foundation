@@ -7,15 +7,15 @@
                     <div class="circle circle-2"></div>
                 </div>
             </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
             <div class="modal-body">
                 <div class="content_group_offer_view mt-3 pb-3 text-center">
                     <p><img src="{{ asset('theme/images/circle-icon.png') }}" width="120" alt=""></p>
                     <p>Theo dõi thành công</p>
-                    <p>Cám ơn bạn đã quan tâm tới  {!! Helpers::get_option_minhnn('domain') !!}</p>
+                    <p>Cám ơn bạn đã quan tâm tới {!! Helpers::get_option_minhnn('domain') !!}</p>
                     <p><span>Quay về </span>
-                        <a href="{{url('/')}}" style="color: rgb(255 153 51);">Trang chủ</a>
+                        <a href="{{ url('/') }}" style="color: rgb(255 153 51);">Trang chủ</a>
                     </p>
                 </div>
             </div>

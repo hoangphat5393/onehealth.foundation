@@ -15,21 +15,13 @@ class News extends Model
         return $this->belongsToMany('App\Models\Category', 'post_category', 'post_id', 'category_id');
     }
 
-    public static function search(string $keyword)
-    {
-        $keyword = '%' . addslashes($keyword) . '%';
-        $result = self::select('id', 'title', 'slug', 'description')
-            ->where('title', 'like', $keyword)->paginate(12);
-        return $result;
-    }
-
     public function getTitleAttribute($value)
     {
         $lc = app()->getLocale();
         if ('vi' == $lc) {
             return $value;
         } else {
-            return $this->{'title_' . $lc};
+            return $this->{'name_' . $lc};
         }
     }
 
@@ -51,17 +43,5 @@ class News extends Model
         } else {
             return $this->{'content_' . $lc};
         }
-    }
-
-    public function getDetail($id, $type = '')
-    {
-        $detail = new News;
-        if ($type == 'slug')
-            $detail = $detail->where('slug', $id);
-        else
-            $detail = $detail->where('id', $id);
-
-        $detail = $detail->first();
-        return $detail;
     }
 }

@@ -5,7 +5,7 @@ return [
     /**
      * The locales you wish to support.
      */
-    'supported_locales' => ['vi'],
+    'supported_locales' => ['vi', 'en'],
 
     /**
      * The fallback locale to use when generating a route URL

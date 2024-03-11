@@ -1,4 +1,4 @@
-(function ($) {
+$(function () {
     "use strict";
 
     // Spinner
@@ -60,4 +60,8 @@
     $("#videoModal").on("hide.bs.modal", function (e) {
         $("#video").attr("src", $videoSrc);
     });
-})(jQuery);
+
+    $(".input-search").on("keyup paste", function () {
+        $(".input-search").val($(this).val());
+    });
+});

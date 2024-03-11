@@ -13,7 +13,7 @@
             <div class="row justify-content-end">
                 <div class="col-lg-3 text-center">
                     <button class="btn btn-lg btn-warning text-white border-0 rounded-0" style="background: #ff8114;">
-                        Quyên góp ngay
+                        <?php echo app('translator')->get('Donate now'); ?>
                     </button>
                     
                 </div>

@@ -264,30 +264,6 @@ $(function () {
     }
     // counter
 
-    // SUBSCRIPTION
-    $(".btn-subscription").on("click", function () {
-        var action = $(this).closest("form").attr("action"),
-            email = $(this).closest("form").find('input[name="your_email"]').val();
-        if (email != "") {
-            axios({
-                method: "post",
-                url: action,
-                data: { email: email },
-            })
-                .then((res) => {
-                    if (res.data.status == "success") {
-                        $("footer").find("#notifyModal").remove();
-                        $("footer").append(res.data.view);
-                        $("#notifyModal").modal("show");
-                    }
-                })
-                .catch((e) => console.log(e));
-        } else {
-            alert("Vui lòng nhập Email");
-            $('input[name="your_email"]').focus();
-        }
-    });
-
     // Open modal
     // var myModal = new bootstrap.Modal(document.getElementById("notifyModal"), {
     //     keyboard: false,

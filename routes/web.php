@@ -139,7 +139,8 @@ Route::localized(function () {
 
         // Route::get('/contact-submit', array('as' => 'contact.submit', 'uses' => 'CustomerController@contactSend'));
 
-        Route::post('/dang-ky-nhan-tin', array('as' => 'subscription', 'uses' => 'CustomerController@subscription'));
+        // Route::post('/dang-ky-nhan-tin', array('as' => 'subscription', 'uses' => 'CustomerController@subscription'));
+        Route::post('subscription', 'CustomerController@subscription')->name('subscription');
 
         // Route::get('/wishlist', array('as' => 'customer.wishlist', 'uses' => 'CustomerController@wishlist'));
         // Route::post('add-to-wishlist', 'ProductController@wishlist')->name('product.wishlist');
@@ -203,10 +204,11 @@ Route::localized(function () {
         Route::get('donate-completed', 'DonateController@completed')->name('donate_completed');
 
         // Search
-        Route::post('/input/search-text/{type}', 'AjaxController@inputSearchText');
+        // Route::post('/input/search-text/{type}', 'AjaxController@inputSearchText');
 
-        Route::get('/search', '\App\Http\Controllers\SearchController@index')->name('search');
-        Route::post('search-select', 'AjaxController@searchSelect');
+        Route::get('/search', 'SearchController@index')->name('search');
+        // Route::post('search-select', 'AjaxController@searchSelect');
+
 
         // Page
         Route::get('{slug}', 'PageController@page')->name('page');

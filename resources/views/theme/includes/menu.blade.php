@@ -2,7 +2,7 @@
     $headerMenu = \App\Models\Menus::where('name', 'Menu-main')->first();
 @endphp
 
-<nav class="navbar navbar-expand-lg menu-wrap">
+<nav class="navbar navbar-expand-lg menu-wrap d-none d-lg-block">
     <div class="container">
         {{-- <a class="navbar-brand" href="#">Navbar scroll</a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,15 +20,14 @@
                             <a class="nav-link dropdown-toggle d-block d-lg-none" href="{{ $item->link }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ $item->label }}
                             </a>
-
                             @if ($item->class == 'project')
                                 <div class="dropdown-menu">
                                     <div class="container">
                                         <div class="row">
                                             @foreach ($item->child as $item2)
                                                 <div class="col-md-6 col-lg-3">
-                                                    <a href="https://onehealth.foundation/vi/lang-thien-nguyen/" class="dropdown-item">
-                                                        <img src="{{ get_image($item2->image) }}" class="img-fluid" alt="" loading="lazy">
+                                                    <a href="{{ route('campaign', [$item2->slug, $item2->id]) }}" class="dropdown-item">
+                                                        <img src="{{ get_image($item2->image) }}" class="img-fluid" alt="{{ $item2->name }}">
                                                     </a>
                                                 </div>
                                             @endforeach
@@ -50,44 +49,13 @@
                         </li>
                     @endif
                 @endforeach
-
-                {{-- <li class="nav-item dropdown project">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dự án
-                    </a>
-                    <div class="dropdown-menu">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="https://onehealth.foundation/vi/lang-thien-nguyen/" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/11/Vietnam_7101.png" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="https://onehealth.foundation/vi/m2030-2/" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/11/257657916.png" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="https://onehealth.foundation/vi/trung-tam-thu-gom-rac-thai/" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/11/plastic_bank-1.png" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
-
-                                <div class="col-md-6 col-lg-3">
-                                    <a href="{{ route('index') }}" class="dropdown-item">
-                                        <img src="https://onehealth.foundation/wp-content/uploads/2019/10/key-project-4.jpg" class="img-fluid" alt="" loading="lazy">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li> --}}
             </ul>
-            <form class="d-flex" role="search" method="post" action="{{ route('search') }}">
+            <form class="d-flex" role="search" method="get" action="{{ route('search') }}">
                 <div class="input-group input-group-search">
-                    <button class="input-group-text bg-transparent border-0" id="header_search"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" class="form-control bg-transparent border-0" placeholder="Tìm kiếm" aria-label="Tìm kiếm" aria-describedby="header_search">
+                    <button type="submit" class="input-group-text bg-transparent border-0 btn-search" id="header_search">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" class="form-control bg-transparent border-0 input-search" name="keyword" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="header_search">
                 </div>
             </form>
         </div>

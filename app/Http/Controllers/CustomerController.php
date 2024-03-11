@@ -46,9 +46,6 @@ class CustomerController extends Controller
         $this->data['statusOrder']    = ShopOrderStatus::getIdAll();
         $this->data['orderPayment']    = ShopOrderPaymentStatus::getIdAll();
 
-        // MENU
-        $this->data['categories'] = \App\ProductCategory::where('status', 1)->where('parent', 0)->orderby('priority', 'DESC')->limit(4)->get();
-
         // CART
         $this->data['carts'] = Cart::content();
     }
@@ -522,11 +519,13 @@ class CustomerController extends Controller
     public function subscription(Request $request)
     {
         $email = $request->email;
-        \App\Models\User_register_email::updateOrCreate(['email' => $email]);
+        $saved = \App\Models\Subscription::updateOrCreate(['email' => $email]);
         $this->data['status'] = 'success';
         $this->data['email'] = $email;
-        $this->data['view'] = view($this->templatePath . '.customer.includes.subscription')->render();
-        return response()->json($this->data);
+        // $this->data['view'] = view($this->templatePath . '.customer.includes.subscription')->render();
+        if ($saved) {
+            return response()->json($this->data);
+        }
     }
 
     //xử lý quên mật khẩu
