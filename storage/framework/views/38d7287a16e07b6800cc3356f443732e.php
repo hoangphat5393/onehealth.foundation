@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="demo-img" style="padding-top: 10px;">
-            <img class="<?php echo e($id ?? 'img'); ?>_view" src="<?php echo e(get_image($image)); ?>">
+            <img class="<?php echo e($id ?? 'img'); ?>_view img-fluid" src="<?php echo e(get_image($image)); ?>">
         </div>
     </div> <!-- /.card-body -->
 </div><!-- /.card -->

@@ -19,8 +19,7 @@
                 <div class="container-fluid px-0">
                     <div class="row g-0">
                         <div class="col-lg-12 banner-left">
-                            {{-- <img class="img-fluid object-fit-cover w-100" src="{{ get_image($page->image) }}" alt="{{ $page->name }}"> --}}
-                            <img class="img-fluid object-fit-cover w-100" src="{{ asset('image/map_google.jpg') }}" alt="{{ $page->name }}">
+                            <img class="img-fluid object-fit-cover w-100" src="{{ get_image($page->image) }}" alt="{{ $page->name }}">
                         </div>
                     </div>
                 </div>
@@ -53,10 +52,8 @@
             </div>
         </section>
 
-
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')
-
     </main>
 @endsection
 

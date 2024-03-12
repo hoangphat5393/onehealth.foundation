@@ -36,7 +36,7 @@
                                     Đọc thêm
                                 </a>
 
-                                <a class="btn btn-custom" href="{{ route('donate') }}">
+                                <a class="btn btn-custom" href="{{ route('page', 'donate') }}">
                                     Tài trợ dự án này
                                 </a>
                                 {{-- <button type="button" class="btn btn-custom">

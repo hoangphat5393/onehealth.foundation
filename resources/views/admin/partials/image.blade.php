@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="demo-img" style="padding-top: 10px;">
-            <img class="{{ $id ?? 'img' }}_view" src="{{ get_image($image) }}">
+            <img class="{{ $id ?? 'img' }}_view img-fluid" src="{{ get_image($image) }}">
         </div>
     </div> <!-- /.card-body -->
 </div><!-- /.card -->

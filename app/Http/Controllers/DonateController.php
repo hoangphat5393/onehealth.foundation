@@ -26,6 +26,20 @@ class DonateController extends Controller
         return view('theme.donate.index', ['data' => $this->data]);
     }
 
+    public function bankpaypal()
+    {
+        $this->localized();
+        // $this->data['page'] = \App\Page::where('slug', 'contact')->first();
+        // return view('theme.donate.index', ['data' => $this->data]);
+        return view('theme.page.paypal');
+    }
+
+    public function banktransfer()
+    {
+        $this->localized();
+        return view('theme.page.transfer');
+    }
+
     public function confirmation(Request $rq)
     {
         $this->localized();

@@ -39,7 +39,7 @@
                         <div class="row article g-0 mb-5">
                             <div class="col-lg-4 article__img">
                                 <div class="item-product">
-                                    <a href="#" title="">
+                                    <a href="<?php echo e(route('news.detail', [$item->slug, $item->id])); ?>" title="<?php echo e($item->name); ?>">
                                         <div class="product-img">
                                             <img src="<?php echo e(get_image($item->image)); ?>" class="img-fluid" alt="<?php echo e($item->name); ?>">
                                         </div>
@@ -50,7 +50,9 @@
                                 <div class="datetime text-end my-3">
                                     <span><?php echo e($cdt->format('d-m-Y')); ?></span>
                                 </div>
-                                <h4><a href="<?php echo e(route('news.detail', [$item->slug, $item->id])); ?>" class="custom"><?php echo e($item->name); ?></a></h4>
+                                <h4>
+                                    <a href="<?php echo e(route('news.detail', [$item->slug, $item->id])); ?>" class="custom" title="<?php echo e($item->name); ?>"><?php echo e($item->name); ?></a>
+                                </h4>
                                 <?php echo htmlspecialchars_decode($item->description); ?>
 
                             </div>
@@ -68,15 +70,7 @@
         </section>
 
         
-        <section class="block7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 subscribe-block">
-                        <?php echo $__env->make('theme.includes.subscribe', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <?php echo $__env->make('theme.includes.subscribe', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </main>
 
 <?php $__env->stopSection(); ?>

@@ -83,16 +83,13 @@
                                         </div>
                                         <?php
                                             $quote_arr = ['id' => 'description', 'label' => 'Trích dẫn', 'name' => 'description', 'description' => $description ?? ''];
-                                            $content_arr = ['id' => 'content', 'label' => 'Nội dung 1', 'name' => 'content', 'content' => $content ?? ''];
-                                            $content_arr2 = ['id' => 'content2', 'label' => 'Nội dung 2', 'name' => 'content2', 'content' => $content2 ?? ''];
-                                            $content_arr3 = ['id' => 'content3', 'label' => 'Nội dung 3', 'name' => 'content3', 'content' => $content3 ?? ''];
-                                            $content_arr4 = ['id' => 'content4', 'label' => 'Nội dung 4', 'name' => 'content4', 'content' => $content4 ?? ''];
+                                            $content_arr = ['id' => 'content', 'label' => 'Nội dung', 'name' => 'content', 'content' => $content ?? ''];
+                                            // $content_arr2 = ['id' => 'content2', 'label' => 'Nội dung 2', 'name' => 'content2', 'content' => $content2 ?? ''];
                                         ?>
                                         <?php echo $__env->make('admin.partials.quote', $quote_arr, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                         <?php echo $__env->make('admin.partials.content', $content_arr, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                                        <?php echo $__env->make('admin.partials.content', $content_arr2, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                                        <?php echo $__env->make('admin.partials.content', $content_arr3, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                                        <?php echo $__env->make('admin.partials.content', $content_arr4, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                        
+
                                     </div>
                                     <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
                                         <div class="form-group">
@@ -101,16 +98,12 @@
                                         </div>
                                         <?php
                                             $quote_arr = ['id' => 'description_en', 'label' => 'Description', 'name' => 'description_en', 'description' => $description_en ?? ''];
-                                            $content_arr = ['id' => 'content_en', 'label' => 'Content 1', 'name' => 'content_en', 'content' => $content_en ?? ''];
-                                            $content_arr2 = ['id' => 'content2_en', 'label' => 'Content 2', 'name' => 'content2_en', 'content' => $content2_en ?? ''];
-                                            $content_arr3 = ['id' => 'content3_en', 'label' => 'Content 3', 'name' => 'content3_en', 'content' => $content3_en ?? ''];
-                                            $content_arr4 = ['id' => 'content4_en', 'label' => 'Content 4', 'name' => 'content4_en', 'content' => $content4_en ?? ''];
+                                            $content_arr = ['id' => 'content_en', 'label' => 'Content', 'name' => 'content_en', 'content' => $content_en ?? ''];
+                                            // $content_arr2 = ['id' => 'content2_en', 'label' => 'Content 2', 'name' => 'content2_en', 'content' => $content2_en ?? ''];
                                         ?>
                                         <?php echo $__env->make('admin.partials.quote', $quote_arr, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                         <?php echo $__env->make('admin.partials.content', $content_arr, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                                        <?php echo $__env->make('admin.partials.content', $content_arr2, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                                        <?php echo $__env->make('admin.partials.content', $content_arr3, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                                        <?php echo $__env->make('admin.partials.content', $content_arr4, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                        
                                     </div>
                                 </div>
 
@@ -154,14 +147,14 @@
         editorQuote('description');
         editorQuote('description_en');
         editor('content');
-        editor('content2');
-        editor('content3');
-        editor('content4');
+        // editor('content2');
+        // editor('content3');
+        // editor('content4');
 
         editor('content_en');
-        editor('content2_en');
-        editor('content3_en');
-        editor('content4_en');
+        // editor('content2_en');
+        // editor('content3_en');
+        // editor('content4_en');
 
         $(function() {
             // $('.slug_slugify').slugify('.title_slugify');

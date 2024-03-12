@@ -14,7 +14,7 @@
 
             <td class="title">
                 <a class="row-title " href="<?php echo e(route('admin.pageEdit', [$item->id])); ?>">
-                    <div><b style='color: #056FAD;'><?php echo e($item->title); ?></b></div>
+                    <div><b style='color: #056FAD;'><?php echo e($item->title); ?> | <?php echo e($item->title_en); ?></b></div>
                 </a>
                 <?php if($item->slug): ?>
                     <div>

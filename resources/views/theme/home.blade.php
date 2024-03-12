@@ -92,7 +92,7 @@
                                                 {!! htmlspecialchars_decode($item->description) !!}
                                             </div>
                                         </div>
-                                        <a href="{{ route('donate') }}" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
+                                        <a href="{{ route('page', 'donate') }}" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
                                             <span class="text-uppercase">Quyên góp ngay</span>&nbsp;
                                             <i class="fa fa-chevron-down"></i>
                                         </a>

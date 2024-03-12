@@ -47,22 +47,6 @@
 
 <?php $__env->startPush('scripts'); ?>
     <script>
-        // Swal.fire({
-        //     position: "center",
-        //     icon: "success",
-        //     title: "Đăng ký thành công",
-        //     showConfirmButton: false,
-        //     timer: 1500
-        // });
-        function IsEmail(email) {
-            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            if (!regex.test(email)) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-
         $("#subscription_form").submit(function(e) {
             e.preventDefault();
         });

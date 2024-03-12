@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth, DB, Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -16,9 +17,8 @@ use App\Models\DictionaryCategory;
 use App\Models\Post, App\Models\PostCategory;
 use App\Models\Video, App\Models\VideoCategory;
 use App\Models\Campaign;
-use Auth, DB, Carbon\Carbon;
 use App\Models\EmailTemplate;
-use App\Models\Contact;
+use App\Models\Contact, App\Models\Subscription;
 
 
 class AjaxController extends Controller
@@ -169,6 +169,14 @@ class AjaxController extends Controller
 
                 // SET AUTO_INCREMENT TO 1
                 $table = (new Contact)->getTable();
+                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
+                return 1;
+                break;
+            case 'subscription':
+                Subscription::whereIn('id', $arr)->delete();
+
+                // SET AUTO_INCREMENT TO 1
+                $table = (new Subscription)->getTable();
                 DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
                 return 1;
                 break;

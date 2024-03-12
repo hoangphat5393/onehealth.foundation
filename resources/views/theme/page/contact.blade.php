@@ -8,9 +8,6 @@
 
 @section('content')
     <main id="contact">
-
-        {{-- <h1 class="text-center">Liên hệ</h1> --}}
-
         <section class="block10">
             <div class="mainBanner">
                 <div class="container main-menu">

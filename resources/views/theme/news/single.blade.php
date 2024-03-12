@@ -26,7 +26,6 @@
 
                 <div class="container-fluid px-0">
                     <div class="row g-0">
-
                         <div class="col-lg-6 banner-left">
                             <img class="img-fluid object-fit-cover h-100" src="{{ get_image($news->image) }}" alt="">
                         </div>
@@ -42,8 +41,12 @@
                                     <div class="promotion promotion--sponsor">
                                         <div class="d-flex wrapper align-items-center">
                                             <p class="__copy">Powered by</p>
-                                            <div class="__image"><img src="https://onehealth.foundation/wp-content/themes/thewish/img/logo/logo_Droh_70x70.png" alt="DrOh.co"></div>
-                                            <div class="__image "><img src="https://onehealth.foundation/wp-content/themes/thewish/img/logo/logo_onehealth_70x70.png" alt="OneHealth"></div>
+                                            <div class="__image">
+                                                <img src="https://onehealth.foundation/wp-content/themes/thewish/img/logo/logo_Droh_70x70.png" alt="DrOh.co">
+                                            </div>
+                                            <div class="__image ">
+                                                <img src="https://onehealth.foundation/wp-content/themes/thewish/img/logo/logo_onehealth_70x70.png" alt="OneHealth">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

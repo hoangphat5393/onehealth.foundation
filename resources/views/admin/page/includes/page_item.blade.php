@@ -14,7 +14,7 @@
 
             <td class="title">
                 <a class="row-title " href="{{ route('admin.pageEdit', [$item->id]) }}">
-                    <div><b style='color: #056FAD;'>{{ $item->title }}</b></div>
+                    <div><b style='color: #056FAD;'>{{ $item->title }} | {{ $item->title_en }}</b></div>
                 </a>
                 @if ($item->slug)
                     <div>

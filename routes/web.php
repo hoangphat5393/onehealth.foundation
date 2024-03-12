@@ -198,10 +198,12 @@ Route::localized(function () {
         Route::get('contact-completed', 'ContactController@completed')->name('contact_completed');
 
         // Donate
-        Route::get('donate', 'DonateController@index')->name('donate');
+        // Route::get('donate', 'DonateController@index')->name('donate');
         Route::post('donate-confirmation', 'DonateController@confirmation')->name('donate.confirmation');
         Route::post('donate', 'DonateController@submit')->name('donate.submit');
         Route::get('donate-completed', 'DonateController@completed')->name('donate_completed');
+        Route::get('donate/paypal', 'DonateController@bankpaypal')->name('bank_paypal');
+        Route::get('donate/transfer', 'DonateController@banktransfer')->name('bank_transfer');
 
         // Search
         // Route::post('/input/search-text/{type}', 'AjaxController@inputSearchText');

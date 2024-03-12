@@ -38,7 +38,7 @@
                         <div class="row article g-0 mb-5">
                             <div class="col-lg-4 article__img">
                                 <div class="item-product">
-                                    <a href="#" title="">
+                                    <a href="{{ route('news.detail', [$item->slug, $item->id]) }}" title="{{ $item->name }}">
                                         <div class="product-img">
                                             <img src="{{ get_image($item->image) }}" class="img-fluid" alt="{{ $item->name }}">
                                         </div>
@@ -49,7 +49,9 @@
                                 <div class="datetime text-end my-3">
                                     <span>{{ $cdt->format('d-m-Y') }}</span>
                                 </div>
-                                <h4><a href="{{ route('news.detail', [$item->slug, $item->id]) }}" class="custom">{{ $item->name }}</a></h4>
+                                <h4>
+                                    <a href="{{ route('news.detail', [$item->slug, $item->id]) }}" class="custom" title="{{ $item->name }}">{{ $item->name }}</a>
+                                </h4>
                                 {!! htmlspecialchars_decode($item->description) !!}
                             </div>
                         </div>
@@ -65,15 +67,7 @@
         </section>
 
         {{-- Subscribe --}}
-        <section class="block7">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 subscribe-block">
-                        @include('theme.includes.subscribe')
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('theme.includes.subscribe')
     </main>
 
 @endsection
