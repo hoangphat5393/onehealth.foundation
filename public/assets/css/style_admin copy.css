@@ -1,3 +1,66 @@
+/* html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+} */
+
 input[type="checkbox"],
 input[type="radio"] {
     vertical-align: middle !important;
@@ -6,7 +69,17 @@ input[type="radio"] {
 button {
     cursor: pointer;
 }
-
+/* body {
+    position: relative;
+    margin: 0 !important;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    line-height: 1.5;
+    overflow-x: hidden;
+} */
 ol,
 ul {
     list-style: none;
@@ -197,6 +270,11 @@ th {
     padding: 0;
 }
 
+a {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
 a:hover,
 a:active,
 a:focus {

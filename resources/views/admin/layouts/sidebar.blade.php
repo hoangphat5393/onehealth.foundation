@@ -4,7 +4,6 @@
     $menus = \App\Models\AdminMenu::getListVisible();
 @endphp
 
-<!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link text-center">

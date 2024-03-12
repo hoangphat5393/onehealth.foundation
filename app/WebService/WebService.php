@@ -41,68 +41,6 @@ class WebService
         //dd($categories);
         $result .= self::showMenuhtml($categories, 0, 0);
 
-        /*
-        $result ="";
-        $menu_class_id="";
-        $primary_menus="";
-        if($menu_name !=''):
-            $primary_menus = Menu::getByName($menu_name);
-            if($primary_menus):
-                if($menu_class !=''):
-                    $menu_class_id=$menu_class;
-                else:
-                    $menu_class_id="default_menu_product_home_read";
-                endif;
-                $result .= '<ul id="'.$menu_class_id.'" class="main-menu category_menu_product_home_read  middle" itemscope itemtype="http://schema.org/SiteNavigationElement">';
-                foreach($primary_menus as $menu):
-                    $result .= '<li class="menu-item level1 '.$menu['class'].'">
-                        <a href="'.$menu['link'].'" target="'.$menu['target'].'" rel="'.$menu['rel'].'">'.$menu['label'].'</a>';
-                    if( $menu['child'] ):
-                        $result .= '<ul class="menu-item has-sub">';
-                        foreach( $menu['child'] as $child ):
-                            $result .= '<li class="sub-menu-item level2 '.$child['class'].'">';
-                            if($child['label'] !='' && str_replace(" ","",$child['label']) !=''):
-                                $result .= '<a target="'.$child['target'].'" rel="'.$child['rel'].'" href="'.$child['link'].'">'.$child['label'].'</a>';
-                            endif;
-                            if( $child['child'] ):
-                                $result .= '<ul class="menu-item has-sub">';
-                                foreach( $child['child'] as $child_lv3 ):
-                                    $result .= '<li class="sub-menu-item level3 '.$child_lv3['class'].'">';
-                                    if($child_lv3['label'] !='' && str_replace(" ","",$child_lv3['label']) !=''):
-                                        $result .= '<a target="'.$child_lv3['target'].'" rel="'.$child_lv3['rel'].'" href="'.$child_lv3['link'].'">'.$child_lv3['label'].'</a>';
-                                    endif;
-                                    if( $child_lv3['child'] ):
-                                        $result .= '<ul class="menu-item has-sub">';
-                                        foreach( $child_lv3['child'] as $child_lv4 ):
-                                            $result .= '<li class="sub-menu-item level4 '.$child_lv4['class'].'">';
-                                            if($child_lv4['label'] !='' && str_replace(" ","",$child_lv4['label']) !=''):
-                                                $result .= '<a target="'.$child_lv4['target'].'" rel="'.$child_lv4['rel'].'" href="'.$child_lv4['link'].'">'.$child_lv4['label'].'</a>';
-                                            endif;
-                                            if( $child_lv4['child'] ):
-                                                $result .= '<ul class="menu-item has-sub">';
-                                                foreach( $child_lv4['child'] as $child_lv5 ):
-                                                    $result .= '<li class="sub-menu-item level5 '.$child_lv5['class'].'"><a target="'.$child_lv5['target'].'" rel="'.$child_lv5['rel'].'" href="'.$child_lv5['link'].'">'.$child_lv5['label'].'</a></li>';
-                                                endforeach;
-                                                $result .= '</ul>';
-                                            endif;
-                                            $result .= '</li>';
-                                        endforeach;
-                                        $result .= '</ul>';
-                                    endif;
-                                    $result .= '</li>';
-                                endforeach;
-                                $result .= '</ul><!-- /.sub-menu -->';
-                            endif;
-                            $result .= '</li>';
-                        endforeach;
-                        $result .= '</ul><!-- /.sub-menu -->';
-                    endif;
-                    $result .= '</li>';
-                endforeach;
-                $result .= '</ul><!-- /.menu -->';
-            endif;
-        endif;
-        */
         return $result;
     }
     public function ListMenuCateRender()

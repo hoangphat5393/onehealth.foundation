@@ -44,6 +44,7 @@ class MenuWPController extends Controller
     {
         $arraydata = request()->input("arraydata");
 
+        // dd($arraydata);
         if (is_array($arraydata)) {
             foreach ($arraydata as $value) {
                 $menuitem = MenuItems::find($value['id']);
@@ -52,7 +53,6 @@ class MenuWPController extends Controller
                 $menuitem->slug = $value['slug'] ?? '';
                 $menuitem->link = $value['link'] ?? '';
                 $menuitem->class = $value['class'] ?? '';
-
                 // if (config('menu.use_roles')) {
                 //     $menuitem->role_id = $value['role_id'] ? $value['role_id'] : 0;
                 // }

@@ -97,7 +97,7 @@ class PageController extends Controller
                 return view($this->templatePath . '.page.index', ['data' => $this->data])->compileShortcodes();
             }
         } else {
-            return $this->project("home");
+            return view('errors.404');
         }
     }
 

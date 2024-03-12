@@ -251,13 +251,16 @@
                                                                             <div class="form-group form-group-image-box">
                                                                                 <div class="image-box-container">
                                                                                     <div class="custom-image-box image-box">
-                                                                                        <input type="hidden" value="" id="icon-{{ $m->id }}" name="image_menu_{{ $m->id }}" class="image-data">
+                                                                                        <input type="hidden" value="{{ $m->image }}" id="icon-{{ $m->id }}" name="image_menu_{{ $m->id }}" class="image-data">
                                                                                         <img src="{{ get_image($m->image) }}" class="icon-{{ $m->id }} preview_image">
                                                                                         <div class="image-box-actions">
                                                                                             <a class="ckfinder-popup" id="image-{{ $m->id }}" data="icon-{{ $m->id }}" data-show="icon-{{ $m->id }}">Choose image</a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                                <button type="button" class="btn btn-danger align-self-center ml-3 remove_menu_image" data-id="{{ $m->id }}">
+                                                                                    <i class="fa-solid fa-xmark fa-lg"></i>
+                                                                                </button>
                                                                             </div>
 
 

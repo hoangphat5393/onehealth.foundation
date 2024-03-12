@@ -30,8 +30,9 @@
                 <img src="<?php echo e(get_image(setting_option('logo'))); ?>" class="logo" alt="<?php echo e(setting_option('webtitle')); ?>" style="height:84px">
             </a>
             <div class="d-none d-lg-block">
-
-                <img src="<?php echo e(asset('images/create_campain.png')); ?>" class="logo" alt="<?php echo e(setting_option('webtitle')); ?>" style="height:54px">
+                <a href="<?php echo e(route('page', 'donate')); ?>">
+                    <img src="<?php echo e(asset('images/create_campain.png')); ?>" class="logo" alt="<?php echo e(setting_option('webtitle')); ?>" style="height:54px">
+                </a>
             </div>
 
             <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">

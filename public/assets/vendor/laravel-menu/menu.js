@@ -2,9 +2,6 @@ var arraydata = [];
 function getmenus() {
     arraydata = [];
     $("#spinsavemenu").show();
-
-    console.log(arraydata);
-
     var cont = 0;
     $("#menu-to-edit li").each(function (index) {
         var dept = 0;
@@ -35,6 +32,18 @@ function getmenus() {
     updateitem();
     actualizarmenu();
 }
+
+function remove_image(id) {
+    $('input[name="image_menu_' + id).val();
+}
+
+// Remove Image
+$(".remove_menu_image").on("click", function () {
+    let id = $(this).attr("data-id");
+    console.log(id);
+    $('input[name="image_menu_' + id + '"]').val("");
+    $(".icon-" + id).attr("src", "assets/images/placeholder.png");
+});
 
 // Cusome js
 $(".add_custommenu").on("click", function () {
@@ -145,7 +154,7 @@ function addDataMenu(id = 0, type = "page", labelmenu = "", linkmenu = "", slug 
 function updateitem(id = 0) {
     if (id) {
         var label = $("#idlabelmenu_" + id).val();
-        var icon = $("#icon-" + id).val();
+        // var icon = $("#icon-" + id).val();
         var image = $("#image_menu_" + id).val();
         var classes = $("#clases_menu_" + id).val();
         var target = $("#target_menu_" + id).val();
@@ -156,10 +165,9 @@ function updateitem(id = 0) {
         if ($("#role_menu_" + id).length) {
             role_id = $("#role_menu_" + id).val();
         }
-
         var data = {
             label: label,
-            icon: icon,
+            // icon: icon,
             image: image,
             classes: classes,
             slug: slug,
@@ -174,7 +182,7 @@ function updateitem(id = 0) {
         $(".menu-item-settings").each(function (k, v) {
             var id = $(this).find(".edit-menu-item-id").val();
             var label = $(this).find(".edit-menu-item-title").val();
-            var icon = $(this).find(".icon-data").val();
+            // var icon = $(this).find(".icon-data").val();
             var image = $(this).find(".image-data").val();
             var classes = $(this).find(".edit-menu-item-classes").val();
             var slug = $(this).find(".edit-menu-item-slug").val();
@@ -186,7 +194,7 @@ function updateitem(id = 0) {
             arr_data.push({
                 id: id,
                 label: label,
-                icon: icon,
+                // icon: icon,
                 image: image,
                 class: classes,
                 slug: slug,
@@ -200,7 +208,7 @@ function updateitem(id = 0) {
 
         var data = { arraydata: arr_data };
     }
-    // console.log(arr_data);
+    console.log(arr_data);
     // console.log(data);
 
     $.ajax({
@@ -333,7 +341,6 @@ function insertParam(key, value) {
     if (i < 0) {
         kvp[kvp.length] = [key, value].join("=");
     }
-
     //this will reload the page, it's likely better to store this until finished
     document.location.search = kvp.join("&");
 }

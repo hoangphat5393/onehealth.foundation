@@ -61,7 +61,6 @@
             </div>
         </div>
     </section>
-    {{-- @include('vendor.wmenu.scripts') --}}
 @endsection
 
 
@@ -106,7 +105,6 @@
     <script type="text/javascript" src="{{ asset('vendor/laravel-menu/scripts2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/laravel-menu/menu.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/laravel-menu/plugins/js/fontawesome-iconpicker.min.js') }}"></script>
-    {{-- <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script> --}}
 
     <script type="text/javascript">
         $(function() {

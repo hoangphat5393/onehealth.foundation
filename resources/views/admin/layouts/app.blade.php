@@ -45,8 +45,8 @@
 
 </head>
 
-<body>
-    @include('admin.layouts.header')
+<body class="hold-transition sidebar-mini">
+    {{-- @include('admin.layouts.header') --}}
 
     <div class="wrapper">
 
@@ -64,6 +64,7 @@
         </nav>
         <!-- /.navbar -->
 
+        <!-- Main Sidebar Container -->
         @include('admin.layouts.sidebar')
 
         {{-- Content Wrapper. Contains page content --}}
@@ -71,9 +72,10 @@
             @yield('content')
         </div>
         {{-- content-wrapper --}}
-    </div>
 
-    @include('admin.layouts.footer')
+        @include('admin.layouts.footer')
+
+    </div>
 
     <!-- Main js -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
