@@ -7,6 +7,7 @@
     <!-- <title><?php echo e(setting_option('company_name')); ?></title>
     <meta name="description" content="description"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     
     <link rel="shortcut icon" href="<?php echo e(get_image(setting_option('favicon'))); ?>" />
 

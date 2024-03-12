@@ -43,8 +43,8 @@ class CustomerController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->data['statusOrder']    = ShopOrderStatus::getIdAll();
-        $this->data['orderPayment']    = ShopOrderPaymentStatus::getIdAll();
+        // $this->data['statusOrder']    = ShopOrderStatus::getIdAll();
+        // $this->data['orderPayment']    = ShopOrderPaymentStatus::getIdAll();
 
         // CART
         $this->data['carts'] = Cart::content();
@@ -519,13 +519,38 @@ class CustomerController extends Controller
     public function subscription(Request $request)
     {
         $email = $request->email;
-        $saved = \App\Models\Subscription::updateOrCreate(['email' => $email]);
-        $this->data['status'] = 'success';
-        $this->data['email'] = $email;
-        // $this->data['view'] = view($this->templatePath . '.customer.includes.subscription')->render();
-        if ($saved) {
-            return response()->json($this->data);
+
+        $validation_rules = array(
+            'email' => 'required|email|max:255|unique:subscription',
+        );
+        // $messages = array(
+        //     'email.required' => 'Please enter your email',
+        //     'email.email' => 'Email address is not in the correct format',
+        //     'email.max' => 'Email address up to 255 characters',
+        //     'email.unique' => 'Email address already exists',
+        // );
+        $data = $request->all();
+
+        // $validator = Validator::make($data, $validation_rules, $messages);
+        $validator = Validator::make($data, $validation_rules);
+
+        $this->data['email'] = $data['email'];
+
+        if ($validator->fails()) {
+            $error = $validator->errors()->first();
+            $this->data['status'] = 'error';
+            $this->data['message'] = $error;
+        } else {
+            \App\Models\Subscription::updateOrCreate(['email' => $email]);
+            $this->data['status'] = 'success';
+            $this->data['message'] = 'Đăng ký thành công';
         }
+        return response()->json($this->data);
+
+        // $this->data['view'] = view($this->templatePath . '.customer.includes.subscription')->render();
+        // if ($saved->wasRecentlyCreated) {
+        //     $this->data['status'] = 'success';
+        // }
     }
 
     //xử lý quên mật khẩu
