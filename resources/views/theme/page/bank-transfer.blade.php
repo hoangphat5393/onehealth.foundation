@@ -21,7 +21,6 @@
             </div>
         </section>
 
-
         <section class="block16">
             <div class="content">
                 {!! htmlspecialchars_decode($page->content) !!}

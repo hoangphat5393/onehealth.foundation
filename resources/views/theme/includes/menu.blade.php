@@ -54,7 +54,7 @@
                     <button type="submit" class="input-group-text bg-transparent border-0 btn-search" id="header_search">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <input type="text" class="form-control bg-transparent border-0 input-search" name="keyword" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="header_search">
+                    <input type="text" class="form-control bg-transparent border-0 input-search text-white" name="keyword" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="header_search">
                 </div>
             </form>
         </div>
