@@ -19,15 +19,6 @@
     @include('admin.partials.seo')
 @endsection
 
-@push('styles')
-    <!-- Create a simple CodeMirror instance -->
-    <link rel="stylesheet" href="{{ asset('mirror/lib/codemirror.css') }}">
-    <style type="text/css">
-        .select2-container .select2-selection--single {
-            height: auto;
-        }
-    </style>
-@endpush
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -46,6 +37,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">

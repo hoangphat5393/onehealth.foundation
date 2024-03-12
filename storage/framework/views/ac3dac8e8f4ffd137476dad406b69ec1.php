@@ -6,7 +6,7 @@
 ?>
 
 <header id="header" class="header">
-    <div class="container mb-5">
+    <div class="container mb-4">
         <ul class="nav justify-content-end">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="<?php echo e(Route::localizedUrl('vi')); ?>"><?php echo app('translator')->get('Viet Nam'); ?></a>
