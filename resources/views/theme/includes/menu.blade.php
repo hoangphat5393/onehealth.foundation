@@ -26,12 +26,11 @@
                                         <div class="row">
                                             @foreach ($item->child as $item2)
                                                 <div class="col-md-6 col-lg-3">
-                                                    <a href="{{ route('campaign', [$item2->slug, $item2->id]) }}" class="dropdown-item">
+                                                    <a href="{{ route('campaign.detail', [$item2->slug, $item2->id]) }}" class="dropdown-item">
                                                         <img src="{{ get_image($item2->image) }}" class="img-fluid" alt="{{ $item2->name }}">
                                                     </a>
                                                 </div>
                                             @endforeach
-
                                         </div>
                                     </div>
                                 </div>

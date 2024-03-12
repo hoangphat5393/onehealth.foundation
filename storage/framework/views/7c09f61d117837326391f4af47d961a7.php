@@ -8,14 +8,11 @@
 
 <?php $__env->startSection('content'); ?>
     <main id="about">
-
         <section class="block10">
-
             <div class="mainBanner">
                 <div class="container main-menu">
                     <?php echo $__env->make('theme.includes.menu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </div>
-
                 <div class="container-fluid px-0">
                     <div class="row g-0">
                         <div class="col-lg-12 banner-left">
@@ -29,10 +26,9 @@
         
         <section class="block8">
             <div class="container">
-                <div class="row mb-5">
+                <div class="row">
                     <div class="col-lg-12">
                         <h1 class="category-title"><?php echo e($page->title); ?></h1>
-                        
                     </div>
                 </div>
             </div>
@@ -40,16 +36,6 @@
 
         </section>
         
-
-        <section id="block12">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-
-                    </div>
-                </div>
-            </div>
-        </section>
 
         
         <?php echo $__env->make('theme.includes.subscribe', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

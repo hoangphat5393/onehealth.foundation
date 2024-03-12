@@ -62,14 +62,10 @@
     <script src="<?php echo e(asset('plugin/aos/aos.js')); ?>"></script>
     <script src="<?php echo e(asset('plugin/wow/wow.min.js')); ?>"></script>
     <script src="<?php echo e(asset('plugin/counterup/counterup.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('plugin/waypoints/waypoints.min.js')); ?>"></script>
     <script src="<?php echo e(asset('plugin/sweetalert2@11/sweetalert2.all.min.js')); ?>"></script>
 
-
-    <script src="<?php echo e(asset('js/main.js?ver=' . random_int(0, 100))); ?>"></script>
-    <script src="<?php echo e(asset('js/custom.js?ver=' . random_int(0, 100))); ?>"></script>
-
     
+    <script src="<?php echo e(asset('js/custom.js?ver=' . random_int(0, 100))); ?>"></script>
 
     <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>

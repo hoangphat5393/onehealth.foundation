@@ -46,7 +46,7 @@
 
     @yield('content')
 
-    {{-- <a href="{{ route('contact') }}" class="call-now" rel="nofollow">
+    {{-- <a href="{{ route('page', 'contact') }}" class="call-now" rel="nofollow">
         <div class="mh-contact">
             <div class="animated infinite zoomIn mh-alo-ph-circle"></div>
             <div class="animated infinite pulse mh-alo-ph-circle-fill"></div>
@@ -69,14 +69,10 @@
     <script src="{{ asset('plugin/aos/aos.js') }}"></script>
     <script src="{{ asset('plugin/wow/wow.min.js') }}"></script>
     <script src="{{ asset('plugin/counterup/counterup.min.js') }}"></script>
-    <script src="{{ asset('plugin/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('plugin/sweetalert2@11/sweetalert2.all.min.js') }}"></script>
 
-
-    <script src="{{ asset('js/main.js?ver=' . random_int(0, 100)) }}"></script>
+    {{-- <script src="{{ asset('js/main.js?ver=' . random_int(0, 100)) }}"></script> --}}
     <script src="{{ asset('js/custom.js?ver=' . random_int(0, 100)) }}"></script>
-
-    {{-- @stack('after-footer') --}}
 
     @stack('scripts')
 </body>

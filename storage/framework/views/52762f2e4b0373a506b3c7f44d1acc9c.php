@@ -28,12 +28,11 @@
                                         <div class="row">
                                             <?php $__currentLoopData = $item->child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <div class="col-md-6 col-lg-3">
-                                                    <a href="<?php echo e(route('campaign', [$item2->slug, $item2->id])); ?>" class="dropdown-item">
+                                                    <a href="<?php echo e(route('campaign.detail', [$item2->slug, $item2->id])); ?>" class="dropdown-item">
                                                         <img src="<?php echo e(get_image($item2->image)); ?>" class="img-fluid" alt="<?php echo e($item2->name); ?>">
                                                     </a>
                                                 </div>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                         </div>
                                     </div>
                                 </div>
