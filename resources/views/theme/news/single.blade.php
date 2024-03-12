@@ -36,7 +36,6 @@
                                         <h1 class="mosaic-lede-banner__headline-subtitle">{{ $news->name }}</h1>
                                     </div>
                                 </div>
-
                                 <div class="promotions mosaic-lede-banner__sponsor padding-top-lg clear-both">
                                     <div class="promotion promotion--sponsor">
                                         <div class="d-flex wrapper align-items-center">

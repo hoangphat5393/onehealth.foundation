@@ -71,7 +71,7 @@
                         <h3 class="upper">Dự án của chúng tôi</h3>
                         <p class="mb-3">Quỹ từ thiện One Health Foundation (OHF) <br>thực hiện sứ mệnh của chúng tôi thông qua <br>ba dự án chính về y tế, giáo dục và môi trường.</p>
                         <p>OHF tin rằng với đội ngũ thế hệ trẻ Việt Nam ngày nay, các bạn sẽ hết lòng vì cộng đồng để xây dựng đất nước ngày càng phát triển hơn.</p>
-                        <a href="{{ route('page', 'du-an') }}" class="btn btn-custom my-3">Xem tất cả các dự án <i class="fa-solid fa-angles-right"></i></a>
+                        <a href="{{ route('page', 'du-an') }}" class="btn btn-custom my-3">@lang('See all projects') <i class="fa-solid fa-angles-right"></i></a>
 
                         <form method="get" action="#">
                             <div class="input-group mb-3">
@@ -80,6 +80,7 @@
                             </div>
                         </form>
                     </div>
+
                     @empty(!$project)
                         <div class="col-lg-8">
                             @foreach ($project as $item)
@@ -93,7 +94,7 @@
                                             </div>
                                         </div>
                                         <a href="{{ route('page', 'donate') }}" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
-                                            <span class="text-uppercase">Quyên góp ngay</span>&nbsp;
+                                            <span class="text-uppercase">@lang('Donate now')</span>&nbsp;
                                             <i class="fa fa-chevron-down"></i>
                                         </a>
                                     </div>
@@ -123,8 +124,8 @@
                 <div class="row mb-2">
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-between">
-                            <p class="fw-bold fs-4">HOẠT ĐỘNG</p>
-                            <a href="{{ route('news') }}" class="btn btn-custom"> Xem tất cả</a>
+                            <p class="fw-bold fs-4 text-uppercase">@lang('activity')</p>
+                            <a href="{{ route('news') }}" class="btn btn-custom"> @lang('View all')</a>
                         </div>
                     </div>
                 </div>
@@ -134,14 +135,14 @@
                         @foreach ($news as $item)
                             <div class="col-lg-4">
                                 <div class="item-product mb-2">
-                                    <a href="{{ route('vi.news.detail', [$item->slug, $item->id]) }}" title="{{ $item->name }}">
+                                    <a href="{{ route('news.detail', [$item->slug, $item->id]) }}" title="{{ $item->name }}">
                                         <div class="product-img">
                                             <img src="{{ get_image($item->image) }}" class="" alt="{{ $item->name }}">
                                         </div>
                                     </a>
                                 </div>
                                 <h5 class="title desc-truncate">
-                                    <a href="{{ route('vi.news.detail', [$item->slug, $item->id]) }}">{{ $item->name }}</a>
+                                    <a href="{{ route('news.detail', [$item->slug, $item->id]) }}">{{ $item->name }}</a>
                                 </h5>
                             </div>
                         @endforeach
@@ -169,6 +170,5 @@
 
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')
-
     </main>
 @endsection

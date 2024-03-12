@@ -3,7 +3,7 @@
 ?>
 <section class="block5">
     <div class="container">
-        <p class="fw-bold fs-4 mb-4">ĐỐI TÁC CHÍNH</p>
+        <p class="fw-bold fs-4 mb-4 text-uppercase"><?php echo app('translator')->get('Main partner'); ?></p>
         <div class="swiper partnerSlider">
             <div class="swiper-wrapper">
                 <?php $__currentLoopData = $partner; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

@@ -71,7 +71,7 @@
                         <h3 class="upper">Dự án của chúng tôi</h3>
                         <p class="mb-3">Quỹ từ thiện One Health Foundation (OHF) <br>thực hiện sứ mệnh của chúng tôi thông qua <br>ba dự án chính về y tế, giáo dục và môi trường.</p>
                         <p>OHF tin rằng với đội ngũ thế hệ trẻ Việt Nam ngày nay, các bạn sẽ hết lòng vì cộng đồng để xây dựng đất nước ngày càng phát triển hơn.</p>
-                        <a href="<?php echo e(route('page', 'du-an')); ?>" class="btn btn-custom my-3">Xem tất cả các dự án <i class="fa-solid fa-angles-right"></i></a>
+                        <a href="<?php echo e(route('page', 'du-an')); ?>" class="btn btn-custom my-3"><?php echo app('translator')->get('See all projects'); ?> <i class="fa-solid fa-angles-right"></i></a>
 
                         <form method="get" action="#">
                             <div class="input-group mb-3">
@@ -80,6 +80,7 @@
                             </div>
                         </form>
                     </div>
+
                     <?php if(empty(!$project)): ?>
                         <div class="col-lg-8">
                             <?php $__currentLoopData = $project; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -94,7 +95,7 @@
                                             </div>
                                         </div>
                                         <a href="<?php echo e(route('page', 'donate')); ?>" class="project-link bg-white fit-content float-end text-main fw-bold px-2">
-                                            <span class="text-uppercase">Quyên góp ngay</span>&nbsp;
+                                            <span class="text-uppercase"><?php echo app('translator')->get('Donate now'); ?></span>&nbsp;
                                             <i class="fa fa-chevron-down"></i>
                                         </a>
                                     </div>
@@ -124,8 +125,8 @@
                 <div class="row mb-2">
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-between">
-                            <p class="fw-bold fs-4">HOẠT ĐỘNG</p>
-                            <a href="<?php echo e(route('news')); ?>" class="btn btn-custom"> Xem tất cả</a>
+                            <p class="fw-bold fs-4 text-uppercase"><?php echo app('translator')->get('activity'); ?></p>
+                            <a href="<?php echo e(route('news')); ?>" class="btn btn-custom"> <?php echo app('translator')->get('View all'); ?></a>
                         </div>
                     </div>
                 </div>
@@ -135,14 +136,14 @@
                         <?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-lg-4">
                                 <div class="item-product mb-2">
-                                    <a href="<?php echo e(route('vi.news.detail', [$item->slug, $item->id])); ?>" title="<?php echo e($item->name); ?>">
+                                    <a href="<?php echo e(route('news.detail', [$item->slug, $item->id])); ?>" title="<?php echo e($item->name); ?>">
                                         <div class="product-img">
                                             <img src="<?php echo e(get_image($item->image)); ?>" class="" alt="<?php echo e($item->name); ?>">
                                         </div>
                                     </a>
                                 </div>
                                 <h5 class="title desc-truncate">
-                                    <a href="<?php echo e(route('vi.news.detail', [$item->slug, $item->id])); ?>"><?php echo e($item->name); ?></a>
+                                    <a href="<?php echo e(route('news.detail', [$item->slug, $item->id])); ?>"><?php echo e($item->name); ?></a>
                                 </h5>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -170,7 +171,6 @@
 
         
         <?php echo $__env->make('theme.includes.subscribe', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
     </main>
 <?php $__env->stopSection(); ?>
 

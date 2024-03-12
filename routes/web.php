@@ -203,14 +203,12 @@ Route::localized(function () {
         Route::post('donate', 'DonateController@submit')->name('donate.submit');
         Route::get('donate-completed', 'DonateController@completed')->name('donate_completed');
         Route::get('donate/paypal', 'DonateController@bankpaypal')->name('bank_paypal');
-        Route::get('donate/transfer', 'DonateController@banktransfer')->name('bank_transfer');
+        // Route::get('donate/transfer', 'DonateController@banktransfer')->name('bank_transfer');
 
         // Search
         // Route::post('/input/search-text/{type}', 'AjaxController@inputSearchText');
 
         Route::get('/search', 'SearchController@index')->name('search');
-        // Route::post('search-select', 'AjaxController@searchSelect');
-
 
         // Page
         Route::get('{slug}', 'PageController@page')->name('page');

@@ -583,6 +583,14 @@ main {
     }
 
     .block16 {
+        p {
+            line-height: 2;
+            font-size: 1.25rem;
+        }
+        .transfer_info {
+            background-color: #f2f2f2;
+            border-left: 9px solid #00b1af;
+        }
     }
 }
 

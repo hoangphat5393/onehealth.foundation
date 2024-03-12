@@ -6,7 +6,7 @@
 @endphp
 
 <header id="header" class="header">
-    <div class="container mb-4">
+    <div class="container mb-3">
         <ul class="nav justify-content-end">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ Route::localizedUrl('vi') }}">@lang('Viet Nam')</a>

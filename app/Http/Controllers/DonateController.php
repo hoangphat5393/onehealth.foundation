@@ -34,11 +34,11 @@ class DonateController extends Controller
         return view('theme.page.paypal');
     }
 
-    public function banktransfer()
-    {
-        $this->localized();
-        return view('theme.page.transfer');
-    }
+    // public function banktransfer()
+    // {
+    //     $this->localized();
+    //     return view('theme.page.donate-transfer');
+    // }
 
     public function confirmation(Request $rq)
     {

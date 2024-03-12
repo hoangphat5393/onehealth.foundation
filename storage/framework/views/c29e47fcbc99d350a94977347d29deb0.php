@@ -1,43 +1,45 @@
 <section class="block7">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 subscribe-block p-4">
-                <h4><?php echo app('translator')->get('Electronic newsletter'); ?></h4>
-                
-                <form id="subscription_form" action="<?php echo e(route('subscription')); ?>" method="post" class="" novalidate="novalidate">
-                    <?php echo csrf_field(); ?>
-                    <div class="row">
-                        <div class="col-5">
-                            <label for="email" class="visually-hidden">Email</label>
-                            <input type="email" class="form-control border-custom" id="email" name="subscription[email]" placeholder="<?php echo app('translator')->get('Your email'); ?>">
+            <div class="col-lg-8">
+                <div class="subscribe-block p-4">
+                    <h4><?php echo app('translator')->get('Electronic newsletter'); ?></h4>
+                    
+                    <form id="subscription_form" action="<?php echo e(route('subscription')); ?>" method="post" class="" novalidate="novalidate">
+                        <?php echo csrf_field(); ?>
+                        <div class="row">
+                            <div class="col-5">
+                                <label for="email" class="visually-hidden">Email</label>
+                                <input type="email" class="form-control border-custom" id="email" name="subscription[email]" placeholder="<?php echo app('translator')->get('Your email'); ?>">
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-custom btn-subscription"><?php echo app('translator')->get('Register'); ?></button>
+                                <span class="ajax-loader"></span>
+                            </div>
                         </div>
-                        <div class="col-auto">
-                            <button type="button" class="btn btn-custom btn-subscription"><?php echo app('translator')->get('Register'); ?></button>
-                            <span class="ajax-loader"></span>
-                        </div>
+                    </form>
+                    <p class="my-3"><?php echo app('translator')->get('Recieve news'); ?> One Health Foundation</p>
+                    <div class="d-flex align-items-center">
+                        <p><?php echo app('translator')->get('Follow us'); ?></p>
+                        &emsp;&emsp;
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="<?php echo e(setting_option('facebook')); ?>" target="_blank">
+                                    <img src="https://onehealth.foundation/wp-content/themes/thewish/img/icon/fb.png">
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="<?php echo e(setting_option('twitter')); ?>" target="_blank">
+                                    <img src="https://onehealth.foundation/wp-content/themes/thewish/img/icon/twitter.png">
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="<?php echo e(setting_option('youtube')); ?>" target="_blank">
+                                    <img src="https://onehealth.foundation/wp-content/themes/thewish/img/icon/youtube.png">
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </form>
-                <p class="my-3"><?php echo app('translator')->get('Recieve news'); ?> One Health Foundation</p>
-                <div class="d-flex align-items-center">
-                    <p><?php echo app('translator')->get('Follow us'); ?></p>
-                    &emsp;&emsp;
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a href="<?php echo e(setting_option('facebook')); ?>" target="_blank">
-                                <img src="https://onehealth.foundation/wp-content/themes/thewish/img/icon/fb.png">
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="<?php echo e(setting_option('twitter')); ?>" target="_blank">
-                                <img src="https://onehealth.foundation/wp-content/themes/thewish/img/icon/twitter.png">
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="<?php echo e(setting_option('youtube')); ?>" target="_blank">
-                                <img src="https://onehealth.foundation/wp-content/themes/thewish/img/icon/youtube.png">
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

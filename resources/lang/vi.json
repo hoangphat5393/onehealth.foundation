@@ -14,6 +14,7 @@
     "Capital fund": "Vốn đầu tư",
     "Number of employees": "Số lượng nhân viên",
     "million yen": "triệu yên",
+    "activity": "Hoạt động",
     "Business": "Hoạt động kinh doanh",
     "Business_1": "Thiết kế và sản xuất các sản phẩm nội thất",
     "Business_2": "Cung cấp sỉ và lẻ các dòng sản phẩm độc quyền",
@@ -24,9 +25,10 @@
     "shop 2 des": "Đèn trang trí nội thất và phụ kiện kim loại.",
     "shop 3 des": "Nội thất vintage được nhập trực tiếp từ Châu.",
     "Our Partner": "Đối tác của chúng tôi",
-    "Our Partner des": "CÔNG TY TNHH THAI SENG VIỆT NAM-Nhà phân phối chính thức của Axcis, Inc. tại Việt Nam",
-    "Our Partner address": "Tầng 2, 90 Trần Đình Xu, Phường Cô Giang, Quận 1, TP. HCM, Việt Nam",
+    "Main partner": "Đối tác chính",
+
     "all": "tất cả",
+    "See all projects": "Xem tất cả các dự án",
 
     "Transaction": "Giao dịch",
     "Transaction register": "Đăng ký giao dịch",
@@ -122,6 +124,7 @@
 
     "Read more": "Chi tiết",
     "View more": "Xem thêm",
+    "View all": "Xem tất cả",
     "Viet Nam": "Tiếng Việt",
     "English": "Tiếng Anh",
     "Japanese": "Nhật Bản",

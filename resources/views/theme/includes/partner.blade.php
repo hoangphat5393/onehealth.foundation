@@ -3,7 +3,7 @@
 @endphp
 <section class="block5">
     <div class="container">
-        <p class="fw-bold fs-4 mb-4">ĐỐI TÁC CHÍNH</p>
+        <p class="fw-bold fs-4 mb-4 text-uppercase">@lang('Main partner')</p>
         <div class="swiper partnerSlider">
             <div class="swiper-wrapper">
                 @foreach ($partner as $item)

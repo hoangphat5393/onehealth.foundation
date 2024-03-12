@@ -14,6 +14,7 @@
     "Capital fund": "Capital fund",
     "Number of employees": "Number of employees",
     "million yen": "million yen",
+    "activity": "Activity",
     "Business": "Business",
     "Business_1": "Design and manufacture interior products",
     "Business_2": "Wholesales and direct sales of original products",
@@ -24,8 +25,11 @@
     "shop 2 des": "From lighting to hardware accessories to enrich your home.",
     "shop 3 des": "Antique and vintage furniture collected mainly from Europe.",
     "Our Partner": "Our Partner",
+    "Main partner": "Main Partner",
 
+    "Our Projects": "Our Projects",
     "all": "all",
+    "See all projects": "See all projects",
 
     "Transaction": "Transaction",
     "Transaction register": "Transaction register",
@@ -112,6 +116,7 @@
 
     "Read more": "Read more",
     "View more": "View more",
+    "View all": "View all",
     "Viet Nam": "Vietnamese",
     "English": "English",
     "Japanese": "Japanese",

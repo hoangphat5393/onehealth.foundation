@@ -407,6 +407,15 @@ main .block14 .address_info p {
 main .block15 .contact_content {
   background-color: #ffecdd;
 }
+main .block16 p {
+  line-height: 2;
+  font-size: 1.25rem;
+}
+main .block16 .transfer_info {
+  background-color: #f2f2f2;
+  border-left: 9px solid #00b1af;
+}
+
 a.custom {
   color: #000000;
 }

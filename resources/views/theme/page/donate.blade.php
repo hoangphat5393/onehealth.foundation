@@ -8,9 +8,9 @@
 
 @section('content')
     <main id="donate">
-        <section class="block10">
+        <section class="block10" style="background:#20a19f;height: 100px;">
             <div class="mainBanner">
-                <div class="container main-menu position-static tranform-none">
+                <div class="container main-menu">
                     @include('theme.includes.menu')
                 </div>
                 {{-- <div class="container-fluid px-0">
@@ -43,13 +43,12 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <p class="fs-2 text-main text-uppercase fw-bold mb-3">Thông tin ngân hàng</p>
-                        <a href="{{ route('bank_paypal') }}"><img src="{{ asset('images/payment/paypal.jpg') }}" class="img-fluid w-100 mb-3" alt="paypal" /></a>
-                        <a href="{{ route('bank_transfer') }}"><img src="{{ asset('images/payment/bank.jpg') }}" class="img-fluid w-100" alt="bank" /></a>
+                        <a href="{{ route('page', 'bank-paypal') }}"><img src="{{ asset('images/payment/paypal.jpg') }}" class="img-fluid w-100 mb-3" alt="paypal" /></a>
+                        <a href="{{ route('page', 'bank-transfer') }}"><img src="{{ asset('images/payment/bank.jpg') }}" class="img-fluid w-100" alt="bank" /></a>
                     </div>
                 </div>
             </div>
         </section>
-
 
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')
