@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('plugin/jquery-ui/jquery-ui.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('plugin/jquery-confirm-v3.3.4/jquery-confirm.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugin/select2/css/select2.min.css') }}">
 
     <!-- Admin Custom Css -->
     <link rel="stylesheet" href="{{ asset('css/style_admin.css?ver=' . time()) }}">
@@ -91,6 +92,8 @@
     <script src="{{ asset('plugin/datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
     <script src="{{ asset('plugin/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('plugin/jquery-confirm-v3.3.4/jquery-confirm.min.js') }}"></script>
+    <script src="{{ asset('plugin/sweetalert2@11/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('plugin/select2/js/select2.full.min.js') }}"></script>
 
     {{-- https://gitbrent.github.io/bootstrap4-toggle/ --}}
     <script src="{{ asset('plugin/bootstrap4-toggle/bootstrap4-toggle.min.js') }}"></script>

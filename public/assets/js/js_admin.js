@@ -74,6 +74,9 @@ $(function () {
     $("#order_to").datetimepicker({
         format: "YYYY-MM-DD",
     });
+
+    $(".select2").select2();
+    $(".multi-select2").select2();
 });
 
 function get_address_full() {

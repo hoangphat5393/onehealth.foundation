@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Setting, App\Model\Admin, App\Model\Addtocard;
-use App\Model\Theme, App\Model\Category_Theme, App\Model\Join_Category_Theme;
+use App\Models\Setting, App\Models\Admin, App\Models\Addtocard;
+use App\Models\Theme, App\Models\Category_Theme, App\Models\Join_Category_Theme;
 use Illuminate\Support\Facades\Hash;
 use App\Libraries\Helpers;
 use Illuminate\Support\Str;
@@ -18,7 +18,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\WebService\WebService;
 use Illuminate\Support\Facades\Validator;
 
-use App\Model\AdminRole;
+use App\Models\AdminRole;
 
 class UserAdminController extends Controller
 {
@@ -29,11 +29,12 @@ class UserAdminController extends Controller
      *
      * @return void
      */
-    public function __construct(){
+    public function __construct()
+    {
         $routes = app()->routes->getRoutes();
         foreach ($routes as $route) {
             if (Str::startsWith($route->uri(), SC_ADMIN_PREFIX)) {
-                $prefix = SC_ADMIN_PREFIX ? $route->getPrefix() : ltrim($route->getPrefix(),'/');
+                $prefix = SC_ADMIN_PREFIX ? $route->getPrefix() : ltrim($route->getPrefix(), '/');
                 $routeAdmin[$prefix] = [
                     'uri'    => 'ANY::' . $prefix . '/*',
                     'name'   => $prefix . '/*',
@@ -49,24 +50,24 @@ class UserAdminController extends Controller
                             'method' => $method,
                         ];
                     }
-
                 }
             }
-
         }
 
         $this->data['routeAdmin'] = $routeAdmin;
         $this->roles       = AdminRole::pluck('name', 'id')->all();
     }
 
-    public function index(){
+    public function index()
+    {
         $this->data['data_user'] = Admin::get();
+        // dd($this->data['data_user']);
         return view('admin.user-admin.index', $this->data);
     }
 
     public function create()
     {
-        $this->data =[
+        $this->data = [
             'roles'             => $this->roles,
         ];
         return view('admin.user-admin.single', $this->data);
@@ -75,14 +76,14 @@ class UserAdminController extends Controller
     public function edit($id)
     {
         $user = Admin::find($id);
-        $this->data =[
+        $this->data = [
             'data_admin'        => $user,
             'roles'             => $this->roles,
             'user_roles'        => $user->roles->pluck('id')->toArray(),
         ];
-        if($user){
+        if ($user) {
             return view('admin.user-admin.single', $this->data);
-        } else{
+        } else {
             return view('404');
         }
     }
@@ -93,12 +94,12 @@ class UserAdminController extends Controller
         $data = $rq->all();
 
         $change_pass = $data['check_pass'] ?? 0;
-        if($change_pass || $sid == 0){
-            $this->validate($rq,[
-                'email' => 'required|unique:"'.Admin::class.'",email,' . $sid . '',
+        if ($change_pass || $sid == 0) {
+            $this->validate($rq, [
+                'email' => 'required|unique:"' . Admin::class . '",email,' . $sid . '',
                 'password'      => 'required|confirmed',
                 'name'          => 'required',
-            ],[
+            ], [
                 'email.required' => 'Hãy nhập vào địa chỉ Email',
                 'email.email' => 'Địa chỉ Email không đúng định dạng',
                 'email.unique' => 'Địa chỉ Email đã tồn tại',
@@ -106,11 +107,11 @@ class UserAdminController extends Controller
                 'password.confirmed' => 'Xác nhận mật khẩu không đúng',
                 'name.required' => 'Tên không được trống',
             ]);
-        }else{
-            $this->validate($rq,[
-                'email' => 'required|string|max:50|unique:"'.Admin::class.'",email,' . $sid . '',
+        } else {
+            $this->validate($rq, [
+                'email' => 'required|string|max:50|unique:"' . Admin::class . '",email,' . $sid . '',
                 'name'          => 'required',
-            ],[
+            ], [
                 'email.required' => 'Hãy nhập vào địa chỉ Email',
                 'email.email' => 'Địa chỉ Email không đúng định dạng',
                 'email.unique' => 'Địa chỉ Email đã tồn tại',
@@ -126,27 +127,27 @@ class UserAdminController extends Controller
         $dataUpdate = [
             'email'     => $rq->email,
             'name'      => $rq->name,
-            
+
             'admin_level' => $rq->admin_level,
             'email_info'     => $rq->email,
             'status'    => $rq->status,
             'admin_level'    => 1
         ];
-        if($rq->password)
+        if ($rq->password)
             $dataUpdate['password']  = bcrypt($rq->password);
 
-        if($sid == 0){
+        if ($sid == 0) {
             $user = Admin::create($dataUpdate);
 
             $roles = $data['roles'] ?? [];
             $permission = $data['permission'] ?? [];
 
             //Process role special
-            if(in_array(1, $roles)) {
+            if (in_array(1, $roles)) {
                 // If group admin
                 $roles = [1];
                 $permission = [];
-            } else if(in_array(2, $roles)) {
+            } else if (in_array(2, $roles)) {
                 // If group onlyview
                 $roles = [2];
                 $permission = [];
@@ -161,14 +162,13 @@ class UserAdminController extends Controller
             if ($permission) {
                 $user->permissions()->attach($permission);
             }
-        }
-        else{
+        } else {
             $user = Admin::find($sid);
             $user->update($dataUpdate);
             // dd($user);
-            if(!in_array($user->id, SC_GUARD_ADMIN)) {
+            if (!in_array($user->id, SC_GUARD_ADMIN)) {
                 $roles = $data['roles'] ?? [];
-                $permission = $data['permission'] ?? []; 
+                $permission = $data['permission'] ?? [];
                 $user->roles()->detach();
                 // $user->permissions()->detach();
                 //Insert roles
@@ -179,17 +179,15 @@ class UserAdminController extends Controller
                 if ($permission) {
                     $user->permissions()->attach($permission);
                 }
-
             }
         }
 
         $save = $data['submit'] ?? 'apply';
-        if($save == 'apply'){
+        if ($save == 'apply') {
             $msg = "User admin has been Updated";
             $url = route('admin.userAdminDetail', array($user->id));
             Helpers::msg_move_page($msg, $url);
-        }
-        else{
+        } else {
             return redirect(route('admin_permission.index'));
         }
     }
@@ -197,22 +195,21 @@ class UserAdminController extends Controller
     public function deleteUserAdmin($id)
     {
         $user_current = auth()->user();
-        if(auth()->check() && $user_current->id != $id)
-        {
+        if (auth()->check() && $user_current->id != $id) {
             $loadDelete = Admin::find($id)->delete();
             $msg = "Admin account has been Delete";
             $url = route('admin.listUserAdmin');
-            Helpers::msg_move_page($msg,$url);
+            Helpers::msg_move_page($msg, $url);
         }
         $msg = "Không thực hiện được thao tác này";
         $url = route('admin.listUserAdmin');
-        Helpers::msg_move_page($msg,$url);
+        Helpers::msg_move_page($msg, $url);
     }
 
 
     public function without()
     {
-        $prefix = SC_ADMIN_PREFIX?SC_ADMIN_PREFIX.'/':'';
+        $prefix = SC_ADMIN_PREFIX ? SC_ADMIN_PREFIX . '/' : '';
         return [
             $prefix . 'login',
             $prefix . 'logout',
@@ -222,5 +219,4 @@ class UserAdminController extends Controller
             $prefix . 'uploads',
         ];
     }
- 
 }

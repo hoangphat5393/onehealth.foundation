@@ -3,16 +3,16 @@
     if (isset($data_admin)) {
         extract($data_admin->toArray());
     }
-
+    $date_update = $updated_at ?? date('Y-m-d H:i:s');
 @endphp
 
 @section('seo')
-    <?php
-    $data_seo = [
-        'title' => $title_head . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
-    ];
-    $seo = WebService::getSEO($data_seo);
-    ?>
+    @php
+        $data_seo = [
+            'title' => $title_head . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
+        ];
+        $seo = WebService::getSEO($data_seo);
+    @endphp
     @include('admin.partials.seo')
 @endsection
 @section('content')
@@ -72,7 +72,7 @@
                                             <select name="http_uri[]" id="admin_level" class="form-control select2" multiple="multiple" onautocomplete="off">
                                                 <option value=""></option>
                                                 @foreach ($routeAdmin as $route)
-                                                    @php
+                                                    {{-- @php --}}
                                                     <option value="{{ $route['uri'] }}" {{ in_array($route['uri'], $old_http_uri) ? 'selected' : '' }}>{{ $route['name'] ? $route['method'] . '::' . $route['name'] : $route['uri'] }}</option>
                                                 @endforeach
                                             </select>
@@ -89,6 +89,9 @@
             </form>
         </div> <!-- /.container-fluid -->
     </section>
+@endsection
+
+@push('scripts')
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             //xử lý validate
@@ -129,7 +132,8 @@
             // });
         });
     </script>
-    <script type="text/javascript">
+
+    {{-- <script type="text/javascript">
         CKEDITOR.replace('post_content', {
             width: '100%',
             resize_maxWidth: '100%',
@@ -147,13 +151,5 @@
             filebrowserBrowseUrl: '{{ route('ckfinder_browser') }}',
         });
         CKEDITOR.instances['post_content_en'];
-    </script>
-@endsection
-@section('style')
-    <style>
-        #frm-create-useradmin .error {
-            color: #dc3545;
-            font-size: 13px;
-        }
-    </style>
-@endsection
+    </script> --}}
+@endpush

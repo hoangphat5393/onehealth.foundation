@@ -445,6 +445,11 @@ input.upload_gallery_variable_select {
     background: #ff0000;
     border-radius: 50%;
 }
+
+#frm-create-useradmin .error {
+    color: #dc3545;
+    font-size: 13px;
+}
 #tabLang {
     margin-bottom: 15px;
 }
@@ -1103,9 +1108,19 @@ input#csv_slishow_mobile {
     padding-left: 9px;
 }
 
-/* .to-link {
-    color: #c76805;
-} */
+/*select2*/
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #007bff;
+    border-color: #006fe6;
+    color: #fff;
+    padding: 0 10px;
+    margin-top: 0.31rem;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #fff;
+}
+/*select2*/
+
 .g-0,
 .gx-0 {
     --bs-gutter-x: 0;

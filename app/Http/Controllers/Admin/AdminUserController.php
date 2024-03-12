@@ -129,14 +129,14 @@ class AdminUserController extends Controller
         $loadDelete = Admin::find($id)->delete();
 
         //delete products
-        $productDelete = Theme::all();
-        if ($loadDelete) {
-            foreach ($productDelete as $value) {
-                if ($value->admin_id == $id) {
-                    $value->delete();
-                }
-            }
-        }
+        // $productDelete = Theme::all();
+        // if ($loadDelete) {
+        //     foreach ($productDelete as $value) {
+        //         if ($value->admin_id == $id) {
+        //             $value->delete();
+        //         }
+        //     }
+        // }
 
         $msg = "Admin account has been Delete";
         $url = route('admin.listUserAdmin');

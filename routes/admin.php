@@ -115,7 +115,6 @@ Route::namespace('Admin')->group(function () {
             Route::get('/rating/{id}', 'AdminController@ratingDetail')->name('admin.ratingDetail');
             Route::post('rating', 'AdminController@postRating')->name('admin.postRating');
 
-
             // Slider Home
             Route::group(['prefix' => 'slider'], function () {
                 Route::get('create', 'SliderController@create')->name('admin.sliderCreate');

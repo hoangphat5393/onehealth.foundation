@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Cache;
 // use App\Models\Product;
 // use App\Models\ProductPromotion;
 
+/**
+ * Admin define
+ */
+define('SC_ADMIN_MIDDLEWARE', ['web', 'admin']);
+define('SC_FRONT_MIDDLEWARE', ['web', 'front']);
+define('SC_API_MIDDLEWARE', ['api', 'api.extent']);
+define('SC_CONNECTION', 'mysql');
+define('SC_CONNECTION_LOG', 'mysql');
+//Prefix url admin
+define('SC_ADMIN_PREFIX', env('ADMIN_PREFIX', 'admin'));
 
 if (!function_exists('setting_option')) {
     function setting_option($variable = '')
