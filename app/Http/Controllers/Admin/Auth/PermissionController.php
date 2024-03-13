@@ -53,6 +53,8 @@ class PermissionController extends Controller
             }
         }
 
+
+        // dd($routeAdmin);
         $this->data['routeAdmin'] = $routeAdmin;
         $this->template = 'admin.permission';
         $this->data['title_head'] = 'Permissions';

@@ -5,6 +5,9 @@ use Illuminate\Support\Str;
 
 
 // Route xử lý cho admin
+// Route::localized(function () {
+// });
+
 Route::namespace('Admin')->group(function () {
 
     Route::get('/login', 'LoginController@showLoginForm');
@@ -22,23 +25,15 @@ Route::namespace('Admin')->group(function () {
         Route::group(['middleware' => 'checkAdminPermission'], function () {
 
             //Talk js
-            Route::group(['prefix' => 'talkjs'], function () {
-                Route::get('/', 'TalkjsController@index')->name('admin.talkjs');
-            });
+            // Route::group(['prefix' => 'talkjs'], function () {
+            //     Route::get('/', 'TalkjsController@index')->name('admin.talkjs');
+            // });
 
             //Setting cost
-            Route::group(['prefix' => 'setting-cost'], function () {
-                Route::get('/', 'SettingCostController@index')->name('admin_setting_cost');
-                Route::post('/', 'SettingCostController@store');
-            });
-
-            // Page
-            Route::group(['prefix' => 'page'], function () {
-                Route::get('/list', 'PageController@index')->name('admin.pageList');
-                Route::get('create', 'PageController@create')->name('admin.createPage');
-                Route::get('/edit/{id}', 'PageController@edit')->name('admin.pageEdit');
-                Route::post('post', 'PageController@post')->name('admin.postPageDetail');
-            });
+            // Route::group(['prefix' => 'setting-cost'], function () {
+            //     Route::get('/', 'SettingCostController@index')->name('admin_setting_cost');
+            //     Route::post('/', 'SettingCostController@store');
+            // });
 
             // Xử lý users admin
             Route::group(['prefix' => 'user-admin'], function () {
@@ -63,19 +58,18 @@ Route::namespace('Admin')->group(function () {
                 Route::post('/post', 'Auth\RoleController@post')->name('admin_role.post');
                 Route::get('/delete/{id}', 'Auth\RoleController@delete')->name('admin_role.delete');
             });
-            Route::group(['prefix' => 'type'], function () {
-                Route::get('/list', 'ShopTypeController@index')->name('admin_type');
-                Route::get('/create', 'ShopTypeController@create')->name('admin_type.create');
-                Route::get('/edit/{id}', 'ShopTypeController@edit')->name('admin_type.edit');
-                Route::post('/post', 'ShopTypeController@post')->name('admin_type.post');
-            });
+            // Route::group(['prefix' => 'type'], function () {
+            //     Route::get('/list', 'ShopTypeController@index')->name('admin_type');
+            //     Route::get('/create', 'ShopTypeController@create')->name('admin_type.create');
+            //     Route::get('/edit/{id}', 'ShopTypeController@edit')->name('admin_type.edit');
+            //     Route::post('/post', 'ShopTypeController@post')->name('admin_type.post');
+            // });
 
             // Discount Code
-            Route::get('/list-discount-code', 'DiscountCodeController@listDiscountCode')->name('admin.discountCode');
-            Route::get('/discount-code/create', 'DiscountCodeController@createDiscountCode')->name('admin.createDiscountCode');
-            Route::get('/discount-code/{id}', 'DiscountCodeController@discountCodeDetail')->name('admin.discountCodeDetail');
-            Route::post('/discount-code/post', 'DiscountCodeController@postDiscountCodeDetail')->name('admin.postDiscountCodeDetail');
-
+            // Route::get('/list-discount-code', 'DiscountCodeController@listDiscountCode')->name('admin.discountCode');
+            // Route::get('/discount-code/create', 'DiscountCodeController@createDiscountCode')->name('admin.createDiscountCode');
+            // Route::get('/discount-code/{id}', 'DiscountCodeController@discountCodeDetail')->name('admin.discountCodeDetail');
+            // Route::post('/discount-code/post', 'DiscountCodeController@postDiscountCodeDetail')->name('admin.postDiscountCodeDetail');
 
             // Xử lý users admin
             Route::get('/list-user-admin', 'AdminUserController@listUserAdmin')->name('admin.listUserAdmin');
@@ -94,16 +88,16 @@ Route::namespace('Admin')->group(function () {
             Route::get('/delete-user/{id}', 'AdminController@deleteUser')->name('admin.delUser');
 
             // Brand
-            Route::get('/list-brand', 'BrandController@index')->name('admin.brand');
-            Route::get('/brand/create', 'BrandController@create')->name('admin.brand.create');
-            Route::get('/brand/{id}', 'BrandController@edit')->name('admin.brand.edit');
-            Route::post('/brand/post', 'BrandController@post')->name('admin.brand.post');
+            // Route::get('/list-brand', 'BrandController@index')->name('admin.brand');
+            // Route::get('/brand/create', 'BrandController@create')->name('admin.brand.create');
+            // Route::get('/brand/{id}', 'BrandController@edit')->name('admin.brand.edit');
+            // Route::post('/brand/post', 'BrandController@post')->name('admin.brand.post');
 
             //Orders
-            Route::get('/list-order', 'OrderController@listOrder')->name('admin.listOrder');
-            Route::get('/search-order', 'OrderController@searchOrder')->name('admin.searchOrder');
-            Route::get('/order/{id}', 'OrderController@orderDetail')->name('admin.orderDetail');
-            Route::post('/order/post', 'OrderController@postOrderDetail')->name('admin.postOrderDetail');
+            // Route::get('/list-order', 'OrderController@listOrder')->name('admin.listOrder');
+            // Route::get('/search-order', 'OrderController@searchOrder')->name('admin.searchOrder');
+            // Route::get('/order/{id}', 'OrderController@orderDetail')->name('admin.orderDetail');
+            // Route::post('/order/post', 'OrderController@postOrderDetail')->name('admin.postOrderDetail');
 
             // Export excel
             Route::get('/export_customer', array('as' => 'admin.exportCustomer', 'uses' => 'AdminController@exportCustomer'));
@@ -129,6 +123,15 @@ Route::namespace('Admin')->group(function () {
         });
         // End checkAdminPermission
 
+        // Page
+        Route::group(['prefix' => 'page'], function () {
+            Route::get('/list', 'PageController@index')->name('admin.pageList');
+            Route::get('create', 'PageController@create')->name('admin.createPage');
+            Route::get('/edit/{id}', 'PageController@edit')->name('admin.pageEdit');
+            Route::post('post', 'PageController@post')->name('admin.postPageDetail');
+        });
+
+
         $admin_module = ['post', 'product', 'service', 'project', 'campaign', 'video', 'contact', 'subscription'];
 
         foreach ($admin_module as $item) {
@@ -139,13 +142,19 @@ Route::namespace('Admin')->group(function () {
             Route::get($item, $prefix_controller . '@index')->name($prefix_name . 'List');
             Route::get($item . '/create', $prefix_controller .  '@create')->name($prefix_name . 'Create');
             Route::get($item . '/{id}', $prefix_controller  . '@edit')->name($prefix_name . 'Edit');
-            Route::post($item . '/post', $prefix_controller  . '@post')->name($prefix_name . 'Post');
+            Route::post(
+                $item . '/post',
+                $prefix_controller  . '@post'
+            )->name($prefix_name . 'Post');
 
             // Module Category
             $prefix_controller = Str::headline($item) . 'CategoryController'; // postCategoryController
             $prefix_name = 'admin.' . $item . 'Category'; // admin.postCategory
             Route::get($item . '-category', $prefix_controller . '@index')->name($prefix_name . 'List');
-            Route::get($item . '-category/create', $prefix_controller . '@create')->name($prefix_name . 'Create');
+            Route::get(
+                $item . '-category/create',
+                $prefix_controller . '@create'
+            )->name($prefix_name . 'Create');
             Route::get($item . '-category/{id}', $prefix_controller . '@edit')->name($prefix_name . 'Edit');
             Route::post($item . '-category/post', $prefix_controller . '@post')->name($prefix_name . 'Post');
 

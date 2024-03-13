@@ -41,7 +41,9 @@ class AdminMenu extends Model
     {
         $list = self::getListAllDisplay();
         $listVisible = [];
+
         foreach ($list as  $menu) {
+            // dd($list);
             if (!$menu->uri) {
                 $listVisible[] = $menu;
             } else {
@@ -53,6 +55,7 @@ class AdminMenu extends Model
                 }
             }
         }
+
         $listVisible = collect($listVisible);
         $groupVisible = $listVisible->groupBy('parent_id');
         foreach ($listVisible as $key => $value) {

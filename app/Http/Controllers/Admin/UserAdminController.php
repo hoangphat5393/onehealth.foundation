@@ -11,7 +11,6 @@ use App\Libraries\Helpers;
 use Illuminate\Support\Str;
 use App\User;
 use Auth, DB, File, Image, Redirect, Cache;
-use App\Exports\CustomerExport;
 use App\Exports\OrderExport;
 use App\Exports\ProductExport;
 use Maatwebsite\Excel\Facades\Excel;

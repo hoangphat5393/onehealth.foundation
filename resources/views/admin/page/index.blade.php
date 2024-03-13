@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('seo')
     @php
-        $title_head = 'Product Category';
+        $title_head = 'Page';
         $data_seo = [
             'title' => $title_head . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
             'keywords' => Helpers::get_option_minhnn('seo-keywords-add'),
@@ -42,7 +42,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>{{ trans('admin.project_category') }}</h5>
+                            <h5>@lang('admin.Page')</h5>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
                             <div class="clear">
@@ -66,7 +66,7 @@
                                                     </label>
                                                 </div>
                                             </th>
-                                            <th scope="col" class="text-center" style="width:100px">Thứ tự</th>
+                                            <th scope="col" class="text-center" style="width:100px">@lang('admin.sort')</th>
                                             <th scope="col" class="text-center">Tên trang</th>
                                             <th scope="col" class="text-center">Ảnh</th>
                                             <th scope="col" class="text-center">Ngày tạo</th>

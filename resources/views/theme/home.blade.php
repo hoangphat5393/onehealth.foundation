@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="container d-block d-md-none" style="background: #999999;">
+            <div class="container d-block d-md-none mt-5">
                 <div class="row">
                     <div class="col-md-12 mission">
                         <h3>OUR MISSION</h3>

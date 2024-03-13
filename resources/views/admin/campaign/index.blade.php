@@ -90,7 +90,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="row-title fw-bold" href="{{ route('admin.campaignEdit', $item->id) }}">
-                                                        {{ $item->name }}
+                                                        {{ $item->name }} | {{ $item->name_en }}
                                                     </a>
                                                     <br>
                                                     <a class="link to-link fw-bold" href="{{ route('campaign.detail', [$item->slug, $item->id]) }}" target="_blank">

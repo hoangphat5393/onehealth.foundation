@@ -1,6 +1,8 @@
 <?php
 // header("Access-Control-Allow-Origin: *");
 
+// phpinfo();
+
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 

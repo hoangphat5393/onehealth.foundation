@@ -135,7 +135,6 @@ class AdminUser extends Model implements AuthenticatableContract
      */
     public  function checkUrlAllowAccess($url)
     {
-
         if ($this->isAdministrator() || $this->isViewAll()) {
             return true;
         }

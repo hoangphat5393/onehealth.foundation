@@ -360,31 +360,34 @@ header {
 main {
     .block2 {
         .mission {
-            margin: auto;
-            padding: 4px 224px 0px 140px;
-            background: url("/assets/images/bg_mission.png");
             height: 260px;
-            background-size: 90% auto;
-            background-repeat: no-repeat;
-            background-position: left;
-            h3 {
-                font-weight: 700;
-            }
-            p {
-                color: #fff;
-            }
         }
         .vission {
-            margin: auto;
-            padding: 14px 144px 0px 200px;
-            background: url("/assets/images/bg_vission.png");
             height: 260px;
-            background-size: 90% 80%;
-            background-repeat: no-repeat;
-            background-position: right;
             margin-top: -100px;
-            h3 {
-                font-weight: 700;
+        }
+
+        h3 {
+            font-weight: 700;
+        }
+        p {
+            color: #000;
+        }
+
+        @media (min-width: 992px) {
+            .mission {
+                padding: 4px 224px 0px 140px;
+                background: url("/assets/images/bg_mission.png");
+                background-size: 90% auto;
+                background-repeat: no-repeat;
+                background-position: left;
+            }
+            .vission {
+                padding: 14px 144px 0px 200px;
+                background: url("/assets/images/bg_vission.png");
+                background-size: 90% 80%;
+                background-repeat: no-repeat;
+                background-position: right;
             }
             p {
                 color: #fff;

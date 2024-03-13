@@ -22,14 +22,14 @@
                 <li class="nav-item has-treeview">
                     <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Dashboard</p>
+                        <p>{!! __('admin.Dashboard') !!}</p>
                     </a>
                 </li>
 
                 <li class="nav-item has-treeview">
                     <a href="{{ route('index') }}" target="_blank" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
-                        <p>Xem trang chủ</p>
+                        <p>{!! __('admin.Home') !!}</p>
                     </a>
                 </li>
 
@@ -92,7 +92,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.changePassword') }}" class="nav-link">
                         <i class="nav-icon fa fa-user" aria-hidden="true"></i>
-                        Tài khoản
+                        @lang('admin.Account')
                     </a>
                 </li>
                 <li class="nav-item">
