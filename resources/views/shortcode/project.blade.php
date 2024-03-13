@@ -4,7 +4,7 @@
     use Carbon\Carbon;
     Carbon::setLocale('vi');
 
-    $project = \App\Models\Campaign::paginate($items);
+    $project = \App\Campaign::paginate($items);
 
 @endphp
 @empty(!$project)

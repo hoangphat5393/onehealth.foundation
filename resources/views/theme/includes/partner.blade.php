@@ -36,6 +36,17 @@
                 delay: 0.5,
                 disableOnInteraction: false,
             },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                },
+                992: {
+                    slidesPerView: 4,
+                },
+                1200: {
+                    slidesPerView: 6,
+                },
+            },
             // pagination: {
             //     el: ".swiper-pagination",
             //     clickable: true,

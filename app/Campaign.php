@@ -2,18 +2,21 @@
 
 namespace App;
 
+// use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use App\Models\Category;
 
-class News extends Model
+class Campaign extends Model
 {
-    protected $table = 'post';
-    protected $primaryKey = 'id';
+    use HasFactory;
+    public $timestamps = true;
+    protected $table = 'campaign';
+    protected $guarded = [];
 
-    public function categories()
-    {
-        return $this->belongsToMany('App\Models\Category', 'post_category', 'post_id', 'category_id');
-    }
+    // public function categories()
+    // {
+    //     return $this->belongsToMany(Category::class, 'campaign_category', 'campaign_id', 'category_id');
+    // }
 
     public function getNameAttribute($value)
     {

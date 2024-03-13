@@ -82,11 +82,11 @@
                                             <input type="text" class="form-control" id="post_title" name="title" placeholder="Tiêu đề" value="{{ $title ?? '' }}">
                                         </div>
                                         @php
-                                            $quote_arr = ['id' => 'description', 'label' => 'Trích dẫn', 'name' => 'description', 'description' => $description ?? ''];
+                                            // $quote_arr = ['id' => 'description', 'label' => 'Trích dẫn', 'name' => 'description', 'description' => $description ?? ''];
                                             $content_arr = ['id' => 'content', 'label' => 'Nội dung', 'name' => 'content', 'content' => $content ?? ''];
                                             // $content_arr2 = ['id' => 'content2', 'label' => 'Nội dung 2', 'name' => 'content2', 'content' => $content2 ?? ''];
                                         @endphp
-                                        @include('admin.partials.quote', $quote_arr)
+                                        {{-- @include('admin.partials.quote', $quote_arr) --}}
                                         @include('admin.partials.content', $content_arr)
                                         {{-- @include('admin.partials.content', $content_arr2) --}}
 
@@ -97,11 +97,11 @@
                                             <input type="text" class="form-control" id="title_en" name="title_en" placeholder="Title" value="{{ $title_en ?? '' }}">
                                         </div>
                                         @php
-                                            $quote_arr = ['id' => 'description_en', 'label' => 'Description', 'name' => 'description_en', 'description' => $description_en ?? ''];
+                                            // $quote_arr = ['id' => 'description_en', 'label' => 'Description', 'name' => 'description_en', 'description' => $description_en ?? ''];
                                             $content_arr = ['id' => 'content_en', 'label' => 'Content', 'name' => 'content_en', 'content' => $content_en ?? ''];
                                             // $content_arr2 = ['id' => 'content2_en', 'label' => 'Content 2', 'name' => 'content2_en', 'content' => $content2_en ?? ''];
                                         @endphp
-                                        @include('admin.partials.quote', $quote_arr)
+                                        {{-- @include('admin.partials.quote', $quote_arr) --}}
                                         @include('admin.partials.content', $content_arr)
                                         {{-- @include('admin.partials.content', $content_arr2) --}}
                                     </div>
@@ -144,8 +144,8 @@
 
 @push('scripts')
     <script type="text/javascript">
-        editorQuote('description');
-        editorQuote('description_en');
+        // editorQuote('description');
+        // editorQuote('description_en');
         editor('content');
         // editor('content2');
         // editor('content3');

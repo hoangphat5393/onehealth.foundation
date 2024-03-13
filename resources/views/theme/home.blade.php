@@ -19,7 +19,7 @@
             <div class="container pt-5 pb-5 d-none d-md-block">
                 <div class="row">
                     <div class="col-md-12 mission">
-                        <h3>SỨ MỆNH</h3>
+                        <h3 class="text-uppercase">@lang('mission')</h3>
                         <p>
                             OHF thực hiện những dự án nhằm nâng cao các cơ hội được chăm sóc y tế và giáo dục phổ thông tới những người có hoàn cảnh kinh tế khó khăn tại Việt Nam. Đồng thời chúng tôi sẽ tìm ra các giải pháp khắc phục các vấn đề về ô nhiễm môi trường sống cho cộng đồng. Thông qua các dự
                             án
@@ -27,10 +27,10 @@
                         </p>
                     </div>
                     <div class="col-md-12 vission">
-                        <h3 class="text-end">TẦM NHÌN</h3>
+                        <h3 class="text-end text-uppercase">@lang('vision')</h3>
                         <p>OHF tập trung xây dựng một hệ thống y tế cộng đồng bền vững trên toàn lãnh thổ Việt Nam để đảm bảo cho tất cả người dân đều được chăm sóc về y tế, giáo dục hiệu quả với chi phí phù hợp và sống trong môi trường lành mạnh.</p>
                         <div class="d-block text-end">
-                            <a class="btn btn-custom" href="{{ route('page', 'about') }}">Chúng tôi là ai <i class="fa-solid fa-angle-right"></i></a>
+                            <a class="btn btn-custom" href="{{ route('page', 'about') }}">@lang('Who are we') <i class="fa-solid fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                         <p></p>
                         <p>One Health Foundation funds projects in order to build a nation-wide sustainable public healthcare ecosystem in Vietnam where everyone got eﬀective and aﬀordable medical treatment, education and a clean living environment.</p>
                         <p></p>
-                        <a href="https://onehealth.foundation/eg/who-we-are/" class="btn btn-custom">Who We Are</a>
+                        <a href="https://onehealth.foundation/eg/who-we-are/" class="btn btn-custom">@lang('Who are we?')</a>
                     </div>
                 </div>
             </div>
@@ -62,20 +62,21 @@
 
         {{-- Dự án (Campaign) --}}
         @php
-            $project = \App\Models\Campaign::where('status', 1)->limit(3)->get();
+            $project = \App\Campaign::where('status', 1)->limit(3)->get();
+            // dd($project);
         @endphp
         <section class="block3">
             <div class="container pt-5">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h3 class="upper">Dự án của chúng tôi</h3>
+                        <h3 class="upper">@lang('Our Projects')</h3>
                         <p class="mb-3">Quỹ từ thiện One Health Foundation (OHF) <br>thực hiện sứ mệnh của chúng tôi thông qua <br>ba dự án chính về y tế, giáo dục và môi trường.</p>
                         <p>OHF tin rằng với đội ngũ thế hệ trẻ Việt Nam ngày nay, các bạn sẽ hết lòng vì cộng đồng để xây dựng đất nước ngày càng phát triển hơn.</p>
                         <a href="{{ route('page', 'du-an') }}" class="btn btn-custom my-3">@lang('See all projects') <i class="fa-solid fa-angles-right"></i></a>
 
                         <form method="get" action="#">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Tìm kiếm" aria-describedby="button-addon2">
+                                <input type="text" class="form-control" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="button-addon2">
                                 <button class="btn btn-search" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                             </div>
                         </form>
@@ -162,7 +163,7 @@
                         <span class="d-block text-end">Bà Vương Thu Nguyệt - Giám đốc điều hành</span>
                     </div>
                     <div class="col-lg-4">
-                        <img class="img-fluid" src="{{ asset('images/vtn.png') }}">
+                        <img class="img-fluid d-block mx-auto" src="{{ asset('images/vtn.png') }}">
                     </div>
                 </div>
             </div>
