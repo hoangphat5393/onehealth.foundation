@@ -197,7 +197,6 @@
                     <div class="col-lg-4 text-end">
                         <p class="text-start fs-4 fw-bold">Hoặc bạn muốn đồng hành</p>
                         <p class="text-start mb-3">Chúng tôi đang có nhu cầu tuyển dụng, bạn có thể trở thành thành viên của Quỹ từ thiện One Health Foundation</p>
-
                         <button class="mb-3" href="#" style="background: #00b0ae;padding: 5px 25px;color: #fff; border: 0px;">
                             <a class="text-white" href="#">Khám phá nghề nghiệp</a>
                         </button>
@@ -209,7 +208,6 @@
                 </div>
             </div>
         </section>
-
 
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')

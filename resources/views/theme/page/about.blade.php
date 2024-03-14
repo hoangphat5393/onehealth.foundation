@@ -32,9 +32,6 @@
                 <div class="row mb-5">
                     <div class="col-lg-12">
                         <h1 class="category-title">{{ $page->title }}</h1>
-                        {{-- <div class="my-5">
-                            {!! htmlspecialchars_decode($page->description) !!}
-                        </div> --}}
                     </div>
                 </div>
                 <div class="row">

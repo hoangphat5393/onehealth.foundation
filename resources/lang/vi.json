@@ -142,7 +142,6 @@
     "Sat": "T7",
     "Search placehoder": "Nhập tên sản phẩm bạn cần tìm...",
     "Notation Based": "Chính sách và điều khoản",
-    "Privacy Policy": "Chính sách bảo mật",
     "Designed By": "Thiết kế bởi",
 
     "Sign in": "Đăng nhập",
@@ -168,5 +167,7 @@
     "Headquarters": "Trụ sở chính",
     "For donation": "Cho quyên góp",
     "Bank account": "Tài khoản ngân hàng",
-    "Bank ": "Ngân hàng"
+    "Bank ": "Ngân hàng",
+    "Terms of Service": "Điều khoản dịch vụ",
+    "Privacy Policy": "Chính sách bảo mật"
 }

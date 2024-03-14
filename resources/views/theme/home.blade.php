@@ -83,7 +83,7 @@
             $news = \App\News::where('status', 1)->orderByDesc('sort')->limit(3)->get();
         @endphp
         <section class="block4">
-            <div class="container mt-5 pt-5">
+            <div class="container pt-5">
                 <div class="row mb-2">
                     <div class="col-lg-12">
                         <div class="d-flex justify-content-between">
@@ -118,7 +118,8 @@
         @include('theme.includes.partner')
 
         <section class="block6">
-            <div class="container testimonial">
+            {!! htmlspecialchars_decode(setting_option('bottom_text_' . App::getLocale())) !!}
+            {{-- <div class="container testimonial">
                 <div class="row py-3">
                     <div class="col-lg-8 p-5">
                         <p class="mb-3">“Tôi đã tìm thấy chính mình tại nơi đây. Cảm ơn Quỹ từ thiện sức khỏe là số 1 đã cho tôi cơ hội để tôi có thể cống hiến hết sức mình vì cộng đồng”</p>
@@ -128,7 +129,7 @@
                         <img class="img-fluid d-block mx-auto" src="{{ asset('images/vtn.png') }}">
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </section>
 
         {{-- Subscribe --}}

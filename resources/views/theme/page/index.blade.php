@@ -32,7 +32,9 @@
                     </div>
                 </div>
             </div>
-            {!! htmlspecialchars_decode($page->content) !!}
+            <div class="container">
+                {!! htmlspecialchars_decode($page->content) !!}
+            </div>
         </section>
         {{-- About content End --}}
 

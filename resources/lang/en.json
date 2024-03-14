@@ -134,7 +134,6 @@
     "Sat": "Sat",
     "Search placehoder": "Enter name of product for search ...",
     "Notation Based": "Terms & Conditions",
-    "Privacy Policy": "Privacy Policy",
     "Designed By": "Designed By",
 
     "Sign in": "Sign In",
@@ -160,5 +159,7 @@
     "Headquarters": "Trụ sở chính",
     "For donation": "For donation",
     "Bank account": "Bank account",
-    "Bank ": "Ngân hàng"
+    "Bank ": "Bank",
+    "Terms of Service": "Terms of Service",
+    "Privacy Policy": "Privacy Policy"
 }

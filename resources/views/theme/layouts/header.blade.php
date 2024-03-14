@@ -6,7 +6,7 @@
 @endphp
 
 <header id="header" class="header">
-    <div class="container mb-3">
+    <div class="container">
         <ul class="nav justify-content-end">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ Route::localizedUrl('vi') }}">@lang('Viet Nam')</a>
@@ -27,7 +27,7 @@
     <nav class="navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}">
-                <img src="{{ get_image(setting_option('logo')) }}" class="logo" alt="{{ setting_option('webtitle') }}" style="height:84px">
+                <img src="{{ get_image(setting_option('logo')) }}" class="logo" alt="{{ setting_option('webtitle') }}" style="height:80px">
             </a>
             <div class="d-none d-lg-block">
                 <div class="d-flex camp-group-block">
@@ -51,7 +51,6 @@
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         @foreach ($headerMenu->items as $item)
                             @php $hasChild = $item->child()->exists(); @endphp
-
                             @if ($hasChild != 1)
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ $item->link }}">{{ $item->label }}</a>

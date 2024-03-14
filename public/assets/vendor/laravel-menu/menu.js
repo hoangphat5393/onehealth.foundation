@@ -100,7 +100,7 @@ $(".addcustommenu").on("click", function () {
             idmenu: idmenu,
         },
 
-        url: addcustommenur,
+        url: addCustomMenu,
         type: "POST",
         success: function (response) {
             //console.log(response);
