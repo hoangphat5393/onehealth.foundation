@@ -359,6 +359,19 @@ header {
     }
 }
 
+.camp-group-block {
+    display: flex;
+    .left-block {
+        background-color: #ffecdd;
+        padding: 0.875rem 1.25rem;
+    }
+    .right-block {
+        background-color: #ff8114;
+        padding: 0.875rem 1.25rem;
+        color: #fff;
+    }
+}
+
 main {
     .block2 {
         h3 {

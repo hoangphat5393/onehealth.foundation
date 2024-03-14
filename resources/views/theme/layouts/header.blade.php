@@ -30,11 +30,15 @@
                 <img src="{{ get_image(setting_option('logo')) }}" class="logo" alt="{{ setting_option('webtitle') }}" style="height:84px">
             </a>
             <div class="d-none d-lg-block">
-                <a href="{{ route('page', 'donate') }}">
-                    <img src="{{ asset('images/create_campain.png') }}" class="logo" alt="{{ setting_option('webtitle') }}" style="height:54px">
-                </a>
+                <div class="camp-group-block">
+                    <div class="left-block fw-semibold">
+                        @lang('Create your campaign')
+                    </div>
+                    <a href="{{ route('page', 'donate') }}" class="d-block right-block fw-bold">
+                        @lang('Donate now')
+                    </a>
+                </div>
             </div>
-
             <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,7 +49,6 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-
                         @foreach ($headerMenu->items as $item)
                             @php $hasChild = $item->child()->exists(); @endphp
 
