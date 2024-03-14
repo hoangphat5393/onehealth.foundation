@@ -359,19 +359,6 @@ header {
     }
 }
 
-.camp-group-block {
-    display: flex;
-    .left-block {
-        background-color: #ffecdd;
-        padding: 0.875rem 1.25rem;
-    }
-    .right-block {
-        background-color: #ff8114;
-        padding: 0.875rem 1.25rem;
-        color: #fff;
-    }
-}
-
 main {
     .block2 {
         h3 {
@@ -611,6 +598,18 @@ main {
             background-color: #f2f2f2;
             border-left: 9px solid #00b1af;
         }
+    }
+}
+
+.camp-group-block {
+    .left-block {
+        background-color: #ffecdd;
+        padding: 0.875rem 1.25rem;
+    }
+    .right-block {
+        background-color: #ff8114;
+        padding: 0.875rem 1.25rem;
+        color: #fff;
     }
 }
 

@@ -31,6 +31,7 @@
     "all": "all",
     "See all projects": "See all projects",
 
+    "Register": "Register",
     "Transaction": "Transaction",
     "Transaction register": "Transaction register",
     "Transaction Application": "Transaction Application",
@@ -155,5 +156,9 @@
     "vision": "vision",
     "Who are we": "Who are we",
     "Create your campaign": "Create your campaign",
-    "Bank information": "Bank information"
+    "Bank information": "Bank information",
+    "Headquarters": "Trụ sở chính",
+    "For donation": "For donation",
+    "Bank account": "Bank account",
+    "Bank ": "Ngân hàng"
 }

@@ -34,22 +34,6 @@
             </div>
         </section>
 
-        {{-- <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <p>Cảm ơn sự quan tâm của bạn dành cho tổ chức của chúng tôi. Nếu như có bất cứ thắc mắc nào về các hoạt động cũng như thông tin về Quỹ, hãy gửi tin nhắn cho chúng tôi. Chúng tôi luôn chào đón và hồi đáp cho sự thắc mắc của bạn.</p>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="w-100" src="{{ asset('images/map_google.jpg') }}">
-                </div>
-            </div>
-        </div> --}}
-
         <div>
             {!! htmlspecialchars_decode($page->content) !!}
         </div>
@@ -59,18 +43,18 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 address_info">
                         <div class="address_info_content p-3">
-                            <h3 style="color: #00b0ae;font-size: 24px;font-weight: bolder">TRỤ SỞ CHÍNH</h3>
+                            <h4 class="fw-bold text-uppercase" style="color: #00b0ae;">@lang('Headquarters')</h4>
                             <p class="fw-bold">Hồ Chí Minh</p>
                             <p>{{ setting_option('address') }}</p>
                             <p class="mb-5">
-                                PHONE: <a href="tel:{{ setting_option('phone') }}">{{ setting_option('phone') }}</a>
+                                @lang('Phone'): <a href="tel:{{ setting_option('phone') }}">{{ setting_option('phone') }}</a>
                                 <br>
-                                E-mail: <a href="mailto:{{ setting_option('email') }}">{{ setting_option('email') }}</a>
+                                @lang('E-mail'): <a href="mailto:{{ setting_option('email') }}">{{ setting_option('email') }}</a>
                             </p>
-                            <h3 style="color: #00b0ae;font-size: 24px;font-weight: bolder">CHO QUYÊN GÓP</h3>
+                            <h4 class="fw-bold text-uppercase" style="color: #00b0ae;">@lang('For donation')</h4>
                             <p>
-                                <b>Tài khoản ngân hàng: 100 0209 9482 0834</b>
-                                <br>Ngân hàng Á Châu - ACB
+                                <b>@lang('Bank account'): {{ setting_option('bank_account') }}</b>
+                                <br>@lang('Bank') {{ setting_option('bank_name') }}
                             </p>
                         </div>
                     </div>
@@ -171,7 +155,7 @@
 
                     <div class="col-lg-8 px-0 mb-5">
 
-                        <div class="contact_content p-5">
+                        <div class="contact_content p-4">
 
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
@@ -200,7 +184,7 @@
                                             <textarea name="contact[content]" class="form-control" id="cf-content" rows="8" placeholder="@lang('Message')"></textarea>
                                         </div>
                                         <div class="submit-btn text-end">
-                                            <button type="submit" class="btn btn-custom">Gửi</button>
+                                            <button type="submit" class="btn btn-custom">@lang('Submit')</button>
                                             {{-- <input class="" type="submit" value="Send"> --}}
                                             {{-- <span class="wpcf7-spinner"></span> --}}
                                         </div>

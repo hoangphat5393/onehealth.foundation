@@ -30,6 +30,7 @@
     "all": "tất cả",
     "See all projects": "Xem tất cả các dự án",
 
+    "Register": "Đăng ký",
     "Transaction": "Giao dịch",
     "Transaction register": "Đăng ký giao dịch",
     "Transaction Application": "Đăng ký giao dịch",
@@ -163,5 +164,9 @@
     "vision": "tầm nhìn",
     "Who are we": "Chúng tôi là ai",
     "Create your campaign": "Tạo chiến dịch",
-    "Bank information": "Thông tin ngân hàng"
+    "Bank information": "Thông tin ngân hàng",
+    "Headquarters": "Trụ sở chính",
+    "For donation": "Cho quyên góp",
+    "Bank account": "Tài khoản ngân hàng",
+    "Bank ": "Ngân hàng"
 }

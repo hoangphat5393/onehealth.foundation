@@ -30,7 +30,7 @@
                 <img src="{{ get_image(setting_option('logo')) }}" class="logo" alt="{{ setting_option('webtitle') }}" style="height:84px">
             </a>
             <div class="d-none d-lg-block">
-                <div class="camp-group-block">
+                <div class="d-flex camp-group-block">
                     <div class="left-block fw-semibold">
                         @lang('Create your campaign')
                     </div>

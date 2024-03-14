@@ -227,19 +227,6 @@ header .nav-link {
   margin-top: 20px;
 }
 
-.camp-group-block {
-  display: flex;
-}
-.camp-group-block .left-block {
-  background-color: #ffecdd;
-  padding: 0.875rem 1.25rem;
-}
-.camp-group-block .right-block {
-  background-color: #ff8114;
-  padding: 0.875rem 1.25rem;
-  color: #fff;
-}
-
 main .block2 h3 {
   font-weight: 700;
 }
@@ -425,6 +412,16 @@ main .block16 p {
 main .block16 .transfer_info {
   background-color: #f2f2f2;
   border-left: 9px solid #00b1af;
+}
+
+.camp-group-block .left-block {
+  background-color: #ffecdd;
+  padding: 0.875rem 1.25rem;
+}
+.camp-group-block .right-block {
+  background-color: #ff8114;
+  padding: 0.875rem 1.25rem;
+  color: #fff;
 }
 
 a.custom {

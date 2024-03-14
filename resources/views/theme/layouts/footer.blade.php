@@ -12,9 +12,9 @@
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-lg-3 text-center">
-                    <button class="btn btn-lg btn-warning text-white border-0 rounded-0" style="background: #ff8114;">
+                    <a href="{{ route('page', 'donate') }}" class="btn btn-lg btn-warning text-white border-0 rounded-0" style="background: #ff8114;">
                         @lang('Donate now')
-                    </button>
+                    </a>
                     {{-- <span class="p-3" style="background: #ff8114;">
                         <a href="/quyen-gop/">Quyên góp ngay</a>
                     </span> --}}
@@ -22,7 +22,7 @@
             </div>
             <div class="footer__columns row my-4">
                 <div class="col-md-6 col-lg-3 footer__column-links">
-                    <h4 class="js-toggle-collapsed is-collapsed is-toggleable">Về Chúng tôi</h4>
+                    <h4 class="js-toggle-collapsed is-collapsed is-toggleable">@lang('About')</h4>
                     <div class="menu-footer-1-tv-container">
                         <ul id="menu-footer" class="list-unstyled">
                             <li id="menu-item-1321" class="">
