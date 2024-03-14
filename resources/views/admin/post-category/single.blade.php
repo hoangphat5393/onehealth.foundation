@@ -48,20 +48,21 @@
                             <div class="card-body">
                                 <!-- show error form -->
                                 <div class="errorTxt"></div>
-                                {{-- <ul class="nav nav-tabs hidden" id="tabLang" role="tablist">
+                                <div class="form-group">
+                                    <label for="slug">Slug</label>
+                                    <input type="text" class="form-control slug_slugify" id="slug" name="slug" placeholder="Slug" value="{{ $slug ?? '' }}">
+                                </div>
+                                <ul class="nav nav-tabs hidden" id="tabLang" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#vi" role="tab" aria-controls="vi" aria-selected="true">Tiếng việt</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="en-tab" data-toggle="tab" href="#en" role="tab" aria-controls="en" aria-selected="false">Tiếng Anh</a>
                                     </li>
-                                </ul> --}}
+                                </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="vi" role="tabpanel" aria-labelledby="vi-tab">
-                                        <div class="form-group">
-                                            <label for="slug">Slug</label>
-                                            <input type="text" class="form-control slug_slugify" id="slug" name="slug" placeholder="Slug" value="{{ $slug ?? '' }}">
-                                        </div>
+
                                         <div class="form-group">
                                             <label for="name">Tiêu đề thể loại tin</label>
                                             <input type="text" class="form-control title_slugify" id="name" name="name" placeholder="Tiêu đề" value="{{ $name ?? '' }}">

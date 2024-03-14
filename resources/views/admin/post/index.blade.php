@@ -86,7 +86,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="row-title fw-bold" href="{{ route('admin.postEdit', $item->id) }}">
-                                                        {{ $item->name }}
+                                                        {{ $item->name }} | {{ $item->name_en }}
                                                     </a>
                                                     <br>
                                                     <a class="link to-link fw-bold" href="{{ route('news.detail', [$item->slug, $item->id]) }}" target="_blank">

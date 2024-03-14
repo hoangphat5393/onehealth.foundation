@@ -14,9 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ Route::localizedUrl('en') }}">@lang('English')</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">@lang('Login')</a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 

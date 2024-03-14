@@ -201,8 +201,9 @@ return [
         // Maatwebsite\Excel\ExcelServiceProvider::class,
         // Jenssegers\Agent\AgentServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
         Gornymedia\Shortcodes\ShortcodesServiceProvider::class,
+
+        App\Providers\ShortcodeServiceProvider::class, // Custom Provider | All Shortcode write here 
     ],
 
     /*

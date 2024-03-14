@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Page;
 use App\Models\Category;
-use App\Models\Campaign;
+use App\Campaign;
 use DB;
 
 class CampaignController extends Controller

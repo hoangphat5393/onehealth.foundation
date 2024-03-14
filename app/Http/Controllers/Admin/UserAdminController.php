@@ -121,8 +121,7 @@ class UserAdminController extends Controller
         /*if ($validator->fails()) {
             $error = $validator->errors()->first();
             return redirect()->back()->withErrors($error);
-        }
-*/
+        }*/
         $dataUpdate = [
             'email'     => $rq->email,
             'name'      => $rq->name,

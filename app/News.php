@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-// use App\Models\Category;
 
 class News extends Model
 {
@@ -12,7 +11,7 @@ class News extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Category', 'post_category', 'post_id', 'category_id');
+        return $this->belongsToMany(NewsCategory::class, 'post_category', 'post_id', 'category_id');
     }
 
     public function getNameAttribute($value)
@@ -32,6 +31,16 @@ class News extends Model
             return $value;
         } else {
             return $this->{'description_' . $lc};
+        }
+    }
+
+    public function getContentAttribute($value)
+    {
+        $lc = app()->getLocale();
+        if ('vi' == $lc) {
+            return $value;
+        } else {
+            return $this->{'content_' . $lc};
         }
     }
 }

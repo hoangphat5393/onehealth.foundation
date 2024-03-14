@@ -72,12 +72,12 @@ Route::namespace('Admin')->group(function () {
             // Route::post('/discount-code/post', 'DiscountCodeController@postDiscountCodeDetail')->name('admin.postDiscountCodeDetail');
 
             // Xử lý users admin
-            Route::get('/list-user-admin', 'AdminUserController@listUserAdmin')->name('admin.listUserAdmin');
-            Route::get('/user-admin/{id}', 'AdminUserController@userAdminDetail')->name('admin.userAdminDetail');
-            Route::post('/user-admin/{id}', 'AdminUserController@postUserAdminDetail')->name('admin.postUserAdminDetail');
-            Route::get('/add-user-admin', 'AdminUserController@addUserAdmin')->name('admin.addUserAdmin');
-            Route::post('/add-user-admin', 'AdminUserController@postAddUserAdmin')->name('admin.postAddUserAdmin');
-            Route::get('/delete-user-admin/{id}', 'AdminUserController@deleteUserAdmin')->name('admin.delUserAdmin');
+            // Route::get('/list-user-admin', 'AdminUserController@listUserAdmin')->name('admin.listUserAdmin');
+            // Route::get('/user-admin/{id}', 'AdminUserController@userAdminDetail')->name('admin.userAdminDetail');
+            // Route::post('/user-admin/{id}', 'AdminUserController@postUserAdminDetail')->name('admin.postUserAdminDetail');
+            // Route::get('/add-user-admin', 'AdminUserController@addUserAdmin')->name('admin.addUserAdmin');
+            // Route::post('/add-user-admin', 'AdminUserController@postAddUserAdmin')->name('admin.postAddUserAdmin');
+            // Route::get('/delete-user-admin/{id}', 'AdminUserController@deleteUserAdmin')->name('admin.delUserAdmin');
 
             // Xử lý users
             Route::get('/list-users', 'AdminController@listUsers')->name('admin.listUsers');
@@ -171,7 +171,7 @@ Route::namespace('Admin')->group(function () {
             // Route::post('product-category/post', 'ProductCategoryController@post')->name('admin.productCategoryPost');
         }
 
-        //change password
+        // Change password
         Route::get('/change-password', 'AdminController@changePassword')->name('admin.changePassword');
         Route::post('/change-password', 'AdminController@postChangePassword')->name('admin.postChangePassword');
         Route::get('/check-password', 'AjaxController@checkPassword')->name('admin.checkPassword');

@@ -19,7 +19,8 @@
             {!! htmlspecialchars_decode($page->content) !!}
         </section>
 
-        @include('theme.includes.counter')
+
+        {{-- @include('theme.includes.counter') --}}
 
         {{-- Dự án (Campaign) --}}
         @php
@@ -79,7 +80,7 @@
 
         {{-- Hoạt động (News) --}}
         @php
-            $news = \App\Models\Post::where('status', 1)->orderByDesc('sort')->limit(3)->get();
+            $news = \App\News::where('status', 1)->orderByDesc('sort')->limit(3)->get();
         @endphp
         <section class="block4">
             <div class="container mt-5 pt-5">

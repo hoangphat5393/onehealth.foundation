@@ -34,7 +34,6 @@
                         @php
                             $cdt = new Carbon($item->created_at);
                         @endphp
-
                         <div class="row article g-0 mb-5">
                             <div class="col-lg-4 article__img">
                                 <div class="item-product">

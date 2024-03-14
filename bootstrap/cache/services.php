@@ -50,6 +50,7 @@
     46 => 'Laravel\\Socialite\\SocialiteServiceProvider',
     47 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
     48 => 'Gornymedia\\Shortcodes\\ShortcodesServiceProvider',
+    49 => 'App\\Providers\\ShortcodeServiceProvider',
   ),
   'eager' => 
   array (
@@ -84,6 +85,7 @@
     28 => 'App\\Providers\\WebServiceProvider',
     29 => 'Ixudra\\Curl\\CurlServiceProvider',
     30 => 'Gornymedia\\Shortcodes\\ShortcodesServiceProvider',
+    31 => 'App\\Providers\\ShortcodeServiceProvider',
   ),
   'deferred' => 
   array (

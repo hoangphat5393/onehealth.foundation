@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
-// use Harimayco\Menu\Facades\Menu;
 use Illuminate\Support\Facades\View;
 use Gornymedia\Shortcodes\Facades\Shortcode;
 use Illuminate\Pagination\Paginator;
@@ -36,72 +35,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('templateFile', env('APP_THEME', 'theme'));
 
         Paginator::useBootstrap();
-
-        // Short code
-
-        // Short code
-        Shortcode::add('example', function ($atts, $content, $name) {
-            $a = Shortcode::atts([
-                'name' => $name,
-                'foo' => 'something',
-            ], $atts);
-
-            return "foo = {$a['foo']}";
-        });
-
-        // Slider
-        Shortcode::add('slider', function ($atts, $id, $items = 3) {
-            $data = Shortcode::atts([
-                'id' => $id,
-                'items' => $items
-            ], $atts);
-
-            $file = 'shortcode/slider'; // ex: resource/views/partials/ $atts['name'] .blade.php
-            // dd($data);
-            if (view()->exists($file)) {
-                return view($file, compact('data'));
-            }
-        });
-
-        // Staff
-        Shortcode::add('staff', function ($atts, $id, $items = 3) {
-            $data = Shortcode::atts([
-                'id' => $id,
-                'items' => $items
-            ], $atts);
-
-            $file = 'shortcode/staff'; // ex: resource/views/partials/ $atts['name'] .blade.php
-            // dd($data);
-            if (view()->exists($file)) {
-                return view($file, compact('data'));
-            }
-        });
-
-        // Project list
-        Shortcode::add('project', function ($atts, $id, $items = 3) {
-            $data = Shortcode::atts([
-                'items' => $items
-            ], $atts);
-
-            $file = 'shortcode/project'; // ex: resource/views/partials/ $atts['name'] .blade.php
-            // dd($data);
-            if (view()->exists($file)) {
-                return view($file, compact('data'));
-            }
-        });
-
-        Shortcode::add('widget', function ($atts, $content, $name) {
-            $a = Shortcode::atts([
-                'name' => $name,
-                'foo' => 'something'
-            ], $atts);
-
-            $file = 'partials/' . $a['name']; // ex: resource/views/partials/ $atts['name'] .blade.php
-
-            if (view()->exists($file)) {
-                return view($file, $a);
-            }
-        });
     }
 
     /**

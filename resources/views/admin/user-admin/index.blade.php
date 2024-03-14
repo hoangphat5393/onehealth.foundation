@@ -34,6 +34,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -96,15 +97,17 @@
             </div> <!-- /.row -->
         </div> <!-- /.container-fluid -->
     </section>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            // $('#btn_deletes').click(function() {
-            //     if(confirm('Bạn có chắc muốn xóa tài khoản?')){
-            //         return true;
-            //     }
-            //     return false;
-            // });
+@endsection
 
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $('#btn_deletes').click(function() {
+                if (confirm('Bạn có chắc muốn xóa tài khoản?')) {
+                    return true;
+                }
+                return false;
+            });
         });
     </script>
-@endsection
+@endpush

@@ -35,25 +35,36 @@ class CampaignController extends Controller
             'category_id' => request('category_id'),
             'search_name' => request('search_name'),
         ];
-        if (Auth::guard('admin')->user()->admin_level == 99999) {
-            $db = Campaign::select('*');
-            if (request('category_id')) {
-                $db = $db->join('campaign_category', 'campaign_id', 'campaign.id');
-                $db->where('category_id', request('category_id'));
-            }
-            if (request('search_name') != '') {
-                $db->where('name', 'like', '%' . request('search_name') . '%');
-            }
-            $count_item = $db->count();
-            $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
-        } else {
-            $data_post = Campaign::where('admin_id', '=', Auth::guard('admin')->user()->id)
-                ->orderByDesc('sort')
-                ->paginate(20)
-                ->appends($appends);
-            $count_item = Campaign::where('admin_id', '=', Auth::guard('admin')->user()->id)
-                ->count();
+        // if (Auth::guard('admin')->user()->admin_level == 99999) {
+        //     $db = Campaign::select('*');
+        //     if (request('category_id')) {
+        //         $db = $db->join('campaign_category', 'campaign_id', 'campaign.id');
+        //         $db->where('category_id', request('category_id'));
+        //     }
+        //     if (request('search_name') != '') {
+        //         $db->where('name', 'like', '%' . request('search_name') . '%');
+        //     }
+        //     $count_item = $db->count();
+        //     $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
+        // } else {
+        //     $data_post = Campaign::where('admin_id', '=', Auth::guard('admin')->user()->id)
+        //         ->orderByDesc('sort')
+        //         ->paginate(20)
+        //         ->appends($appends);
+        //     $count_item = Campaign::where('admin_id', '=', Auth::guard('admin')->user()->id)
+        //         ->count();
+        // }
+
+        $db = Campaign::select('*');
+        if (request('category_id')) {
+            $db = $db->join('campaign_category', 'campaign_id', 'campaign.id');
+            $db->where('category_id', request('category_id'));
         }
+        if (request('search_name') != '') {
+            $db->where('name', 'like', '%' . request('search_name') . '%');
+        }
+        $count_item = $db->count();
+        $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
         return view('admin.campaign.index')->with(['data' => $data_post, 'total_item' => $count_item]);
     }
 

@@ -1,14 +1,16 @@
-@php extract($data) @endphp
+{{-- @php extract($data) @endphp --}}
 @php
-
+    // dd($projects);
     use Carbon\Carbon;
-    Carbon::setLocale('vi');
-    $project = \App\Campaign::limit($items)->paginate(6);
+    Carbon::setLocale(app()->getlocale());
+
+    // $project = \App\Campaign::limit($items)->paginate(6);
+
 @endphp
-@empty(!$project)
+@empty(!$projects)
     <div class="container">
         <div class="row">
-            @foreach ($project as $item)
+            @foreach ($projects as $item)
                 @php
                     $cdt = new Carbon($item->created_at);
                 @endphp
@@ -47,7 +49,7 @@
             @endforeach
 
             <div class="nav-pagination mt-4 mb-5">
-                {{ $project->links($templateFile . '.pagination.custom') }}
+                {{ $projects->links($templateFile . '.pagination.custom') }}
             </div>
         </div>
     </div>

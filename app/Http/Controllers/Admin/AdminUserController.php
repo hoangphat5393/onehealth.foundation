@@ -34,8 +34,6 @@ class AdminUserController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-
-
     public function listUsers()
     {
         $data_user = User::get();
@@ -116,7 +114,6 @@ class AdminUserController extends Controller
                     'status'        => $rq->status
                 ];
             }
-
             $respons = Admin::where("id", "=", $sid)->update($data);
             $msg = "Admin account has been Updated";
             $url = route('admin.userAdminDetail', array($sid));

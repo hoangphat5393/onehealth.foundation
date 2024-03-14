@@ -7,6 +7,7 @@ use App\News;
 use App\Page;
 use App\Models\Category;
 use App\Models\Post;
+use App\NewsCategory;
 use DB;
 
 class NewsController extends Controller
@@ -18,7 +19,6 @@ class NewsController extends Controller
     // All categories
     public function index($slug = '')
     {
-        // $this->localized();
 
         // All category
         $categories = Category::where(['status' => 1, 'type' => 'post', 'parent' => 0])->get();
@@ -47,18 +47,15 @@ class NewsController extends Controller
             return $this->categoryDetail($slug);
         }
 
-        // dd(123);
-        return view('theme.news.index', $this->data);
-        // return view('theme.news.index', $this->data)->compileShortcodes();
+        return view('theme.news.index', $this->data)->compileShortcodes();
     }
 
     // Single category
     public function categoryDetail($slug)
     {
-        $this->localized();
-        $category = Category::where('slug', $slug)->first();
 
-        // dd($category);
+        $category = NewsCategory::where('slug', $slug)->first();
+
         if ($category) {
             $this->data['category'] = $category;
             $this->data['category_child'] = $category->children();
@@ -89,7 +86,7 @@ class NewsController extends Controller
     // News detail
     public function newsDetail($slug)
     {
-        $news = Post::where('slug', $slug)->first();
+        $news = News::where('slug', $slug)->first();
 
         // All category
         $categories = Category::where(['status' => 1, 'type' => 'post', 'parent' => 0])->get();
@@ -97,13 +94,6 @@ class NewsController extends Controller
         // default data
         $this->data['categories'] = $categories;
         $this->data['news'] = $news;
-
-        // $tintuc = Category::where('slug', 'cong-thong-tin');
-        // $this->data['news_featured'] = $tintuc->news()
-        //     ->where('status', 1)
-        //     ->orderby('id', 'desc')
-        //     ->limit(6)
-        //     ->get();
 
         // Recently news
         // $this->data['recently_news'] = $tintuc->news()

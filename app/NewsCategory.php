@@ -6,30 +6,40 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewsCategory extends Model
 {
-    protected $table = 'post_category';
+    protected $table = 'category';
 
-    public function news()
+    public function parent()
     {
-        return $this->belongsToMany('App\News', 'post_category_join', 'category_id', 'post_id');
+        return $this->hasOne(NewsCategory::class, 'id', 'parent');
     }
 
-    public function getCategoryNameAttribute($value)
+    public function children()
+    {
+        return $this->hasMany(NewsCategory::class, 'parent', 'id')->orderBy('sort');
+    }
+
+    public function posts()
+    {
+        return $this->belongsToMany(News::class, 'post_category', 'category_id', 'post_id');
+    }
+
+    public function getNameAttribute($value)
     {
         $lc = app()->getLocale();
         if ('vi' == $lc) {
             return $value;
         } else {
-            return $this->{'categoryName_' . $lc};
+            return $this->{'name_' . $lc};
         }
     }
 
-    public function getCategoryDescriptionAttribute($value)
+    public function getDescriptionAttribute($value)
     {
         $lc = app()->getLocale();
         if ('vi' == $lc) {
             return $value;
         } else {
-            return $this->{'categoryDescription_' . $lc};
+            return $this->{'description_' . $lc};
         }
     }
 }

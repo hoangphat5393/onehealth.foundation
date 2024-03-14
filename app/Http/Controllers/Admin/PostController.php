@@ -35,25 +35,37 @@ class PostController extends Controller
             'category_id' => request('category_id'),
             'search_name' => request('search_name'),
         ];
-        if (Auth::guard('admin')->user()->admin_level == 99999) {
-            $db = Post::select('*');
-            if (request('category_id')) {
-                $db = $db->join('post_category', 'post_id', 'post.id');
-                $db->where('category_id', request('category_id'));
-            }
-            if (request('search_name') != '') {
-                $db->where('name', 'like', '%' . request('search_name') . '%');
-            }
-            $count_item = $db->count();
-            $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
-        } else {
-            $data_post = Post::where('admin_id', '=', Auth::guard('admin')->user()->id)
-                ->orderByDesc('sort')
-                ->paginate(20)
-                ->appends($appends);
-            $count_item = Post::where('admin_id', '=', Auth::guard('admin')->user()->id)
-                ->count();
+        // if (Auth::guard('admin')->user()->admin_level == 99999) {
+        //     $db = Post::select('*');
+        //     if (request('category_id')) {
+        //         $db = $db->join('post_category', 'post_id', 'post.id');
+        //         $db->where('category_id', request('category_id'));
+        //     }
+        //     if (request('search_name') != '') {
+        //         $db->where('name', 'like', '%' . request('search_name') . '%');
+        //     }
+        //     $count_item = $db->count();
+        //     $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
+        // } else {
+        //     $data_post = Post::where('admin_id', '=', Auth::guard('admin')->user()->id)
+        //         ->orderByDesc('sort')
+        //         ->paginate(20)
+        //         ->appends($appends);
+        //     $count_item = Post::where('admin_id', '=', Auth::guard('admin')->user()->id)
+        //         ->count();
+        // }
+
+        $db = Post::select('*');
+        if (request('category_id')) {
+            $db = $db->join('post_category', 'post_id', 'post.id');
+            $db->where('category_id', request('category_id'));
         }
+        if (request('search_name') != '') {
+            $db->where('name', 'like', '%' . request('search_name') . '%');
+        }
+        $count_item = $db->count();
+        $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
+
         return view('admin.post.index')->with(['data' => $data_post, 'total_item' => $count_item]);
     }
 
@@ -105,7 +117,7 @@ class PostController extends Controller
         }
         //end xử lý gallery
 
-        // $data['admin_id'] = Auth::guard('admin')->user()->id;
+        $data['admin_id'] = Auth::guard('admin')->user()->id;
 
         $save = $request->submit ?? 'apply';
 

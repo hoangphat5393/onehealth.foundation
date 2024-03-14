@@ -8,6 +8,7 @@
     $status = isset($data_admin) && !empty($data_admin) ? $data_admin->status : 0;
     $date_update = isset($data_admin) && !empty($data_admin) ? $data_admin->created : date('Y-m-d h:i:s');
 @endphp
+
 @section('seo')
     @php
         $data_seo = [
@@ -25,6 +26,7 @@
     @endphp
     @include('admin.partials.seo')
 @endsection
+
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -42,6 +44,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -70,7 +73,6 @@
                                             <label for="name">Tên nhân viên</label>
                                             <input type="text" class="form-control" id="name" name="name" placeholder="" value="{{ old('name', $name) }}">
                                         </div>
-
 
                                         <div class="form-group">
                                             <label for="post_title">Email</label>
