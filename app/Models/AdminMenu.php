@@ -42,6 +42,8 @@ class AdminMenu extends Model
         $list = self::getListAllDisplay();
         $listVisible = [];
 
+        // $lc = app()->getLocale();
+        // dd(app()->getLocale());
         foreach ($list as  $menu) {
             // dd($list);
             if (!$menu->uri) {

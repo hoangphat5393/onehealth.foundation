@@ -597,20 +597,21 @@ input.upload_gallery_variable_select {
 .variation-table #tbl_search_map_addr {
     top: 5px;
 }
-/* .anhduong-input__prefix,
-.anhduong-input__suffix {
-    display: table-cell;
-    width: 1px;
-    height: 100%;
-    line-height: 0;
-    color: #999;
-    white-space: nowrap;
-    vertical-align: middle;
-    position: absolute;
-    top: 8px;
-    left: 13px;
-    z-index: 5;
-} */
+
+.wrap-pass {
+    display: none;
+}
+
+.avtive-wpap-pass {
+    display: block;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 #variable_add_append .variation-table input.anhduong-input__input {
     padding-left: 25px;
     padding-right: 5px;
@@ -618,7 +619,7 @@ input.upload_gallery_variable_select {
     color: #cc0000;
     z-index: 4;
 }
-.anhduong-input__prefix-split,
+/* .anhduong-input__prefix-split,
 .anhduong-input__suffix-split {
     display: inline-block;
     width: 1px;
@@ -626,7 +627,7 @@ input.upload_gallery_variable_select {
     margin-left: 8px;
     vertical-align: middle;
     background: #eee;
-}
+} */
 .variation-table input.anhduong-input__input {
     line-height: 22px;
     margin: 5px 5px;
@@ -834,9 +835,6 @@ input#csv_slishow_mobile {
     margin-left: 5px;
     margin-top: 5px;
 }
-.hide-lang {
-    display: none;
-}
 
 .card-body {
     padding: 10px;
@@ -879,7 +877,7 @@ input#csv_slishow_mobile {
     background: #fff6ed;
 }
 
-/*//tag input*/
+/* tag input */
 .bootstrap-tagsinput {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -941,8 +939,6 @@ input#csv_slishow_mobile {
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
-/*//tag input*/
-
 /*content loading*/
 .mh-100 {
     min-height: 100px !important;
@@ -994,24 +990,6 @@ input#csv_slishow_mobile {
     border-bottom-color: var(--color-primary);
 }
 
-@-webkit-keyframes half-circle-spinner-animation {
-    0% {
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(1turn);
-    }
-}
-
-@keyframes half-circle-spinner-animation {
-    0% {
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(1turn);
-    }
-}
-
 .list-content-loading .half-circle-spinner .circle.circle-1 {
     border-top-color: #fff;
 }
@@ -1035,6 +1013,24 @@ input#csv_slishow_mobile {
 @media screen and (max-width: 768px) {
     .list-content-loading {
         top: 15px;
+    }
+}
+
+@-webkit-keyframes half-circle-spinner-animation {
+    0% {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes half-circle-spinner-animation {
+    0% {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(1turn);
     }
 }
 
@@ -1201,7 +1197,6 @@ input#csv_slishow_mobile {
     justify-content: center;
     border-radius: 50%;
     background: #fff;
-    /*    box-shadow: 0 0 2px #000;*/
     font-size: 14px;
     color: #f00;
     cursor: pointer;

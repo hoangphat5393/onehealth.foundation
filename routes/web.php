@@ -37,7 +37,6 @@ Route::localized(function () {
     Route::get('/callback/{provider}', 'RegisterAuthController@handleProviderCallback')->name('auth.social.callback');
 
     //user forget password
-    //user forget password
     Route::group(['prefix' => 'forget'], function () {
         //user forget password
         Route::get('password', 'Auth\ForgotPasswordController@forget')->name('forgetPassword');

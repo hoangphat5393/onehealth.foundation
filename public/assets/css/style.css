@@ -71,6 +71,7 @@ header .nav-link {
 .btn-custom:hover {
   background: #c87d3d;
   color: #fff;
+  border: solid 1px #c87d3d;
 }
 
 .border-custom {
@@ -226,13 +227,6 @@ header .nav-link {
   margin-top: 20px;
 }
 
-main .block2 .mission {
-  height: 260px;
-}
-main .block2 .vission {
-  height: 260px;
-  margin-top: -100px;
-}
 main .block2 h3 {
   font-weight: 700;
 }
@@ -242,6 +236,7 @@ main .block2 p {
 @media (min-width: 992px) {
   main .block2 .mission {
     padding: 4px 224px 0px 140px;
+    height: 260px;
     background: url("/assets/images/bg_mission.png");
     background-size: 90% auto;
     background-repeat: no-repeat;
@@ -249,6 +244,8 @@ main .block2 p {
   }
   main .block2 .vission {
     padding: 14px 144px 0px 200px;
+    height: 260px;
+    margin-top: -100px;
     background: url("/assets/images/bg_vission.png");
     background-size: 90% 80%;
     background-repeat: no-repeat;

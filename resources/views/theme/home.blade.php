@@ -16,46 +16,7 @@
         </section>
 
         <section class="block2">
-            <div class="container pt-5 pb-5 d-none d-md-block">
-                <div class="row">
-                    <div class="col-md-12 mission">
-                        <h3 class="text-uppercase">@lang('mission')</h3>
-                        <p>
-                            OHF thực hiện những dự án nhằm nâng cao các cơ hội được chăm sóc y tế và giáo dục phổ thông tới những người có hoàn cảnh kinh tế khó khăn tại Việt Nam. Đồng thời chúng tôi sẽ tìm ra các giải pháp khắc phục các vấn đề về ô nhiễm môi trường sống cho cộng đồng. Thông qua các dự
-                            án
-                            chúng tôi tạo điều kiện để thế hệ trẻ Việt Nam phát triển tối đa tiềm năng của họ
-                        </p>
-                    </div>
-                    <div class="col-md-12 vission">
-                        <h3 class="text-end text-uppercase">@lang('vision')</h3>
-                        <p>OHF tập trung xây dựng một hệ thống y tế cộng đồng bền vững trên toàn lãnh thổ Việt Nam để đảm bảo cho tất cả người dân đều được chăm sóc về y tế, giáo dục hiệu quả với chi phí phù hợp và sống trong môi trường lành mạnh.</p>
-                        <div class="d-block text-end">
-                            <a class="btn btn-custom" href="{{ route('page', 'about') }}">@lang('Who are we') <i class="fa-solid fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container d-block d-md-none mt-5">
-                <div class="row">
-                    <div class="col-md-12 mission">
-                        <h3>OUR MISSION</h3>
-                        <p></p>
-                        <p>
-                            One Health Foundation aims to expand public medical care as well as education opportunity to ﬁnancially disadvantage people in Vietnam. We also develop solutions for environmental issues to the local community. We will empower Vietnamese youths to develop themselves to their
-                            full potential.
-                        </p>
-                        <p></p>
-                    </div>
-                    <div class="col-md-12 vission pb-2" style="">
-                        <h3 class="text-right">VISION</h3>
-                        <p></p>
-                        <p>One Health Foundation funds projects in order to build a nation-wide sustainable public healthcare ecosystem in Vietnam where everyone got eﬀective and aﬀordable medical treatment, education and a clean living environment.</p>
-                        <p></p>
-                        <a href="https://onehealth.foundation/eg/who-we-are/" class="btn btn-custom">@lang('Who are we?')</a>
-                    </div>
-                </div>
-            </div>
+            {!! htmlspecialchars_decode($page->content) !!}
         </section>
 
         @include('theme.includes.counter')

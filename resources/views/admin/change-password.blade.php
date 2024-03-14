@@ -1,21 +1,24 @@
 @extends('admin.layouts.app')
 @section('seo')
-    <?php
-    $data_seo = [
-        'title' => 'Đổi mật khẩu | ' . Helpers::get_option_minhnn('seo-title-add'),
-        'keywords' => Helpers::get_option_minhnn('seo-keywords-add'),
-        'description' => Helpers::get_option_minhnn('seo-description-add'),
-        'og_title' => 'Đổi mật khẩu | ' . Helpers::get_option_minhnn('seo-title-add'),
-        'og_description' => Helpers::get_option_minhnn('seo-description-add'),
-        'og_url' => Request::url(),
-        'og_img' => asset('images/logo_seo.png'),
-        'current_url' => Request::url(),
-        'current_url_amp' => '',
-    ];
-    $seo = WebService::getSEO($data_seo);
-    ?>
+    @php
+        $data_seo = [
+            'title' => 'Đổi mật khẩu | ' . Helpers::get_option_minhnn('seo-title-add'),
+            'keywords' => Helpers::get_option_minhnn('seo-keywords-add'),
+            'description' => Helpers::get_option_minhnn('seo-description-add'),
+            'og_title' => 'Đổi mật khẩu | ' . Helpers::get_option_minhnn('seo-title-add'),
+            'og_description' => Helpers::get_option_minhnn('seo-description-add'),
+            'og_url' => Request::url(),
+            'og_img' => asset('images/logo_seo.png'),
+            'current_url' => Request::url(),
+            'current_url_amp' => '',
+        ];
+        $seo = WebService::getSEO($data_seo);
+    @endphp
     @include('admin.partials.seo')
 @endsection
+
+
+
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -34,6 +37,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -91,13 +95,14 @@
                                         <label for="name">Địa chỉ</label>
                                         <input type="text" class="form-control slug_slugify" id="address" name="address" placeholder="" value="{{ Auth::guard('admin')->user()->address }}">
                                     </div>
-                                    <!--  <div class="form-group">
-              <label for="name">Ảnh đại diện</label>
-              <input type="file" class="form-control slug_slugify" id="avatar" name="avatar" placeholder="" value="">
-             </div> -->
+                                    {{-- <div class="form-group">
+                                        <label for="name">Ảnh đại diện</label>
+                                        <input type="file" class="form-control slug_slugify" id="avatar" name="avatar" placeholder="" value="">
+                                    </div> --}}
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-primary" value="Cập nhật">
                                     </div>
+                                </div>
                             </form>
                         </div> <!-- /.card-body -->
                     </div><!-- /.card -->
@@ -105,9 +110,13 @@
             </div> <!-- /.row -->
         </div> <!-- /.container-fluid -->
     </section>
+@endsection
+
+
+@push('scripts')
     <script>
-        jQuery(document).ready(function($) {
-            $('input[name="check_pass"]').click(function() {
+        $(function() {
+            $('input[name="check_pass"]').on('click', function() {
                 let check_pass_length = $('#check_pass:checked').length;
                 console.log(check_pass_length);
                 if (check_pass_length == 1) {
@@ -126,7 +135,7 @@
                 $('.wrap-pass').toggleClass('avtive-wpap-pass');
 
                 //check password equal
-                $('#current_password').change(function() {
+                $('#current_password').on('change', function() {
                     var current_password = $(this).val();
                     $.ajax({
                         type: "get",
@@ -176,21 +185,4 @@
             });
         });
     </script>
-@endsection
-@section('style')
-    <style>
-        .wrap-pass {
-            display: none;
-        }
-
-        .avtive-wpap-pass {
-            display: block;
-        }
-
-        .error {
-            color: #dc3545;
-            font-size: 13px;
-            font-weight: bold;
-        }
-    </style>
-@endsection
+@endpush

@@ -136,10 +136,12 @@ header {
     background: #15a4a4;
     padding: 6px 20px;
     color: #fff;
+
     &:hover {
         background: #c87d3d;
         // border: 1px solid #fff;
         color: #fff;
+        border: solid 1px #c87d3d;
     }
 }
 
@@ -359,14 +361,6 @@ header {
 
 main {
     .block2 {
-        .mission {
-            height: 260px;
-        }
-        .vission {
-            height: 260px;
-            margin-top: -100px;
-        }
-
         h3 {
             font-weight: 700;
         }
@@ -374,9 +368,17 @@ main {
             color: #000;
         }
 
+        // .mission {
+        //     height: auto;
+        // }
+        // .vission {
+        //     height: auto;
+        // }
+
         @media (min-width: 992px) {
             .mission {
                 padding: 4px 224px 0px 140px;
+                height: 260px;
                 background: url("/assets/images/bg_mission.png");
                 background-size: 90% auto;
                 background-repeat: no-repeat;
@@ -384,6 +386,8 @@ main {
             }
             .vission {
                 padding: 14px 144px 0px 200px;
+                height: 260px;
+                margin-top: -100px;
                 background: url("/assets/images/bg_vission.png");
                 background-size: 90% 80%;
                 background-repeat: no-repeat;

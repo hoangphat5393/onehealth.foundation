@@ -13,7 +13,7 @@
                             TÌNH NGUYỆN VIÊN <br> THƯỜNG TRỰC
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('images/achievement_1.png') }}" class="" alt="" style="width:60px" />
+                            <img src="{{ asset('images/achievement_1.png') }}" class="" alt="achievement" style="width:60px" />
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                             NHÀ TỪ <br> THIỆN
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('images/achievement_2.png') }}" class="" alt="" style="width:60px" />
+                            <img src="{{ asset('images/achievement_2.png') }}" class="" alt="achievement" style="width:60px" />
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                             HOẠT ĐỘNG <br> TÌNH NGUYỆN
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('images/achievement_3.png') }}" class="" alt="" style="width:60px" />
+                            <img src="{{ asset('images/achievement_3.png') }}" class="" alt="achievement" style="width:60px" />
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                             HOÀN CẢNH KHÓ KHĂN<br> CẦN ĐƯỢC GIÚP ĐỠ
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('images/achievement_4.png') }}" class="" alt="" style="width:60px" />
+                            <img src="{{ asset('images/achievement_4.png') }}" class="" alt="achievement" style="width:60px" />
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                             HỘI THẢO SỨC KHỎE <br> CỘNG ĐỒNG
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('images/achievement_5.png') }}" class="" alt="" style="width:60px" />
+                            <img src="{{ asset('images/achievement_5.png') }}" class="" alt="achievement" style="width:60px" />
                         </div>
                     </div>
                 </div>

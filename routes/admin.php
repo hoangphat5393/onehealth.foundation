@@ -1,12 +1,12 @@
 <?php
 
+// use CodeZero\LocalizedRoutes\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-
 // Route xử lý cho admin
+
 // Route::localized(function () {
-// });
 
 Route::namespace('Admin')->group(function () {
 
@@ -108,18 +108,6 @@ Route::namespace('Admin')->group(function () {
             Route::get('/list-rating', 'AdminController@listRating')->name('admin.listRating');
             Route::get('/rating/{id}', 'AdminController@ratingDetail')->name('admin.ratingDetail');
             Route::post('rating', 'AdminController@postRating')->name('admin.postRating');
-
-            // Slider Home
-            Route::group(['prefix' => 'slider'], function () {
-                Route::get('create', 'SliderController@create')->name('admin.sliderCreate');
-                Route::get('{id}', 'SliderController@edit')->name('admin.sliderEdit');
-                Route::post('post', 'SliderController@postSliderDetail')->name('admin.postSliderDetail');
-                Route::post('insert', 'SliderController@insert')->name('admin.slider.insert');
-                Route::post('edit', 'SliderController@editSlider')->name('admin.slider.insert');
-                Route::post('delete', 'SliderController@deleteSlider')->name('admin.slider.delete');
-                Route::post('sort', 'SliderController@updateSort')->name('admin.slider.sort');
-            });
-            Route::get('slider', 'SliderController@index')->name('admin.slider');
         });
         // End checkAdminPermission
 
@@ -131,6 +119,18 @@ Route::namespace('Admin')->group(function () {
             Route::post('post', 'PageController@post')->name('admin.postPageDetail');
         });
 
+
+        // Slider Home
+        Route::group(['prefix' => 'slider'], function () {
+            Route::get('create', 'SliderController@create')->name('admin.sliderCreate');
+            Route::get('{id}', 'SliderController@edit')->name('admin.sliderEdit');
+            Route::post('post', 'SliderController@postSliderDetail')->name('admin.postSliderDetail');
+            Route::post('insert', 'SliderController@insert')->name('admin.slider.insert');
+            Route::post('edit', 'SliderController@editSlider')->name('admin.slider.insert');
+            Route::post('delete', 'SliderController@deleteSlider')->name('admin.slider.delete');
+            Route::post('sort', 'SliderController@updateSort')->name('admin.slider.sort');
+        });
+        Route::get('slider', 'SliderController@index')->name('admin.slider');
 
         $admin_module = ['post', 'product', 'service', 'project', 'campaign', 'video', 'contact', 'subscription'];
 
@@ -230,3 +230,4 @@ Route::namespace('Admin')->group(function () {
         Route::post('updateMenuItem', 'MenuWPController@updateitem')->name('updateMenuItem');
     });
 });
+// });
