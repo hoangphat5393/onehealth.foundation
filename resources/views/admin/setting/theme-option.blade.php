@@ -17,135 +17,8 @@
     @include('admin.partials.seo')
 @endsection
 
-@section('content')
-
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Setting</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Theme Option</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Theme Option</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <form action="{{ route('admin.postThemeOption') }}" method="POST" id="frm-theme-option" enctype="multipart/form-data">
-                                @csrf
-                                <div class="container_group_setting clear">
-                                    <div class="group_item_auto_theme clear">
-                                        @php
-                                            $settings = App\Models\Setting::orderBy('sort')->get();
-                                        @endphp
-                                        @if ($settings->count())
-                                            <div class="group_item_theme_sort" id="group_item_theme_sort">
-                                                @foreach ($settings as $index => $setting)
-                                                    @if ($setting->type == 'line')
-                                                        <div class="group_item_theme">
-                                                            <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
-                                                            <div class="left_item_theme left_genate">
-                                                                <input type="text" value="{{ $setting->name }}" placeholder="Please enter Name Field" name="header_option[line][name][]" />
-                                                            </div>
-                                                            <div class="right_item_theme right_genate">
-                                                                <input type="text" class="regular-text" placeholder="Please enter Value Field" name="header_option[line][value][]" value="{{ $setting->content }}" />
-                                                                <input type="button" class="button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl">
-                                                            </div>
-                                                        </div>
-                                                    @elseif($setting->type == 'text')
-                                                        <div class="group_item_theme">
-                                                            <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
-                                                            <div class="left_item_theme left_genate">
-                                                                <input type="text" value="{{ $setting->name }}" placeholder="Please enter Name Field" name="header_option[text][name][]" />
-                                                            </div>
-                                                            <div class="right_item_theme right_genate">
-                                                                <textarea class="regular-area" id="header_option_text_{{ $index }}" name="header_option[text][value][]" cols="5" rows="5">{!! $setting->content !!}</textarea>
-                                                            </div>
-                                                            <div class="action">
-                                                                <input type="button" class="button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl">
-                                                            </div>
-                                                        </div>
-                                                    @elseif($setting->type == 'editor')
-                                                        <div class="group_item_theme">
-                                                            <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
-                                                            <div class="left_item_theme left_genate">
-                                                                <input type="text" value="{{ $setting->name }}" placeholder="Please enter Name Field" name="header_option[editor][name][]" />
-                                                            </div>
-                                                            <div class="right_item_theme right_genate">
-                                                                <textarea class="regular-area" id="header_option_text_{{ $index }}" name="header_option[editor][value][]" cols="5" rows="5">{!! htmlspecialchars_decode($setting->content) !!}</textarea>
-                                                            </div>
-                                                            <div class="action">
-                                                                <input type="button" class="button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl">
-                                                            </div>
-                                                        </div>
-                                                        <script type="text/javascript">
-                                                            $(function() {
-                                                                editorQuote('header_option_text_{{ $index }}');
-                                                            });
-                                                        </script>
-                                                    @elseif($setting->type == 'img')
-                                                        @include('admin.partials.image-inline', [
-                                                            'code_name' => $setting->name,
-                                                            'name' => $setting->name,
-                                                            'image' => $setting->content,
-                                                            'id' => 'id_' . $setting->name,
-                                                        ])
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        @endif
-                                    </div><!--group_item_auto_theme-->
-                                    <div class="tbl_create_theme_add clear">
-                                        <div class="left_item_theme"><b><i>Choose Field Create</i></b></div>
-                                        <div class="right_item_theme">
-                                            <select name="option_choise_add" class="select_option_choise">
-                                                <option value="line">line</option>
-                                                <option value="content_editor">Mutiline with Editor</option>
-                                                <option value="content">Mutiline</option>
-                                                <option value="img">Image</option>
-                                            </select>
-                                            <button id="create_option" type="button" class="btn btn-primary create_option_class">Create Option</button>
-                                        </div>
-                                    </div><!--group_item_theme-->
-                                </div><!--container_group_setting-->
-                                <div class="posts_tbl_setting clear text-center">
-                                    <button id="submit_setting" class="btn btn-primary pull-left" name="submit" type="submit">Save Changes</button>
-                                    <p><b>Use:</b> <i style="color: #FF0000;">setting_option('name');</i></p>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-    </section>
-
-    <div class="inlcude-image" style="display: none;">
-        @include('admin.partials.image-inline')
-    </div>
-
-
-    <style type="text/css">
+@push('style')
+    <style>
         .icon_change_postion {
             text-align: center;
             padding-top: 10px;
@@ -336,7 +209,6 @@
             top: 50%;
             margin: -130px 0 0 -230px;
             border: 1px solid rgba(33, 33, 33, 0.6);
-
             -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
             -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
             box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
@@ -430,14 +302,143 @@
             background-position: -395px bottom;
         }
     </style>
+@endpush
+
+@section('content')
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Setting</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Theme Option</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Theme Option</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form action="{{ route('admin.postThemeOption') }}" method="POST" id="frm-theme-option" enctype="multipart/form-data">
+                                @csrf
+                                <div class="container_group_setting clear">
+                                    <div class="group_item_auto_theme clear">
+                                        @php
+                                            $settings = App\Models\Setting::orderBy('sort')->get();
+                                        @endphp
+                                        @if ($settings->count())
+                                            <div class="group_item_theme_sort" id="group_item_theme_sort">
+                                                @foreach ($settings as $index => $setting)
+                                                    @if ($setting->type == 'line')
+                                                        <div class="group_item_theme">
+                                                            <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
+                                                            <div class="left_item_theme left_genate">
+                                                                <input type="text" value="{{ $setting->name }}" placeholder="Please enter Name Field" name="header_option[line][name][]" />
+                                                            </div>
+                                                            <div class="right_item_theme right_genate">
+                                                                <input type="text" class="regular-text" placeholder="Please enter Value Field" name="header_option[line][value][]" value="{{ $setting->content }}" />
+                                                                <input type="button" class="button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl">
+                                                            </div>
+                                                        </div>
+                                                    @elseif($setting->type == 'text')
+                                                        <div class="group_item_theme">
+                                                            <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
+                                                            <div class="left_item_theme left_genate">
+                                                                <input type="text" value="{{ $setting->name }}" placeholder="Please enter Name Field" name="header_option[text][name][]" />
+                                                            </div>
+                                                            <div class="right_item_theme right_genate">
+                                                                <textarea class="regular-area" id="header_option_text_{{ $index }}" name="header_option[text][value][]" cols="5" rows="5">{!! $setting->content !!}</textarea>
+                                                            </div>
+                                                            <div class="action">
+                                                                <input type="button" class="button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl">
+                                                            </div>
+                                                        </div>
+                                                    @elseif($setting->type == 'editor')
+                                                        <div class="group_item_theme">
+                                                            <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
+                                                            <div class="left_item_theme left_genate">
+                                                                <input type="text" value="{{ $setting->name }}" placeholder="Please enter Name Field" name="header_option[editor][name][]" />
+                                                            </div>
+                                                            <div class="right_item_theme right_genate">
+                                                                <textarea class="regular-area" id="header_option_text_{{ $index }}" name="header_option[editor][value][]" cols="5" rows="5">{!! htmlspecialchars_decode($setting->content) !!}</textarea>
+                                                            </div>
+                                                            <div class="action">
+                                                                <input type="button" class="button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl">
+                                                            </div>
+                                                        </div>
+                                                        @push('scripts')
+                                                            <script>
+                                                                editorQuote('header_option_text_{{ $index }}');
+                                                            </script>
+                                                        @endpush
+                                                    @elseif($setting->type == 'img')
+                                                        @include('admin.partials.image-inline', [
+                                                            'code_name' => $setting->name,
+                                                            'name' => $setting->name,
+                                                            'image' => $setting->content,
+                                                            'id' => 'id_' . $setting->name,
+                                                        ])
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div><!--group_item_auto_theme-->
+                                    <div class="tbl_create_theme_add clear">
+                                        <div class="left_item_theme"><b><i>Choose Field Create</i></b></div>
+                                        <div class="right_item_theme">
+                                            <select name="option_choise_add" class="select_option_choise">
+                                                <option value="line">line</option>
+                                                <option value="content_editor">Mutiline with Editor</option>
+                                                <option value="content">Mutiline</option>
+                                                <option value="img">Image</option>
+                                            </select>
+                                            <button id="create_option" type="button" class="btn btn-primary create_option_class">Create Option</button>
+                                        </div>
+                                    </div><!--group_item_theme-->
+                                </div><!--container_group_setting-->
+                                <div class="posts_tbl_setting clear text-center">
+                                    <button id="submit_setting" class="btn btn-primary pull-left" name="submit" type="submit">Save Changes</button>
+                                    <p><b>Use:</b> <i style="color: #FF0000;">setting_option('name');</i></p>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <div class="inlcude-image" style="display: none;">
+        @include('admin.partials.image-inline')
+    </div>
+
+
+
 @endsection
 
 
 @push('scripts')
     <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-    <script type="text/javascript">
+    <script>
         $(function() {
-
             $(".right_item_theme").delegate("#create_option", "click", function(event) {
                 event.preventDefault();
                 var choise_option = $(this).parent().find('.select_option_choise').val();

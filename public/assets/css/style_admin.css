@@ -28,25 +28,6 @@ q:before,
 q:after {
     content: "";
 }
-/* blockquote,
-a img {
-    border: none;
-} */
-/* article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-main,
-time {
-    display: block;
-} */
 
 audio,
 canvas,
@@ -76,18 +57,12 @@ abbr[title] {
 dfn {
     font-style: italic;
 }
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-}
 mark {
     background: #ff0;
     color: #666666;
 }
-small {
-    font-size: 80%;
-}
-sub,
+
+/* sub,
 sup {
     font-size: 75%;
     line-height: 0;
@@ -99,7 +74,7 @@ sup {
 }
 sub {
     bottom: -0.25em;
-}
+} */
 svg:not(:root) {
     overflow: hidden;
 }
