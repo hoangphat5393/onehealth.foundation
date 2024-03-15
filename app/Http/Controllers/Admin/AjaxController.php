@@ -75,6 +75,33 @@ class AjaxController extends Controller
 
                 return 1;
                 break;
+
+            case 'email_template':
+                \App\Models\EmailTemplate::whereIn('id', $arr)->delete();
+                return 1;
+                break;
+            case 'menuWp':
+                $menuWp = Menus::whereIn('id', $arr)->get();
+
+                if ($menuWp->count() > 0) {
+                    foreach ($menuWp as $item) {
+                        // DELETE LIST CHILD
+                        if ($item->children->count() > 0) {
+                            $item_child_id = $item->children->pluck('id');
+                            MenuItems::whereIn('id', $item_child_id)->delete();
+                        }
+                        // DELETE SLIDER
+                        $item->delete();
+                    }
+                }
+
+                // SET AUTO_INCREMENT TO 1
+                $table = (new Menus)->getTable();
+                $table2 = (new MenuItems)->getTable();
+                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
+                DB::statement("ALTER TABLE $table2 AUTO_INCREMENT = 1;");
+                return 1;
+                break;
             case 'post':
                 Post::whereIn('id', $arr)->delete();
 
@@ -203,10 +230,7 @@ class AjaxController extends Controller
                 DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
                 return 1;
                 break;
-            case 'email_template':
-                \App\Models\EmailTemplate::whereIn('id', $arr)->delete();
-                return 1;
-                break;
+
             default:
                 # code...
                 break;
