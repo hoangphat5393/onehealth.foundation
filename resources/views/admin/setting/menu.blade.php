@@ -20,10 +20,6 @@
 @push('style')
     <link rel="stylesheet" href="{{ asset('vendor/laravel-menu/style.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/laravel-menu/plugins/css/fontawesome-iconpicker.min.css') }}">
-
-    {{-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> --}}
-    {{-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> --}}
-    {{-- <link href="{{ asset('vendor/harimayco-menu/style.css') }}" rel="stylesheet"> --}}
 @endpush
 
 @section('content')

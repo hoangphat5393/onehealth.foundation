@@ -189,6 +189,7 @@ function replicate_id(type) {
         arr.push({ name: "type", value: type });
     }); //each
 
+    console.log(arr);
     if (arr.length == 0) {
         alert("Chọn dữ liệu cần tạo!");
         return false;

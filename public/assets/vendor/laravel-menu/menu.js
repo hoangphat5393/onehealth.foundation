@@ -37,6 +37,37 @@ function remove_image(id) {
     $('input[name="image_menu_' + id).val();
 }
 
+function replicate_menu_id(type, id) {
+    arr = new Array();
+    var con = 0;
+    arr.push({ name: "seq_list[]", value: id });
+    arr.push({ name: "_token", value: getMetaContentByName("csrf-token") });
+    arr.push({ name: "type", value: type });
+    console.log(arr);
+
+    if (arr.length == 0) {
+        alert("Chọn dữ liệu cần tạo!");
+        return false;
+    }
+
+    if (confirm("Are you sure replicate?")) {
+        (function ($) {
+            $.ajax({
+                type: "POST",
+                url: admin_url + "/replicate-id",
+                data: arr, //pass the array to the ajax call
+                cache: false,
+                beforeSend: function () {},
+                success: function () {
+                    location.reload();
+                },
+            }); //ajax
+        })(jQuery);
+    } else {
+        return false;
+    }
+}
+
 // Remove Image
 $(".remove_menu_image").on("click", function () {
     let id = $(this).attr("data-id");

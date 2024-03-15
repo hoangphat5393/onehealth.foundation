@@ -10,12 +10,14 @@
     }
 
     $title_head = $name ?? '';
-
     $template = $template ?? '';
 
     $id = $id ?? 0;
 
     $date_update = $updated_at ?? date('Y-m-d H:i:s');
+
+    // $lc = app()->setLocale();
+
 @endphp
 @section('seo')
     @php
@@ -62,8 +64,16 @@
                                 <div class="form-group">
                                     <label for="post_slug">Slug</label>
                                     <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" value="{{ $slug ?? '' }}">
-                                    @if ($id > 0 && $template == 0)
-                                        <p><b style="color: #0000cc;">Demo Link:</b> <u><i><a style="color: #F00;" href="<?php echo $link_url_check; ?>" target="_blank"><?php echo $link_url_check; ?></a></i></u></p>
+                                    {{-- #0000cc --}}
+                                    @if ($id > 0)
+                                        <p class="my-2">
+                                            <strong class="text-primary">Link Vi:</strong>
+                                            <u><i><a href="{{ route('page', $slug) }}" target="_blank" class="text-red">{{ route('page', $slug) }}</a></i></u>
+                                        </p>
+                                        <p>
+                                            <strong class="text-primary">Link Vi:</strong>
+                                            <u><i><a href="{{ route('page', $slug, true, 'en') }}" target="_blank" class="text-red">{{ route('page', $slug, true, 'en') }}</a></i></u>
+                                        </p>
                                     @endif
                                 </div>
                                 <ul class="nav nav-tabs hidden" id="tabLang" role="tablist">

@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use App\Libraries\Helpers;
 use App\Http\Controllers\Controller;
+use App\Models\Menus,  App\Models\MenuItems;
 use App\Models\Rating_Product, App\Models\Page, App\Models\Brand, App\Models\Slider, App\Models\Addtocard, App\Models\Addtocard_Detail, App\Models\Discount_code, App\Models\Admin;
 use App\Models\District, App\Models\Ward;
 use App\Models\Category;
@@ -276,6 +277,38 @@ class AjaxController extends Controller
                 }
                 return 1;
                 break;
+            case 'menuwp':
+                // Replicate Slider + list image
+                $i = 1;
+                $newMenuWP = '';
+                foreach ($arr as $id) {
+                    $menuWP = Menus::find($id);
+
+                    // Get menu list items
+                    $list_items = $menuWP->items;
+
+                    // Replicate Slider
+                    $newMenuWP = $menuWP->replicate();
+                    $newMenuWP->created_at = Carbon::now(); // changing the created_at date
+                    $newMenuWP->save(); // saving it to the database
+
+                    // update sort = id
+                    // Slider::where("id", $newSlider->id)->update(['sort' => $newSlider->id]);
+
+                    // Replicate Slider list image
+                    if ($list_items->count() > 0) {
+                        foreach ($list_items as $item) {
+                            $menuItem = MenuItems::find($item->id);
+                            $newMenuItem = $menuItem->replicate();
+                            $newMenuItem->menu = $newMenuWP->id; // changing the slider_id
+                            $newMenuItem->created_at = Carbon::now(); // changing the created_at date
+                            $newMenuItem->save(); // saving it to the database
+                        }
+                    }
+                    $i++;
+                }
+                return 1;
+                break;
             case 'category':
                 // Replicate Category Product
                 $i = 1;
@@ -456,7 +489,6 @@ class AjaxController extends Controller
                 break;
         }
     }
-
 
     // Quick change value of data list
     public function ajax_quickchange(Request $rq)

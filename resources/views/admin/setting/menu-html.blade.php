@@ -190,6 +190,14 @@
                                                                 <a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Create menu</a>
                                                             </div>
                                                         @endif
+
+                                                        @if ($indmenu)
+                                                            <div class="publishing-action">
+                                                                <a href="javascript:void(0)" onclick="replicate_menu_id('menuwp','{{ $indmenu->id }}')" name="save_menu" id="save_menu_header" class="button button-primary menu-copy mr-3">
+                                                                    @lang('admin.Copy')
+                                                                </a>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div id="post-body">
