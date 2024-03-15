@@ -27,7 +27,7 @@
     <nav class="navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}">
-                <img src="{{ get_image(setting_option('logo')) }}" class="logo" alt="{{ setting_option('webtitle') }}" style="height:80px">
+                <img src="{{ get_image(setting_option('logo')) }}" class="logo" alt="{{ setting_option('webtitle') }}" style="height:76px">
             </a>
             <div class="d-none d-lg-block">
                 <div class="d-flex camp-group-block">
