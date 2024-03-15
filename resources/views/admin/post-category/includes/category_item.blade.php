@@ -20,7 +20,7 @@
                     <div>
                         {{ str_repeat('-----', $level) }}
                         <b style='color: #056FAD;'>
-                            {{ $item->name }}
+                            {{ $item->name }} | {{ $item->name_en }}
                         </b>
                     </div>
                 </a>

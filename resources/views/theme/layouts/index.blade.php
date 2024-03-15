@@ -75,6 +75,7 @@
     <script src="{{ asset('js/custom.js?ver=' . random_int(0, 100)) }}"></script>
 
     @stack('scripts')
+    {{-- @yield('scripts') --}}
 </body>
 
 </html>

@@ -11,21 +11,19 @@
 @section('content')
     <main id="main">
 
-        <section class="block1">
+        {{-- <section class="block1">
             @include('theme.includes.hero_section')
-        </section>
+        </section> --}}
+
+        {{-- @include('theme.includes.counter') --}}
 
         <section class="block2">
             {!! htmlspecialchars_decode($page->content) !!}
         </section>
 
-
-        {{-- @include('theme.includes.counter') --}}
-
         {{-- Dự án (Campaign) --}}
         @php
             $project = \App\Campaign::where('status', 1)->limit(3)->get();
-            // dd($project);
         @endphp
         <section class="block3">
             <div class="container pt-5">

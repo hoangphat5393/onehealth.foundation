@@ -34,33 +34,4 @@
     </div>
 @endempty
 
-
-@push('scripts')
-    <script>
-        const mainSlider = new Swiper('.mainSlider', {
-            // Optional parameters
-            // direction: 'vertical',
-            loop: true,
-            speed: 1000,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            // And if we need scrollbar
-            // scrollbar: {
-            //     el: '.swiper-scrollbar',
-            // },
-        });
-    </script>
-@endpush
+{{-- const mainSlider = new Swiper | public\assets\js\custom.js --}}

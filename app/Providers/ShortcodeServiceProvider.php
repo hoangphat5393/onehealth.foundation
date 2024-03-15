@@ -20,29 +20,79 @@ class ShortcodeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
         // Short code
-        Shortcode::add('example', function ($atts, $content, $name) {
-            $a = Shortcode::atts([
-                'name' => $name,
-                'foo' => 'something',
-            ], $atts);
+        // Shortcode::add('example', function ($atts, $content, $name) {
+        //     $a = Shortcode::atts([
+        //         'name' => $name,
+        //         'foo' => 'something',
+        //     ], $atts);
 
-            return "foo = {$a['foo']}";
-        });
+        //     return "foo = {$a['foo']}";
+        // });
 
-        // Slider
-        Shortcode::add('slider', function ($atts, $id, $items = 3) {
+        // Shortcode::add('widget', function ($atts, $content, $name) {
+        //     $a = Shortcode::atts([
+        //         'name' => $name,
+        //         'foo' => 'something'
+        //     ], $atts);
+
+        //     $file = 'partials/' . $a['name']; // ex: resource/views/partials/ $atts['name'] .blade.php
+
+        //     if (view()->exists($file)) {
+        //         return view($file, $a);
+        //     }
+        // });
+
+        // Slider 
+        // Shortcode::add('slider', function ($atts, $id, $items = 3) {
+        //     $data = Shortcode::atts([
+        //         'id' => $id,
+        //         'items' => $items
+        //     ], $atts);
+
+        //     $file = 'shortcode/slider'; // ex: resource/views/partials/ $atts['name'] .blade.php
+        //     // dd($data);
+        //     if (view()->exists($file)) {
+        //         return view($file, compact('data'));
+        //     }
+        // });
+
+
+        // Menu + Slider
+        Shortcode::add('menu_slider', function ($atts, $id, $items = 3) {
             $data = Shortcode::atts([
                 'id' => $id,
                 'items' => $items
             ], $atts);
 
-            $file = 'shortcode/slider'; // ex: resource/views/partials/ $atts['name'] .blade.php
+            $file = 'shortcode/menu_slider'; // ex: resource/views/partials/ $atts['name'] .blade.php
             // dd($data);
             if (view()->exists($file)) {
                 return view($file, compact('data'));
             }
+        });
+
+        // Menu + Banner
+        Shortcode::add('menu_banner', function ($atts, $id, $slug = 'home') {
+            $data = Shortcode::atts([
+                'id' => $id,
+                'slug' => $slug,
+            ], $atts);
+
+            // Bỏ giới hạn và chỉ phân trang
+            $page = \App\Page::where('slug', $data['slug'])->first();
+
+            $file = 'shortcode/menu_banner'; // ex: resource/views/partials/ $atts['name'] .blade.php
+
+            if (view()->exists($file)) {
+                return view($file, compact('data', 'page'));
+            }
+        });
+
+        // Menu
+        Shortcode::add('menu_no_banner', function ($atts, $id) {
+            $file = 'shortcode/menu_no_banner'; // ex: resource/views/partials/ $atts['name'] .blade.php
+            return view($file);
         });
 
         // Staff
@@ -74,21 +124,8 @@ class ShortcodeServiceProvider extends ServiceProvider
             $file = 'shortcode/campagin'; // ex: resource/views/partials/ $atts['name'] .blade.php
             // dd($data);
             if (view()->exists($file)) {
-                return view($file, compact('projects', 'data'));
+                return view($file, compact('data', 'projects'));
             }
         });
-
-        // Shortcode::add('widget', function ($atts, $content, $name) {
-        //     $a = Shortcode::atts([
-        //         'name' => $name,
-        //         'foo' => 'something'
-        //     ], $atts);
-
-        //     $file = 'partials/' . $a['name']; // ex: resource/views/partials/ $atts['name'] .blade.php
-
-        //     if (view()->exists($file)) {
-        //         return view($file, $a);
-        //     }
-        // });
     }
 }

@@ -272,75 +272,6 @@ $(function () {
 
     // CONTACT
     // var contact_form = $("#contact-form");
-
-    // contact_form.validate({
-    //     onfocusout: false,
-    //     onkeyup: false,
-    //     onclick: false,
-    //     rules: {
-    //         "contact[name]": "required",
-    //         "contact[email]": {
-    //             required: true,
-    //             email: true,
-    //         },
-    //         "contact[phone]": {
-    //             // required: true,
-    //             number: true,
-    //             digits: true,
-    //             minlength: 10,
-    //         },
-    //         "contact[subject]": "required",
-    //     },
-    //     messages: {
-    //         "contact[name]": "Please fill in you name!",
-    //         "contact[email]": {
-    //             required: "Please fill in your email address!",
-    //             email: "Please provide valid email address!",
-    //         },
-    //         "contact[phone]": {
-    //             required: "Please fill in your phone number!!",
-    //             number: "Please provide valid phone number!!",
-    //             digits: "Please provide valid phone number!!",
-    //             minlength: "Please provide valid phone number!!",
-    //         },
-    //         "contact[subject]": "Please fill in subject!",
-    //     },
-    //     errorElement: "div",
-    //     errorLabelContainer: ".errorTxt",
-    //     invalidHandler: function (event, validator) {
-    //         $("html, body").animate(
-    //             {
-    //                 scrollTop: 0,
-    //             },
-    //             500
-    //         );
-    //     },
-    // });
-
-    // $(".btn-submit-contact").on("click", function () {
-    //     $(".list-content-loading").show();
-
-    //     var action = $(this).closest("form").attr("action"),
-    //         form = document.getElementById("contact-form"),
-    //         fdnew = new FormData(form);
-    //     axios({
-    //         method: "post",
-    //         url: action,
-    //         data: fdnew,
-    //     })
-    //         .then((res) => {
-    //             $(".list-content-loading").hide();
-    //             if (res.data.error == 0) {
-    //                 $("#modalContact").modal("hide");
-    //                 $("footer").find("#notifyModal").remove();
-    //                 $("footer").append(res.data.view);
-    //                 $("#notifyModal").modal("show");
-    //             } else {
-    //                 $("#contact-form .text-error").text(res.data.message);
-    //             }
-    //         })
-    //         .catch((e) => console.log(e));
-    // });
 });
 
 function alertJs(type = "error", msg = "") {
@@ -381,5 +312,34 @@ window.addEventListener("load", () => {
             var maxWidth = 800;
             return window.innerWidth < maxWidth;
         },
+    });
+});
+
+// Swiper
+$(function () {
+    const mainSlider = new Swiper(".mainSlider", {
+        // Optional parameters
+        // direction: 'vertical',
+        loop: true,
+        speed: 1000,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        // If we need pagination
+        pagination: {
+            el: ".swiper-pagination",
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+
+        // And if we need scrollbar
+        // scrollbar: {
+        //     el: '.swiper-scrollbar',
+        // },
     });
 });
