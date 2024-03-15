@@ -104,7 +104,7 @@ function get_place(type, id, child) {
 }
 
 function select_all() {
-    (function ($) {
+    $(function () {
         var checkboxes = $("#table_index")
             .find(":checkbox")
             .each(function () {
@@ -116,7 +116,7 @@ function select_all() {
                     $(":checkbox").prop("checked", false);
                 }
             });
-    })(jQuery);
+    });
 }
 function delete_post(url) {
     arr = [];
@@ -163,7 +163,7 @@ function delete_id(type) {
     //  var admin_url = 'http://local.uknails.com/admin';
 
     if (confirm(info_user_admin + "Are you sure delete?")) {
-        (function ($) {
+        $(function () {
             $.ajax({
                 type: "POST",
                 url: admin_url + "/delete-id",
@@ -174,7 +174,7 @@ function delete_id(type) {
                     location.reload();
                 },
             }); //ajax
-        })(jQuery);
+        });
     } else {
         return false;
     }
@@ -196,7 +196,7 @@ function replicate_id(type) {
     }
 
     if (confirm("Are you sure replicate?")) {
-        (function ($) {
+        $(function () {
             $.ajax({
                 type: "POST",
                 url: admin_url + "/replicate-id",
@@ -207,14 +207,14 @@ function replicate_id(type) {
                     location.reload();
                 },
             }); //ajax
-        })(jQuery);
+        });
     } else {
         return false;
     }
 }
 
 function update_theme_fast(product_id) {
-    (function ($) {
+    $(function () {
         var origin_price = $("#origin-price-" + product_id).val();
         var promotion_price = $("#promotion-price-" + product_id).val();
         // var order_short=$('#order_short-'+product_id).val();
@@ -245,10 +245,10 @@ function update_theme_fast(product_id) {
                 $("#alert_" + product_id).show();
             },
         }); //ajax
-    })(jQuery);
+    });
 }
 function new_item_click(product_id) {
-    (function ($) {
+    $(function () {
         if ($("#toggle-new-item-" + product_id + ":checkbox:checked").length > 0) {
             var check = 1;
         } else {
@@ -267,11 +267,11 @@ function new_item_click(product_id) {
             beforeSend: function () {},
             success: function (status) {},
         }); //ajax
-    })(jQuery);
+    });
 }
 
 function flash_sale_click(product_id) {
-    (function ($) {
+    $(function () {
         if ($("#toggle-flash-sale-" + product_id + ":checkbox:checked").length > 0) {
             var check = 1;
         } else {
@@ -290,11 +290,11 @@ function flash_sale_click(product_id) {
             beforeSend: function () {},
             success: function (status) {},
         }); //ajax
-    })(jQuery);
+    });
 }
 
 function sale_top_week_click(product_id) {
-    (function ($) {
+    $(function () {
         if ($("#toggle-sale-top-week-" + product_id + ":checkbox:checked").length > 0) {
             var check = 1;
         } else {
@@ -313,11 +313,11 @@ function sale_top_week_click(product_id) {
             beforeSend: function () {},
             success: function (status) {},
         }); //ajax
-    })(jQuery);
+    });
 }
 
 function propose_click(product_id) {
-    (function ($) {
+    $(function () {
         if ($("#toggle-propose-" + product_id + ":checkbox:checked").length > 0) {
             var check = 1;
         } else {
@@ -336,11 +336,11 @@ function propose_click(product_id) {
             beforeSend: function () {},
             success: function (status) {},
         }); //ajax
-    })(jQuery);
+    });
 }
 
 function store_status_click(product_id) {
-    (function ($) {
+    $(function () {
         if ($("#toggle-store-status-" + product_id + ":checkbox:checked").length > 0) {
             var check = 1;
         } else {
@@ -359,7 +359,7 @@ function store_status_click(product_id) {
             beforeSend: function () {},
             success: function (status) {},
         }); //ajax
-    })(jQuery);
+    });
 }
 
 function loadFile(event) {

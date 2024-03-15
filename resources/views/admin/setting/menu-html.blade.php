@@ -346,7 +346,9 @@
                                                                 <span class="spinner" id="spincustomu2"></span>
                                                             </div>
 
-                                                            <span class="delete-action"> <a class="submitdelete deletion menu-delete ml-3" onclick="" href="javascript:void(9)">Delete menu & items</a> </span>
+                                                            <span class="delete-action">
+                                                                <a href="javascript:void(0)" onclick="delete_menu_id('menuwp','{{ $indmenu->id }}')" class="submitdelete deletion menu-delete ml-3">Delete menu & items</a>
+                                                            </span>
                                                             <div class="publishing-action">
                                                                 <a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
                                                                 <span class="spinner" id="spincustomu2"></span>

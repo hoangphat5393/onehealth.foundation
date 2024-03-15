@@ -37,6 +37,39 @@ function remove_image(id) {
     $('input[name="image_menu_' + id).val();
 }
 
+// Delete Menu
+function delete_menu_id(type, id) {
+    arr = new Array();
+    var con = 0;
+    arr.push({ name: "seq_list[]", value: id });
+    arr.push({ name: "_token", value: getMetaContentByName("csrf-token") });
+    arr.push({ name: "type", value: type });
+
+    if (arr.length == 0) {
+        alert("Please choose item you want to delete!");
+        return false;
+    }
+    var info_user_admin = "";
+
+    if (confirm(info_user_admin + "Are you sure delete?")) {
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: admin_url + "/delete-id",
+                data: arr, //pass the array to the ajax call
+                cache: false,
+                beforeSend: function () {},
+                success: function () {
+                    // location.reload();
+                },
+            }); //ajax
+        });
+    } else {
+        return false;
+    }
+}
+
+// Replicate Menu
 function replicate_menu_id(type, id) {
     arr = new Array();
     var con = 0;
@@ -51,7 +84,7 @@ function replicate_menu_id(type, id) {
     }
 
     if (confirm("Are you sure replicate?")) {
-        (function ($) {
+        $(function () {
             $.ajax({
                 type: "POST",
                 url: admin_url + "/replicate-id",
@@ -62,7 +95,7 @@ function replicate_menu_id(type, id) {
                     location.reload();
                 },
             }); //ajax
-        })(jQuery);
+        });
     } else {
         return false;
     }
