@@ -21,7 +21,8 @@
     </div>
 
     @php
-        $headerMenu = \App\Models\Menus::where('name', 'Menu-main')->first();
+        $lc = app()->getLocale();
+        $headerMenu = \App\Models\Menus::where('name', 'Menu-main-' . $lc)->first();
     @endphp
 
     <nav class="navbar">
@@ -49,25 +50,27 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        @foreach ($headerMenu->items as $item)
-                            @php $hasChild = $item->child()->exists(); @endphp
-                            @if ($hasChild != 1)
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ $item->link }}">{{ $item->label }}</a>
-                                </li>
-                            @else
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ $item->label }}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($item->child as $item2)
-                                            <li><a class="dropdown-item" href="{{ $item->link }}">{{ $item2->label }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endif
-                        @endforeach
+                        @if ($headerMenu)
+                            @foreach ($headerMenu->items as $item)
+                                @php $hasChild = $item->child()->exists(); @endphp
+                                @if ($hasChild != 1)
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="{{ $item->link }}">{{ $item->label }}</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{ $item->label }}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($item->child as $item2)
+                                                <li><a class="dropdown-item" href="{{ $item->link }}">{{ $item2->label }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endforeach
+                        @endif
                     </ul>
                     <form class="d-flex" role="search" method="get" action="{{ route('search') }}">
                         <div class="input-group mb-3">

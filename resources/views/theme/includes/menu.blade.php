@@ -1,5 +1,6 @@
 @php
-    $headerMenu = \App\Models\Menus::where('name', 'Menu-main')->first();
+    $lc = app()->getLocale();
+    $headerMenu = \App\Models\Menus::where('name', 'Menu-main-' . $lc)->first();
 @endphp
 
 <nav class="navbar navbar-expand-lg menu-wrap d-none d-lg-block">
@@ -10,44 +11,46 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll d-column">
-                @foreach ($headerMenu->items as $item)
-                    @php $hasChild = $item->child()->exists(); @endphp
-                    @if ($hasChild == 1)
-                        <li class="nav-item dropdown {{ $item->class }}">
-                            <a class="nav-link menu-link d-none d-lg-block" href="{{ $item->link }}" role="button" aria-expanded="false">
-                                {{ $item->label }}
-                            </a>
-                            <a class="nav-link dropdown-toggle d-block d-lg-none" href="{{ $item->link }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ $item->label }}
-                            </a>
-                            @if ($item->class == 'project')
-                                <div class="dropdown-menu">
-                                    <div class="container">
-                                        <div class="row">
-                                            @foreach ($item->child as $item2)
-                                                <div class="col-md-6 col-lg-3">
-                                                    <a href="{{ route('campaign.detail', [$item2->slug, $item2->id]) }}" class="dropdown-item">
-                                                        <img src="{{ get_image($item2->image) }}" class="img-fluid" alt="{{ $item2->name }}">
-                                                    </a>
-                                                </div>
-                                            @endforeach
+                @if ($headerMenu)
+                    @foreach ($headerMenu->items as $item)
+                        @php $hasChild = $item->child()->exists(); @endphp
+                        @if ($hasChild == 1)
+                            <li class="nav-item dropdown {{ $item->class }}">
+                                <a class="nav-link menu-link d-none d-lg-block" href="{{ $item->link }}" role="button" aria-expanded="false">
+                                    {{ $item->label }}
+                                </a>
+                                <a class="nav-link dropdown-toggle d-block d-lg-none" href="{{ $item->link }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ $item->label }}
+                                </a>
+                                @if ($item->class == 'project')
+                                    <div class="dropdown-menu">
+                                        <div class="container">
+                                            <div class="row">
+                                                @foreach ($item->child as $item2)
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <a href="{{ route('campaign.detail', [$item2->slug, $item2->id]) }}" class="dropdown-item">
+                                                            <img src="{{ get_image($item2->image) }}" class="img-fluid" alt="{{ $item2->name }}">
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @else
-                                <ul class="dropdown-menu">
-                                    @foreach ($item->child as $item2)
-                                        <li><a class="dropdown-item" href="{{ $item2->link }}">{{ $item2->label }}</a></li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a @class(['nav-link', 'active' => $loop->iteration == 1]) aria-current="page" href="{{ $item->link }}">{{ $item->label }}</a>
-                        </li>
-                    @endif
-                @endforeach
+                                @else
+                                    <ul class="dropdown-menu">
+                                        @foreach ($item->child as $item2)
+                                            <li><a class="dropdown-item" href="{{ $item2->link }}">{{ $item2->label }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a @class(['nav-link', 'active' => $loop->iteration == 1]) aria-current="page" href="{{ $item->link }}">{{ $item->label }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+                @endif
             </ul>
             <form class="d-flex" role="search" method="get" action="{{ route('search') }}">
                 <div class="input-group input-group-search">

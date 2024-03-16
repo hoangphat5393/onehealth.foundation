@@ -5,8 +5,8 @@
     </strong>
     All rights reserved. Thiết kế
     {{-- https://thietkewebnhanh247.com/ --}}
-    <a href="https://www.getatz.com/" target="_blank">Website</a> bởi <a href="https://www.getatz.com/" target="_blank">
-        GetAZ
+    <a href="https://droh.co/" target="_blank">Website</a> bởi <a href="https://droh.co/" target="_blank">
+        DR.OH
     </a>
 </footer>
 <!-- Modal Export Customer -->
