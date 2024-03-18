@@ -16,7 +16,12 @@
             {{-- Slides --}}
             @foreach ($slider_main as $item)
                 <div class="swiper-slide">
-                    <img class="w-100 h-100" src="{{ get_image($item->image) }}" alt="{{ $item->name }}">
+                    <div class="position-relative">
+                        <img class="w-100 h-100" src="{{ get_image($item->image) }}" alt="{{ $item->name }}">
+                        <div class="image-title">
+                            <p>MINH BẠCH BỀN VỮNG TÁC ĐỘNG</p>
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>

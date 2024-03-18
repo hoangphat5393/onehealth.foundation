@@ -1166,3 +1166,6 @@ input#csv_slishow_mobile {
     width: 100%;
     z-index: 310;
 }
+.customlinkdiv .form-group {
+    margin-bottom: 0.75rem;
+}

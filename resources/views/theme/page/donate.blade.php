@@ -43,7 +43,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <p class="fs-2 text-main text-uppercase fw-bold mb-3">@lang('Bank information')</p>
-                        <a href="{{ route('page', 'bank-paypal') }}"><img src="{{ asset('images/payment/paypal.jpg') }}" class="img-fluid w-100 mb-3" alt="paypal" /></a>
+                        <a href="{{ route('page', 'bank-online') }}"><img src="{{ asset('images/payment/paypal.jpg') }}" class="img-fluid w-100 mb-3" alt="paypal" /></a>
                         <a href="{{ route('page', 'bank-transfer') }}"><img src="{{ asset('images/payment/bank.jpg') }}" class="img-fluid w-100" alt="bank" /></a>
                     </div>
                 </div>

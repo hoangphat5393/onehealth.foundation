@@ -332,9 +332,23 @@ $(function () {
         },
 
         // Navigation arrows
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+        // navigation: {
+        //     nextEl: ".swiper-button-next",
+        //     prevEl: ".swiper-button-prev",
+        // },
+        breakpoints: {
+            576: {
+                navigation: {
+                    enabled: false,
+                },
+            },
+            1200: {
+                navigation: {
+                    enabled: true,
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            },
         },
 
         // And if we need scrollbar

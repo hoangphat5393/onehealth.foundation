@@ -80,14 +80,16 @@ class AjaxController extends Controller
                 \App\Models\EmailTemplate::whereIn('id', $arr)->delete();
                 return 1;
                 break;
-            case 'menuWp':
+            case 'menuwp':
                 $menuWp = Menus::whereIn('id', $arr)->get();
+
+
 
                 if ($menuWp->count() > 0) {
                     foreach ($menuWp as $item) {
                         // DELETE LIST CHILD
-                        if ($item->children->count() > 0) {
-                            $item_child_id = $item->children->pluck('id');
+                        if ($item->items->count() > 0) {
+                            $item_child_id = $item->items->pluck('id');
                             MenuItems::whereIn('id', $item_child_id)->delete();
                         }
                         // DELETE SLIDER

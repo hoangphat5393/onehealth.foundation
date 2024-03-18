@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use App\Page;
 use App\News;
@@ -16,18 +17,52 @@ class SearchController extends Controller
     public function index(Request $rq)
     {
         $this->localized();
-        $this->data['keyword'] = $rq->input('keyword', '');
+        $lc = app()->getLocale();
 
-        if ($this->data['keyword']) {
-            $this->data['result'] = true;
+        $this->data['keyword'] = $rq->input('keyword');
 
-            $keyword = '%' . addslashes($this->data['keyword']) . '%';
+        if ($rq->input('keyword')) {
 
-            $this->data['news'] = News::where('name', 'like', $keyword)->paginate(1);
-            return view('theme.search', $this->data);
+            $keyword = '%' . addslashes($rq->input('keyword')) . '%';
+            if ('vi' == $lc) {
+                $this->data['news'] = News::where('name', 'like', $keyword)->paginate(6);
+            } else {
+                $this->data['news'] = News::where('name_' . $lc, 'like', $keyword)->paginate(6);
+            }
         } else {
-            return view('theme.search', $this->data);
+
+            $this->data['news'] = [];
         }
+
+        return view('theme.search', $this->data);
+
+        // if ($this->data['keyword']) {
+        //     return view('theme.search', $this->data);
+        // } else {
+        //     return view('theme.search', $this->data);
+        // }
+    }
+
+    public function searchCampagin(Request $rq)
+    {
+        $this->localized();
+        $lc = app()->getLocale();
+
+        $this->data['keyword'] = $rq->input('keyword');
+
+        if ($rq->input('campagin')) {
+            $keyword = '%' . addslashes($rq->input('keyword')) . '%';
+            if ('vi' == $lc) {
+                $this->data['campaign'] = Campaign::where('name', 'like', $keyword)->paginate(6);
+            } else {
+                $this->data['campaign'] = Campaign::where('name_' . $lc, 'like', $keyword)->paginate(6);
+            }
+        } else {
+
+            $this->data['campaign'] = [];
+        }
+
+        return view('theme.search', $this->data);
     }
 
     public static function searchMuiltiple($keyword = '')

@@ -11,7 +11,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll d-column">
-                @if ($headerMenu)
+                @empty(!$headerMenu)
                     @foreach ($headerMenu->items as $item)
                         @php $hasChild = $item->child()->exists(); @endphp
                         @if ($hasChild == 1)
@@ -50,14 +50,14 @@
                             </li>
                         @endif
                     @endforeach
-                @endif
+                @endempty
             </ul>
             <form class="d-flex" role="search" method="get" action="{{ route('search') }}">
                 <div class="input-group input-group-search">
                     <button type="submit" class="input-group-text bg-transparent border-0 btn-search" id="header_search">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </button>
-                    <input type="text" class="form-control bg-transparent border-0 input-search text-white" name="keyword" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="header_search">
+                    <input type="text" class="form-control bg-transparent border-0 input-search text-white" value="{{ request('keyword') }}" name="keyword" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="header_search">
                 </div>
             </form>
         </div>

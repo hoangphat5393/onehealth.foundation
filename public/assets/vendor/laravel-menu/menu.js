@@ -38,12 +38,16 @@ function remove_image(id) {
 }
 
 // Delete Menu
-function delete_menu_id(type, id) {
+function delete_menu_id() {
     arr = new Array();
-    var con = 0;
+
+    var id = $("#idmenu").val();
+
     arr.push({ name: "seq_list[]", value: id });
     arr.push({ name: "_token", value: getMetaContentByName("csrf-token") });
-    arr.push({ name: "type", value: type });
+    arr.push({ name: "type", value: "menuwp" });
+
+    console.log(arr);
 
     if (arr.length == 0) {
         alert("Please choose item you want to delete!");
@@ -61,6 +65,7 @@ function delete_menu_id(type, id) {
                 beforeSend: function () {},
                 success: function () {
                     // location.reload();
+                    window.location = admin_url + "/menu";
                 },
             }); //ajax
         });
@@ -335,7 +340,6 @@ function deletemenu() {
     if (r == true) {
         $.ajax({
             dataType: "json",
-
             data: {
                 id: $("#idmenu").val(),
             },

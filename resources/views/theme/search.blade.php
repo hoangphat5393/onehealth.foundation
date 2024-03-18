@@ -25,7 +25,7 @@
                     </div>
                 </div>
 
-                @if ($news->count() > 0)
+                @if ($news)
                     @foreach ($news as $item)
                         @php
                             $cdt = new Carbon($item->created_at);
