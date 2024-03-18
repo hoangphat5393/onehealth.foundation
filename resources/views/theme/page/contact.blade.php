@@ -18,7 +18,7 @@
                     <div class="col-lg-8 address_info">
                         <div class="address_info_content p-3">
                             <h4 class="fw-bold text-uppercase" style="color: #00b0ae;">@lang('Headquarters')</h4>
-                            <p class="fw-bold">Hồ Chí Minh</p>
+                            <p class="fw-bold">@lang('Ho Chi Minh')</p>
                             <p>{{ setting_option('address') }}</p>
                             <p class="mb-5">
                                 @lang('Phone'): <a href="tel:{{ setting_option('phone') }}">{{ setting_option('phone') }}</a>
@@ -27,101 +27,15 @@
                             </p>
                             <h4 class="fw-bold text-uppercase" style="color: #00b0ae;">@lang('For donation')</h4>
                             <p>
-                                <b>@lang('Bank account'): {{ setting_option('bank_account') }}</b>
-                                <br>@lang('Bank') {{ setting_option('bank_name') }}
+                                <strong>@lang('Bank account'): {{ setting_option('bank_account') }}</strong>
+                                <br>
+                                <strong>@lang('Bank'):</strong> {{ setting_option('bank_name') }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <div class="container d-none">
-            <div class="row no-gutters">
-                <div class="col-lg-8 col-md-7 d-flex align-items-stretch">
-                    <div class="contact-wrap w-100 p-md-5 p-4">
-                        <h3 class="mb-4">Get in touch</h3>
-                        <div id="form-message-warning" class="mb-4"></div>
-                        <div id="form-message-success" class="mb-4">
-                            Your message was sent, thank you!
-                        </div>
-                        <form method="POST" id="contactForm" name="contactForm" class="contactForm" novalidate="novalidate">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="label" for="name">Full Name</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Name" data-listener-added_48436227="true">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="label" for="email">Email Address</label>
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="label" for="subject">Subject</label>
-                                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="label" for="#">Message</label>
-                                        <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="submit" value="Send Message" class="btn btn-primary">
-                                        <div class="submitting"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-5 d-flex align-items-stretch">
-                    <div class="info-wrap bg-primary w-100 p-md-5 p-4">
-                        <h3>Let's get in touch</h3>
-                        <p class="mb-4">We're open for any suggestion or just to have a chat</p>
-                        <div class="dbox w-100 d-flex align-items-start">
-                            <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa fa-map-marker"></span>
-                            </div>
-                            <div class="text pl-3">
-                                <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
-                            </div>
-                        </div>
-                        <div class="dbox w-100 d-flex align-items-center">
-                            <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa fa-phone"></span>
-                            </div>
-                            <div class="text pl-3">
-                                <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
-                            </div>
-                        </div>
-                        <div class="dbox w-100 d-flex align-items-center">
-                            <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa fa-paper-plane"></span>
-                            </div>
-                            <div class="text pl-3">
-                                <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-                            </div>
-                        </div>
-                        <div class="dbox w-100 d-flex align-items-center">
-                            <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="fa fa-globe"></span>
-                            </div>
-                            <div class="text pl-3">
-                                <p><span>Website</span> <a href="#">yoursite.com</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <section class="block15">
             <div class="container-fluid my-5">
@@ -133,12 +47,12 @@
 
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
-                                    <p>Hãy liên hệ cho chúng tôi nếu bạn có thắc mắc hoặc cần thêm thông tin chi tiết</p>
+                                    <p>@lang('Contact text')</p>
                                     <form id="contact_form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
                                         @csrf
                                         <div class="mb-3">
-                                            <label class="col-form-label " for="cf-name">Họ tên<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="Họ tên">
+                                            <label class="col-form-label " for="cf-name">@lang('First and last name')<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="cf-name" name="contact[name]" placeholder="@lang('First and last name')">
                                         </div>
                                         <div class="mb-3">
                                             <div class="row row-cols-1 row-cols-lg-2">
@@ -169,14 +83,14 @@
                     </div>
 
                     <div class="col-lg-4 text-end">
-                        <p class="text-start fs-4 fw-bold">Hoặc bạn muốn đồng hành</p>
-                        <p class="text-start mb-3">Chúng tôi đang có nhu cầu tuyển dụng, bạn có thể trở thành thành viên của Quỹ từ thiện One Health Foundation</p>
+                        <p class="text-start fs-4 fw-bold">@lang('Contact text 1')</p>
+                        <p class="text-start mb-3">@lang('Contact text 2')</p>
                         <button class="mb-3" href="#" style="background: #00b0ae;padding: 5px 25px;color: #fff; border: 0px;">
-                            <a class="text-white" href="#">Khám phá nghề nghiệp</a>
+                            <a class="text-white" href="#">@lang('Explore careers')</a>
                         </button>
                         <br>
                         <button href="#" style="background: #fff;padding: 5px 15px;border: 1px solid #00b0ae; color: #00b0ae;">
-                            <a href="#">Trở thành tình nguyện viên <i class="fa-solid fa-angle-right"></i></a>
+                            <a href="#">@lang('Become a volunteer') <i class="fa-solid fa-angle-right"></i></a>
                         </button>
                     </div>
                 </div>
@@ -192,29 +106,50 @@
     <script>
         // CONTACT
         var contact_form = $("#contact_form");
-        // var lc = '{{ app()->getLocale() }}';
+        var lc = '{{ app()->getLocale() }}';
         var error_messages = {};
 
-        error_messages = {
-            "contact[name]": "Vui lòng điền tên!",
-            "contact[email]": {
-                required: "Vui lòng điền địa chỉ email!",
-                email: "Vui lòng nhập địa chỉ email hợp lệ",
-            },
-            "contact[email_confirm]": {
-                email: "Vui lòng nhập địa chỉ email hợp lệ",
-                equalTo: "Email không khớp"
-            },
-            "contact[phone]": {
-                required: "Vui lòng số điện thoại hợp lệ",
-                number: "Vui lòng cung cấp số điện thoại hợp lệ!!",
-                digits: "Vui lòng cung cấp số điện thoại hợp lệ!!",
-                minlength: "Vui lòng cung cấp số điện thoại hợp lệ!!",
-            },
-            "contact[subject]": "Vui lòng điền tiêu đề",
-            "contact[content]": "Vui lòng nhập lời nhắn!"
+        if (lc == 'vi') {
+            error_messages = {
+                "contact[name]": "Vui lòng điền tên!",
+                "contact[email]": {
+                    required: "Vui lòng điền địa chỉ email!",
+                    email: "Vui lòng nhập địa chỉ email hợp lệ",
+                },
+                "contact[email_confirm]": {
+                    email: "Vui lòng nhập địa chỉ email hợp lệ",
+                    equalTo: "Email không khớp"
+                },
+                "contact[phone]": {
+                    required: "Vui lòng số điện thoại hợp lệ",
+                    number: "Vui lòng cung cấp số điện thoại hợp lệ!!",
+                    digits: "Vui lòng cung cấp số điện thoại hợp lệ!!",
+                    minlength: "Vui lòng cung cấp số điện thoại hợp lệ!!",
+                },
+                "contact[subject]": "Vui lòng điền tiêu đề",
+                "contact[content]": "Vui lòng nhập lời nhắn!"
+            }
+        } else {
+            error_messages = {
+                "contact[name]": "Please fill in you name!",
+                "contact[email]": {
+                    required: "Please fill in your email address!",
+                    email: "Please enter valid email address",
+                },
+                "contact[email_confirm]": {
+                    email: "Please enter valid email address",
+                    equalTo: "Email does not match"
+                },
+                "contact[phone]": {
+                    required: "Please enter valid phone number",
+                    number: "Please provide valid phone number!!",
+                    digits: "Please provide valid phone number!!",
+                    minlength: "Please provide valid phone number!!",
+                },
+                "contact[subject]": "Please fill in the box",
+                "contact[message]": "Please fill in message!"
+            }
         }
-
         contact_form.validate({
             onfocusout: false,
             onkeyup: false,

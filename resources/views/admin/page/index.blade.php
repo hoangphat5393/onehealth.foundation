@@ -42,7 +42,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>@lang('admin.Page')</h5>
+                            <h3>@lang('admin.Page')</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
                             <div class="clear">
@@ -66,10 +66,10 @@
                                                     </label>
                                                 </div>
                                             </th>
-                                            <th scope="col" class="text-center" style="width:100px">@lang('admin.sort')</th>
-                                            <th scope="col" class="text-center">Tên trang</th>
-                                            <th scope="col" class="text-center">Ảnh</th>
-                                            <th scope="col" class="text-center">Ngày tạo</th>
+                                            <th scope="col" class="text-center" style="width:100px">@lang('admin.Sort')</th>
+                                            <th scope="col" class="text-center">@lang('admin.name')</th>
+                                            <th scope="col" class="text-center">@lang('admin.thumbnail')</th>
+                                            <th scope="col" class="text-center">@lang('admin.Createddate')</th>
                                         </tr>
                                     </thead>
                                     <tbody>

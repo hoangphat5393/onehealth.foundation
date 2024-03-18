@@ -3,11 +3,11 @@
 @endphp
 <div class="card">
     <div class="card-header">
-        <h5>Publish</h5>
+        <h5>@lang('admin.Publish')</h5>
     </div> <!-- /.card-header -->
     <div class="card-body">
         <div class="form-group">
-            <label for="created">Ngày tạo:</label>
+            <label for="created">@lang('admin.Createddate'):</label>
             <div class="input-group">
                 <input type="text" id="reservationdate" name="created_at" class="form-control" value="{{ $date_update }}">
                 <div class="input-group-append input-append-date">
@@ -19,16 +19,16 @@
         <div class="d-flex justify-content-end mb-2">
             <div class="icheck-primary d-inline mr-3">
                 <input type="radio" id="radioDraft" name="status" value="0" {{ $status == 0 ? 'checked' : '' }}>
-                <label for="radioDraft">Bản nháp</label>
+                <label for="radioDraft">@lang('admin.Draft')</label>
             </div>
             <div class="icheck-primary d-inline">
                 <input type="radio" id="radioPublic" name="status" value="1" {{ $status == 1 ? 'checked' : '' }}>
-                <label for="radioPublic">Công khai</label>
+                <label for="radioPublic">@lang('admin.Publish')</label>
             </div>
         </div>
         <div class="form-group text-right">
-            <button type="submit" name="submit" value="save" class="btn btn-info">Lưu</button>
-            <button type="submit" name="submit" value="apply" class="btn btn-success">Lưu & sửa</button>
+            <button type="submit" name="submit" value="save" class="btn btn-info">@lang('admin.Save')</button>
+            <button type="submit" name="submit" value="apply" class="btn btn-success">@lang('admin.Save_Edit')</button>
         </div>
     </div> <!-- /.card-body -->
 </div><!-- /.card -->

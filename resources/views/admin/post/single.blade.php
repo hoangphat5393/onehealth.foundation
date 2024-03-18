@@ -5,10 +5,9 @@
         if ($gallery) {
             $gallery = unserialize($gallery);
         }
-    } else {
-        $title_head = 'Thêm bài viết mới';
     }
-    $title_head = $name ?? '';
+
+    $title_head = $name ?? __('add news');
 
     $id = $id ?? 0;
 
@@ -53,7 +52,7 @@
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
-                                <h4>{{ $title_head }}</h4>
+                                <h3 class="text-capitalize">{{ $title_head }}</h3>
                             </div>
                             <div class="card-body">
                                 {{-- show error form --}}
@@ -69,39 +68,38 @@
                                 </div>
                                 <ul class="nav nav-tabs hidden" id="tabLang" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#vi" role="tab" aria-controls="vi" aria-selected="true">Tiếng việt</a>
+                                        <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#vi" role="tab" aria-controls="vi" aria-selected="true">@lang('admin.Vietnamese')</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="en-tab" data-toggle="tab" href="#en" role="tab" aria-controls="en" aria-selected="false">Tiếng Anh</a>
+                                        <a class="nav-link" id="en-tab" data-toggle="tab" href="#en" role="tab" aria-controls="en" aria-selected="false">@lang('admin.English')</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="vi" role="tabpanel" aria-labelledby="vi-tab">
-
                                         <div class="form-group">
-                                            <label for="name">Tiêu đề</label>
-                                            <input type="text" class="form-control title_slugify" id="name" name="name" placeholder="Tiêu đề" value="{{ $name ?? '' }}">
+                                            <label for="name">@lang('admin.Title')</label>
+                                            <input type="text" class="form-control title_slugify" id="name" name="name" placeholder="@lang('admin.Title')" value="{{ $name ?? '' }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="description">Trích dẫn</label>
+                                            <label for="description">@lang('admin.Description')</label>
                                             <textarea id="description" name="description">{!! $description ?? '' !!}</textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="content">Nội dung</label>
+                                            <label for="content">@lang('admin.Content')</label>
                                             <textarea id="content" name="content">{!! $content ?? '' !!}</textarea>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
                                         <div class="form-group">
-                                            <label for="name_en">Title</label>
+                                            <label for="name_en">@lang('admin.Title')</label>
                                             <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Title" value="{{ $name_en ?? '' }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="description_en">Description</label>
+                                            <label for="description_en">@lang('admin.Description')</label>
                                             <textarea id="description_en" name="description_en">{!! $description_en ?? '' !!}</textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="content_en">Content</label>
+                                            <label for="content_en">@lang('admin.Content')</label>
                                             <textarea id="content_en" name="content_en">{!! $content_en ?? '' !!}</textarea>
                                         </div>
                                     </div>
@@ -111,11 +109,11 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h5>Thông tin</h5>
+                                <h5>@lang('Infomation')</h5>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="sort" class="col-form-label text-lg-right">Ưu tiên</label>
+                                    <label for="sort" class="col-form-label text-lg-right">@lang('Sort')</label>
                                     <input type="text" class="form-control" id="sort" name="sort" value="{{ $sort ?? 0 }}">
                                 </div>
                             </div>
@@ -137,7 +135,7 @@
                         {{-- SELECT CATEGORY --}}
                         <div class="card widget-category">
                             <div class="card-header">
-                                <h4>Chuyên mục</h4>
+                                <h4>@lang('admin.Category')</h4>
                             </div>
                             <div class="card-body max-vh-75">
                                 <div class="inside clear">
@@ -151,7 +149,7 @@
                         </div>
                         {{-- END SELECT CATEGORY --}}
 
-                        @include('admin.partials.image', ['title' => 'Hình ảnh', 'id' => 'img', 'name' => 'image', 'image' => $image ?? ''])
+                        @include('admin.partials.image', ['title' => __('admin.Thumbnail'), 'id' => 'img', 'name' => 'image', 'image' => $image ?? ''])
                         {{-- @include('admin.partials.image', ['title' => 'Hình ảnh Banner', 'id' => 'cover-img', 'name' => 'cover', 'image' => $cover ?? '']) --}}
                     </div>
                 </div> <!-- /.row -->

@@ -31,8 +31,8 @@
             <td class="text-center">
                 {{ $item->updated_at }}
                 <br>
-                <input type="checkbox" id="status" class="quick_change_value" @checked($item->status == 1) value="1" value-off="0" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}" data-toggle="toggle" data-on="Công khai" data-off="Bản nháp" data-onstyle="success"
-                    data-offstyle="light">
+                <input type="checkbox" id="status" class="quick_change_value" @checked($item->status == 1) value="1" value-off="0" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}" data-toggle="toggle" data-on="@lang('admin.Publish')" data-off="@lang('admin.Draft')"
+                    data-onstyle="success" data-offstyle="light">
             </td>
         </tr>
         @if (count($item->children('post')->get()) > 0)

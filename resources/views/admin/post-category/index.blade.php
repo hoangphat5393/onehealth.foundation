@@ -42,19 +42,25 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-
                         <div class="card-header">
-                            <h5>Danh sách thể loại sản phẩm</h5>
+                            <h5>@lang('admin.Category')</h5>
                         </div>
-
                         <div class="card-body">
-                            <div class="clear">
-                                @include('admin.partials.button_add_delete', ['type' => 'post-category', 'route' => route('admin.postCategoryCreate')])
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    @include('admin.partials.button_add_delete', ['type' => 'post-category', 'route' => route('admin.postCategoryCreate')])
+                                </div>
+                                <div>
+                                    <form method="GET" action="" id="frm-filter-post" class="form-inline">
+                                        <input type="text" class="form-control" name="search_name" id="search_name" placeholder="@lang('admin.Keyword')" value="{{ request('search_name') }}">
+                                        <button type="submit" class="btn btn-primary ml-2">@lang('admin.Search')</button>
+                                    </form>
+                                </div>
                             </div>
 
                             <div class="d-flex my-4">
                                 <div class="fl" style="font-size: 17px;">
-                                    <b>Tổng</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> Chuyên mục
+                                    <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.Categories')
                                 </div>
                                 <div class="fr">
                                     {!! $categories->links() !!}
@@ -68,14 +74,13 @@
                                             <th scope="col" class="text-center">
                                                 <div class="icheck-info d-inline">
                                                     <input type="checkbox" id="selectall" onclick="select_all()">
-                                                    <label for="selectall">
-                                                    </label>
+                                                    <label for="selectall"></label>
                                                 </div>
                                             </th>
-                                            <th scope="col" class="text-center" style="width:100px">Thứ tự</th>
-                                            <th scope="col" class="text-center">Tên</th>
-                                            <th scope="col" class="text-center">Ảnh</th>
-                                            <th scope="col" class="text-center">Ngày đăng</th>
+                                            <th scope="col" class="text-center" style="width:100px">@lang('admin.Sort')</th>
+                                            <th scope="col" class="text-center">@lang('admin.Name')</th>
+                                            <th scope="col" class="text-center">@lang('admin.Thumbnail')</th>
+                                            <th scope="col" class="text-center">@lang('admin.Createddate')</th>
                                         </tr>
                                     </thead>
                                     <tbody>

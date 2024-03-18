@@ -34,9 +34,9 @@
                         <p>OHF tin rằng với đội ngũ thế hệ trẻ Việt Nam ngày nay, các bạn sẽ hết lòng vì cộng đồng để xây dựng đất nước ngày càng phát triển hơn.</p>
                         <a href="{{ route('page', 'du-an') }}" class="btn btn-custom my-3">@lang('See all projects') <i class="fa-solid fa-angles-right"></i></a>
 
-                        <form method="get" action="#">
+                        <form method="get" action="{{ route('search') }}">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="button-addon2">
+                                <input type="text" class="form-control" name="project" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="button-addon2">
                                 <button class="btn btn-search" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                             </div>
                         </form>

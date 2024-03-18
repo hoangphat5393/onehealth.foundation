@@ -349,4 +349,8 @@ return [
             'sort_order' => [],
 
       ],
+
+      'Public' => 'Public',
+      'Draft' => 'Draft',
+
 ];

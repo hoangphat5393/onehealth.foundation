@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 @section('seo')
     @php
-        $title_head = 'Bài viết';
+        $title_head = __('admin.News');
         $data_seo = [
-            'title' => 'Tin tức | ' . Helpers::get_option_minhnn('seo-title-add'),
+            'title' => __('admin.News') . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
         ];
         $seo = WebService::getSEO($data_seo);
     @endphp
@@ -33,10 +33,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ $title_head }}</h3>
+                            <h3>{{ $title_head }}</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="clear">
+                            <div class="d-flex justify-content-between">
                                 @include('admin.partials.button_add_delete', ['type' => 'post', 'route' => route('admin.postCreate')])
                                 <div class="fr">
                                     <form method="GET" action="" id="frm-filter-post" class="form-inline">
@@ -44,17 +44,26 @@
                                             $categories = App\Models\Category::select('id', 'name')->where('type', 'post')->orderByDesc('sort')->get();
                                         @endphp
                                         <select class="custom-select mr-2" name="category_id">
-                                            <option value="">Thể loại tin tức</option>
+                                            <option value="">@lang('admin.Category')</option>
                                             @foreach ($categories as $item)
                                                 <option value="{{ $item->id }}" {{ request('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                             @endforeach
                                         </select>
-                                        <input type="text" class="form-control" name="search_name" id="search_name" placeholder="Từ khoá" value="{{ request('search_name') }}">
-                                        <button type="submit" class="btn btn-primary ml-2">Tìm kiếm</button>
+                                        <input type="text" class="form-control" name="search_name" id="search_name" placeholder="@lang('admin.Keyword')" value="{{ request('search_name') }}">
+                                        <button type="submit" class="btn btn-primary ml-2">@lang('admin.Search')</button>
                                     </form>
                                 </div>
                             </div>
-                            <br />
+
+                            <div class="d-flex my-4">
+                                <div class="fl" style="font-size: 17px;">
+                                    <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.News')
+                                </div>
+                                <div class="fr">
+                                    {!! $data->links() !!}
+                                </div>
+                            </div>
+
                             <div class="table-responsive">
                                 <table class="table table-bordered list-data v-center" id="table_index">
                                     <thead>
@@ -65,11 +74,11 @@
                                                     <label for="selectall"></label>
                                                 </div>
                                             </th>
-                                            <th class="text-center" style="width:100px">Ưu tiên</th>
-                                            <th class="text-center">Tên</th>
-                                            <th class="text-center" style="width:150px">Chuyên mục</th>
-                                            <th class="text-center">Ảnh đại diện</th>
-                                            <th class="text-center">Ngày đăng</th>
+                                            <th class="text-center" style="width:100px">@lang('admin.priority')</th>
+                                            <th class="text-center">@lang('admin.name')</th>
+                                            <th class="text-center" style="width:150px">@lang('admin.category')</th>
+                                            <th class="text-center">@lang('admin.thumbnail')</th>
+                                            <th class="text-center">@lang('admin.Createddate')</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -98,7 +107,7 @@
                                                         $categories = $item->categories;
                                                     @endphp
                                                     @foreach ($categories as $k => $category)
-                                                        <a class="link" target="_blank" href="{{ route('admin.postCategoryEdit', $category->id) }}">{{ $category->name }}</a></br>
+                                                        <a class="link" target="_blank" href="{{ route('admin.postCategoryEdit', $category->id) }}">{{ $category->name }} | {{ $category->name_en }}</a></br>
                                                     @endforeach
                                                 </td>
                                                 <td class="text-center">
@@ -107,8 +116,8 @@
                                                 <td class="text-center">
                                                     {{ $item->updated_at }}
                                                     <br>
-                                                    <input type="checkbox" id="status" class="quick_change_value" @checked($item->status == 1) value="1" value-off="0" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}" data-toggle="toggle" data-on="Công khai" data-off="Bản nháp"
-                                                        data-onstyle="success" data-offstyle="light">
+                                                    <input type="checkbox" id="status" class="quick_change_value" @checked($item->status == 1) value="1" value-off="0" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}" data-toggle="toggle" data-on="@lang('admin.Publish')"
+                                                        data-off="@lang('admin.Draft')" data-onstyle="success" data-offstyle="light">
                                                 </td>
                                             </tr>
                                         @endforeach
