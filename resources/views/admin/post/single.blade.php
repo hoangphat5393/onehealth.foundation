@@ -7,7 +7,7 @@
         }
     }
 
-    $title_head = $name ?? __('add news');
+    $title_head = $name ?? __('Add news');
 
     $id = $id ?? 0;
 

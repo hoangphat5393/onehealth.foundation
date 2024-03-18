@@ -351,6 +351,7 @@ return [
             'helper_module' => 'File trong "app/Plugins/Block". Module phải có hàm render().',
             'sort_order' => [],
       ],
+      "Slug" => "Slug",
       "Vietnamese" => "Vietnamese",
       "English" => "English",
       'public' => 'public',
@@ -364,6 +365,7 @@ return [
       'Category' => 'Category',
       'Categories' => 'Categories',
       'priority' => 'priority',
+      'Priority' => 'Priority',
       'Keyword' => 'Keyword',
       'sort' => 'sort',
       'Sort' => 'Sort',
@@ -382,4 +384,7 @@ return [
       'Total' => 'Total',
       'Name' => 'Name',
       'Campaign' => 'Campaign',
+      'Campaigns' => 'Campaigns',
+      'Add news' => 'Add news',
+      'Add campaigns' => 'Add campaigns',
 ];
