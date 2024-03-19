@@ -36,7 +36,7 @@
 
                         <form method="get" action="{{ route('search') }}">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="project" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="button-addon2">
+                                <input type="text" class="form-control" name="keyword" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="button-addon2">
                                 <button class="btn btn-search" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
                             </div>
                         </form>

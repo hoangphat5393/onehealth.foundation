@@ -83,12 +83,12 @@
                                 {{-- show error form --}}
                                 <div class="errorTxt"></div>
                                 <div class="form-group">
-                                    <label for="post_title">Tiêu đề</label>
+                                    <label for="post_title">@lang('admin.Name')</label>
                                     <input type="text" class="form-control title_slugify" id="post_title" name="post_title" placeholder="Tiêu đề" value="{{ $post_title }}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="post_title">Thứ tự</label>
+                                    <label for="post_title">@lang('admin.Sort')</label>
                                     <input type="text" class="form-control" id="sort" name="sort" placeholder="Thứ tự" value="{{ $sort }}">
                                 </div>
                                 <div class="form-group d-none">
@@ -130,19 +130,19 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <h4 class="border-bottom mt-4 mb-2">Danh sách ảnh</h4>
+                                    <h4 class="border-bottom mt-4 mb-2">@lang('admin.Image list')</h4>
                                     @if ($sid == 0)
                                         <p style="color: #f00;">Vui lòng bấm cập nhật để thêm ảnh</p>
                                     @else
                                         <div class="text-right">
-                                            <button type="button" class="btn btn-info edit-slider" data="0" data-parent="{{ $sid }}">Thêm ảnh</button>
+                                            <button type="button" class="btn btn-info edit-slider" data="0" data-parent="{{ $sid }}">@lang('admin.Add image')</button>
                                         </div>
                                         <div class="col-lg-12 slider-items mt-3">
                                             <div class="row border py-2 mb-4">
-                                                <div class="col-lg-3 text-center">Hình ảnh</div>
-                                                <div class="col-lg-3">Tên</div>
-                                                <div class="col-lg-3">Link</div>
-                                                <div class="col-lg-3 text-center">Action</div>
+                                                <div class="col-lg-3 text-center">@lang('admin.Image')</div>
+                                                <div class="col-lg-3">@lang('admin.Name')</div>
+                                                <div class="col-lg-3">@lang('admin.Link')</div>
+                                                <div class="col-lg-3 text-center">@lang('admin.Action')</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 slider-list">
@@ -157,21 +157,21 @@
                     <div class="col-3">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Publish</h3>
+                                <h3 class="card-title">@lang('admin.Publish')</h3>
                             </div> <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group clearfix">
                                     <div class="icheck-primary d-inline">
                                         <input type="radio" id="radioDraft" name="status" value="0" @if ($status == 0) checked @endif>
-                                        <label for="radioDraft">Draft</label>
+                                        <label for="radioDraft">@lang('admin.Draft')</label>
                                     </div>
                                     <div class="icheck-primary d-inline" style="margin-left: 15px;">
                                         <input type="radio" id="radioPublic" name="status" value="1" @if ($status == 1) checked @endif>
-                                        <label for="radioPublic">Public</label>
+                                        <label for="radioPublic">@lang('admin.Publish')</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Date:</label>
+                                    <label>@lang('admin.Createddate'):</label>
                                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                         <input type="text" name="created_at" class="form-control datetimepicker-input" data-target="#reservationdate" value="{{ $date_update }}">
                                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
@@ -180,7 +180,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-success">Save</button>
+                                    <button type="submit" class="btn btn-success">@lang('admin.Save')</button>
                                 </div>
                             </div> <!-- /.card-body -->
                         </div><!-- /.card -->
@@ -192,12 +192,13 @@
     <div class="content-html">
 
     </div>
+
     <!-- Modal -->
     <div class="modal fade" id="sliderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm Slider</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">@lang('admin.Add image')</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -206,8 +207,8 @@
                 </div>
                 <div class="modal-footer">
                     <div class="errorTxtModal col-lg-12" style="color: #f00;"></div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info post-slider">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('admin.Close')</button>
+                    <button type="button" class="btn btn-info post-slider">@lang('admin.Save')</button>
                 </div>
             </div>
         </div>
@@ -215,7 +216,7 @@
 @endsection
 
 @push('scripts')
-    <script type="text/javascript">
+    <script>
         $(function() {
             $(".slider-list").sortable({
                 update: function(event, ui) {
@@ -302,7 +303,10 @@
                         if (res.data.view != "") {
                             $("#sliderModal .modal-body").html(res.data.view);
                             $("#sliderModal").modal("show");
+
                             editorQuote("description");
+                            editorQuote("description_en");
+
                             $(".ckfinder-popup").each(function(index, el) {
                                 var id = $(this).attr("id"),
                                     input = $(this).attr("data"),

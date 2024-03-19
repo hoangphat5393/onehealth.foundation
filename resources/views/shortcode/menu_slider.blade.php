@@ -1,5 +1,5 @@
 @php
-    $slider_main = \App\Models\Slider::where('status', 0)->where('slider_id', 70)->orderBy('sort', 'asc')->get();
+    $slider_main = \App\Slider::where('status', 0)->where('slider_id', 70)->orderBy('sort', 'asc')->get();
 @endphp
 
 @empty(!$slider_main)
@@ -19,7 +19,7 @@
                     <div class="position-relative">
                         <img class="w-100 h-100" src="{{ get_image($item->image) }}" alt="{{ $item->name }}">
                         <div class="image-title">
-                            <p>MINH BẠCH BỀN VỮNG TÁC ĐỘNG</p>
+                            <p>{{ $item->name }}</p>
                         </div>
                     </div>
                 </div>
