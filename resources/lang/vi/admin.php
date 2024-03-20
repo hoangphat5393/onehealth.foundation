@@ -395,4 +395,6 @@ return [
       'Action' => 'Action',
       'Link' => 'Link',
       'Link name' => 'Link name',
+      'Shortcode' => 'Shortcode',
+      'Add shortcode' => 'Add shortcode',
 ];

@@ -42,8 +42,6 @@
 
     @stack('head-script')
 
-
-
 </head>
 
 <body class="hold-transition sidebar-mini">

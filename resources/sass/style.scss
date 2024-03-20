@@ -117,6 +117,11 @@ a {
     transform: none !important;
 }
 header {
+    .navbar-brand {
+        img {
+            height: 72px;
+        }
+    }
     .nav-link {
         color: var(--main-color);
     }
@@ -139,7 +144,6 @@ header {
 
     &:hover {
         background: #c87d3d;
-        // border: 1px solid #fff;
         color: #fff;
         border: solid 1px #c87d3d;
     }
@@ -148,10 +152,12 @@ header {
 .border-custom {
     border: 1px solid #00b0ae;
 }
-.text-main {
+.text-main,
+.bg-main {
     color: var(--main-color);
 }
-.text-sub {
+.text-sub,
+.bg-sub {
     color: var(--sub-color);
 }
 
@@ -159,6 +165,7 @@ header {
     background-color: var(--bg-light-dark);
 }
 
+/* Image responsive */
 .product-img {
     overflow: hidden;
     position: relative;
@@ -178,6 +185,7 @@ header {
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
 }
+/* Image responsive end */
 
 .dropdown:hover > .dropdown-menu {
     @media (min-width: 1200px) {
@@ -259,6 +267,7 @@ header {
     .container {
         padding: 0;
     }
+
     .navbar-nav .nav-link {
         color: #fff;
         height: 40px;
@@ -532,12 +541,10 @@ main {
         // }
         .banner-right {
             background-color: #222;
-
             .wrapper {
                 padding: 48px 12px;
                 width: 100%;
             }
-
             .mosaic-lede-banner__headline-subtitle {
                 color: #fff;
                 border-top: 8px solid #ffbc1b;
@@ -615,7 +622,7 @@ main {
         }
         .transfer_info {
             background-color: #f2f2f2;
-            border-left: 9px solid #00b1af;
+            border-left: 9px solid #00b0ae;
         }
     }
 }
@@ -715,7 +722,7 @@ td {
         background-color: #e3f4f0;
         padding: 30px 15px;
         p {
-            color: #00b1af;
+            color: #00b0ae;
             text-align: justify;
             padding: 15px;
         }
@@ -844,4 +851,77 @@ td {
         text-transform: uppercase;
         font-size: 0.75rem;
     }
+}
+
+.animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+.call-now {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 266666600 !important;
+}
+
+.mh-contact {
+    background-color: transparent;
+    cursor: pointer;
+    height: 110px;
+    visibility: visible;
+    width: 110px;
+}
+
+.mh-alo-ph-circle {
+    background-color: transparent;
+    border: 2px solid #ff8114;
+    border-radius: 100%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    height: 85px;
+    width: 85px;
+    opacity: 0.5;
+}
+.mh-alo-ph-circle-fill {
+    background-color: rgb(255 129 20 / 0.5);
+    border: 2px solid transparent;
+    border-radius: 100%;
+    height: 60px;
+    left: 28px;
+    opacity: 0.75 !important;
+    position: absolute;
+    top: 28px;
+    transition: all 0.5s ease 0s;
+    width: 60px;
+}
+
+.mh-img-circle {
+    background: #ff8114;
+    border: 2px solid transparent;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
+    position: absolute;
+    top: 38px;
+    left: 38px;
+    transform-origin: 50% 50% 0;
+    transition: all 0.2s ease-in-out 0s;
+    color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.counter {
+    font-family: "Rampart One", cursive;
+    font-size: 5em;
+    margin: 100vh auto 40vh;
+}
+.counter:not(.is-visible) {
+    visibility: hidden;
 }

@@ -171,6 +171,12 @@ Route::namespace('Admin')->group(function () {
             // Route::post('product-category/post', 'ProductCategoryController@post')->name('admin.productCategoryPost');
         }
 
+        // Shortcode
+        Route::get('shortcode', 'ShortcodeController@index')->name('admin.shortcodeList');
+        Route::get('shortcode/create', 'ShortcodeController@create')->name('admin.shortcodeCreate');
+        Route::get('shortcode/{id}', 'ShortcodeController@edit')->name('admin.shortcodeEdit');
+        Route::post('shortcode/post', 'ShortcodeController@post')->name('admin.shortcodePost');
+
         // Change password
         Route::get('/change-password', 'AdminController@changePassword')->name('admin.changePassword');
         Route::post('/change-password', 'AdminController@postChangePassword')->name('admin.postChangePassword');

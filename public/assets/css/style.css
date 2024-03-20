@@ -50,6 +50,9 @@ a {
 header {
   border-bottom: 5px solid #00b1af;
 }
+header .navbar-brand img {
+  height: 72px;
+}
 header .nav-link {
   color: var(--main-color);
 }
@@ -78,11 +81,13 @@ header .nav-link {
   border: 1px solid #00b0ae;
 }
 
-.text-main {
+.text-main,
+.bg-main {
   color: var(--main-color);
 }
 
-.text-sub {
+.text-sub,
+.bg-sub {
   color: var(--sub-color);
 }
 
@@ -90,6 +95,7 @@ header .nav-link {
   background-color: var(--bg-light-dark);
 }
 
+/* Image responsive */
 .product-img {
   overflow: hidden;
   position: relative;
@@ -110,6 +116,7 @@ header .nav-link {
   -o-transition: all 0.5s ease;
 }
 
+/* Image responsive end */
 @media (min-width: 1200px) {
   .dropdown:hover > .dropdown-menu {
     display: block;
@@ -429,7 +436,7 @@ main .block16 p {
 }
 main .block16 .transfer_info {
   background-color: #f2f2f2;
-  border-left: 9px solid #00b1af;
+  border-left: 9px solid #00b0ae;
 }
 
 .camp-group-block .left-block {
@@ -518,7 +525,7 @@ td {
   padding: 30px 15px;
 }
 #donate_online .form-donate-info p {
-  color: #00b1af;
+  color: #00b0ae;
   text-align: justify;
   padding: 15px;
 }
@@ -628,6 +635,80 @@ td {
 }
 #footer .copyright a {
   color: #bdcbcb;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+}
+
+.call-now {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 266666600 !important;
+}
+
+.mh-contact {
+  background-color: transparent;
+  cursor: pointer;
+  height: 110px;
+  visibility: visible;
+  width: 110px;
+}
+
+.mh-alo-ph-circle {
+  background-color: transparent;
+  border: 2px solid #ff8114;
+  border-radius: 100%;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  height: 85px;
+  width: 85px;
+  opacity: 0.5;
+}
+
+.mh-alo-ph-circle-fill {
+  background-color: rgba(255, 129, 20, 0.5);
+  border: 2px solid transparent;
+  border-radius: 100%;
+  height: 60px;
+  left: 28px;
+  opacity: 0.75 !important;
+  position: absolute;
+  top: 28px;
+  transition: all 0.5s ease 0s;
+  width: 60px;
+}
+
+.mh-img-circle {
+  background: #ff8114;
+  border: 2px solid transparent;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  opacity: 0.7;
+  position: absolute;
+  top: 38px;
+  left: 38px;
+  transform-origin: 50% 50% 0;
+  transition: all 0.2s ease-in-out 0s;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.counter {
+  font-family: "Rampart One", cursive;
+  font-size: 5em;
+  margin: 100vh auto 40vh;
+}
+
+.counter:not(.is-visible) {
+  visibility: hidden;
 }
 
 /*# sourceMappingURL=style.css.map*/

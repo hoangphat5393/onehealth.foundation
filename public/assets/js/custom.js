@@ -247,23 +247,6 @@ $(function () {
 
     //login modal
 
-    // counter
-    animateCounterUp();
-    function animateCounterUp() {
-        let e = document.querySelectorAll(".animate-counter-up");
-        e.forEach((r) => {
-            const u = () => {
-                let e = +r.getAttribute("data-countTarget");
-                var t,
-                    n = +r.getAttribute("data-countStep"),
-                    o = +r.innerText;
-                (t = e < 100 ? 100 : 1), o < e ? ((r.innerText = o + n), setTimeout(u, t)) : (r.innerText = e.toLocaleString());
-            };
-            u();
-        });
-    }
-    // counter
-
     // Open modal
     // var myModal = new bootstrap.Modal(document.getElementById("notifyModal"), {
     //     keyboard: false,

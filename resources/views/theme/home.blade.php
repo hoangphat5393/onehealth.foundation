@@ -1,5 +1,6 @@
 @php
     // $category_product = Menu::getByName('Categories-product-home');
+    $lc = app()->getLocale();
 @endphp
 
 @extends($templatePath . '.layouts.index')
@@ -30,10 +31,8 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <h3 class="upper">@lang('Our Projects')</h3>
-                        <p class="mb-3">Quỹ từ thiện One Health Foundation (OHF) <br>thực hiện sứ mệnh của chúng tôi thông qua <br>ba dự án chính về y tế, giáo dục và môi trường.</p>
-                        <p>OHF tin rằng với đội ngũ thế hệ trẻ Việt Nam ngày nay, các bạn sẽ hết lòng vì cộng đồng để xây dựng đất nước ngày càng phát triển hơn.</p>
+                        {!! htmlspecialchars_decode(setting_option('our_project_' . $lc)) !!}
                         <a href="{{ route('page', 'du-an') }}" class="btn btn-custom my-3">@lang('See all projects') <i class="fa-solid fa-angles-right"></i></a>
-
                         <form method="get" action="{{ route('search') }}">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" name="keyword" placeholder="@lang('Search')" aria-label="@lang('Search')" aria-describedby="button-addon2">
@@ -132,5 +131,34 @@
 
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')
+
     </main>
 @endsection
+
+@push('scripts')
+    <script>
+        // Facts counter
+        // if ($(".counter-count").length) {
+        //     $(".counter-count").counterUp({
+        //         delay: 10,
+        //         time: 2000,
+        //     });
+        // }
+
+        // Counter
+        // animateCounterUp();
+        // function animateCounterUp() {
+        //     let e = document.querySelectorAll(".animate-counter-up");
+        //     e.forEach((r) => {
+        //         const u = () => {
+        //             let e = +r.getAttribute("data-countTarget");
+        //             var t,
+        //                 n = +r.getAttribute("data-countStep"),
+        //                 o = +r.innerText;
+        //             (t = e < 100 ? 100 : 1), o < e ? ((r.innerText = o + n), setTimeout(u, t)) : (r.innerText = e.toLocaleString());
+        //         };
+        //         u();
+        //     });
+        // }
+    </script>
+@endpush

@@ -40,14 +40,6 @@ $(function () {
         return false;
     });
 
-    // Facts counter
-    if ($(".counter-count").length) {
-        $(".counter-count").counterUp({
-            delay: 10,
-            time: 2000,
-        });
-    }
-
     // Modal Video
     var $videoSrc;
     $(".btn-play").on("click", function () {
