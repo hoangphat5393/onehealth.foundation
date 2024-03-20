@@ -701,14 +701,4 @@ td {
   justify-content: center;
 }
 
-.counter {
-  font-family: "Rampart One", cursive;
-  font-size: 5em;
-  margin: 100vh auto 40vh;
-}
-
-.counter:not(.is-visible) {
-  visibility: hidden;
-}
-
 /*# sourceMappingURL=style.css.map*/

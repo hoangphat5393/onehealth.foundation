@@ -58,9 +58,6 @@
 
     @include($templateFile . '.layouts.footer')
 
-    <div class="space">Scroll down to see the counter</div>
-    <div class="counter">1,123,456.78</div>
-
     {{-- Including Jquery --}}
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }} "></script>
@@ -71,39 +68,17 @@
 
     <script src="{{ asset('plugin/aos/aos.js') }}"></script>
     <script src="{{ asset('plugin/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('plugin/waypoints/jquery.waypoints.min.js') }}"></script>
-    {{-- <script src="{{ asset('plugin/counterup2/index.js') }}"></script> --}}
     <script src="{{ asset('plugin/sweetalert2@11/sweetalert2.all.min.js') }}"></script>
-    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
+
+    <script src="{{ asset('plugin/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('plugin/counterup/counterup.min.js') }}"></script>
+
     {{-- <script src="{{ asset('js/main.js?ver=' . random_int(0, 100)) }}"></script> --}}
-    {{-- <script src="{{ asset('js/custom.js?ver=' . random_int(0, 100)) }}"></script> --}}
+    <script src="{{ asset('js/custom.js?ver=' . random_int(0, 100)) }}"></script>
 
     @stack('scripts')
     {{-- @yield('scripts') --}}
 
-    <script>
-        // const counterUp = window.counterUp.default
-
-        // const callback = entries => {
-        //     entries.forEach(entry => {
-        //         const el = entry.target
-        //         if (entry.isIntersecting && !el.classList.contains('is-visible')) {
-        //             counterUp(el, {
-        //                 duration: 2000,
-        //                 delay: 16,
-        //             })
-        //             el.classList.add('is-visible')
-        //         }
-        //     })
-        // }
-
-        // const IO = new IntersectionObserver(callback, {
-        //     threshold: 1
-        // })
-
-        // const el = document.querySelector('.counter')
-        // IO.observe(el)
-    </script>
 </body>
 
 </html>

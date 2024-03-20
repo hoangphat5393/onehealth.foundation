@@ -18,9 +18,13 @@
 
         {{-- @include('theme.includes.counter') --}}
 
+
+
         <section class="block2">
             {!! htmlspecialchars_decode($page->content) !!}
         </section>
+
+
 
         {{-- Dự án (Campaign) --}}
         @php
@@ -132,33 +136,18 @@
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')
 
+
+
+
+
     </main>
 @endsection
 
 @push('scripts')
     <script>
-        // Facts counter
-        // if ($(".counter-count").length) {
-        //     $(".counter-count").counterUp({
-        //         delay: 10,
-        //         time: 2000,
-        //     });
-        // }
-
-        // Counter
-        // animateCounterUp();
-        // function animateCounterUp() {
-        //     let e = document.querySelectorAll(".animate-counter-up");
-        //     e.forEach((r) => {
-        //         const u = () => {
-        //             let e = +r.getAttribute("data-countTarget");
-        //             var t,
-        //                 n = +r.getAttribute("data-countStep"),
-        //                 o = +r.innerText;
-        //             (t = e < 100 ? 100 : 1), o < e ? ((r.innerText = o + n), setTimeout(u, t)) : (r.innerText = e.toLocaleString());
-        //         };
-        //         u();
-        //     });
-        // }
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const el = document.querySelector('.counter');
+        //     // Tiếp tục xử lý tại đây...
+        // });
     </script>
 @endpush
