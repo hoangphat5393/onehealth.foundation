@@ -38,7 +38,6 @@
                         <div class="row article g-0 mb-5">
                             <div class="col-lg-4 article__img">
                                 <div class="item-product">
-
                                     <a href="{{ route('news.detail', [$item->slug, $item->id], true, $lc) }}" title="{{ $item->name }}">
                                         <div class="product-img">
                                             <img src="{{ get_image($item->image) }}" class="img-fluid" alt="{{ $item->name }}">

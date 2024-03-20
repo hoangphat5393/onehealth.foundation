@@ -92,6 +92,7 @@ figure,
 dl,
 ol,
 ul,
+h5,
 p {
     margin-bottom: 0;
 }
@@ -139,13 +140,64 @@ header {
 
 .btn-custom {
     background: #15a4a4;
-    padding: 6px 20px;
+    padding: 6px 18px;
     color: #fff;
+    border-radius: 0;
 
     &:hover {
         background: #c87d3d;
         color: #fff;
-        border: solid 1px #c87d3d;
+    }
+}
+
+.link-custom {
+    &:hover {
+        color: #c87d3d;
+    }
+}
+
+.item-news {
+    .news-content {
+        padding: 15px 21px;
+        background: #f4f4f4;
+    }
+    .news-meta {
+        font-size: 0.875rem;
+        i {
+            font-size: 6px;
+            line-height: 2;
+        }
+    }
+    .news-content {
+        padding: 15px 21px;
+        background: #f4f4f4;
+    }
+    .news-meta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 4px;
+    }
+
+    .news-date {
+        color: #959595;
+        padding: 0 0 0 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .title {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.5;
+        @media (min-width: 992px) {
+            height: 48px;
+        }
     }
 }
 
@@ -436,24 +488,19 @@ main {
         }
 
         .project {
-            &__content {
-                &::before {
-                    content: "";
-                    width: 5px;
-                    height: 65px;
-                    background-color: var(--bg-main);
-                    float: left;
-                    padding: 5px;
-                    margin-right: 5px;
-                }
-                .content {
-                    height: 90%;
-                }
-                .project-link {
-                    height: 10%;
-                    display: flex;
-                    align-items: center;
-                }
+            &__description {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+            }
+            h4 {
+                font-size: 1.25rem;
+                font-weight: bold;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
             }
         }
     }
