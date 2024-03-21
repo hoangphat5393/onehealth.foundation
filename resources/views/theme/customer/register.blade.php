@@ -206,20 +206,20 @@
                     // customer_register.find('.list-content-loading').show();
                     var form = document.getElementById('customer_register');
                     var fdnew = new FormData(form);
-                    // axios({
-                    //     method: 'POST',
-                    //     url: customer_register.prop("action"),
-                    //     data: fdnew,
-                    // }).then(res => {
-                    //     var url_back = '';
-                    //     if (res.data.error == 0) {
-                    //         url_back = res.data.redirect_back;
-                    //         // $('.page-register-content').html(res.data.view);
-                    //     } else {
-                    //         customer_register.find('.error-message').html(res.data.msg);
-                    //         customer_register.find('.list-content-loading').hide();
-                    //     }
-                    // }).catch(e => console.log(e));
+                    axios({
+                        method: 'POST',
+                        url: customer_register.prop("action"),
+                        data: fdnew,
+                    }).then(res => {
+                        var url_back = '';
+                        if (res.data.error == 0) {
+                            url_back = res.data.redirect_back;
+                            // $('.page-register-content').html(res.data.view);
+                        } else {
+                            customer_register.find('.error-message').html(res.data.msg);
+                            customer_register.find('.list-content-loading').hide();
+                        }
+                    }).catch(e => console.log(e));
                 }
             });
         });

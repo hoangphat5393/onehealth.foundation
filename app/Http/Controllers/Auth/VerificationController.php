@@ -7,8 +7,6 @@ use App\Verify\Service;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
-
-
 class VerificationController extends Controller
 {
 
@@ -40,8 +38,8 @@ class VerificationController extends Controller
         $this->verify = $verify;
 
         $this->middleware('auth');
-//        $this->middleware('signed')->only('verify');
-//        $this->middleware('throttle:6,1')->only('verify', 'resend');
+        // $this->middleware('signed')->only('verify');
+        // $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
     /**

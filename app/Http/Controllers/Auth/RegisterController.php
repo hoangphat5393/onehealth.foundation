@@ -48,12 +48,12 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(Service $verify)
-    {
-        parent::__construct();
-        $this->middleware('guest');
-        $this->verify = $verify;
-    }
+    // public function __construct(Service $verify)
+    // {
+    //     parent::__construct();
+    //     $this->middleware('guest');
+    //     $this->verify = $verify;
+    // }
 
     /**
      * Get a validator for an incoming registration request.
@@ -109,7 +109,7 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        dd($request);
+        dd(123);
         $validator = $this->validator($request->all());//->validate();
         // dd($validator->fails());
         if ($validator->fails()) {
