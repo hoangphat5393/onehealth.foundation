@@ -4,7 +4,7 @@
     <main id="main" class="register">
         [menu_no_banner]
 
-        <section class="block17">
+        <section class="block17 page-register-content">
             <div class="container mt-4">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
@@ -12,29 +12,31 @@
                             <div class="row g-0">
                                 <div class="col-lg-6">
                                     <div class="p-5">
+
                                         <h4 class="fw-bold fs-4 text-main">Tạo tài khoản OneHealth Foundation</h4>
-                                        <p>Hơn 5 triệu người đã đăng ký </p>
+                                        <p>Hơn 5 triệu người đã đăng ký</p>
+
                                         <form id="customer_register" method="post" action="{{ route('postRegisterCustomer') }}">
                                             @csrf
                                             <div class="row mb-3 align-items-center">
                                                 <div class="col-6">
                                                     <label for="username" class="col-form-label">@lang('First and last name')</label>
-                                                    <input type="input" name="username" id="username" class="form-control" placeholder="@lang('We call you?')" aria-describedby="passwordHelpInline">
+                                                    <input type="input" name="username" id="username" class="form-control" placeholder="@lang('We call you?')" aria-describedby="username">
                                                 </div>
                                                 <div class="col-6">
                                                     <label for="birthday" class="col-form-label">@lang('Birthday')</label>
-                                                    <input type="input" name="birthday" id="birthday" class="form-control" placeholder="@lang('Birthday')" aria-describedby="passwordHelpInline">
+                                                    <input type="input" name="birthday" id="birthday" class="form-control" placeholder="@lang('Birthday')" aria-describedby="birthday">
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">@lang('Email')</label>
-                                                <input type="email" class="form-control" id="email" placeholder="@lang('Email')" aria-describedby="email">
+                                                <input type="email" id="email" class="form-control" placeholder="@lang('Email')" aria-describedby="email">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label">@lang('Phone')</label>
-                                                <input type="phone" class="form-control" id="phone" placeholder="@lang('Phone')" aria-describedby="phone">
+                                                <input type="phone" id="phone" class="form-control" placeholder="@lang('Phone')" aria-describedby="phone">
                                             </div>
 
                                             <p class="form-note mb-3">
@@ -44,13 +46,13 @@
                                             </p>
 
                                             <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">@lang('Password')</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="@lang('Password')">
+                                                <label for="password" class="form-label">@lang('Password')</label>
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="@lang('Password')">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">@lang('Re-password')</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="@lang('Re-password')">
+                                                <label for="re_password" class="form-label">@lang('Re-password')</label>
+                                                <input type="password" id="re_password" class="form-control" name="re_password" placeholder="@lang('Re-password')">
                                             </div>
 
                                             <button type="button" class="btn btn-custom btn-register">@lang('Create new account')</button>
@@ -60,6 +62,10 @@
                                                 Với việc đồng ý tạo tài khoản đồng nghĩa với bạn đã đồng ý với Điều khoản dịch vụ &amp; Chính sách bảo mật của chúng tôi và nhận thông tin cập nhật hàng tuần. Cước phí tin nhắn và dung lượng mạng có thể bị tính.
                                                 Soạn STOP để từ chối nhận tin nhắn, HELP để nhờ trợ giúp
                                             </p>
+
+                                            <div class="mb-3">
+                                                <div class="error-message"></div>
+                                            </div>
                                             {{-- <div class="mb-3 form-check">
                                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                                 <label class="form-check-label footnote" for="exampleCheck1">
@@ -82,7 +88,7 @@
             </div>
         </section>
 
-        <div class="container d-none">
+        {{-- <div class="container d-none">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
                     <div class="mb-4">
@@ -111,7 +117,7 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="CustomerEmail">Email</label>
-                                        <input type="email" name="email" placeholder="" id="CustomerEmail" class="" autocorrect="off" autocapitalize="none" autofocus="">
+                                        <input type="email" id="CustomerEmail" name="email" placeholder="" class="" autocorrect="off" autocapitalize="none" autofocus="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -133,7 +139,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')
@@ -146,23 +152,46 @@
         var customer_register = $("#customer_register");
         var lc = '{{ app()->getLocale() }}';
 
+        var error_messages = {};
+
+        if (lc == 'vi') {
+            error_messages = {
+                username: "@lang('Enter Last name')",
+                birthday: "Nhập ngày ngày sinh",
+                phone: "Nhập số điện thoại",
+                email: "Nhập địa chỉ E-mail",
+                password: "Nhập @lang('Password')",
+                re_password: "Nhập @lang('Password')"
+            }
+        } else {
+            error_messages = {
+                username: "@lang('Enter Last name')",
+                birthday: "Nhập ngày ngày sinh",
+                phone: "Nhập số điện thoại",
+                email: "Nhập địa chỉ E-mail",
+                password: "Nhập @lang('Password')",
+                re_password: "Nhập @lang('Password')"
+            }
+        }
+
         $(document).ready(function($) {
             customer_register.validate({
                 onfocusout: false,
                 onkeyup: false,
                 onclick: false,
                 rules: {
-                    last_name: "required",
+                    username: "required",
+                    birthday: "required",
                     phone: "required",
                     email: "required",
-                    password: "required"
+                    password: "required",
+                    re_password: {
+                        required: true,
+                        equalTo: '#password',
+                    },
+                    re_password: "required",
                 },
-                messages: {
-                    last_name: "@lang('Enter Last name')",
-                    phone: "Nhập số điện thoại",
-                    email: "Nhập địa chỉ E-mail",
-                    password: "Nhập mật khẩu"
-                },
+                messages: error_messages,
                 errorElement: 'div',
                 errorLabelContainer: '.errorTxt',
                 invalidHandler: function(event, validator) {
@@ -171,31 +200,28 @@
                     }, 500);
                 }
             });
-            // $('.btn-register').on('click', function(event) {
-            //     form_id = $('#page-customer-register');
-            //     if (form_id.valid()) {
 
-            //         form_id.find('.list-content-loading').show();
-            //         var form = document.getElementById('page-customer-register');
-            //         var fdnew = new FormData(form);
-
-            //         axios({
-            //             method: 'POST',
-            //             url: form_id.prop("action"),
-            //             data: fdnew,
-            //         }).then(res => {
-            //             var url_back = '';
-
-            //             if (res.data.error == 0) {
-            //                 url_back = res.data.redirect_back;
-            //                 $('.page-register-content').html(res.data.view);
-            //             } else {
-            //                 form_id.find('.error-message').html(res.data.msg);
-            //                 form_id.find('.list-content-loading').hide();
-            //             }
-            //         }).catch(e => console.log(e));
-            //     }
-            // });
+            $('.btn-register').on('click', function(event) {
+                if (customer_register.valid()) {
+                    // customer_register.find('.list-content-loading').show();
+                    var form = document.getElementById('customer_register');
+                    var fdnew = new FormData(form);
+                    // axios({
+                    //     method: 'POST',
+                    //     url: customer_register.prop("action"),
+                    //     data: fdnew,
+                    // }).then(res => {
+                    //     var url_back = '';
+                    //     if (res.data.error == 0) {
+                    //         url_back = res.data.redirect_back;
+                    //         // $('.page-register-content').html(res.data.view);
+                    //     } else {
+                    //         customer_register.find('.error-message').html(res.data.msg);
+                    //         customer_register.find('.list-content-loading').hide();
+                    //     }
+                    // }).catch(e => console.log(e));
+                }
+            });
         });
     </script>
 @endpush
