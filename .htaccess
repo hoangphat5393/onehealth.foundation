@@ -24,7 +24,3 @@
     RewriteCond %{THE_REQUEST} ^.*/index\.php
     RewriteRule ^index.php(.*)$ /$1 [R=301,L]   
 </IfModule>
-
-<IfModule mod_php7.c>
-    php_value memory_limit 64M
-</IfModule>

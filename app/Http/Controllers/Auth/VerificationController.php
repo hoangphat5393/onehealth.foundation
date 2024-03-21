@@ -7,6 +7,7 @@ use App\Verify\Service;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
+
 class VerificationController extends Controller
 {
 
@@ -52,7 +53,7 @@ class VerificationController extends Controller
     {
         return $request->user()->hasVerifiedPhone()
             ? redirect($this->redirectPath())
-            : view($this->templatePath .'.auth.verify-page');
+            : view($this->templatePath . '.auth.verify-page');
     }
 
     /**
@@ -100,15 +101,14 @@ class VerificationController extends Controller
         }
 
         $phone = $request->user()->full_phone;
-        if($phone)
-        {
+        if ($phone) {
             $channel = $request->post('channel', 'sms');
             $verification = $this->verify->startVerification($phone, $channel);
 
             if (!$verification->isValid()) {
 
                 $errors = new MessageBag();
-                foreach($verification->getErrors() as $error) {
+                foreach ($verification->getErrors() as $error) {
                     $errors->add('verification', $error);
                 }
 
@@ -119,9 +119,7 @@ class VerificationController extends Controller
             $messages->add('verification', "Another code sent to {$request->user()->full_phone}");*/
 
             return redirect(route('auth.verify'))->with('message', "Another code sent to {$request->user()->full_phone}");
-        }
-        else
-        {
+        } else {
             return redirect(route('auth.verify'))->with('error', "Phone number is empty or malformed!");
         }
     }
