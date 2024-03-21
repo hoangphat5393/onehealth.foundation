@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Customer;
-use Auth, Cart;
-use Validator;
-use Redirect;
-use Route;
-use Hash;
-use Mail;
+use Auth, Cart, Validator, Redirect, Route, Hash, Mail;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
@@ -62,7 +57,8 @@ class CustomerController extends Controller
             $this->data['seo'] = [
                 'seo_title' => 'Đăng nhập',
             ];
-            return view($this->templatePath . '.customer.login', $this->data);
+            // return view($this->templatePath . '.customer.login', $this->data);
+            return view('theme.customer.login', $this->data)->compileShortcodes();
         }
         return redirect(url('/'));
     }
@@ -128,9 +124,6 @@ class CustomerController extends Controller
                 'msg'   => $error
             ]);
         }
-
-
-
 
         $fullname = explode('@', $data['email'])[0];
 
@@ -279,7 +272,7 @@ class CustomerController extends Controller
             'seo_title' => 'Đăng ký thành viên',
         ];
 
-        return view($this->templatePath . '.customer.register',  $this->data);
+        return view('theme.customer.register',  $this->data)->compileShortcodes();
     }
 
     public function createCustomer(Request $request)

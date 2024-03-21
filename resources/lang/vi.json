@@ -71,6 +71,9 @@
     "First and last name": "Họ và tên",
     "Email": "Email",
     "Email confirm": "Xác nhận email",
+    "Birthday": "Ngày sinh",
+    "We call you?": "Chúng tôi gọi bạn là?",
+    "Create new account": "Tạo tài khoản mới",
 
     "Company name": "Tên công ty",
     "Tax code": "Mã số thuế",
@@ -148,6 +151,7 @@
 
     "Sign in": "Đăng nhập",
     "Password": "Mật khẩu",
+    "Re-password": "Nhập lại mật khẩu",
     "Remember me": "Ghi nhớ",
     "Forget password": "Quên mật khẩu",
     "Not have account": "Chưa có tài khoản ?",

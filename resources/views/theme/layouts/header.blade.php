@@ -25,7 +25,7 @@
         $headerMenu = \App\Models\Menus::where('name', 'Menu-main-' . $lc)->first();
     @endphp
 
-    <nav class="navbar">
+    <nav class="navbar py-0">
         <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}">
                 <img src="{{ get_image(setting_option('logo')) }}" class="logo" alt="{{ setting_option('webtitle') }}">

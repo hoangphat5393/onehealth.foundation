@@ -254,6 +254,22 @@ header .nav-link {
 .menu-wrap .input-group-search input::placeholder {
   color: #ced4da;
 }
+.menu-wrap .header-project {
+  position: relative;
+}
+.menu-wrap .header-project .title {
+  position: absolute;
+  bottom: 0;
+  white-space: pre-line;
+  color: #fff;
+  font-weight: 600;
+}
+.menu-wrap .header-project img {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(80%);
+}
 
 .mainBanner {
   position: relative;
@@ -483,6 +499,15 @@ main .block16 .transfer_info {
   background-color: #f2f2f2;
   border-left: 9px solid #00b0ae;
 }
+main .block17 .wrap {
+  border-radius: 4px;
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  margin: 48px auto;
+}
+main .block17 .form-note {
+  font-size: 0.875rem;
+  color: #999;
+}
 
 .camp-group-block .left-block {
   background-color: #ffecdd;
@@ -693,6 +718,29 @@ td {
   right: 0;
   bottom: 0;
   z-index: 266666600 !important;
+}
+
+.btn-register-link {
+  background: #00b1af;
+  line-height: 1.3;
+  padding: 0.8em 1em;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 900;
+  font-size: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: none;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.container.-framed {
+  background-color: #fff;
+  margin-top: 24px;
+  overflow: hidden;
+  padding: 48px 0;
+  position: relative;
 }
 
 .mh-contact {

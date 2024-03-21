@@ -73,6 +73,9 @@
     "First and last name": "First and last name",
     "Email": "Email",
     "Email confirm": "Email confirmation",
+    "Birthday": "Birthday",
+    "We call you?": "We call you?",
+    "Create new account": "Create new account",
 
     "Company name": "Company name",
     "Tax code": "Tax Code",
@@ -140,6 +143,7 @@
 
     "Sign in": "Sign In",
     "Password": "Password",
+    "Re-password": "Re-password",
     "Remember me": "Remember me",
     "Forget password": "Forget password",
     "Not have account": "Don't have an account ?",

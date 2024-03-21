@@ -24,12 +24,15 @@
                                 </a>
                                 @if ($item->class == 'project')
                                     <div class="dropdown-menu">
-                                        <div class="container">
-                                            <div class="row">
+                                        <div class="container-fluid px-3 py-2">
+                                            <div class="row g-3">
                                                 @foreach ($item->child as $item2)
-                                                    <div class="col-md-6 col-lg-3">
-                                                        <a href="{{ route('campaign.detail', [$item2->slug, $item2->id]) }}" class="dropdown-item">
-                                                            <img src="{{ get_image($item2->image) }}" class="img-fluid" alt="{{ $item2->name }}">
+                                                    <div class="col-lg-3">
+                                                        <a href="{{ route('campaign.detail', [$item2->slug, $item2->id]) }}">
+                                                            <div class="header-project">
+                                                                <img src="{{ get_image($item2->image) }}" class="w-100" alt="{{ $item2->name }}">
+                                                                <p class="title px-3">{{ $item2->label }}</p>
+                                                            </div>
                                                         </a>
                                                     </div>
                                                 @endforeach

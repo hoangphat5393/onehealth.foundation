@@ -4,7 +4,7 @@
             <div class="col-lg-8">
                 <div class="subscribe-block p-4">
                     <h4>@lang('Electronic newsletter')</h4>
-                    {{-- {{ route('subscription') }} --}}
+
                     <form id="subscription_form" action="{{ route('subscription') }}" method="post" class="" novalidate="novalidate">
                         @csrf
                         <div class="row">

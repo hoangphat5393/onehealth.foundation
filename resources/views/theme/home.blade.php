@@ -16,16 +16,9 @@
 @section('content')
     <main id="main">
 
-        {{-- <section class="block1">
-            @include('theme.includes.hero_section')
-        </section> --}}
-
-        {{-- @include('theme.includes.counter') --}}
-
         <section class="block2">
             {!! htmlspecialchars_decode($page->content) !!}
         </section>
-
 
         {{-- Dự án (Campaign) --}}
         @php
@@ -73,11 +66,9 @@
                         @endforeach
                     @endempty
                 </div>
-
                 <div class="text-end mt-5">
                     <a href="{{ route('page', 'du-an') }}" class="fs-4 my-3 fw-bold link-custom">@lang('All projects') <i class="fa-solid fa-right-long"></i></a>
                 </div>
-
             </div>
         </section>
 
@@ -110,7 +101,6 @@
                                         </div>
                                     </a>
                                 </div>
-
                                 <a href="{{ route('news.detail', [$item->slug, $item->id]) }}" class="link-custom">
                                     <div class="news-content">
                                         <div class="news-meta mb-2">

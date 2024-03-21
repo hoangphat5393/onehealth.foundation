@@ -66,6 +66,16 @@
             </div>
         </section>
 
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="fs-2 fw-bold mb-5">Bạn đã sẵn sàng?</div>
+                    <a href="{{ route('registerCustomer') }}" class="btn btn-custom btn-register-link">Đăng ký ngay</a>
+                </div>
+            </div>
+        </div>
+
         <section class="block11 my-5">
             <div class="container-fluid bg-light-dark py-5">
                 <div class="row">
