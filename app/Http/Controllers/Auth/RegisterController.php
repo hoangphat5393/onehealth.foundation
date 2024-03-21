@@ -89,12 +89,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $fullname = $data['fullname']??'';
-        if($fullname == '')
+        $fullname = $data['fullname'] ?? '';
+        if ($fullname == '')
             $fullname = explode('@', $data['email'])[0];
         return User::create([
             'phone' => $data['phone'],
-            'full_phone' => $data['full_phone']??'',
+            'full_phone' => $data['full_phone'] ?? '',
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'fullname' => $fullname
@@ -109,8 +109,9 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        dd(123);
-        $validator = $this->validator($request->all());//->validate();
+
+        // dd($request);
+        $validator = $this->validator($request->all()); //->validate();
         // dd($validator->fails());
         if ($validator->fails()) {
             $error = $validator->errors()->first();
@@ -121,17 +122,18 @@ class RegisterController extends Controller
             ]);
         }
 
-        event(new Registered($user = $this->create($request->all())));
+        $user = $this->create($request->all());
+        // event(new Registered($user = $this->create($request->all())));
+
 
         $this->guard()->login($user);
+
 
         if ($response = $this->registered($request, $user)) {
             return $response;
         }
 
-        return $request->wantsJson()
-                    ? new Response('', 201)
-                    : redirect($this->redirectPath());
+        return $request->wantsJson() ? new Response('', 201) : redirect($this->redirectPath());
     }
 
     /**
@@ -144,36 +146,36 @@ class RegisterController extends Controller
         return Auth::guard();
     }
 
-    protected function registered(Request $request, User $user)
-    {
-        $verification = $this->verify->startVerification($user->full_phone, $request->post('channel', 'sms'));
-        // dd($verification);
-        if (!$verification->isValid()) {
-            $user->delete();
+    // protected function registered(Request $request, User $user)
+    // {
+    //     $verification = $this->verify->startVerification($user->full_phone, $request->post('channel', 'sms'));
+    //     // dd($verification);
+    //     if (!$verification->isValid()) {
+    //         $user->delete();
 
-            /*$errors = new MessageBag();
-            foreach($verification->getErrors() as $error) {
-                $errors->add('verification', $error);
-            }*/
+    //         /*$errors = new MessageBag();
+    //         foreach($verification->getErrors() as $error) {
+    //             $errors->add('verification', $error);
+    //         }*/
 
-            $error = $verification->getErrors()[0]??'Error!';
-            return response()->json([
-                'error' => 1,
-                'msg'   => $error
-            ]);
+    //         $error = $verification->getErrors()[0] ?? 'Error!';
+    //         return response()->json([
+    //             'error' => 1,
+    //             'msg'   => $error
+    //         ]);
 
-            return view('auth.register')->withErrors($errors);
-        }
+    //         return view('auth.register')->withErrors($errors);
+    //     }
 
-        $messages = new MessageBag();
-        $messages->add('verification', "Code sent to {$request->user()->phone}");
-        $view = view($this->templatePath . '.auth.verify', $messages)->render();
-        return response()->json([
-            'error' => 0,
-            'view'    => $view,
-            'url_redirect'    => route('auth.verify'),
-            'msg'   => "Code sent to {$request->user()->phone}"
-        ]);
-        // return redirect('/verify')->with('messages', $messages);
-    }
+    //     $messages = new MessageBag();
+    //     $messages->add('verification', "Code sent to {$request->user()->phone}");
+    //     $view = view($this->templatePath . '.auth.verify', $messages)->render();
+    //     return response()->json([
+    //         'error' => 0,
+    //         'view'    => $view,
+    //         'url_redirect'    => route('auth.verify'),
+    //         'msg'   => "Code sent to {$request->user()->phone}"
+    //     ]);
+    //     // return redirect('/verify')->with('messages', $messages);
+    // }
 }

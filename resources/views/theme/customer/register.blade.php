@@ -31,12 +31,12 @@
 
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">@lang('Email')</label>
-                                                <input type="email" id="email" class="form-control" placeholder="@lang('Email')" aria-describedby="email">
+                                                <input type="email" name="email" id="email" class="form-control" placeholder="@lang('Email')" aria-describedby="email">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label">@lang('Phone')</label>
-                                                <input type="phone" id="phone" class="form-control" placeholder="@lang('Phone')" aria-describedby="phone">
+                                                <input type="phone" name="phone" id="phone" class="form-control" placeholder="@lang('Phone')" aria-describedby="phone">
                                             </div>
 
                                             <p class="form-note mb-3">
@@ -51,8 +51,8 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="re_password" class="form-label">@lang('Re-password')</label>
-                                                <input type="password" id="re_password" class="form-control" name="re_password" placeholder="@lang('Re-password')">
+                                                <label for="password_confirm" class="form-label">@lang('Re-password')</label>
+                                                <input type="password" id="password_confirm" class="form-control" name="password_confirm" placeholder="@lang('Re-password')">
                                             </div>
 
                                             <button type="button" class="btn btn-custom btn-register">@lang('Create new account')</button>
@@ -161,7 +161,7 @@
                 phone: "Nhập số điện thoại",
                 email: "Nhập địa chỉ E-mail",
                 password: "Nhập @lang('Password')",
-                re_password: "Nhập @lang('Password')"
+                password_confirm: "Nhập @lang('Password')"
             }
         } else {
             error_messages = {
@@ -170,7 +170,7 @@
                 phone: "Nhập số điện thoại",
                 email: "Nhập địa chỉ E-mail",
                 password: "Nhập @lang('Password')",
-                re_password: "Nhập @lang('Password')"
+                password_confirm: "Nhập @lang('Password')"
             }
         }
 
@@ -185,11 +185,11 @@
                     phone: "required",
                     email: "required",
                     password: "required",
-                    re_password: {
+                    password_confirm: {
                         required: true,
                         equalTo: '#password',
                     },
-                    re_password: "required",
+                    password_confirm: "required",
                 },
                 messages: error_messages,
                 errorElement: 'div',
