@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\News;
-use App\Page;
-use App\Models\Category;
-use App\Models\Post;
-use App\NewsCategory;
-use DB;
+use App\News, App\NewsCategory, App\Page, DB;
+use App\Models\Category, App\Models\Post;
 
 class NewsController extends Controller
 {
@@ -19,7 +15,6 @@ class NewsController extends Controller
     // All categories
     public function index($slug = '')
     {
-
         // All category
         $categories = Category::where(['status' => 1, 'type' => 'post', 'parent' => 0])->get();
 

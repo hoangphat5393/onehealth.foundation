@@ -3,20 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Auth;
-use Redirect;
-use Route;
+use Auth, Redirect, DB, Mail, Route, Hash;
 use Illuminate\Http\Request;
 use App\Models\Post, App\Models\Page, App\Models\Sponser;
 use App\Models\Category;
 use App\Models\User_register_email;
 use App\Models\Rating_Product, App\Models\Theme, App\Models\Category_Theme;
 use App\Jobs\SendMailNewOrder;
-use DB;
-use Input;
-use Hash;
-use Validator;
-use Mail;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;

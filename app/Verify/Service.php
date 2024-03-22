@@ -1,6 +1,8 @@
 <?php
 
+
 namespace App\Verify;
+
 
 interface Service
 {

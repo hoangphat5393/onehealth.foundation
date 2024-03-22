@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon, Cart, Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Page as Page;
-// use App\Product;
 use Gornymedia\Shortcodes\Facades\Shortcode;
-use Carbon\Carbon;
-use Cart, Auth;
+use App\Page as Page;
 
 class PageController extends Controller
 {

@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Auth\Events\Registered;
-use App\Verify\Service;
-use Auth;
+// use App\Verify\Service;
+use Auth, Response;
 
 class RegisterController extends Controller
 {
@@ -41,19 +41,19 @@ class RegisterController extends Controller
      *
      * @var Service
      */
-    protected $verify;
+    // protected $verify;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Service $verify)
-    {
-        parent::__construct();
-        $this->middleware('guest');
-        $this->verify = $verify;
-    }
+    //    public function __construct(Service $verify)
+    //     {
+    //         parent::__construct();
+    //         $this->middleware('guest');
+    //         $this->verify = $verify;
+    //     } 
 
     /**
      * Get a validator for an incoming registration request.

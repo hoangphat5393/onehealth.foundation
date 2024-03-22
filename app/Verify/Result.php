@@ -28,10 +28,10 @@ class Result
      */
     public function __construct($value)
     {
-        if (is_string($value)) {
+        if(is_string($value)) {
             $this->sid = $value;
             $this->valid = true;
-        } else if (is_array($value)) {
+        } else if(is_array($value)){
             $this->errors = $value;
             $this->valid = false;
         } else {
@@ -62,4 +62,5 @@ class Result
     {
         return $this->sid;
     }
+
 }

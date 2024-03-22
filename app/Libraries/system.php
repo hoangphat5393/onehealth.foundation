@@ -1,11 +1,14 @@
 <?php
 
+
 use App\Models\Setting;
 use App\Models\SettingCost;
 use App\Models\ShopCurrency;
 use App\Libraries\Helpers;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
+// use App\Models\Product;
+// use App\Models\ProductPromotion;
 
 //Product kind
 define('SC_PRODUCT_SINGLE', 0);
