@@ -88,59 +88,6 @@
             </div>
         </section>
 
-        {{-- <div class="container d-none">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
-                    <div class="mb-4">
-                        <form method="post" action="{{ route('postRegisterCustomer') }}" id="page-customer-register" class="contact-form">
-                            @csrf
-                            <div class="row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <label for="FirstName">First Name</label>
-                                        <input type="text" name="firstname" placeholder="" id="FirstName" autofocus="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <label for="LastName">Last Name</label>
-                                        <input type="text" name="lastname" placeholder="" id="LastName">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <label for="phone">Phone</label>
-                                        <input type="text" name="phone" placeholder="" id="phone">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <label for="CustomerEmail">Email</label>
-                                        <input type="email" id="CustomerEmail" name="email" placeholder="" class="" autocorrect="off" autocapitalize="none" autofocus="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <label for="CustomerPassword">Password</label>
-                                        <input type="password" value="" name="password" placeholder="" id="CustomerPassword" class="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 col-sm-12">
-                                    <div class="error-message"></div>
-                                </div>
-                                <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12">
-                                    <button type="button" class="btn mb-3 btn-register">@lang('Create')</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
         {{-- Subscribe --}}
         @include('theme.includes.subscribe')
 
@@ -151,6 +98,7 @@
     <script>
         var customer_register = $("#customer_register");
         var lc = '{{ app()->getLocale() }}';
+        var register_success = '{{ route('user.register.success') }}';
 
         var error_messages = {};
 
@@ -211,13 +159,12 @@
                         url: customer_register.prop("action"),
                         data: fdnew,
                     }).then(res => {
-                        var url_back = '';
-                        if (res.data.error == 0) {
-                            url_back = res.data.redirect_back;
+                        if (res.data.status == "success") {
                             // $('.page-register-content').html(res.data.view);
+                            window.location.replace(register_success);
                         } else {
                             customer_register.find('.error-message').html(res.data.msg);
-                            customer_register.find('.list-content-loading').hide();
+                            // customer_register.find('.list-content-loading').hide();
                         }
                     }).catch(e => console.log(e));
                 }

@@ -53,7 +53,13 @@ class RegisterController extends Controller
     //         parent::__construct();
     //         $this->middleware('guest');
     //         $this->verify = $verify;
-    //     } 
+    //     }
+
+    public $data = [
+        'error' => false,
+        'success' => false,
+        'message' => ''
+    ];
 
     /**
      * Get a validator for an incoming registration request.
@@ -77,7 +83,6 @@ class RegisterController extends Controller
             'password.required' => 'Please enter password',
             'password_confirm.same' => 'Password and re-enter password do not match!',
         );
-
         return Validator::make($data, $validation_rules, $messages);
     }
 
@@ -109,31 +114,40 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-
         // dd($request);
         $validator = $this->validator($request->all()); //->validate();
-        // dd($validator->fails());
+
+        // if ($validator->fails()) {
+        //     $error = $validator->errors()->first();
+
+        //     $this->data['status'] = 'error';
+        //     $this->data['message'] = $error;
+
+        //     return response()->json($this->data);
+        // }
+
         if ($validator->fails()) {
             $error = $validator->errors()->first();
+            $this->data['status'] = 'error';
+            $this->data['message'] = $error;
+        } else {
 
-            return response()->json([
-                'error' => 1,
-                'msg'   => $error
-            ]);
+            $this->create($request->all());
+
+            $this->data['status'] = 'success';
+            $this->data['message'] = 'Đăng ký thành công';
         }
+        return response()->json($this->data);
 
-        $user = $this->create($request->all());
+        // $user = $this->create($request->all());
         // event(new Registered($user = $this->create($request->all())));
 
+        // $this->guard()->login($user);
 
-        $this->guard()->login($user);
-
-
-        if ($response = $this->registered($request, $user)) {
-            return $response;
-        }
-
-        return $request->wantsJson() ? new Response('', 201) : redirect($this->redirectPath());
+        // if ($response = $this->registered($request, $user)) {
+        //     return $response;
+        // }
+        // return $request->wantsJson() ? new Response('', 201) : redirect($this->redirectPath());
     }
 
     /**
@@ -146,6 +160,7 @@ class RegisterController extends Controller
         return Auth::guard();
     }
 
+    //   Verify phone
     // protected function registered(Request $request, User $user)
     // {
     //     $verification = $this->verify->startVerification($user->full_phone, $request->post('channel', 'sms'));
@@ -157,13 +172,11 @@ class RegisterController extends Controller
     //         foreach($verification->getErrors() as $error) {
     //             $errors->add('verification', $error);
     //         }*/
-
     //         $error = $verification->getErrors()[0] ?? 'Error!';
     //         return response()->json([
     //             'error' => 1,
     //             'msg'   => $error
     //         ]);
-
     //         return view('auth.register')->withErrors($errors);
     //     }
 
