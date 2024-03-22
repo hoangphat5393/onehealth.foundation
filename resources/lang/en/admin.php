@@ -85,6 +85,7 @@ return [
       'administrator'         => 'Administrator',
       'roles'                 => 'Roles',
       'permissions'           => 'Quyền hạn',
+      'role_group'            => 'Permission Group',
       'slug'                  => 'Slug',
 
       'created_at'            => 'Created At',
@@ -278,6 +279,8 @@ return [
             'campaign_list'          => 'Campaign list',
             'contact'               => 'Contact',
             'Subcription'           => 'Subcription',
+            'Theme_option'           => 'Theme option',
+
       ],
 
       'status'                            => 'Trạng thái',

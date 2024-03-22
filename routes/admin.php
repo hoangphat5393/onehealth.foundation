@@ -58,12 +58,6 @@ Route::namespace('Admin')->group(function () {
                 Route::post('/post', 'Auth\RoleController@post')->name('admin_role.post');
                 Route::get('/delete/{id}', 'Auth\RoleController@delete')->name('admin_role.delete');
             });
-            // Route::group(['prefix' => 'type'], function () {
-            //     Route::get('/list', 'ShopTypeController@index')->name('admin_type');
-            //     Route::get('/create', 'ShopTypeController@create')->name('admin_type.create');
-            //     Route::get('/edit/{id}', 'ShopTypeController@edit')->name('admin_type.edit');
-            //     Route::post('/post', 'ShopTypeController@post')->name('admin_type.post');
-            // });
 
             // Discount Code
             // Route::get('/list-discount-code', 'DiscountCodeController@listDiscountCode')->name('admin.discountCode');
@@ -87,13 +81,7 @@ Route::namespace('Admin')->group(function () {
             Route::post('/add-users', 'AdminController@postAddUsers')->name('admin.postAddUsers');
             Route::get('/delete-user/{id}', 'AdminController@deleteUser')->name('admin.delUser');
 
-            // Brand
-            // Route::get('/list-brand', 'BrandController@index')->name('admin.brand');
-            // Route::get('/brand/create', 'BrandController@create')->name('admin.brand.create');
-            // Route::get('/brand/{id}', 'BrandController@edit')->name('admin.brand.edit');
-            // Route::post('/brand/post', 'BrandController@post')->name('admin.brand.post');
-
-            //Orders
+            // Orders
             // Route::get('/list-order', 'OrderController@listOrder')->name('admin.listOrder');
             // Route::get('/search-order', 'OrderController@searchOrder')->name('admin.searchOrder');
             // Route::get('/order/{id}', 'OrderController@orderDetail')->name('admin.orderDetail');

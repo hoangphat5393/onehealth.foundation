@@ -2,6 +2,10 @@
     $segment_check = Request::segment(2);
     $segment_check3 = Request::segment(3);
     $menus = \App\Models\AdminMenu::getListVisible();
+
+    $user = Auth::user();
+    $user_role = Auth::user()->roles()->first();
+
 @endphp
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -69,26 +73,54 @@
                     {{-- Level 0 --}}
                 @endif
 
-                {{-- <li class="nav-item">
-					<a href="{{route('admin.email_template')}}" class="nav-link">
-						<i class="nav-icon fas fa-bars"></i>
-						<p>Email template</p>
-					</a>
-				</li> --}}
-                <!-- Setting -->
+                @if ($user->admin_level == '99999' && $user_role->name == 'Administrator')
+                    <li class="nav-item has-treeview">
+                        <a href="javascript:;" class="nav-link">
+                            <i class="nav-icon fas fa-user-friends"></i>
+                            User management <i class="fas fa-angle-left right"></i>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.listUserAdmin') }}" class="nav-link ">
+                                    <i class="nav-icon fas fa-angle-right"></i>
+                                    All User
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin_role.index') }}" class="nav-link ">
+                                    <i class="nav-icon fas fa-angle-right"></i>
+                                    Permission Group
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin_permission.index') }}" class="nav-link ">
+                                    <i class="nav-icon fas fa-angle-right"></i>
+                                    Permissions
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+
+                {{-- Setting --}}
                 <li class="nav-header">Setting</li>
+                {{-- @if ($user_role->name == 'Administrator')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.themeOption') }}" class="nav-link">
+                            <i class="nav-icon fas fa-sliders-h"></i>
+                            Theme Option
+                        </a>
+                    </li>
+                @endif --}}
+
                 <li class="nav-item">
                     <a href="{{ route('admin.themeOption') }}" class="nav-link">
                         <i class="nav-icon fas fa-sliders-h"></i>
                         Theme Option
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.menu') }}" class="nav-link">
-                        <i class="nav-icon fas fa-bars"></i>
-                        Menu
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('admin.changePassword') }}" class="nav-link">
                         <i class="nav-icon fa fa-user" aria-hidden="true"></i>

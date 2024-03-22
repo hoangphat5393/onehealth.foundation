@@ -28,16 +28,11 @@ class PageController extends Controller
         //     })
         //     ->where('status', 1)->orderbyDesc('id')->limit(4)->get();
 
-        // MAIN MENU
-        // $categories = Menu::getByName('Menu-main');
-        // $this->data['categories'] = Category::where('status', 1)->where('parent', 0)->orderby('sort', 'DESC')->limit(4)->get();
-
         $this->data['categories'] = Category::where('status', 1)
             ->where('type', 'product')
             ->where('parent', 0)
             ->orderby('sort', 'asc')
             ->get();
-
 
         $this->data['products'] = \App\Product::orderbyDesc('id')->limit(5)->get();
 
