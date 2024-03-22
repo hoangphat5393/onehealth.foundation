@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Providers\RouteServiceProvider;
-use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Auth\Events\Registered;
-// use App\Verify\Service;
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use App\User;
+use App\Models\Admin;
 use Auth, Response;
+
+// use App\Verify\Service;
 
 class RegisterController extends Controller
 {
@@ -61,30 +63,6 @@ class RegisterController extends Controller
         'message' => ''
     ];
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        $validation_rules = array(
-            'email' => 'required|email|max:255|unique:users',
-            'phone' => 'required|string|min:10|unique:users',
-            'password' => 'required',
-            'password_confirm' => 'required|same:password',
-        );
-        $messages = array(
-            'email.required' => 'Please enter your email',
-            'email.email' => 'Email address is not in the correct format',
-            'email.max' => 'Email address up to 255 characters',
-            'email.unique' => 'Email address already exists',
-            'password.required' => 'Please enter password',
-            'password_confirm.same' => 'Password and re-enter password do not match!',
-        );
-        return Validator::make($data, $validation_rules, $messages);
-    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -97,14 +75,62 @@ class RegisterController extends Controller
         $fullname = $data['fullname'] ?? '';
         if ($fullname == '')
             $fullname = explode('@', $data['email'])[0];
-        return User::create([
-            'phone' => $data['phone'],
-            'full_phone' => $data['full_phone'] ?? '',
+        // return User::create([
+        //     'phone' => $data['phone'],
+        //     'full_phone' => $data['full_phone'] ?? '',
+        //     'email' => $data['email'],
+        //     'password' => bcrypt($data['password']),
+        //     'fullname' => $fullname
+        // ]);
+
+        $name = $data['name'] ?? '';
+
+        return Admin::create([
+            'fullname' => $fullname,
+            'name' => $name,
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
-            'fullname' => $fullname
+            'admin_level' => 1,
         ]);
     }
+
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        // $validation_rules = array(
+        //     'email' => 'required|email|max:255|unique:users',
+        //     'phone' => 'required|string|min:10|unique:users',
+        //     'password' => 'required',
+        //     'password_confirm' => 'required|same:password',
+        // );
+
+        $validation_rules = array(
+            'name' => 'required',
+            'email' => 'required|email|max:255|unique:admins',
+            'phone' => 'required|string|min:10|unique:admins',
+            'password' => 'required',
+            'password_confirm' => 'required|same:password',
+        );
+        $messages = array(
+            'name.required' => 'Please enter your name',
+            'email.required' => 'Please enter your email',
+            'email.email' => 'Email address is not in the correct format',
+            'email.max' => 'Email address up to 255 characters',
+            'email.unique' => 'Email address already exists',
+            'phone.required' => 'Phone address already exists',
+            'password.required' => 'Please enter password',
+            'password_confirm.same' => 'Password and re-enter password do not match!',
+        );
+        return Validator::make($data, $validation_rules, $messages);
+    }
+
 
     /**
      * Handle a registration request for the application.
@@ -131,12 +157,17 @@ class RegisterController extends Controller
             $this->data['status'] = 'error';
             $this->data['message'] = $error;
         } else {
-
+            // $user = $this->create($request->all());
             $this->create($request->all());
-
             $this->data['status'] = 'success';
-            $this->data['message'] = 'Đăng ký thành công';
+            $this->data['message'] = 'Register Successfully';
+
+            // $user['name'] = 'test';
+            // dd($user);
+            // return redirect()->route('user.register.success')->with('register_name', $user['name']);
+            // return redirect()->route('user.register.success');
         }
+
         return response()->json($this->data);
 
         // $user = $this->create($request->all());

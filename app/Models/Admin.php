@@ -17,7 +17,7 @@ class Admin extends Authenticatable
     protected static $allViewPermissions = null;
 
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'address', 'admin_level', 'email_info', 'status'
+        'fullname', 'name', 'birthday', 'email', 'password', 'phone', 'address', 'admin_level', 'email_info', 'status'
     ];
 
     protected $hidden = [

@@ -367,7 +367,7 @@ class CustomerController extends Controller
 
     public function createCustomerSuccess()
     {
-        return view($this->templatePath . '.customer.includes.register_success');
+        return view($this->templatePath . '.customer.includes.register_success')->compileShortcodes();
     }
 
     public function profile()

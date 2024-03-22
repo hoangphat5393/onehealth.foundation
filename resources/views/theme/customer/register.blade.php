@@ -20,8 +20,8 @@
                                             @csrf
                                             <div class="row mb-3 align-items-center">
                                                 <div class="col-6">
-                                                    <label for="username" class="col-form-label">@lang('First and last name')</label>
-                                                    <input type="input" name="username" id="username" class="form-control" placeholder="@lang('We call you?')" aria-describedby="username">
+                                                    <label for="name" class="col-form-label">@lang('First and last name')</label>
+                                                    <input type="input" name="name" id="name" class="form-control" placeholder="@lang('We call you?')" aria-describedby="username">
                                                 </div>
                                                 <div class="col-6">
                                                     <label for="birthday" class="col-form-label">@lang('Birthday')</label>
@@ -104,7 +104,7 @@
 
         if (lc == 'vi') {
             error_messages = {
-                username: "@lang('Enter Last name')",
+                name: "@lang('Enter Last name')",
                 birthday: "Nhập ngày ngày sinh",
                 phone: "Nhập số điện thoại",
                 email: "Nhập địa chỉ E-mail",
@@ -113,7 +113,7 @@
             }
         } else {
             error_messages = {
-                username: "@lang('Enter Last name')",
+                name: "@lang('Enter Last name')",
                 birthday: "Nhập ngày ngày sinh",
                 phone: "Nhập số điện thoại",
                 email: "Nhập địa chỉ E-mail",
@@ -128,7 +128,7 @@
                 onkeyup: false,
                 onclick: false,
                 rules: {
-                    username: "required",
+                    name: "required",
                     birthday: "required",
                     phone: "required",
                     email: "required",
@@ -163,8 +163,15 @@
                             // $('.page-register-content').html(res.data.view);
                             window.location.replace(register_success);
                         } else {
-                            customer_register.find('.error-message').html(res.data.msg);
+                            // customer_register.find('.error-message').html(res.data.message);
                             // customer_register.find('.list-content-loading').hide();
+                            Swal.fire({
+                                position: "center",
+                                icon: "error",
+                                title: res.data.message,
+                                // showConfirmButton: false,
+                                timer: 1500
+                            });
                         }
                     }).catch(e => console.log(e));
                 }

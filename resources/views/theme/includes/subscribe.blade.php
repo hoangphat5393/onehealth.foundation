@@ -52,7 +52,6 @@
         $("#subscription_form").submit(function(e) {
             e.preventDefault();
         });
-
         // SUBSCRIPTION
         $(".btn-subscription").on("click", function() {
             var action = $(this).closest("form").attr("action"),
