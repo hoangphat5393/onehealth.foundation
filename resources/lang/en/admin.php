@@ -84,7 +84,8 @@ return [
 
       'administrator'         => 'Administrator',
       'roles'                 => 'Roles',
-      'permissions'           => 'Quyền hạn',
+      'permissions'           => 'permissions',
+      'Permissions'           => 'Permissions',
       'role_group'            => 'Permission Group',
       'slug'                  => 'Slug',
 

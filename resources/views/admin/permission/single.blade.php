@@ -1,10 +1,14 @@
 @extends('admin.layouts.app')
+
 @php
     if (isset($data_admin)) {
         extract($data_admin->toArray());
     }
+
+    $title_head = __('admin.Permissions');
     $date_update = $updated_at ?? date('Y-m-d H:i:s');
 @endphp
+
 
 @section('seo')
     @php
@@ -52,32 +56,48 @@
                                         <i class="fa fa-info-circle"></i> {{ $errors->first('name') }}
                                     </span>
                                 @endif
+
+                                <ul class="nav nav-tabs hidden" id="tabLang" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#vi" role="tab" aria-controls="vi" aria-selected="true">@lang('admin.Vietnamese')</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="en-tab" data-toggle="tab" href="#en" role="tab" aria-controls="en" aria-selected="false">@lang('admin.English')</a>
+                                    </li>
+                                </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="vi" role="tabpanel" aria-labelledby="vi-tab">
                                         <div class="form-group">
-                                            <label for="name">Tên</label>
+                                            <label for="name">@lang('admin.Name')</label>
                                             <input type="text" class="form-control title_slugify" id="name" name="name" value="{{ $name ?? '' }}">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="slug">Slug</label>
-                                            <input type="text" class="form-control" id="slug" name="slug" value="{{ $slug ?? '' }}">
-                                        </div>
 
+                                    </div>
+                                    <div class="tab-pane fade" id="en" role="tabpanel" aria-labelledby="en-tab">
                                         <div class="form-group">
-                                            @php
-                                                $old_http_uri = isset($http_uri) && $http_uri != '' ? explode(',', $http_uri) : [];
-                                            @endphp
-
-                                            <label for="post_description">HTTP PATH</label>
-                                            <select name="http_uri[]" id="admin_level" class="form-control select2" multiple="multiple" onautocomplete="off">
-                                                <option value=""></option>
-                                                @foreach ($routeAdmin as $route)
-                                                    {{-- @php --}}
-                                                    <option value="{{ $route['uri'] }}" {{ in_array($route['uri'], $old_http_uri) ? 'selected' : '' }}>{{ $route['name'] ? $route['method'] . '::' . $route['name'] : $route['uri'] }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="name_en">@lang('admin.Name')</label>
+                                            <input type="text" class="form-control title_slugify" id="name_en" name="name_en" value="{{ $name_en ?? '' }}">
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="slug">Slug</label>
+                                    <input type="text" class="form-control" id="slug" name="slug" value="{{ $slug ?? '' }}">
+                                </div>
+                                <div class="form-group">
+                                    @php
+                                        $old_http_uri = isset($http_uri) && $http_uri != '' ? explode(',', $http_uri) : [];
+                                    @endphp
+
+                                    <label for="post_description">HTTP PATH</label>
+                                    <select name="http_uri[]" id="admin_level" class="form-control select2" multiple="multiple" onautocomplete="off">
+                                        <option value=""></option>
+                                        @foreach ($routeAdmin as $route)
+                                            {{-- @php --}}
+                                            <option value="{{ $route['uri'] }}" {{ in_array($route['uri'], $old_http_uri) ? 'selected' : '' }}>{{ $route['name'] ? $route['method'] . '::' . $route['name'] : $route['uri'] }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div> <!-- /.card-body -->
                         </div><!-- /.card -->

@@ -44,13 +44,6 @@ Route::namespace('Admin')->group(function () {
                 Route::get('/delete/{id}', 'UserAdminController@deleteUserAdmin')->name('admin.delUserAdmin');
             });
 
-            Route::group(['prefix' => 'permission'], function () {
-                Route::get('/', 'Auth\PermissionController@index')->name('admin_permission.index');
-                Route::get('create', 'Auth\PermissionController@create')->name('admin_permission.create');
-                Route::get('/edit/{id}', 'Auth\PermissionController@edit')->name('admin_permission.edit');
-                Route::post('/post', 'Auth\PermissionController@post')->name('admin_permission.post');
-                Route::get('/delete/{id}', 'Auth\PermissionController@delete')->name('admin_permission.delete');
-            });
             Route::group(['prefix' => 'role'], function () {
                 Route::get('/', 'Auth\RoleController@index')->name('admin_role.index');
                 Route::get('create', 'Auth\RoleController@create')->name('admin_role.create');
@@ -58,6 +51,15 @@ Route::namespace('Admin')->group(function () {
                 Route::post('/post', 'Auth\RoleController@post')->name('admin_role.post');
                 Route::get('/delete/{id}', 'Auth\RoleController@delete')->name('admin_role.delete');
             });
+
+            Route::group(['prefix' => 'permission'], function () {
+                Route::get('/', 'Auth\PermissionController@index')->name('admin_permission.index');
+                Route::get('create', 'Auth\PermissionController@create')->name('admin_permission.create');
+                Route::get('/edit/{id}', 'Auth\PermissionController@edit')->name('admin_permission.edit');
+                Route::post('/post', 'Auth\PermissionController@post')->name('admin_permission.post');
+                Route::get('/delete/{id}', 'Auth\PermissionController@delete')->name('admin_permission.delete');
+            });
+
 
             // Discount Code
             // Route::get('/list-discount-code', 'DiscountCodeController@listDiscountCode')->name('admin.discountCode');

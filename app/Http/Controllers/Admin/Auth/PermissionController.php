@@ -100,14 +100,17 @@ class PermissionController extends Controller
             ]
         );
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+
+        $data['slug'] = Str::slug($data['name']);
 
         $dataUpdate = [
             'name' => $data['name'],
+            'name_en' => $data['name_en'],
             'slug' => $data['slug'],
             'http_uri' => implode(',', ($data['http_uri'] ?? [])),
         ];

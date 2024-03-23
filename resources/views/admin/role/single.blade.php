@@ -3,9 +3,7 @@
     if (isset($data_role)) {
         extract($data_role->toArray());
     }
-
     $title_head = __('admin.role_group');
-
     $date_update = $updated_at ?? date('Y-m-d H:i:s');
 @endphp
 
@@ -37,6 +35,7 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
+
     <section class="content">
         <div class="container-fluid">
             <form action="{{ route('admin_role.post') }}" method="POST" id="frm-create-useradmin" enctype="multipart/form-data">

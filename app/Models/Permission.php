@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Permission extends Model
 {
     public $table = 'admin_permission';
-    protected $fillable = ['name', 'slug', 'http_uri'];
+    protected $fillable = ['name', 'name_en', 'slug', 'http_uri'];
 
     /**
      * Permission belongs to many roles.

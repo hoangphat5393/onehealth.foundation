@@ -186,7 +186,9 @@ class UserAdminController extends Controller
             $url = route('admin.userAdminDetail', array($user->id));
             Helpers::msg_move_page($msg, $url);
         } else {
-            return redirect(route('admin_permission.index'));
+            // return redirect(route('admin_permission.index'));
+            // return redirect(route('admin_role.index'));
+            return redirect(route('admin.listUserAdmin'));
         }
     }
 

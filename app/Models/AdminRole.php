@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class AdminRole extends Model
 {
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name', 'name_en', 'slug'];
     public $table       = 'admin_role';
 
     public function administrators()
     {
-
         return $this->belongsToMany(User::class, 'admin_role_user', 'role_id', 'user_id');
     }
 

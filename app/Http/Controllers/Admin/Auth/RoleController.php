@@ -103,7 +103,6 @@ class RoleController extends Controller
     {
         $id = request('id') ?? 0;
 
-
         $data = request()->all();
         $dataOrigin = request()->all();
         $validator = Validator::make($dataOrigin, [
@@ -113,23 +112,27 @@ class RoleController extends Controller
             'slug.regex' => __('admin.role.slug_validate'),
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
         //Edit
+
+        $data['slug'] = Str::slug($data['name']);
 
         $dataUpdate = [
             'name' => $data['name'],
+            'name_en' => $data['name_en'],
             'slug' => $data['slug'],
         ];
 
+
         //Edit
-        if ($id > 0) {
+        if ($id) {
             $role = AdminRole::find($id);
             $role->update($dataUpdate);
-
 
             $permission = $data['permission'] ?? [];
             $administrators = $data['administrators'] ?? [];
@@ -143,8 +146,8 @@ class RoleController extends Controller
             if ($administrators) {
                 $role->administrators()->attach($administrators);
             }
-            //
         } else {
+            // dd($dataUpdate);
             $db = AdminRole::create($dataUpdate);
             $id = $db->id;
         }

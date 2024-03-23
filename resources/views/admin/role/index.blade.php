@@ -61,7 +61,7 @@
                                         @foreach ($roles as $data)
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('admin_role.edit', $data->id) }}" title="">{{ $data->name }}</a>
+                                                    <a href="{{ route('admin_role.edit', $data->id) }}" title="">{{ $data->name }} | {{ $data->name_en }}</a>
                                                 </td>
                                                 <td>{{ $data->slug }}</td>
                                                 <td>
