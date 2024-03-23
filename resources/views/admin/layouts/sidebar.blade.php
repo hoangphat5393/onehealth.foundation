@@ -77,7 +77,9 @@
                     <li class="nav-item has-treeview">
                         <a href="javascript:;" class="nav-link">
                             <i class="nav-icon fas fa-user-friends"></i>
-                            User management <i class="fas fa-angle-left right"></i>
+                            <p>
+                                User management <i class="fas fa-angle-left right"></i>
+                            </p>
                         </a>
                         <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
