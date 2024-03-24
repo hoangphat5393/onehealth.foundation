@@ -2233,16 +2233,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "408d3655c7705339e8c79731ea7efb51546cfa10"
+                "reference": "67be90e5700370c88833190d4edc07e4bb7d157b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/408d3655c7705339e8c79731ea7efb51546cfa10",
-                "reference": "408d3655c7705339e8c79731ea7efb51546cfa10",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/67be90e5700370c88833190d4edc07e4bb7d157b",
+                "reference": "67be90e5700370c88833190d4edc07e4bb7d157b",
                 "shasum": ""
             },
             "require": {
@@ -2289,7 +2289,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/image/issues",
-                "source": "https://github.com/Intervention/image/tree/3.5.0"
+                "source": "https://github.com/Intervention/image/tree/3.5.1"
             },
             "funding": [
                 {
@@ -2301,7 +2301,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-13T16:26:15+00:00"
+            "time": "2024-03-22T07:12:19+00:00"
         },
         {
             "name": "ixudra/curl",
@@ -10146,16 +10146,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "6.0.1",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "43c751b41d74f96cbbd4e07b7aec9675651e2951"
+                "reference": "8074dbcd93529b357029f5cc5058fd3e43666984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/43c751b41d74f96cbbd4e07b7aec9675651e2951",
-                "reference": "43c751b41d74f96cbbd4e07b7aec9675651e2951",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/8074dbcd93529b357029f5cc5058fd3e43666984",
+                "reference": "8074dbcd93529b357029f5cc5058fd3e43666984",
                 "shasum": ""
             },
             "require": {
@@ -10170,7 +10170,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "6.0-dev"
+                    "dev-main": "6.1-dev"
                 }
             },
             "autoload": {
@@ -10198,7 +10198,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/environment/issues",
                 "security": "https://github.com/sebastianbergmann/environment/security/policy",
-                "source": "https://github.com/sebastianbergmann/environment/tree/6.0.1"
+                "source": "https://github.com/sebastianbergmann/environment/tree/6.1.0"
             },
             "funding": [
                 {
@@ -10206,7 +10206,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-11T05:39:26+00:00"
+            "time": "2024-03-23T08:47:14+00:00"
         },
         {
             "name": "sebastian/exporter",
