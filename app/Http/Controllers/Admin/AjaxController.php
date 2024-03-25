@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Auth\RoleController;
 use Auth, DB, Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -9,12 +10,12 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use App\Libraries\Helpers;
 use App\Http\Controllers\Controller;
-use App\Models\Menus,  App\Models\MenuItems;
-use App\Models\Rating_Product, App\Models\Page, App\Models\Brand, App\Models\Slider, App\Models\Addtocard, App\Models\Addtocard_Detail, App\Models\Discount_code, App\Models\Admin;
+use App\Models\Menus, App\Models\MenuItems;
+use App\Models\Rating_Product, App\Models\Page, App\Models\Brand, App\Models\Slider, App\Models\Addtocard, App\Models\Addtocard_Detail, App\Models\Discount_code;
 use App\Models\District, App\Models\Ward;
+use App\Models\Admin, App\Models\AdminRole, App\Models\AdminRoleUser;
 use App\Models\Category;
 use App\Models\Product, App\Models\ProductCategory;
-use App\Models\DictionaryCategory;
 use App\Models\Post, App\Models\PostCategory;
 use App\Models\Video, App\Models\VideoCategory;
 use App\Models\Campaign;
@@ -51,7 +52,6 @@ class AjaxController extends Controller
         endfor;
         $groupID = substr($values, 0, -1);
         switch ($type) {
-
             case 'page':
                 //xóa thumbnail
                 $url_upload = $_SERVER['DOCUMENT_ROOT'] . '/images/page/';
@@ -72,18 +72,14 @@ class AjaxController extends Controller
                 // SET AUTO_INCREMENT TO 1
                 $table = (new Category)->getTable();
                 DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
-
                 return 1;
                 break;
-
             case 'email_template':
                 \App\Models\EmailTemplate::whereIn('id', $arr)->delete();
                 return 1;
                 break;
             case 'menuwp':
                 $menuWp = Menus::whereIn('id', $arr)->get();
-
-
 
                 if ($menuWp->count() > 0) {
                     foreach ($menuWp as $item) {
@@ -172,8 +168,10 @@ class AjaxController extends Controller
                 return 1;
                 break;
             case 'user_admin':
-                //xóa user admin
-                $loadDelete = Admin::whereIn('id', $arr)->delete();
+                Admin::whereIn('id', $arr)->delete();
+
+                // DELETE DATA FROM PIVOT TABLE
+                AdminRoleUser::whereIn('user_id', $arr)->delete();
 
                 //delete products
                 // $productDelete = Theme::all();
@@ -187,6 +185,9 @@ class AjaxController extends Controller
                 //         }
                 //     } //foreach
                 // }
+                // SET AUTO_INCREMENT TO 1
+                $table = (new Admin)->getTable();
+                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
                 return 1;
                 break;
             case 'order':

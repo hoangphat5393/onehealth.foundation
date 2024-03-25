@@ -37,12 +37,19 @@ Route::namespace('Admin')->group(function () {
 
             // Xử lý users admin
             Route::group(['prefix' => 'user-admin'], function () {
-                Route::get('/', 'UserAdminController@index')->name('admin.listUserAdmin');
+                // Route::get('/', 'UserAdminController@index')->name('admin.listUserAdmin');
+                Route::get('/', 'UserAdminController@index')->name('admin.userList');
                 Route::get('edit/{id}', 'UserAdminController@edit')->name('admin.userAdminDetail');
                 Route::post('post', 'UserAdminController@post')->name('admin.postUserAdmin');
                 Route::get('add', 'UserAdminController@create')->name('admin.addUserAdmin');
                 Route::get('/delete/{id}', 'UserAdminController@deleteUserAdmin')->name('admin.delUserAdmin');
             });
+
+            // // Product
+            // Route::get('product', 'ProductController@index')->name('admin.productList');
+            // Route::get('product/create', 'ProductController@create')->name('admin.productCreate');
+            // Route::get('product/{id}', 'ProductController@edit')->name('admin.productEdit');
+            // Route::post('product/post', 'ProductController@post')->name('admin.productPost');
 
             Route::group(['prefix' => 'role'], function () {
                 Route::get('/', 'Auth\RoleController@index')->name('admin_role.index');
@@ -82,6 +89,7 @@ Route::namespace('Admin')->group(function () {
             Route::get('/add-users', 'AdminController@addUsers')->name('admin.addUsers');
             Route::post('/add-users', 'AdminController@postAddUsers')->name('admin.postAddUsers');
             Route::get('/delete-user/{id}', 'AdminController@deleteUser')->name('admin.delUser');
+
 
             // Orders
             // Route::get('/list-order', 'OrderController@listOrder')->name('admin.listOrder');

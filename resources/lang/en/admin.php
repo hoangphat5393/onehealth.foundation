@@ -10,7 +10,8 @@ return [
       'setting'               => 'Setting',
       'setting_account'       => 'Setting account',
       'name'                  => 'Name',
-      'username'              => 'Username',
+      'username'              => 'username',
+      'Username'              => 'Username',
       'password'              => 'Password',
       'password_confirmation' => 'Password confirmation',
       'remember_me'           => 'Remember me',
@@ -139,11 +140,7 @@ return [
       ],
       'msg_change_success'                => 'All changes have been updated',
       'admin_log'                         => 'Admin logs',
-      'note_test'                         => '<span style="font-size: 30px;
-        color: #f3d80e;
-        padding-left: 10%;
-        z-index:999999;
-        font-weight: bold;">This user <span style="color:red">only</span> view</span>',
+      'note_test'                         => '<span style="font-size: 30px; color: #f3d80e; padding-left: 10%; z-index:999999; font-weight: bold;">This user <span style="color:red">only</span> view</span>',
       'coupon_allow_guest'                => 'Allow to guest use coupon',
       'paypal_client_id'                  => 'Client ID',
       'paypal_secret'                     => 'Secret',
@@ -206,7 +203,8 @@ return [
       'page_name'                         => 'Page name',
       'title'                             => 'Tiêu đề',
       'name'                              => 'Name',
-      'email'                             => 'Email',
+      'email'                             => 'email',
+      'Email'                             => 'Email',
       'phone'                             => 'Phone',
       'address'                           => 'Address',
       'image'                             => 'Image',
@@ -231,7 +229,8 @@ return [
       'access_denied'                     => 'Access denied!',
       'access_denied_msg'                 => 'Can\'t disable this language. Please change default language before do that.',
       'import_data'                       => 'Import data',
-      'config_url'                       => 'Config URL',
+      'config_url'                        => 'Config URL',
+      'Users'                             => 'Users',
 
       'menu_titles'                       => [
             'admin'                => 'Admin',
@@ -401,5 +400,4 @@ return [
       'Link name' => 'Link name',
       'Shortcode' => 'Shortcode',
       'Add shortcode' => 'Add shortcode',
-
 ];

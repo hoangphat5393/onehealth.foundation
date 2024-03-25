@@ -83,7 +83,7 @@
                         </a>
                         <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
-                                <a href="{{ route('admin.listUserAdmin') }}" class="nav-link ">
+                                <a href="{{ route('admin.userList') }}" class="nav-link">
                                     <i class="nav-icon fas fa-angle-right"></i>
                                     All User
                                 </a>

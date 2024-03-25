@@ -59,15 +59,25 @@ class UserAdminController extends Controller
 
     public function index()
     {
-        $this->data['data_user'] = Admin::get();
-        // dd($this->data['data_user']);
-        return view('admin.user-admin.index', $this->data);
+        $appends = [
+            'search_name' => request('search_name'),
+        ];
+        if (Auth::guard('admin')->user()->admin_level == 99999) {
+            $db = Admin::select('*');
+
+            if (request('search_name') != '') {
+                $db->where('name', 'like', '%' . request('search_name') . '%');
+            }
+            $count_item = $db->count();
+            $data = $db->orderBy('id')->paginate(20)->appends($appends);
+        }
+        return view('admin.user-admin.index')->with(['data' => $data, 'total_item' => $count_item]);
     }
 
     public function create()
     {
         $this->data = [
-            'roles'             => $this->roles,
+            'roles' => $this->roles,
         ];
         return view('admin.user-admin.single', $this->data);
     }
@@ -188,7 +198,7 @@ class UserAdminController extends Controller
         } else {
             // return redirect(route('admin_permission.index'));
             // return redirect(route('admin_role.index'));
-            return redirect(route('admin.listUserAdmin'));
+            return redirect(route('admin.userList'));
         }
     }
 
@@ -198,11 +208,11 @@ class UserAdminController extends Controller
         if (auth()->check() && $user_current->id != $id) {
             $loadDelete = Admin::find($id)->delete();
             $msg = "Admin account has been Delete";
-            $url = route('admin.listUserAdmin');
+            $url = route('admin.userList');
             Helpers::msg_move_page($msg, $url);
         }
         $msg = "Không thực hiện được thao tác này";
-        $url = route('admin.listUserAdmin');
+        $url = route('admin.userList');
         Helpers::msg_move_page($msg, $url);
     }
 

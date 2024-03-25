@@ -45,51 +45,75 @@
                             <h3 class="card-title">List Users</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="clear" style="margin-bottom: 10px">
-                                <ul class="nav fl">
-                                    <li class="nav-item">
-                                        <a class="btn btn-danger" id="btn_deletes" onclick="delete_id('user_admin')" href="javascript:void(0)"><i class="fas fa-trash"></i> Delete</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="btn btn-primary" href="{{ route('admin.addUserAdmin') }}" style="margin-left: 6px;"><i class="fas fa-plus"></i> Add New</a>
-                                    </li>
-                                </ul>
+                            <div class="d-flex justify-content-between">
+                                @include('admin.partials.button_add', ['type' => 'user_admin', 'route' => route('admin.addUserAdmin')])
+                                <div class="fr">
+                                    <form method="GET" action="" id="frm-filter-post" class="form-inline">
+                                        <input type="text" class="form-control" name="search_name" id="search_name" placeholder="@lang('admin.Keyword')" value="{{ request('search_name') }}">
+                                        <button type="submit" class="btn btn-primary ml-2">@lang('admin.Search')</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between my-4">
+                                <div class="fl" style="font-size: 17px;">
+                                    <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.Users')
+                                </div>
+                                <div class="fr">
+                                    {!! $data->links() !!}
+                                </div>
                             </div>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="table_index">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Email/Tên đăng nhập</th>
-                                            <th scope="col">Họ Tên</th>
-                                            <th scope="col">Vai trò</th>
-                                            <th scope="col">Thao tác</th>
+                                            <th class="text-center" style="width:50px">
+                                                <div class="icheck-info d-inline">
+                                                    <input type="checkbox" id="selectall" onclick="select_all()">
+                                                    <label for="selectall"></label>
+                                                </div>
+                                            </th>
+                                            <th scope="col">@lang('admin.name')</th>
+                                            <th scope="col">@lang('admin.Email')/@lang('admin.Username')</th>
+                                            <th scope="col">@lang('admin.Roles')</th>
+                                            <th scope="col">@lang('admin.Action')</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_user as $data)
+                                        @foreach ($data as $item)
                                             <tr>
-                                                <td>
-                                                    <a href="{{ route('admin.userAdminDetail', $data->id) }}" title="">{{ $data->email }}</a>
+                                                <td class="text-center">
+                                                    <div class="icheck-info d-inline">
+                                                        <input type="checkbox" id="{{ $item->id }}" name="seq_list[]" value="{{ $item->id }}">
+                                                        <label for="{{ $item->id }}"></label>
+                                                    </div>
                                                 </td>
-                                                <td>{{ $data->name }}</td>
+                                                <td>{{ $item->name }}</td>
                                                 <td>
-                                                    @if ($data->roles->count())
-                                                        @foreach ($data->roles as $role)
+                                                    <a href="{{ route('admin.userAdminDetail', $item->id) }}">{{ $item->email }}</a>
+                                                </td>
+                                                <td>
+                                                    @if ($item->roles->count())
+                                                        @foreach ($item->roles as $role)
                                                             <span class="badge badge-success">{{ $role->name }}</span>
                                                         @endforeach
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('admin.userAdminDetail', $data->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i> Edit</a><a href="" title=""></a>
-                                                    @if ($data->id != auth()->user()->id)
-                                                        <a href="{{ route('admin.delUserAdmin', $data->id) }}" class="btn btn-danger btn-sm btn_deletes"><i class="fa fa-trash"></i> Remove</a><a href="" title=""></a>
-                                                    @endif
+                                                    <a href="{{ route('admin.userAdminDetail', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i> Edit</a><a href="" title=""></a>
+                                                    {{-- @if ($item->id != auth()->user()->id)
+                                                        <a href="{{ route('admin.delUserAdmin', $item->id) }}" class="btn btn-danger btn-sm btn_deletes"><i class="fa fa-trash"></i> Remove</a><a href="" title=""></a>
+                                                    @endif --}}
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+
+                            <div class="fr">
+                                {!! $data->links() !!}
                             </div>
                         </div> <!-- /.card-body -->
                     </div><!-- /.card -->

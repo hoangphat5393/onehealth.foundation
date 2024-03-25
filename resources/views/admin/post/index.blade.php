@@ -55,7 +55,7 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex my-4">
+                            <div class="d-flex align-items-center justify-content-between my-4">
                                 <div class="fl" style="font-size: 17px;">
                                     <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.News')
                                 </div>
