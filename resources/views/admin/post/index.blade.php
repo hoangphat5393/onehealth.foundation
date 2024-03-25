@@ -78,6 +78,7 @@
                                             <th class="text-center">@lang('admin.name')</th>
                                             <th class="text-center" style="width:150px">@lang('admin.category')</th>
                                             <th class="text-center">@lang('admin.thumbnail')</th>
+                                            <th class="text-center">@lang('admin.Createdby')</th>
                                             <th class="text-center">@lang('admin.Createddate')</th>
                                         </tr>
                                     </thead>
@@ -112,6 +113,9 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <img src="{{ get_image($item->image) }}" style="height: 70px;">
+                                                </td>
+                                                <td>
+                                                    <div class="w-fit-content mx-auto">{{ $item->admin->name }}</div>
                                                 </td>
                                                 <td class="text-center">
                                                     {{ $item->updated_at }}

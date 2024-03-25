@@ -80,6 +80,7 @@
                                             <th scope="col" class="text-center" style="width:100px">@lang('admin.Sort')</th>
                                             <th scope="col" class="text-center">@lang('admin.Name')</th>
                                             <th scope="col" class="text-center">@lang('admin.Thumbnail')</th>
+                                            <th class="text-center">@lang('admin.Createdby')</th>
                                             <th scope="col" class="text-center">@lang('admin.Createddate')</th>
                                         </tr>
                                     </thead>

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
-use Illuminate\Support\Facades\Hash;
 use App\Libraries\Helpers;
-use Illuminate\Support\Str;
-use DB, File, Image;
+use Auth, DB, File, Image;
+
 
 
 class PageController extends Controller
@@ -87,6 +88,10 @@ class PageController extends Controller
 
         if ($sid > 0) {
             $post_id = $sid;
+
+            // POST ADMIN ID
+            $data['admin_id'] = Auth::guard('admin')->user()->id;
+
             $respons = Page::where("id", $sid)->update($data);
         } else {
             $respons = Page::create($data);

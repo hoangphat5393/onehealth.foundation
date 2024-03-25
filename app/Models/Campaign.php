@@ -17,4 +17,9 @@ class Campaign extends Model
     // {
     //     return $this->belongsToMany(Category::class, 'campaign_category', 'campaign_id', 'category_id');
     // }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
 }

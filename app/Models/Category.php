@@ -83,4 +83,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class, 'product_category', 'category_id', 'product_id');
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
 }

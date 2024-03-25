@@ -14,4 +14,9 @@ class Page extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
 }

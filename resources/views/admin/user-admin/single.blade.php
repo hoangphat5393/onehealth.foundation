@@ -1,21 +1,31 @@
 @extends('admin.layouts.app')
 @php
-    $email = isset($data_admin) && !empty($data_admin) ? $data_admin->email : '';
-    $name = isset($data_admin) && !empty($data_admin) ? $data_admin->name : '';
-    $admin_level = isset($data_admin) && !empty($data_admin) ? $data_admin->admin_level : '';
-    $sid = isset($data_admin) && !empty($data_admin) ? $data_admin->id : 0;
-    $title = isset($data_admin) && !empty($data_admin) ? 'Cập nhật quản trị viên' : 'Thêm quản trị viên';
-    $status = isset($data_admin) && !empty($data_admin) ? $data_admin->status : 0;
-    $date_update = isset($data_admin) && !empty($data_admin) ? $data_admin->created : date('Y-m-d h:i:s');
+    if (isset($data_admin)) {
+        extract($data_admin->toArray());
+        // if ($gallery) {
+        //     $gallery = unserialize($gallery);
+        // }
+    }
+
+    $title_head = $name ?? __('Add administrators');
+
+    $id = $id ?? 0;
+    // $name = isset($data_admin) && !empty($data_admin) ? $data_admin->name : '';
+    // $email = isset($data_admin) && !empty($data_admin) ? $data_admin->email : '';
+
+    $date_update = $updated_at ?? date('Y-m-d H:i:s');
+    // $admin_level = $admin_level ?? 1;
+
+    // dd($data_admin, $all_roles);
 @endphp
 
 @section('seo')
     @php
         $data_seo = [
-            'title' => $title . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
+            'title' => $title_head . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
             'keywords' => Helpers::get_option_minhnn('seo-keywords-add'),
             'description' => Helpers::get_option_minhnn('seo-description-add'),
-            'og_title' => $title . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
+            'og_title' => $title_head . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
             'og_description' => Helpers::get_option_minhnn('seo-description-add'),
             'og_url' => Request::url(),
             'og_img' => asset('images/logo_seo.png'),
@@ -37,7 +47,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">{{ $title }}</li>
+                        <li class="breadcrumb-item active">{{ $title_head }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -50,12 +60,12 @@
         <div class="container-fluid">
             <form action="{{ route('admin.postUserAdmin') }}" method="POST" id="frm-create-useradmin" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="sid" value="{{ $sid }}">
+                <input type="hidden" name="id" value="{{ $id }}">
                 <div class="row">
                     <div class="col-9">
                         <div class="card">
                             <div class="card-header">
-                                <h4>{{ $title }}</h4>
+                                <h4>{{ $title_head }}</h4>
                             </div> <!-- /.card-header -->
                             <div class="card-body">
                                 <!-- show error form -->
@@ -70,28 +80,29 @@
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="vi" role="tabpanel" aria-labelledby="vi-tab">
                                         <div class="form-group">
-                                            <label for="name">Tên nhân viên</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="" value="{{ old('name', $name) }}">
+                                            <label for="name">@lang('admin.Name')</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="@lang('admin.Name')" value="{{ old('name', $name ?? '') }}">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="post_title">Email</label>
-                                            <input type="text" class="form-control title_slugify" id="post_title" name="email" placeholder="" value="{{ old('email', $email) }}">
+                                            <label for="post_title">@lang('admin.Email')</label>
+                                            <input type="text" class="form-control title_slugify" id="post_title" name="email" placeholder="@lang('admin.Email')" value="{{ old('email', $email ?? '') }}">
                                         </div>
-                                        @if ($sid)
+
+                                        @if ($id)
                                             <div class="form-group">
-                                                <label for="check_pass">Đổi mật khẩu?</label>
+                                                <label for="check_pass">@lang('admin.Change password?')</label>
                                                 <input type="checkbox" name="check_pass" id="check_pass" value="1">
                                             </div>
                                         @endif
-                                        <div class="wrap-pass" {{ $sid == 0 ? 'style=display:block' : '' }}>
+                                        <div class="wrap-pass" {{ $id == 0 ? 'style=display:block' : '' }}>
                                             <div class="form-group">
-                                                <label for="password">Mật khẩu</label>
-                                                <input type="password" class="form-control" id="password" name="password" autocomplete="off" value="">
+                                                <label for="password">@lang('admin.Password')</label>
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="@lang('admin.Password')" autocomplete="off">
                                             </div>
                                             <div class="form-group">
-                                                <label for="repassword">Xác nhận mật khẩu</label>
-                                                <input type="password" class="form-control" id="repassword" name="password_confirmation" autocomplete="off" value="">
+                                                <label for="repassword">@lang('admin.Password_confirmation')</label>
+                                                <input type="password" class="form-control" id="repassword" name="password_confirmation" placeholder="@lang('admin.Password_confirmation')" autocomplete="off" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -103,16 +114,18 @@
                                                     }
                                                 }
                                             @endphp
-                                            <label for="post_description">Chọn vai trò</label>
+                                            <label for="post_description">@lang('admin.Roles')</label>
                                             <select name="roles[]" multiple class="form-control select2">
-                                                <option value=""></option>
-                                                @if (isset($roles) && is_array($roles))
-                                                    @foreach ($roles as $k => $v)
+                                                {{-- <option value=""></option> --}}
+                                                @if (isset($all_roles) && is_array($all_roles))
+                                                    @foreach ($all_roles as $k => $v)
                                                         <option value="{{ $k }}" {{ count($listRoles) && in_array($k, $listRoles) ? 'selected' : '' }}>{{ $v }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
                                         </div>
+
+                                        <input type="hidden" class="form-control title_slugify" id="admin_level" name="admin_level" placeholder="" value="{{ old('admin_level', $admin_level ?? 1) }}">
                                     </div>
                                 </div>
                             </div> <!-- /.card-body -->

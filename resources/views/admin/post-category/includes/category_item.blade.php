@@ -28,6 +28,9 @@
             <td class="text-center">
                 <img src="{{ get_image($item->image) }}" style="height: 70px">
             </td>
+            <td>
+                <div class="w-fit-content mx-auto">{{ $item->admin->name }}</div>
+            </td>
             <td class="text-center">
                 {{ $item->updated_at }}
                 <br>

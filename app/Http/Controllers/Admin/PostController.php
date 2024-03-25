@@ -117,12 +117,14 @@ class PostController extends Controller
         }
         //end xử lý gallery
 
-        $data['admin_id'] = Auth::guard('admin')->user()->id;
-
         $save = $request->submit ?? 'apply';
 
         if ($sid > 0) {
             $post_id = $sid;
+
+            // POST ADMIN ID
+            $data['admin_id'] = Auth::guard('admin')->user()->id;
+
             $respons = Post::where("id", $sid)->update($data);
         } else {
             $respons = Post::create($data);

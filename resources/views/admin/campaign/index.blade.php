@@ -75,9 +75,9 @@
                                                 </div>
                                             </th>
                                             <th class="text-center" style="width:100px">@lang('admin.priority')</th>
-                                            <th class="text-center">@lang('admin.Slug')</th>
                                             <th class="text-center">@lang('admin.Name')</th>
                                             <th class="text-center">@lang('admin.thumbnail')</th>
+                                            <th class="text-center">@lang('admin.Createdby')</th>
                                             <th class="text-center">@lang('admin.Createddate')</th>
                                         </tr>
                                     </thead>
@@ -94,9 +94,6 @@
                                                     <input type="text" id="sort" class="form-control quick_change_value text-center" data-id="{{ $item->id }}" data-model="{{ get_class($item) }}" value="{{ $item->sort }}" reload-on-change>
                                                 </td>
                                                 <td>
-                                                    <div class="w-fit-content mx-auto">{{ $item->slug }}</div>
-                                                </td>
-                                                <td>
                                                     <a class="row-title fw-bold" href="{{ route('admin.campaignEdit', $item->id) }}">
                                                         {{ $item->name }} | {{ $item->name_en }}
                                                     </a>
@@ -108,6 +105,9 @@
 
                                                 <td class="text-center">
                                                     <img src="{{ get_image($item->image) }}" style="height: 70px;">
+                                                </td>
+                                                <td>
+                                                    <div class="w-fit-content mx-auto">{{ $item->admin->name }}</div>
                                                 </td>
                                                 <td class="text-center">
                                                     {{ $item->updated_at }}

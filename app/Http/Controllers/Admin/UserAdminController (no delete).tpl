@@ -95,50 +95,107 @@ class UserAdminController extends Controller
 
     public function post(Request $request)
     {
-        $data = request()->except(['_token',  'gallery', 'roles', 'check_pass', 'password', 'password_confirmation', 'created_at', 'submit', 'tab_lang']);
+        $data = request()->except(['_token',  'gallery', 'created_at', 'submit', 'tab_lang']);
 
         //id post
         $sid = $request->id ?? 0;
 
-        // $data = $request->all();
+        $data = $request->all();
 
-        // dd($data);
-        $save = $data['submit'] ?? 'apply';
 
-        if ($sid > 0) {
-            $post_id = $sid;
 
-            // NẾU CÓ THAY ĐỔI PASSWORD
-            if (isset($request->check_pass)) {
-                $data['password']  = bcrypt($request->password);
-            }
-            $respons = Admin::where("id", $sid)->update($data);
+        $change_pass = $data['check_pass'] ?? 0;
+        if ($change_pass || $sid == 0) {
+            $this->validate($request, [
+                'email' => 'required|unique:"' . Admin::class . '",email,' . $sid . '',
+                'password'      => 'required|confirmed',
+                'name'          => 'required',
+            ], [
+                'email.required' => 'Hãy nhập vào địa chỉ Email',
+                'email.email' => 'Địa chỉ Email không đúng định dạng',
+                'email.unique' => 'Địa chỉ Email đã tồn tại',
+                'password.required' => 'Hãy nhập mật khẩu',
+                'password.confirmed' => 'Xác nhận mật khẩu không đúng',
+                'name.required' => 'Tên không được trống',
+            ]);
         } else {
-            $respons = Admin::create($data);
-            $insert_id = $respons->id;
-            $post_id = $insert_id;
-
-            // if sort = 0 => update sort
-            // Admin::where("id", $post_id)->update(['sort' => $post_id]);
-
-            // $db = ShopProduct::find(1);
-            // $db->sort = $post_id;
-            // $db->save();
+            $this->validate($request, [
+                'email' => 'required|string|max:50|unique:"' . Admin::class . '",email,' . $sid . '',
+                'name'          => 'required',
+            ], [
+                'email.required' => 'Hãy nhập vào địa chỉ Email',
+                'email.email' => 'Địa chỉ Email không đúng định dạng',
+                'email.unique' => 'Địa chỉ Email đã tồn tại',
+                'name.required' => 'Tên không được trống',
+            ]);
         }
 
-        // SAVE ROLE
-        $role_id = $request->roles ?? '';
-        // dd($role_id);
-        if ($role_id != '') {
-            $admin = Admin::find($post_id);
-            $admin->roles()->sync($role_id);
+        $dataUpdate = [
+            'email'     => $request->email,
+            'name'      => $request->name,
+
+            'admin_level' => $request->admin_level,
+            'email_info'     => $request->email,
+            'status'    => $request->status,
+            'admin_level'    => 1
+        ];
+        if ($request->password)
+            $dataUpdate['password']  = bcrypt($request->password);
+
+        if ($sid == 0) {
+            $user = Admin::create($dataUpdate);
+
+            $roles = $data['roles'] ?? [];
+            $permission = $data['permission'] ?? [];
+
+            //Process role special
+            if (in_array(1, $roles)) {
+                // If group admin
+                $roles = [1];
+                $permission = [];
+            } else if (in_array(2, $roles)) {
+                // If group onlyview
+                $roles = [2];
+                $permission = [];
+            }
+            //End process role special
+
+            //Insert roles
+            if ($roles) {
+                $user->roles()->attach($roles);
+            }
+            //Insert permission
+            if ($permission) {
+                $user->permissions()->attach($permission);
+            }
+        } else {
+            $user = Admin::find($sid);
+            $user->update($dataUpdate);
+            // dd($user);
+            if (!in_array($user->id, SC_GUARD_ADMIN)) {
+                $roles = $data['roles'] ?? [];
+                $permission = $data['permission'] ?? [];
+                $user->roles()->detach();
+                // $user->permissions()->detach();
+                //Insert roles
+                if ($roles) {
+                    $user->roles()->attach($roles);
+                }
+                //Insert permission
+                if ($permission) {
+                    $user->permissions()->attach($permission);
+                }
+            }
         }
 
+        $save = $data['submit'] ?? 'apply';
         if ($save == 'apply') {
-            $msg = "Post has been Updated";
-            $url = route('admin.userAdminDetail', array($post_id));
+            $msg = "User admin has been Updated";
+            $url = route('admin.userAdminDetail', array($user->id));
             Helpers::msg_move_page($msg, $url);
         } else {
+            // return redirect(route('admin_permission.index'));
+            // return redirect(route('admin_role.index'));
             return redirect(route('admin.userList'));
         }
     }

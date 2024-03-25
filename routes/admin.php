@@ -21,15 +21,15 @@ Route::namespace('Admin')->group(function () {
 
         Route::get('/', 'HomeController@index')->name('admin.dashboard');
 
-        // các route của quản trị viên sẽ được viết trong group này, còn chức năng của user sẽ viết ngoài route
+        // Router của quản trị viên sẽ được viết trong group này, còn chức năng của user sẽ viết ngoài route
         Route::group(['middleware' => 'checkAdminPermission'], function () {
 
-            //Talk js
+            // Talk js
             // Route::group(['prefix' => 'talkjs'], function () {
             //     Route::get('/', 'TalkjsController@index')->name('admin.talkjs');
             // });
 
-            //Setting cost
+            // Setting cost
             // Route::group(['prefix' => 'setting-cost'], function () {
             //     Route::get('/', 'SettingCostController@index')->name('admin_setting_cost');
             //     Route::post('/', 'SettingCostController@store');
@@ -67,7 +67,6 @@ Route::namespace('Admin')->group(function () {
                 Route::get('/delete/{id}', 'Auth\PermissionController@delete')->name('admin_permission.delete');
             });
 
-
             // Discount Code
             // Route::get('/list-discount-code', 'DiscountCodeController@listDiscountCode')->name('admin.discountCode');
             // Route::get('/discount-code/create', 'DiscountCodeController@createDiscountCode')->name('admin.createDiscountCode');
@@ -89,7 +88,6 @@ Route::namespace('Admin')->group(function () {
             Route::get('/add-users', 'AdminController@addUsers')->name('admin.addUsers');
             Route::post('/add-users', 'AdminController@postAddUsers')->name('admin.postAddUsers');
             Route::get('/delete-user/{id}', 'AdminController@deleteUser')->name('admin.delUser');
-
 
             // Orders
             // Route::get('/list-order', 'OrderController@listOrder')->name('admin.listOrder');

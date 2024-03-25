@@ -14,6 +14,11 @@ class News extends Model
         return $this->belongsToMany(NewsCategory::class, 'post_category', 'post_id', 'category_id');
     }
 
+    public function admin()
+    {
+        return $this->belongsTo('App\Models\Admin', 'admin_id');
+    }
+
     public function getNameAttribute($value)
     {
         $lc = app()->getLocale();

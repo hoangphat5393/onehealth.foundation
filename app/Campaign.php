@@ -12,6 +12,11 @@ class Campaign extends Model
     protected $table = 'campaign';
     protected $guarded = [];
 
+    public function admin()
+    {
+        return $this->belongsTo('App\Models\Admin', 'admin_id');
+    }
+
     public function getNameAttribute($value)
     {
         $lc = app()->getLocale();

@@ -8,6 +8,11 @@ class Page extends Model
 {
     protected $table = 'page';
 
+    public function admin()
+    {
+        return $this->belongsTo('App\Models\Admin', 'admin_id');
+    }
+
     public static function search(string $keyword)
     {
         $keyword = '%' . addslashes($keyword) . '%';

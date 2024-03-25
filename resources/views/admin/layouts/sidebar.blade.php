@@ -45,14 +45,16 @@
                             <li class="nav-item has-treeview">
                                 <a href="javascript:;" class="nav-link">
                                     <i class="nav-icon {{ $level0->icon }}"></i>
-                                    {!! __($level0->title) !!} <i class="fas fa-angle-left right"></i>
+                                    <p>
+                                        {!! __($level0->title) !!} <i class="fas fa-angle-left right"></i>
+                                    </p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     @foreach ($menus[$level0->id] as $level1)
                                         <li class="nav-item">
                                             <a href="{{ $level1->uri ? route($level1->uri) : '#' }}" class="nav-link {{ \App\Models\AdminMenu::checkUrlIsChild(url()->current(), route($level1->uri)) ? 'active' : '' }}">
                                                 <i class="nav-icon {{ $level1->icon }}"></i>
-                                                {!! __($level1->title) !!}
+                                                <p>{!! __($level1->title) !!}</p>
                                             </a>
                                         </li>
                                     @endforeach
@@ -63,7 +65,7 @@
                                 <li class="nav-item">
                                     <a href="{{ $level0->uri ? route($level0->uri) : '#' }}" class="nav-link {{ \App\Models\AdminMenu::checkUrlIsChild(url()->current(), route($level0->uri)) ? 'active' : '' }}">
                                         <i class="nav-icon {{ $level0->icon }}"></i>
-                                        {!! __($level0->title) !!}
+                                        <p>{!! __($level0->title) !!}</p>
                                     </a>
                                 </li>
                             @endif
@@ -78,26 +80,26 @@
                         <a href="javascript:;" class="nav-link">
                             <i class="nav-icon fas fa-user-friends"></i>
                             <p>
-                                User management <i class="fas fa-angle-left right"></i>
+                                @lang('admin.Users')<i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
                                 <a href="{{ route('admin.userList') }}" class="nav-link">
                                     <i class="nav-icon fas fa-angle-right"></i>
-                                    All User
+                                    <p> @lang('admin.All Users') </p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('admin_role.index') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-angle-right"></i>
-                                    Permission Group
+                                    <p>@lang('Permission group')</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('admin_permission.index') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-angle-right"></i>
-                                    Permissions
+                                    <p>@lang('Permission')</p>
                                 </a>
                             </li>
                         </ul>
@@ -119,20 +121,20 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.themeOption') }}" class="nav-link">
                         <i class="nav-icon fas fa-sliders-h"></i>
-                        Theme Option
+                        <p>Theme Option</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('admin.changePassword') }}" class="nav-link">
                         <i class="nav-icon fa fa-user" aria-hidden="true"></i>
-                        @lang('admin.Account')
+                        <p>@lang('admin.Account')</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
-                        Logout
+                        <p>@lang('admin.Logout')</p>
                     </a>
                 </li>
             </ul>
