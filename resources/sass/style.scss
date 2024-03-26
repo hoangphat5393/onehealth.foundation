@@ -757,9 +757,8 @@ td {
 #donate_online {
     .amountDiv {
         border: 1px solid #eae4e4;
-        background: #fff;
-        padding: 15px;
-        border-radius: 20px;
+        border-radius: 1.25rem;
+        padding: 1rem;
         box-shadow: 8px 0px 7px #a19f9f4d;
         -moz-box-shadow: 8px 0px 7px #a19f9f4d;
         -webkit-box-shadow: 8px 0px 7px #a19f9f4d;
@@ -768,7 +767,6 @@ td {
     }
     .amountDiv .btn-amount {
         display: inline-block;
-        font-size: 16px;
         font-weight: 700;
         color: #000;
         background-color: #d6d3d3;
@@ -794,11 +792,15 @@ td {
 
     .form-donate-info {
         background-color: #e3f4f0;
-        padding: 30px 15px;
+        padding: 1rem;
+        border-radius: 1.25rem;
         p {
             color: #00b0ae;
             text-align: justify;
             padding: 15px;
+        }
+        img {
+            border-radius: 1.25rem;
         }
     }
     .frequency {
@@ -806,8 +808,6 @@ td {
     }
     .frequency a {
         display: inline-block;
-
-        font-size: 16px;
         font-weight: 700;
         margin-right: 10px;
         background-color: #d6d3d3;
@@ -832,7 +832,6 @@ td {
     .tertiary-color {
         color: #00b0ae !important;
     }
-
     .donate-payment-option a {
         display: inline-block;
         font-size: 16px;
@@ -864,59 +863,35 @@ td {
         color: #20a19f !important;
     }
 
-    // .donate-payment-account input {
-    //     border: 0px;
-    //     background: #ebebeb;
-    //     margin: 10px;
-    //     height: 40px;
-    //     padding: 10px;
-    //     width: 210px;
-    //     border-radius: 20px;
-    // }
-
-    .donationCampaignHeader {
+    .wrap-block {
         border: 1px solid #eae4e4;
-        margin-top: 15px;
-        background: #fff;
-        padding: 15px;
-        border-radius: 20px 20px 0px 0px;
+        border-radius: 20px;
         box-shadow: 8px 0px 7px #a19f9f4d;
         -moz-box-shadow: 8px 0px 7px #a19f9f4d;
         -webkit-box-shadow: 8px 0px 7px #a19f9f4d;
         -o-box-shadow: 8px 0px 7px #a19f9f4d;
         -ms-box-shadow: 8px 0px 7px #a19f9f4d;
-        border-bottom: 0px;
-        background: #20a19f;
+        overflow: hidden;
+    }
+    .donationCampaignHeader {
+        background-color: #20a19f;
         text-transform: uppercase;
         color: #fff;
     }
 
-    .donationCampaign {
-        border-top: 0px;
-        border-radius: 0px 0px 20px 20px;
-        margin-top: 0px;
-    }
-
     .btn-submit {
-        background: #20a19f;
-        height: 72px;
-        border-radius: 20px;
-        margin-top: 20px;
+        background-color: #20a19f;
+        border-radius: 1.25rem;
     }
 
     .btn-submit button {
-        background: #20a19f;
+        background-color: #20a19f;
         border: 0px;
-        font-size: 30px;
+        font-size: 1.75rem;
         font-weight: 600;
         color: #fff;
         width: 100%;
-        height: 72px;
-        border-radius: 20px;
-    }
-
-    .delicationDiv {
-        margin: 20px 0px;
+        border-radius: 1.25rem;
     }
 }
 

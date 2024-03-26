@@ -645,9 +645,8 @@ td {
 
 #donate_online .amountDiv {
   border: 1px solid #eae4e4;
-  background: #fff;
-  padding: 15px;
-  border-radius: 20px;
+  border-radius: 1.25rem;
+  padding: 1rem;
   box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
   -moz-box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
   -webkit-box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
@@ -656,7 +655,6 @@ td {
 }
 #donate_online .amountDiv .btn-amount {
   display: inline-block;
-  font-size: 16px;
   font-weight: 700;
   color: #000;
   background-color: #d6d3d3;
@@ -677,19 +675,22 @@ td {
 }
 #donate_online .form-donate-info {
   background-color: #e3f4f0;
-  padding: 30px 15px;
+  padding: 1rem;
+  border-radius: 1.25rem;
 }
 #donate_online .form-donate-info p {
   color: #00b0ae;
   text-align: justify;
   padding: 15px;
 }
+#donate_online .form-donate-info img {
+  border-radius: 1.25rem;
+}
 #donate_online .frequency {
   padding: 25px 0px;
 }
 #donate_online .frequency a {
   display: inline-block;
-  font-size: 16px;
   font-weight: 700;
   margin-right: 10px;
   background-color: #d6d3d3;
@@ -735,45 +736,33 @@ td {
   background: #fcb72e !important;
   color: #20a19f !important;
 }
-#donate_online .donationCampaignHeader {
+#donate_online .wrap-block {
   border: 1px solid #eae4e4;
-  margin-top: 15px;
-  background: #fff;
-  padding: 15px;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20px;
   box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
   -moz-box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
   -webkit-box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
   -o-box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
   -ms-box-shadow: 8px 0px 7px rgba(161, 159, 159, 0.3019607843);
-  border-bottom: 0px;
-  background: #20a19f;
+  overflow: hidden;
+}
+#donate_online .donationCampaignHeader {
+  background-color: #20a19f;
   text-transform: uppercase;
   color: #fff;
 }
-#donate_online .donationCampaign {
-  border-top: 0px;
-  border-radius: 0px 0px 20px 20px;
-  margin-top: 0px;
-}
 #donate_online .btn-submit {
-  background: #20a19f;
-  height: 72px;
-  border-radius: 20px;
-  margin-top: 20px;
+  background-color: #20a19f;
+  border-radius: 1.25rem;
 }
 #donate_online .btn-submit button {
-  background: #20a19f;
+  background-color: #20a19f;
   border: 0px;
-  font-size: 30px;
+  font-size: 1.75rem;
   font-weight: 600;
   color: #fff;
   width: 100%;
-  height: 72px;
-  border-radius: 20px;
-}
-#donate_online .delicationDiv {
-  margin: 20px 0px;
+  border-radius: 1.25rem;
 }
 
 .pagination .page-link {
