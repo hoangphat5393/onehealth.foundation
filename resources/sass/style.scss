@@ -154,6 +154,7 @@ header {
     }
     .nav-link {
         color: var(--main-color);
+        font-weight: 600;
     }
     border-bottom: 5px solid #00b1af;
 }
@@ -346,7 +347,7 @@ header {
 .menu-wrap {
     padding: 0;
     background: linear-gradient(to bottom, rgba(34, 34, 34, 0.55), rgba(34, 34, 34, 0));
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C222222', endColorstr='#00222222');
+    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8C222222', endColorstr='#00222222');
 
     .container {
         padding: 0;
@@ -357,6 +358,7 @@ header {
         height: 40px;
         line-height: 40px;
         padding: 0px 17px;
+        font-weight: 600;
 
         &:hover {
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
@@ -424,54 +426,6 @@ header {
     &__img {
         max-height: 400px;
     }
-
-    // h3::before {
-    //     content: "";
-    //     width: 5px;
-    //     height: 55px;
-    //     background: #00b0ae;
-    //     float: left;
-    //     padding: 10px;
-    //     margin-right: 10px;
-    // }
-
-    // &__desc {
-    //     padding-left: 30px;
-    // }
-
-    // .donate_box {
-    //     height: 200px;
-    //     width: 200px;
-    //     background: #00b0ae;
-    //     display: flex;
-    //     align-items: center;
-    //     color: #fff;
-    //     font-weight: bold;
-    //     a {
-    //         display: block;
-    //         margin: 0 auto;
-    //     }
-    // }
-
-    // .read_more_box {
-    //     height: 200px;
-    //     width: 200px;
-    //     background: #fff;
-    //     /* Firefox */
-    //     display: -moz-box;
-    //     -moz-box-pack: center;
-    //     -moz-box-align: center;
-    //     /* Safari and Chrome */
-    //     display: -webkit-box;
-    //     -webkit-box-pack: center;
-    //     -webkit-box-align: center;
-    //     /* W3C */
-    //     display: box;
-    //     box-pack: center;
-    //     box-align: center;
-    //     color: #00b0ae;
-    // }
-
     &__item {
         .wrapper {
             padding: 28px 20px;
@@ -495,13 +449,6 @@ main {
         p {
             color: #000;
         }
-
-        // .mission {
-        //     height: auto;
-        // }
-        // .vission {
-        //     height: auto;
-        // }
 
         @media (min-width: 992px) {
             .mission {

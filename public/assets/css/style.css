@@ -123,6 +123,7 @@ header .navbar-brand img {
 }
 header .nav-link {
   color: var(--main-color);
+  font-weight: 600;
 }
 
 .btn-search {
@@ -299,7 +300,6 @@ header .nav-link {
 .menu-wrap {
   padding: 0;
   background: linear-gradient(to bottom, rgba(34, 34, 34, 0.55), rgba(34, 34, 34, 0));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#8C222222", endColorstr="#00222222");
 }
 .menu-wrap .container {
   padding: 0;
@@ -309,6 +309,7 @@ header .nav-link {
   height: 40px;
   line-height: 40px;
   padding: 0px 17px;
+  font-weight: 600;
 }
 .menu-wrap .navbar-nav .nav-link:hover {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));

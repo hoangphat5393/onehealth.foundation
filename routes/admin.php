@@ -13,10 +13,13 @@ Route::namespace('Admin')->group(function () {
     Route::get('/login', 'LoginController@showLoginForm');
     Route::post('/login', 'LoginController@login')->name('admin.login');
     Route::get('/logout', 'LoginController@logout')->name('admin.logout');
-    Route::get('/404', array(
-        'as' => 'adminError',
-        'uses' => 'AdminController@error'
-    ));
+    Route::get('/404', 'AdminController@error')->name('adminError');
+
+    // Route::get('/404', array(
+    //     'as' => 'adminError',
+    //     'uses' => 'AdminController@error'
+    // ));
+
     Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/', 'HomeController@index')->name('admin.dashboard');
@@ -114,7 +117,6 @@ Route::namespace('Admin')->group(function () {
             Route::get('/edit/{id}', 'PageController@edit')->name('admin.pageEdit');
             Route::post('post', 'PageController@post')->name('admin.postPageDetail');
         });
-
 
         // Slider Home
         Route::group(['prefix' => 'slider'], function () {
