@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Libraries\Helpers;
 use Illuminate\Support\Str;
-use DB, File, Image, Config;
+use Auth, DB, File, Image, Config;
 
 class PostCategoryController extends Controller
 {
@@ -73,9 +73,10 @@ class PostCategoryController extends Controller
         $data['seo_title'] = $data['seo_title'] ? $data['seo_title'] : $data['name'];
         $data['type'] = 'post';
 
-        // $data['admin_id'] = Auth::guard('admin')->user()->id;
-
         $save = $request->submit ?? 'apply';
+
+        // ADMIN ID
+        $data['admin_id'] = Auth::guard('admin')->user()->id;
 
         if ($sid > 0) {
             $post_id = $sid;

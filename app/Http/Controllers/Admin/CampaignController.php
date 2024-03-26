@@ -35,25 +35,6 @@ class CampaignController extends Controller
             'category_id' => request('category_id'),
             'search_name' => request('search_name'),
         ];
-        if (Auth::guard('admin')->user()->admin_level == 99999) {
-            $db = Campaign::select('*');
-            if (request('category_id')) {
-                $db = $db->join('campaign_category', 'campaign_id', 'campaign.id');
-                $db->where('category_id', request('category_id'));
-            }
-            if (request('search_name') != '') {
-                $db->where('name', 'like', '%' . request('search_name') . '%');
-            }
-            $count_item = $db->count();
-            $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
-        } else {
-            $data_post = Campaign::where('admin_id', '=', Auth::guard('admin')->user()->id)
-                ->orderByDesc('sort')
-                ->paginate(20)
-                ->appends($appends);
-            $count_item = Campaign::where('admin_id', '=', Auth::guard('admin')->user()->id)
-                ->count();
-        }
 
         $db = Campaign::select('*');
         if (request('category_id')) {
@@ -63,8 +44,14 @@ class CampaignController extends Controller
         if (request('search_name') != '') {
             $db->where('name', 'like', '%' . request('search_name') . '%');
         }
-        $count_item = $db->count();
+
+        if (Auth::guard('admin')->user()->admin_level != 99999) {
+
+            $db->where('admin_id', '=', Auth::guard('admin')->user()->id);
+        }
         $data_post = $db->orderByDesc('sort')->paginate(20)->appends($appends);
+        $count_item = $db->count();
+
         return view('admin.campaign.index')->with(['data' => $data_post, 'total_item' => $count_item]);
     }
 
@@ -118,12 +105,11 @@ class CampaignController extends Controller
 
         $save = $request->submit ?? 'apply';
 
+        // ADMIN ID
+        $data['admin_id'] = Auth::guard('admin')->user()->id;
+
         if ($sid > 0) {
             $post_id = $sid;
-
-            // POST ADMIN ID
-            $data['admin_id'] = Auth::guard('admin')->user()->id;
-
             $respons = Campaign::where("id", $sid)->update($data);
         } else {
             $respons = Campaign::create($data);

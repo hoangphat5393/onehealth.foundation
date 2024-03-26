@@ -100,7 +100,11 @@
                                                     </a>
                                                     <br>
                                                     <a class="link to-link fw-bold" href="{{ route('news.detail', [$item->slug, $item->id]) }}" target="_blank">
-                                                        <span>URL: </span>{{ route('news.detail', [$item->slug, $item->id]) }}
+                                                        <span>URL VI: </span>{{ route('news.detail', [$item->slug, $item->id]) }}
+                                                    </a>
+                                                    <br>
+                                                    <a class="link to-link fw-bold" href="{{ route('news.detail', [$item->slug, $item->id], true, 'en') }}" target="_blank">
+                                                        <span>URL EN: </span>{{ route('news.detail', [$item->slug, $item->id], true, 'en') }}
                                                     </a>
                                                 </td>
                                                 <td class="text-center">

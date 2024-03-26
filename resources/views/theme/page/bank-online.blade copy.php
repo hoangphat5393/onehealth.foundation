@@ -59,41 +59,60 @@
                                     <a id="freqAnnual" onclick="ChangeSelectedFrequency('Annual', this);return ChangeAmountMode('inactive');" class="tertiary-bg" role="button">Hàng Năm</a>
                                 </div> --}}
                             </div>
-
-                            <div class="amountDiv donate-payment-account">
-                                <h4 class="tertiary-color text-uppercase mb-3">@lang('Contact information'):</h4>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-floating form-floating-sm mb-3">
-                                            <input type="text" name="lastname" class="form-control" id="lastname" placeholder="@lang('Last name')" required>
-                                            <label for="lastname">@lang('Last name')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-floating form-floating-sm">
-                                            <input type="text" name="firstname" class="form-control" id="firstname" placeholder="@lang('Last name')" required>
-                                            <label for="firstname">@lang('First name')</label>
-                                        </div>
+                            <div class="amountDiv donate-payment-option mb-3 d-none">
+                                <h4 class="tertiary-color text-uppercase">Thông tin quyên góp:</h4>
+                                <div class="text-center p-3">
+                                    <input type="hidden" id="payment_Mode" name="payment_Mode" value="paypal">
+                                    <a id="epay" onclick="check_payment_option('epay', this);" class="tertiary-bg" role="button">Thẻ tín dụng/ Thẻ ghi nợ</a>
+                                    <a id="paypal" onclick="check_payment_option('paypal', this);" class="tertiary-bg on" role="button"><img src="https://onehealth.foundation/wp-content/themes/thewish/img/logo/logo-paypal.png"></a>
+                                    <div id="selectBank" class="selectBank">
+                                        <input type="hidden" class="input_text" name="userName" value="Nguyen Van An">
+                                        <input type="hidden" class="input_text" name="txnAmount" id="txnAmount" value="11500000">
+                                        <input type="hidden" class="input_text" name="fee" value="11000">
+                                        <input type="hidden" class="input-text" id="bankID_text" name="bankID_text" value="">
+                                        <select id="bankID" name="bankID" class="input_text d-none" onchange="setBankField(this)">
+                                            <option value="0">Chọn ngân hàng</option>
+                                            <option value="99001">Agribank</option>
+                                            <option value="99002">Saigonbank</option>
+                                            <option value="99003">PG Bank</option>
+                                            <option value="99004">GP Bank</option>
+                                            <option value="99005">Sacombank</option>
+                                            <option value="99006">Nam Á Bank</option>
+                                            <option value="99007">Đông Á bank</option>
+                                            <option value="99008">Vietinbank</option>
+                                            <option value="99009">Techcombank</option>
+                                            <option value="99010">VIB</option>
+                                            <option value="99011">HDBank</option>
+                                            <option value="99012">Eximbank</option>
+                                            <option value="99013">TienphongBank</option>
+                                            <option value="99014">Maritime Bank</option>
+                                            <option value="99015">BIDV</option>
+                                            <option value="99016">MB</option>
+                                            <option value="99017">Seabank</option>
+                                            <option value="99018">SHB</option>
+                                            <option value="99019">Việt Á Bank</option>
+                                            <option value="99020">OceanBank</option>
+                                            <option value="99021">Vietcombank</option>
+                                            <option value="99022">VP Bank</option>
+                                            <option value="99023">ACB</option>
+                                            <option value="99027">NaviBank</option>
+                                            <option value="99026">Bắc á</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-floating form-floating-sm mb-3">
-                                            <input type="email" name="email" class="form-control" id="email" placeholder="@lang('Email')" required>
-                                            <label for="email">@lang('Email address')</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-floating form-floating-sm">
-                                            <input type="text" name="phone" class="form-control" id="phone" placeholder="@lang('Phone')" required>
-                                            <label for="phone">@lang('Phone')</label>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="amountDiv donate-payment-account">
+                                <h4 class="tertiary-color text-uppercase">@lang('Contact information'):</h4>
+                                <div class="text-center">
+                                    <input id="f-name" name="f-name" type="text" placeholder="Họ" required>
+                                    <input id="l-name" name="l-name" type="text" placeholder="Tên" required>
+                                    <input id="email" name="email" type="email" placeholder="Email" required>
+                                    <input id="mobile" name="mobile" type="number" placeholder="mobile" required>
                                 </div>
                             </div>
                             <div class="donationCampaignHeader">
                                 <img src="https://onehealth.foundation/wp-content/themes/thewish/img/icon/icon-ohf-white.png" class="img-fluid">
-                                <span>nếu bạn muốn quyên góp cho các chiến dịch riêng biệt</span>
+                                <span>nếu bạn muốn quyên góp<br>cho các chiến dịch riêng biệt</span>
                             </div>
 
                             {{-- Dự án (Campaign) --}}

@@ -115,6 +115,18 @@ a {
   transform: none !important;
 }
 
+.form-floating.form-floating-sm > .form-control,
+.form-floating.form-floating-sm > .form-control-plaintext,
+.form-floating.form-floating-sm > .form-select {
+  height: calc(3rem + var(--bs-border-width) * 2);
+  min-height: calc(3rem + var(--bs-border-width) * 2);
+  line-height: 1;
+}
+
+.form-floating.form-floating-sm > label {
+  padding: 0.75rem;
+}
+
 header {
   border-bottom: 5px solid #00b1af;
 }
@@ -672,6 +684,29 @@ td {
   text-align: justify;
   padding: 15px;
 }
+#donate_online .frequency {
+  padding: 25px 0px;
+}
+#donate_online .frequency a {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-right: 10px;
+  background-color: #d6d3d3;
+  text-decoration: none;
+  line-height: 30px;
+  width: 130px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+#donate_online .frequency a:hover,
+#donate_online .frequency a.on,
+#donate_online a.creditdebit:hover {
+  background-color: #fcb72e !important;
+  color: #20a19f !important;
+}
 #donate_online .tertiary-color {
   color: #00b0ae !important;
 }
@@ -699,15 +734,6 @@ td {
 #donate_online .donate-payment-option a:hover {
   background: #fcb72e !important;
   color: #20a19f !important;
-}
-#donate_online .donate-payment-account input {
-  border: 0px;
-  background: #ebebeb;
-  margin: 10px;
-  height: 40px;
-  padding: 10px;
-  width: 210px;
-  border-radius: 20px;
 }
 #donate_online .donationCampaignHeader {
   border: 1px solid #eae4e4;

@@ -6,6 +6,7 @@
             'title' => __('admin.Campaign') . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
         ];
         $seo = WebService::getSEO($data_seo);
+
     @endphp
     @include('admin.partials.seo')
 @endsection
@@ -55,7 +56,7 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex my-4">
+                            <div class="d-flex justify-content-between align-items-center my-4">
                                 <div class="fl" style="font-size: 17px;">
                                     <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.Campaigns')
                                 </div>
@@ -99,7 +100,11 @@
                                                     </a>
                                                     <br>
                                                     <a class="link to-link fw-bold" href="{{ route('campaign.detail', [$item->slug, $item->id]) }}" target="_blank">
-                                                        <span>URL: </span>{{ route('campaign.detail', [$item->slug, $item->id]) }}
+                                                        <span>URL VI: </span>{{ route('campaign.detail', [$item->slug, $item->id]) }}
+                                                    </a>
+                                                    <br>
+                                                    <a class="link to-link fw-bold" href="{{ route('campaign.detail', [$item->slug, $item->id], true, 'en') }}" target="_blank">
+                                                        <span>URL EN: </span>{{ route('campaign.detail', [$item->slug, $item->id], true, 'en') }}
                                                     </a>
                                                 </td>
 

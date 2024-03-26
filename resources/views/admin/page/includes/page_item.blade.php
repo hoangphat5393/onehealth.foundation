@@ -18,8 +18,13 @@
                 </a>
                 @if ($item->slug)
                     <div>
-                        <b style='color:#777;'>URL:</b>
+                        <b style='color:#777;'>URL VI:</b>
                         <a style='color:#00C600; word-break:break-all;' target='_blank' href="{{ route('page', ['slug' => $item->slug]) }}">{{ route('page', ['slug' => $item->slug]) }}</a>
+                    </div>
+
+                    <div>
+                        <b style='color:#777;'>URL EN:</b>
+                        <a style='color:#00C600; word-break:break-all;' target='_blank' href="{{ route('page', ['slug' => $item->slug], true, 'en') }}">{{ route('page', ['slug' => $item->slug], true, 'en') }}</a>
                     </div>
                 @endif
             </td>
