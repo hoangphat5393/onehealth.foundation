@@ -755,6 +755,41 @@ td {
 }
 
 #donate_online {
+    .list-donate-price {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        li {
+            margin-right: 0;
+            flex-basis: calc(100% / 2 - 8px);
+
+            @media (min-width: 576px) {
+                flex-basis: calc(100% / 3 - 8px);
+            }
+            @media (min-width: 767px) {
+                flex-basis: calc(100% / 4 - 8px);
+            }
+            @media (min-width: 1200px) {
+                flex-basis: calc(100% / 5 - 8px);
+            }
+            @media (min-width: 1400px) {
+                flex-basis: calc(100% / 6 - 8px);
+            }
+        }
+        .donate-price {
+            width: 100%;
+            background-color: #d6d3d3;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--main-color);
+            font-weight: 600;
+            &.active,
+            &:hover {
+                background-color: #fcb72e;
+                color: var(--main-color);
+            }
+        }
+    }
     .amountDiv {
         border: 1px solid #eae4e4;
         border-radius: 1.25rem;
@@ -829,9 +864,7 @@ td {
         background-color: #fcb72e !important;
         color: #20a19f !important;
     }
-    .tertiary-color {
-        color: #00b0ae !important;
-    }
+
     .donate-payment-option a {
         display: inline-block;
         font-size: 16px;
@@ -874,24 +907,24 @@ td {
         overflow: hidden;
     }
     .donationCampaignHeader {
-        background-color: #20a19f;
+        background-color: var(--bg-main);
         text-transform: uppercase;
         color: #fff;
     }
 
     .btn-submit {
-        background-color: #20a19f;
+        background-color: var(--bg-main);
         border-radius: 1.25rem;
     }
 
     .btn-submit button {
-        background-color: #20a19f;
+        background-color: var(--bg-main);
         border: 0px;
         font-size: 1.75rem;
         font-weight: 600;
         color: #fff;
         width: 100%;
-        border-radius: 1.25rem;
+        border-radius: 1rem;
     }
 }
 

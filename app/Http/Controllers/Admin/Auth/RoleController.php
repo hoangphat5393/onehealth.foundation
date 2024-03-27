@@ -128,7 +128,6 @@ class RoleController extends Controller
             'slug' => $data['slug'],
         ];
 
-
         //Edit
         if ($id) {
             $role = AdminRole::find($id);
@@ -147,7 +146,6 @@ class RoleController extends Controller
                 $role->administrators()->attach($administrators);
             }
         } else {
-            // dd($dataUpdate);
             $db = AdminRole::create($dataUpdate);
             $id = $db->id;
         }
@@ -172,7 +170,6 @@ Need mothod destroy to boot deleting in model
     public function delete($id)
     {
         $loadDelete = AdminRole::find($id)->delete();
-
         $msg = "Role has been Delete";
         $url = route('admin_role.index');
         Helpers::msg_move_page($msg, $url);

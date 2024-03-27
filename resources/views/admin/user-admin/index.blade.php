@@ -1,21 +1,15 @@
 @extends('admin.layouts.app')
 @section('seo')
     @php
+        $title_head = 'List User';
         $data_seo = [
-            'title' => 'List User | ' . Helpers::get_option_minhnn('seo-title-add'),
-            'keywords' => Helpers::get_option_minhnn('seo-keywords-add'),
-            'description' => Helpers::get_option_minhnn('seo-description-add'),
-            'og_title' => 'List User | ' . Helpers::get_option_minhnn('seo-title-add'),
-            'og_description' => Helpers::get_option_minhnn('seo-description-add'),
-            'og_url' => Request::url(),
-            'og_img' => asset('images/logo_seo.png'),
-            'current_url' => Request::url(),
-            'current_url_amp' => '',
+            'title' => 'List User' . ' | ' . Helpers::get_option_minhnn('seo-title-add'),
         ];
         $seo = WebService::getSEO($data_seo);
     @endphp
     @include('admin.partials.seo')
 @endsection
+
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -56,7 +50,7 @@
                             </div>
 
                             <div class="d-flex align-items-center justify-content-between my-4">
-                                <div class="fl" style="font-size: 17px;">
+                                <div class="fl">
                                     <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.Users')
                                 </div>
                                 <div class="fr">
@@ -65,7 +59,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="table_index">
+                                <table class="table table-bordered list-data v-center" id="table_index">
                                     <thead>
                                         <tr>
                                             <th class="text-center" style="width:50px">
@@ -89,9 +83,11 @@
                                                         <label for="{{ $item->id }}"></label>
                                                     </div>
                                                 </td>
-                                                <td>{{ $item->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.userAdminDetail', $item->id) }}">{{ $item->email }}</a>
+                                                    <a href="{{ route('admin.userAdminDetail', $item->id) }}">{{ $item->name }}</a>
+                                                </td>
+                                                <td>
+                                                    {{ $item->email }}
                                                 </td>
                                                 <td>
                                                     @if ($item->roles->count())
@@ -102,9 +98,9 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('admin.userAdminDetail', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i> Edit</a><a href="" title=""></a>
-                                                    {{-- @if ($item->id != auth()->user()->id)
+                                                    @if ($item->id != auth()->user()->id)
                                                         <a href="{{ route('admin.delUserAdmin', $item->id) }}" class="btn btn-danger btn-sm btn_deletes"><i class="fa fa-trash"></i> Remove</a><a href="" title=""></a>
-                                                    @endif --}}
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

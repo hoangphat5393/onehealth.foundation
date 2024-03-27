@@ -13,7 +13,6 @@
                 <div class="container main-menu">
                     @include('theme.includes.menu')
                 </div>
-
             </div>
         </section>
 

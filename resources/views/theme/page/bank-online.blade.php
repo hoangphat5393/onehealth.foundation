@@ -11,16 +11,12 @@
 
         <section class="block17">
             <div class="container">
-                <div class="row my-4">
-                    <div class="col">
-                        <h2>CÙNG ONEHEALTH FOUNDATION - <br> THẮP SÁNG ƯỚC MƠ CỦA HÀNG TRIỆU GIA ĐÌNH VIỆT NAM</h2>
-                    </div>
-                </div>
                 <div class="row mb-5">
                     <div class="col-lg-8 mb-3">
                         {{-- <form name="donateForm" method="post" target="_self" action="https://onehealth.foundation/paypal"> --}}
-                        <form name="donateForm" method="post" target="_self" action="#">
-
+                        {{-- <form id="payment_online" method="post" action="{{ route('payment_test') }}"> --}}
+                        <form id="payment_online" method="post" action="https://api-sandbox.mbbank.com.vn/private/ms/pg-paygate/paygate/v2/create-order">
+                            @csrf
                             {{-- display error/success message --}}
 
                             <div class="amountDiv mb-3">
@@ -29,6 +25,18 @@
                                     <p><strong>Mã giao dịch: </strong> </p>
                                     <span>Thông tin lỗi: ()<br> </span>
                                 </div>
+
+                                <input type="hidden" name="amount" id="amount" value="100000">
+                                <input type="hidden" name="currency" value="VND">
+                                <input type="hidden" name="access_code" value="d37a8fd0076e056d5326968b32a7ea78">
+                                <input type="hidden" name="mac_type" value="MD5">
+                                <input type="hidden" name="mac" value="95DB33CA010DBF553516D8321C7">
+                                <input type="hidden" name="merchant_id" value="100241">
+                                <input type="hidden" name="order_info" value="testpayment">
+                                <input type="hidden" name="order_reference" value="Q1TT12301245">
+                                <input type="hidden" name="return_url" value="{{ route('payment_redirect') }}">
+                                <input type="hidden" name="cancel_url" value="https://domain.vn/">
+
                                 <input type="hidden" name="cmd" value="_s-xclick">
                                 <input type="hidden" name="hosted_button_id" id="hosted_button_id" value="MUXXK4XFJJ5EE">
                                 <input type="hidden" name="return" value="/thank-you">
@@ -37,15 +45,21 @@
                                 <input type="hidden" name="currency_code" value="USD">
 
                                 <h4 class="text-main text-uppercase">@lang('Please select the donation amount'):</h4>
-                                <div id="myDIV" class="text-center" style="padding: 20px 0px;height: 100px;">
-                                    <a id="btn-10" class="btn btn-amount active" onclick="setDataType(this)" role="button">10 USD</a>
-                                    <a id="btn-50" class="btn btn-amount" onclick="setDataType(this)" role="button">50 USD</a>
-                                    <a id="btn-100" class="btn btn-amount" onclick="setDataType(this)" role="button">100 USD</a>
-                                    <a id="btn-500" class="btn btn-amount btn-active" onclick="setDataType(this)" role="button">500 USD</a>
-                                    <div class="text-left d-none" style="border-bottom: 1px solid #d9d9d9; ">
-                                        <input id="other-amount" class="" type="number" onchange="setDataType_Other()" placeholder="Số khác">
-                                    </div>
-                                </div>
+
+                                <ul id="" class="list-inline list-donate-price pt-3 d-flex">
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price active" data-price-id="0" value="805.000" data-default="1">805.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                    <li class="list-inline-item"><button type="button" class="btn donate-price" data-price-id="1" value="1.500.000" data-default="0">1.500.000 ₫</button></li>
+                                </ul>
+
                                 {{-- <div class="donationFrequency">
                                     <div id="donationFrequencyHeader" class="heading">
                                         Quyên góp định kỳ <span class="recurring_support">Đồng hành lâu dài cùng One Health Foundation<br>chung tay ươm mầm khát vọng Việt</span>
@@ -66,13 +80,13 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating form-floating-sm mb-3">
-                                                <input type="text" name="lastname" class="form-control" id="lastname" placeholder="@lang('Last name')" required>
+                                                <input type="text" name="lastname" class="form-control" id="lastname" placeholder="@lang('Last name')">
                                                 <label for="lastname">@lang('Last name')</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-floating form-floating-sm">
-                                                <input type="text" name="firstname" class="form-control" id="firstname" placeholder="@lang('Last name')" required>
+                                                <input type="text" name="firstname" class="form-control" id="firstname" placeholder="@lang('Last name')">
                                                 <label for="firstname">@lang('First name')</label>
                                             </div>
                                         </div>
@@ -81,13 +95,13 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating form-floating-sm mb-3 mb-lg-0">
-                                                <input type="email" name="email" class="form-control" id="email" placeholder="@lang('Email')" required>
+                                                <input type="email" name="email" class="form-control" id="email" placeholder="@lang('Email')">
                                                 <label for="email">@lang('Email address')</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-floating form-floating-sm mb-3 mb-lg-0">
-                                                <input type="text" name="phone" class="form-control" id="phone" placeholder="@lang('Phone')" required>
+                                                <input type="text" name="phone" class="form-control" id="phone" placeholder="@lang('Phone')">
                                                 <label for="phone">@lang('Phone')</label>
                                             </div>
                                         </div>

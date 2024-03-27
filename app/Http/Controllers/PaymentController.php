@@ -13,6 +13,11 @@ class PaymentController extends Controller
 
     public $data = [];
 
+    public function mbbank(Request $request)
+    {
+        dd($request);
+    }
+
     public function checkout(Request $request)
     {
         $this->localized();

@@ -53,7 +53,6 @@ class PermissionController extends Controller
             }
         }
 
-
         // dd($routeAdmin);
         $this->data['routeAdmin'] = $routeAdmin;
         $this->template = 'admin.permission';
@@ -127,10 +126,10 @@ class PermissionController extends Controller
         $save = $data['submit'] ?? 'apply';
         if ($save == 'apply') {
             $msg = "Permission has been Updated";
-            $url = route('admin_permission.edit', array($id));
+            $url = route('admin.permissionList', array($id));
             Helpers::msg_move_page($msg, $url);
         } else {
-            return redirect(route('admin_permission.index'));
+            return redirect(route('admin.permissionList'));
         }
     }
 
@@ -139,7 +138,7 @@ class PermissionController extends Controller
         $loadDelete = Permission::find($id)->delete();
 
         $msg = "Permission has been Delete";
-        $url = route('admin_permission.index');
+        $url = route('admin.permissionList');
         Helpers::msg_move_page($msg, $url);
     }
 

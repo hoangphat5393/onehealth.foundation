@@ -91,13 +91,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin_role.index') }}" class="nav-link ">
+                                <a href="{{ route('admin.roleList') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-angle-right"></i>
                                     <p>@lang('Permission group')</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin_permission.index') }}" class="nav-link ">
+                                <a href="{{ route('admin.permissionList') }}" class="nav-link ">
                                     <i class="nav-icon fas fa-angle-right"></i>
                                     <p>@lang('Permission')</p>
                                 </a>

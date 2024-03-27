@@ -40,12 +40,29 @@ Route::namespace('Admin')->group(function () {
 
             // Xử lý users admin
             Route::group(['prefix' => 'user-admin'], function () {
-                // Route::get('/', 'UserAdminController@index')->name('admin.listUserAdmin');
-                Route::get('/', 'UserAdminController@index')->name('admin.userList');
+                Route::get('', 'UserAdminController@index')->name('admin.userList');
                 Route::get('edit/{id}', 'UserAdminController@edit')->name('admin.userAdminDetail');
                 Route::post('post', 'UserAdminController@post')->name('admin.postUserAdmin');
                 Route::get('add', 'UserAdminController@create')->name('admin.addUserAdmin');
                 Route::get('/delete/{id}', 'UserAdminController@deleteUserAdmin')->name('admin.delUserAdmin');
+            });
+
+            Route::group(['prefix' => 'role'], function () {
+                // Route::get('', 'Auth\RoleController@index')->name('admin_role.index');
+                Route::get('', 'Auth\RoleController@index')->name('admin.roleList');
+                Route::get('create', 'Auth\RoleController@create')->name('admin_role.create');
+                Route::get('edit/{id}', 'Auth\RoleController@edit')->name('admin_role.edit');
+                Route::post('post', 'Auth\RoleController@post')->name('admin_role.post');
+                Route::get('delete/{id}', 'Auth\RoleController@delete')->name('admin_role.delete');
+            });
+
+            Route::group(['prefix' => 'permission'], function () {
+                // Route::get('', 'Auth\PermissionController@index')->name('admin_permission.index');
+                Route::get('', 'Auth\PermissionController@index')->name('admin.permissionList');
+                Route::get('create', 'Auth\PermissionController@create')->name('admin_permission.create');
+                Route::get('edit/{id}', 'Auth\PermissionController@edit')->name('admin_permission.edit');
+                Route::post('post', 'Auth\PermissionController@post')->name('admin_permission.post');
+                Route::get('delete/{id}', 'Auth\PermissionController@delete')->name('admin_permission.delete');
             });
 
             // // Product
@@ -53,22 +70,6 @@ Route::namespace('Admin')->group(function () {
             // Route::get('product/create', 'ProductController@create')->name('admin.productCreate');
             // Route::get('product/{id}', 'ProductController@edit')->name('admin.productEdit');
             // Route::post('product/post', 'ProductController@post')->name('admin.productPost');
-
-            Route::group(['prefix' => 'role'], function () {
-                Route::get('/', 'Auth\RoleController@index')->name('admin_role.index');
-                Route::get('create', 'Auth\RoleController@create')->name('admin_role.create');
-                Route::get('/edit/{id}', 'Auth\RoleController@edit')->name('admin_role.edit');
-                Route::post('/post', 'Auth\RoleController@post')->name('admin_role.post');
-                Route::get('/delete/{id}', 'Auth\RoleController@delete')->name('admin_role.delete');
-            });
-
-            Route::group(['prefix' => 'permission'], function () {
-                Route::get('/', 'Auth\PermissionController@index')->name('admin_permission.index');
-                Route::get('create', 'Auth\PermissionController@create')->name('admin_permission.create');
-                Route::get('/edit/{id}', 'Auth\PermissionController@edit')->name('admin_permission.edit');
-                Route::post('/post', 'Auth\PermissionController@post')->name('admin_permission.post');
-                Route::get('/delete/{id}', 'Auth\PermissionController@delete')->name('admin_permission.delete');
-            });
 
             // Discount Code
             // Route::get('/list-discount-code', 'DiscountCodeController@listDiscountCode')->name('admin.discountCode');

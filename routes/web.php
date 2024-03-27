@@ -20,6 +20,9 @@ Route::localized(function () {
     // Route::get('/', '\App\Http\Controllers\PageController@index')->middleware('verified')->name('index');
     Route::get('/', '\App\Http\Controllers\PageController@index')->name('index');
 
+    Route::post('payment_test', 'PaymentController@mbbank')->name('payment_test');
+    Route::get('payment_redirect', 'PaymentController@mbbankCallback')->name('payment_test');
+
     Route::group(['prefix' => 'auth'], function () {
         Route::get('/register', 'CustomerController@registerCustomer')->name('registerCustomer');
         Route::post('/register', 'Auth\RegisterController@register')->name('postRegisterCustomer');

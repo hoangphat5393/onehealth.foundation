@@ -643,6 +643,47 @@ td {
   text-align: justify;
 }
 
+#donate_online .list-donate-price {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+#donate_online .list-donate-price li {
+  margin-right: 0;
+  flex-basis: calc(50% - 8px);
+}
+@media (min-width: 576px) {
+  #donate_online .list-donate-price li {
+    flex-basis: calc(33.3333333333% - 8px);
+  }
+}
+@media (min-width: 767px) {
+  #donate_online .list-donate-price li {
+    flex-basis: calc(25% - 8px);
+  }
+}
+@media (min-width: 1200px) {
+  #donate_online .list-donate-price li {
+    flex-basis: calc(20% - 8px);
+  }
+}
+@media (min-width: 1400px) {
+  #donate_online .list-donate-price li {
+    flex-basis: calc(16.6666666667% - 8px);
+  }
+}
+#donate_online .list-donate-price .donate-price {
+  width: 100%;
+  background-color: #d6d3d3;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--main-color);
+  font-weight: 600;
+}
+#donate_online .list-donate-price .donate-price.active, #donate_online .list-donate-price .donate-price:hover {
+  background-color: #fcb72e;
+  color: var(--main-color);
+}
 #donate_online .amountDiv {
   border: 1px solid #eae4e4;
   border-radius: 1.25rem;
@@ -708,9 +749,6 @@ td {
   background-color: #fcb72e !important;
   color: #20a19f !important;
 }
-#donate_online .tertiary-color {
-  color: #00b0ae !important;
-}
 #donate_online .donate-payment-option a {
   display: inline-block;
   font-size: 16px;
@@ -747,22 +785,22 @@ td {
   overflow: hidden;
 }
 #donate_online .donationCampaignHeader {
-  background-color: #20a19f;
+  background-color: var(--bg-main);
   text-transform: uppercase;
   color: #fff;
 }
 #donate_online .btn-submit {
-  background-color: #20a19f;
+  background-color: var(--bg-main);
   border-radius: 1.25rem;
 }
 #donate_online .btn-submit button {
-  background-color: #20a19f;
+  background-color: var(--bg-main);
   border: 0px;
   font-size: 1.75rem;
   font-weight: 600;
   color: #fff;
   width: 100%;
-  border-radius: 1.25rem;
+  border-radius: 1rem;
 }
 
 .pagination .page-link {

@@ -76,42 +76,7 @@ class CartController extends Controller
             );
         }
 
-        // $variables = \App\Variable::where('status', 0)->where('parent', 0)->orderBy('stt', 'asc')->get();
-        // $attr = $data['option'] ?? '';
-        // foreach ($variables as $variable) {
-        //     if (isset($attr[$variable->id])) {
-        //         $form_attr[$variable->id] = $attr[$variable->id];
-
-        //         $variable_data = explode('__', $attr[$variable->id]);
-
-        //         $optionPrice = isset($variable_data[2]) && $variable_data[2] > 0 ? $variable_data[2] : $variable_data[1];
-        //     }
-        // }
-        // $price = $optionPrice > 0 ? $optionPrice : $product->getFinalPrice();
-
-        // $promotion_price = 0;
-        // $promotion_unit = "$";
-        // if ($data['promotion_id']) {
-        //     $promotion = ShopProductPromotion::where('id', $data['promotion_id'])->first();
-        //     $promotion_price = $promotion->promotion;
-        //     $promotion_unit = $promotion->promotion_unit;
-        // }
-        // $price = $product->price * $data['qty'] - $promotion_price;
-
-
-        // // Tiến hành giảm giá nếu có;
-        // if ($promotion->qty_to_promotion && $promotion_price && $data['qty'] >= $promotion->qty_to_promotion) {
-        //     if ($promotion_unit == '%') {
-        //         $price = $product->price * $data['qty'] - $promotion_price;
-        //     } else {
-        //         $price = ($product->price * $data['qty'] * (100 - $promotion_price)) / 100;
-        //     }
-        // }
-
         $price = $product->price ?? '0';
-
-        // $form_attr = ['promotion_id' => $data['promotion_id']];
-        // dd($promotion, $price);
 
 
         //Check product allow for sale
