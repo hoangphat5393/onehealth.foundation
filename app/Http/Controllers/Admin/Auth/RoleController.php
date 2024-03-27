@@ -112,7 +112,6 @@ class RoleController extends Controller
             'slug.regex' => __('admin.role.slug_validate'),
         ]);
 
-
         // if ($validator->fails()) {
         //     return redirect()->back()
         //         ->withErrors($validator)
@@ -128,7 +127,7 @@ class RoleController extends Controller
             'slug' => $data['slug'],
         ];
 
-        //Edit
+        // Edit
         if ($id) {
             $role = AdminRole::find($id);
             $role->update($dataUpdate);
@@ -153,10 +152,10 @@ class RoleController extends Controller
         $save = $data['submit'] ?? 'apply';
         if ($save == 'apply') {
             $msg = "Permission has been Updated";
-            $url = route('admin_role.edit', array($id));
+            $url = route('admin.roleEdit', array($id));
             Helpers::msg_move_page($msg, $url);
         } else {
-            return redirect(route('admin_role.index'));
+            return redirect(route('admin.roleList'));
         }
 
 

@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\LocalizeController;
 
-
 class PostCategory extends Model
 {
     use LocalizeController;

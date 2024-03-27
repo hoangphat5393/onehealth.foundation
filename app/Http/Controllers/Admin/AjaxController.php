@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menus, App\Models\MenuItems;
 use App\Models\Rating_Product, App\Models\Page, App\Models\Brand, App\Models\Slider, App\Models\Addtocard, App\Models\Addtocard_Detail, App\Models\Discount_code;
 use App\Models\District, App\Models\Ward;
-use App\Models\Admin, App\Models\AdminRole, App\Models\AdminRoleUser;
+use App\Models\Admin, App\Models\AdminRole, App\Models\AdminRoleUser, App\Models\Permission, App\Models\PermissionRole;
 use App\Models\Category;
 use App\Models\Product, App\Models\ProductCategory;
 use App\Models\Post, App\Models\PostCategory;
@@ -185,8 +185,20 @@ class AjaxController extends Controller
                 //         }
                 //     } //foreach
                 // }
+
                 // SET AUTO_INCREMENT TO 1
                 $table = (new Admin)->getTable();
+                DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
+                return 1;
+                break;
+            case 'permission':
+                Permission::whereIn('id', $arr)->delete();
+
+                // DELETE DATA FROM PIVOT TABLE
+                PermissionRole::whereIn('permission_id', $arr)->delete();
+
+                // SET AUTO_INCREMENT TO 1
+                $table = (new Permission)->getTable();
                 DB::statement("ALTER TABLE $table AUTO_INCREMENT = 1;");
                 return 1;
                 break;

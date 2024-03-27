@@ -38,7 +38,6 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 @include('admin.partials.button_add', ['type' => 'permission', 'route' => route('admin_permission.create')])
-
                                 {{-- <ul class="nav fl">
                                     <li class="nav-item">
                                         <a class="btn btn-danger" id="btn_deletes" onclick="delete_id('user_admin')" href="javascript:void(0)"><i class="fas fa-trash"></i> Delete</a>
@@ -58,7 +57,6 @@
                                 </div> --}}
                             </div>
 
-
                             <div class="table-responsive">
                                 <table class="table table-bordered list-data v-center" id="table_index">
                                     <thead>
@@ -75,6 +73,7 @@
                                             <th scope="col">@lang('admin.Action')</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         @foreach ($permissions as $data)
                                             <tr>
@@ -107,7 +106,8 @@
                                                             $permissions = implode('<br>', $methods);
                                                         }
                                                     @endphp
-                                                    {!! $permissions !!}</td>
+                                                    {!! $permissions !!}
+                                                </td>
                                                 <td>
                                                     <a href="{{ route('admin_permission.edit', $data->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pen"></i> Edit</a><a href="" title=""></a>
                                                     <a href="{{ route('admin_permission.delete', $data->id) }}" class="btn btn-danger btn-sm btn_deletes"><i class="fa fa-trash"></i> Remove</a><a href="" title=""></a>
