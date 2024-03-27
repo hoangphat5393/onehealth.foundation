@@ -36,9 +36,9 @@
                             <h3>{{ $title_head }}</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
                                 @include('admin.partials.button_add_delete', ['type' => 'post', 'route' => route('admin.postCreate')])
-                                <div class="fr">
+                                <div class="fr mt-3 mt-lg-0">
                                     <form method="GET" action="" id="frm-filter-post" class="form-inline">
                                         @php
                                             $categories = App\Models\Category::select('id', 'name')->where('type', 'post')->orderByDesc('sort')->get();
@@ -56,8 +56,8 @@
                             </div>
 
                             <div class="d-flex align-items-center justify-content-between my-4">
-                                <div class="fl" style="font-size: 17px;">
-                                    <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.News')
+                                <div class="fl">
+                                    <b>@lang('admin.Total')</b>: <span class="fw-bold text-red">{{ $total_item ?? 0 }}</span> @lang('admin.News')
                                 </div>
                                 <div class="fr">
                                     {!! $data->links() !!}

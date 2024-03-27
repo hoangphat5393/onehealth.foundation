@@ -37,19 +37,11 @@
                         </div> <!-- /.card-header -->
 
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
                                 @include('admin.partials.button_add', ['type' => 'role', 'route' => route('admin_role.create')])
-                                {{-- <ul class="nav fl">
-                                    <li class="nav-item">
-                                        <a class="btn btn-danger" id="btn_deletes" onclick="delete_id('user_admin')" href="javascript:void(0)"><i class="fas fa-trash"></i> Delete</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="btn btn-primary" href="{{ route('admin_permission.create') }}" style="margin-left: 6px;"><i class="fas fa-plus"></i> Add New</a>
-                                    </li>
-                                </ul> --}}
                             </div>
 
-                            <div class="d-flex align-items-center justify-content-between my-4">
+                            <div class="d-flex justify-content-between align-items-center my-4">
                                 {{-- <div class="fl">
                                     <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.Users')
                                 </div>

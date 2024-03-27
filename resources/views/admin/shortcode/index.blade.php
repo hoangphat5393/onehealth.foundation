@@ -36,9 +36,9 @@
                             <h3>{{ $title_head }}</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
                                 @include('admin.partials.button_add_delete', ['type' => 'shortcode', 'route' => route('admin.shortcodeCreate')])
-                                <div class="fr">
+                                <div class="fr mt-3 mt-lg-0">
                                     <form method="GET" action="" id="frm-filter-post" class="form-inline">
                                         <input type="text" class="form-control" name="search_name" id="search_name" placeholder="@lang('admin.Keyword')" value="{{ request('search_name') }}">
                                         <button type="submit" class="btn btn-primary ml-2">@lang('admin.Search')</button>
@@ -46,9 +46,9 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex my-4">
-                                <div class="fl" style="font-size: 17px;">
-                                    <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.News')
+                            <div class="d-flex justify-content-between align-items-center my-4">
+                                <div class="fl">
+                                    <b>@lang('admin.Total')</b>: <span class="bold">{{ $total_item ?? 0 }}</span> @lang('admin.News')
                                 </div>
                                 <div class="fr">
                                     {!! $data->links() !!}
@@ -66,10 +66,9 @@
                                                 </div>
                                             </th>
                                             <th class="text-center" style="width:100px">@lang('admin.priority')</th>
-                                            <th class="text-center" style="width:200px">@lang('admin.Shortcode')</th>
-                                            <th class="text-center" style="width:350px">@lang('admin.Description')</th>
+                                            <th class="text-center" style="min-width:150px">@lang('admin.Shortcode')</th>
+                                            <th class="text-center" style="min-width:300px">@lang('admin.Description')</th>
                                             <th class="text-center">@lang('admin.thumbnail')</th>
-                                            {{-- <th class="text-center">@lang('admin.Createddate')</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>

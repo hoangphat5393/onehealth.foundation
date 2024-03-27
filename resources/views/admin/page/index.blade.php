@@ -45,25 +45,33 @@
                             <h3>@lang('admin.Page')</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="clear">
+                            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
                                 @include('admin.partials.button_add_delete', ['type' => 'page', 'route' => route('admin.createPage')])
+                                <div class="fr mt-3 mt-lg-0 d-none">
+                                    <form method="GET" action="" id="frm-filter-post" class="form-inline">
+                                        <input type="text" class="form-control" name="search_name" id="search_name" placeholder="@lang('admin.Keyword')" value="{{ request('search_name') }}">
+                                        <button type="submit" class="btn btn-primary ml-2">@lang('admin.Search')</button>
+                                    </form>
+                                </div>
                             </div>
-                            <br />
-                            <div class="clear">
+
+                            <div class="d-flex justify-content-between align-items-center my-4">
+                                <div class="fl">
+                                    <b>@lang('admin.Total')</b>: <span class="fw-bold text-red">{{ $total_item ?? 0 }}</span> @lang('admin.News')
+                                </div>
                                 <div class="fr">
                                     {!! $pages->links() !!}
                                 </div>
                             </div>
-                            <br />
+
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="table_index">
+                                <table class="table table-bordered list-data v-center" id="table_index">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="text-center">
+                                            <th class="text-center" style="width:50px">
                                                 <div class="icheck-info d-inline">
                                                     <input type="checkbox" id="selectall" onclick="select_all()">
-                                                    <label for="selectall">
-                                                    </label>
+                                                    <label for="selectall"></label>
                                                 </div>
                                             </th>
                                             <th scope="col" class="text-center" style="width:100px">@lang('admin.Sort')</th>

@@ -43,14 +43,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>@lang('admin.Category')</h5>
+                            <h3>@lang('admin.Category')</h3>
                         </div>
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    @include('admin.partials.button_add_delete', ['type' => 'post-category', 'route' => route('admin.postCategoryCreate')])
-                                </div>
-                                <div>
+                            <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
+                                @include('admin.partials.button_add_delete', ['type' => 'post-category', 'route' => route('admin.postCategoryCreate')])
+                                <div class="fr mt-3 mt-lg-0">
                                     <form method="GET" action="" id="frm-filter-post" class="form-inline">
                                         <input type="text" class="form-control" name="search_name" id="search_name" placeholder="@lang('admin.Keyword')" value="{{ request('search_name') }}">
                                         <button type="submit" class="btn btn-primary ml-2">@lang('admin.Search')</button>
@@ -58,9 +56,9 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex my-4">
-                                <div class="fl" style="font-size: 17px;">
-                                    <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.Categories')
+                            <div class="d-flex align-items-center justify-content-between my-4">
+                                <div class="fl">
+                                    <b>@lang('admin.Total')</b>: <span class="fw-bold text-red">{{ $total_item ?? 0 }}</span> @lang('admin.Categories')
                                 </div>
                                 <div class="fr">
                                     {!! $categories->links() !!}
@@ -68,7 +66,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table class="table table-bordered v-center" id="table_index">
+                                <table class="table table-bordered" id="table_index">
                                     <thead>
                                         <tr>
                                             <th scope="col" class="text-center">
