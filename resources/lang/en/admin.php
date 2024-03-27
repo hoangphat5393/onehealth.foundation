@@ -91,6 +91,7 @@ return [
       'roles'                 => 'roles',
       'Roles'                 => 'Roles',
       'permissions'           => 'permissions',
+      'Permission'            => 'Permission',
       'Permissions'           => 'Permissions',
       'Permission group'      => 'Permission Group',
       'role_group'            => 'Permission Group',

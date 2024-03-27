@@ -35,31 +35,55 @@
                         <div class="card-header">
                             <h3 class="card-title">List Users</h3>
                         </div> <!-- /.card-header -->
+
                         <div class="card-body">
-                            <div class="clear" style="margin-bottom: 10px">
-                                <ul class="nav fl">
+                            <div class="d-flex justify-content-between">
+                                @include('admin.partials.button_add', ['type' => 'role', 'route' => route('admin_role.create')])
+                                {{-- <ul class="nav fl">
                                     <li class="nav-item">
                                         <a class="btn btn-danger" id="btn_deletes" onclick="delete_id('user_admin')" href="javascript:void(0)"><i class="fas fa-trash"></i> Delete</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="btn btn-primary" href="{{ route('admin_role.create') }}" style="margin-left: 6px;"><i class="fas fa-plus"></i> Add New</a>
+                                        <a class="btn btn-primary" href="{{ route('admin_permission.create') }}" style="margin-left: 6px;"><i class="fas fa-plus"></i> Add New</a>
                                     </li>
-                                </ul>
+                                </ul> --}}
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between my-4">
+                                {{-- <div class="fl">
+                                    <b>@lang('admin.Total')</b>: <span class="bold" style="color: red; font-weight: bold;">{{ $total_item ?? 0 }}</span> @lang('admin.Users')
+                                </div>
+                                <div class="fr">
+                                    {!! $permissions->links() !!}
+                                </div> --}}
                             </div>
 
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="table_index">
+                                <table class="table table-bordered list-data v-center" id="table_index">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Tên</th>
-                                            <th scope="col">Slug</th>
-                                            <th scope="col">Quyền hạn</th>
-                                            <th scope="col">Thao tác</th>
+                                            <th class="text-center" style="width:50px">
+                                                <div class="icheck-info d-inline">
+                                                    <input type="checkbox" id="selectall" onclick="select_all()">
+                                                    <label for="selectall"></label>
+                                                </div>
+                                            </th>
+                                            <th scope="col">@lang('admin.Name')</th>
+                                            <th scope="col">@lang('admin.Slug')</th>
+                                            <th scope="col">@lang('admin.Permission')</th>
+                                            <th scope="col">@lang('admin.Action')</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         @foreach ($roles as $data)
                                             <tr>
+                                                <td class="text-center">
+                                                    <div class="icheck-info d-inline">
+                                                        <input type="checkbox" id="{{ $data->id }}" name="seq_list[]" value="{{ $data->id }}">
+                                                        <label for="{{ $data->id }}"></label>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <a href="{{ route('admin_role.edit', $data->id) }}" title="">{{ $data->name }} | {{ $data->name_en }}</a>
                                                 </td>
