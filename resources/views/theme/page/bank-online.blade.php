@@ -26,24 +26,6 @@
                                     <span>Thông tin lỗi: ()<br> </span>
                                 </div>
 
-                                <input type="hidden" name="amount" id="amount" value="100000">
-                                <input type="hidden" name="currency" value="VND">
-                                <input type="hidden" name="access_code" value="d37a8fd0076e056d5326968b32a7ea78">
-                                <input type="hidden" name="mac_type" value="MD5">
-                                <input type="hidden" name="mac" value="95DB33CA010DBF553516D8321C7">
-                                <input type="hidden" name="merchant_id" value="100241">
-                                <input type="hidden" name="order_info" value="testpayment">
-                                <input type="hidden" name="order_reference" value="Q1TT12301245">
-                                <input type="hidden" name="return_url" value="{{ route('payment_redirect') }}">
-                                <input type="hidden" name="cancel_url" value="https://domain.vn/">
-
-                                <input type="hidden" name="cmd" value="_s-xclick">
-                                <input type="hidden" name="hosted_button_id" id="hosted_button_id" value="MUXXK4XFJJ5EE">
-                                <input type="hidden" name="return" value="/thank-you">
-                                <input type="hidden" id="amount" name="amount" value="">
-                                <input type="hidden" id="frequency" name="frequency" value="Một lần">
-                                <input type="hidden" name="currency_code" value="USD">
-
                                 <h4 class="text-main text-uppercase">@lang('Please select the donation amount'):</h4>
 
                                 <ul id="" class="list-inline list-donate-price pt-3 d-flex">

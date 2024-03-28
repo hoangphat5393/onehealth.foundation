@@ -20,8 +20,13 @@ Route::localized(function () {
     // Route::get('/', '\App\Http\Controllers\PageController@index')->middleware('verified')->name('index');
     Route::get('/', '\App\Http\Controllers\PageController@index')->name('index');
 
-    Route::post('payment_test', 'PaymentController@mbbank')->name('payment_test');
-    Route::get('payment_redirect', 'PaymentController@mbbankCallback')->name('payment_test');
+
+    // Route::post('payment_test', 'PaymentController@mbbank')->name('payment_test');
+    // Route::get('payment_redirect', 'PaymentController@mbbankCallback')->name('payment_test');
+
+    Route::get('test_payment', 'TestController')->name('test_payment');
+    Route::get('test_payment_callback', 'TestController@callbackFunc')->name('test_payment_callback');
+
 
     Route::group(['prefix' => 'auth'], function () {
         Route::get('/register', 'CustomerController@registerCustomer')->name('registerCustomer');

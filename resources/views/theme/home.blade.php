@@ -87,12 +87,22 @@
                     </div>
                 </div>
 
+                <div class="row mb-2">
+                    <div class="col-lg-7">
+                        <img class="img-fluid object-cover" src="https://vinacapitalfoundation.org/wp-content/uploads/2024/03/brighterpathgirlsclubsquangnam2024-10-scaled.jpg" alt="" style="">
+                    </div>
+                    <div class="col-lg-5">
+                        <span class="">Nổi bật</span>
+                        <h3 class="h2 font-semibold text-gray-100 mb-10px lg:mb-15px">CLB Nữ sinh Mở đường đến Tương lai dành cho nữ sinh dân tộc thiểu...</h3>
+                        <span class="">Tin tức | Mar 12, 2024</span>
+                        <p>Ngày 12/3/2024, Sở Giáo dục và Đào tạo tỉnh Quảng Nam phối hợp cùng Tổ chức VinaCapital Foundation (VCF) t...</p>
+                    </div>
+                </div>
+
                 @empty(!$news)
                     <div class="row">
                         @foreach ($news as $item)
-                            @php
-                                $cdt = new Carbon($item->created_at);
-                            @endphp
+                            @php $cdt = new Carbon($item->created_at); @endphp
                             <div class="col-lg-4 item-news">
                                 <div class="item-product">
                                     <a href="{{ route('news.detail', [$item->slug, $item->id]) }}" title="{{ $item->name }}">
